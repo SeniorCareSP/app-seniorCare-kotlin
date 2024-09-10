@@ -6,7 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -39,17 +43,34 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TelaInicial(name: String, modifier: Modifier = Modifier) {
-    Box(
+    Column(
         modifier = modifier
             .fillMaxSize()
-            .background(color = Color(0xFF077DB0))
+
     ) {
-        Text(
-            text = "Sênior Care",
+        Box(
             modifier = Modifier
-                .align(Alignment.Center)
-                .padding(20.dp)
-        )
+                .fillMaxSize()
+                .background(color = Color(0xFF077DB0))
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        color = Color.White,
+                        shape = androidx.compose.foundation.shape.RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp)
+                    )
+                    .align(Alignment.BottomCenter) // Alinha a caixa ao fundo
+                    .padding(top = 560.dp) // O padding do topo é necessário para criar o espaço superior
+            ) {
+                Text(
+                    text = "Sênior Care",
+                    modifier = Modifier
+                        .align(Alignment.TopStart)
+                        .padding(20.dp) // Ajustar o padding conforme necessário
+                )
+            }
+        }
     }
 }
 
