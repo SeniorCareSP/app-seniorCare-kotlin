@@ -88,7 +88,7 @@ fun TelaInicial(name: String, modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top // Conteúdo mais para baixo
         ) {
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(40.dp))
             Text(
                 text = stringResource(id = R.string.slogan_inicial),
                 color = Color.Black,
