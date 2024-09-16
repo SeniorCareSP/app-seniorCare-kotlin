@@ -13,6 +13,11 @@
         android:theme="@style/Theme.MobileSeniorCare"
         tools:targetApi="31">
         <activity
+            android:name=".Login"
+            android:exported="true"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
