@@ -13,6 +13,26 @@
         android:theme="@style/Theme.MobileSeniorCare"
         tools:targetApi="31">
         <activity
+            android:name=".Cadastro4"
+            android:exported="true"
+            android:label="@string/title_activity_cadastro4"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
+            android:name=".Cadastro3"
+            android:exported="true"
+            android:label="@string/title_activity_cadastro3"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
+            android:name=".Cadastro2"
+            android:exported="true"
+            android:label="@string/title_activity_cadastro2"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
+            android:name=".Cadastro1"
+            android:exported="true"
+            android:label="@string/title_activity_cadastro1"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
             android:name=".Login"
             android:exported="true"
             android:label="@string/title_activity_login"

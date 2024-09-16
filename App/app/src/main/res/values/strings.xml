@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">MobileSeniorCare</string>
     <string name="title_activity_login">Login</string>
+    <string name="title_activity_cadastro1">Cadastro1</string>
+    <string name="title_activity_cadastro2">Cadastro2</string>
+    <string name="title_activity_cadastro3">Cadastro3</string>
+    <string name="title_activity_cadastro4">Cadastro4</string>
 </resources>
