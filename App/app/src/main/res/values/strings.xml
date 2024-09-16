@@ -5,4 +5,9 @@
     <string name="title_activity_cadastro2">Cadastro2</string>
     <string name="title_activity_cadastro3">Cadastro3</string>
     <string name="title_activity_cadastro4">Cadastro4</string>
+
+    <string name="slogan">MobileSeniorCare</string>
+    <string name="header_text">Sênior Care</string>
+    <string name="slogan_inicial">Conectando corações, cuidando de quem você ama.</string>
+
 </resources>
