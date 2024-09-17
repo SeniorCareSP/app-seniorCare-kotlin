@@ -13,6 +13,16 @@
         android:theme="@style/Theme.MobileSeniorCare"
         tools:targetApi="31">
         <activity
+            android:name=".LIstagemCuidador"
+            android:exported="false"
+            android:label="@string/title_activity_listagem_cuidador"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
+            android:name=".ListagemResponsavel"
+            android:exported="false"
+            android:label="@string/title_activity_listagem_responsavel"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
             android:name=".EdicaoPerfil"
             android:exported="false"
             android:label="@string/title_activity_edicao_perfil"

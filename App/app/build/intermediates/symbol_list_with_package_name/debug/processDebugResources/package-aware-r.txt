@@ -53,7 +53,10 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+drawable chat
+drawable chuu
 drawable dsjak
+drawable home
 drawable ic_call_answer
 drawable ic_call_answer_low
 drawable ic_call_answer_video
@@ -65,7 +68,10 @@ drawable ic_launcher_foreground
 drawable icone_manha
 drawable icone_noite
 drawable icone_tarde
+drawable idoso
+drawable jovem
 drawable logo_mobile
+drawable logout
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -274,7 +280,9 @@ string title_activity_cadastro5
 string title_activity_cadastro6
 string title_activity_conversa
 string title_activity_edicao_perfil
+string title_activity_listagem_cuidador
 string title_activity_listagem_de_conversa
+string title_activity_listagem_responsavel
 string title_activity_login
 string tooltip_description
 string tooltip_label

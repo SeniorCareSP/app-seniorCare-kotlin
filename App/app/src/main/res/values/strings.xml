@@ -14,5 +14,7 @@
     <string name="title_activity_cadastro5">Cadastro5</string>
     <string name="title_activity_cadastro6">Cadastro6</string>
     <string name="title_activity_edicao_perfil">EdicaoPerfil</string>
+    <string name="title_activity_listagem_responsavel">ListagemResponsavel</string>
+    <string name="title_activity_listagem_cuidador">LIstagemCuidador</string>
 
 </resources>
