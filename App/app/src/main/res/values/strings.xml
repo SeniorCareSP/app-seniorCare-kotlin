@@ -11,5 +11,7 @@
     <string name="slogan_inicial">Conectando corações, cuidando de quem você ama.</string>
     <string name="title_activity_listagem_de_conversa">ListagemDeConversa</string>
     <string name="title_activity_conversa">Conversa</string>
+    <string name="title_activity_cadastro5">Cadastro5</string>
+    <string name="title_activity_cadastro6">Cadastro6</string>
 
 </resources>

@@ -27,6 +27,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileSeniorCare" >
         <activity
+            android:name="com.example.mobileseniorcare.Cadastro6"
+            android:exported="false"
+            android:label="@string/title_activity_cadastro6"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
+            android:name="com.example.mobileseniorcare.Cadastro5"
+            android:exported="false"
+            android:label="@string/title_activity_cadastro5"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
             android:name="com.example.mobileseniorcare.Conversa"
             android:exported="false"
             android:label="@string/title_activity_conversa"

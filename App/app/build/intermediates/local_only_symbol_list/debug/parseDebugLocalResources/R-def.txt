@@ -10,6 +10,9 @@ color white
 drawable dsjak
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable icone_manha
+drawable icone_noite
+drawable icone_tarde
 drawable logo_mobile
 drawable senior_care
 mipmap ic_launcher
@@ -22,6 +25,8 @@ string title_activity_cadastro1
 string title_activity_cadastro2
 string title_activity_cadastro3
 string title_activity_cadastro4
+string title_activity_cadastro5
+string title_activity_cadastro6
 string title_activity_conversa
 string title_activity_listagem_de_conversa
 string title_activity_login
