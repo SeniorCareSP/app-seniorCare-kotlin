@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:2:1-73:12
-INJECTED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:2:1-73:12
-INJECTED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:2:1-73:12
-INJECTED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:2:1-73:12
+ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:2:1-78:12
+INJECTED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:2:1-78:12
+INJECTED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:2:1-78:12
+INJECTED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:2:1-78:12
 MERGED from [androidx.compose.material3:material3-android:1.2.1] C:\Users\rafal\.gradle\caches\transforms-4\86b1bf36af0d3e6dc7c1a08b30e8c766\transformed\material3-release\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.compose.material:material-android:1.6.6] C:\Users\rafal\.gradle\caches\transforms-4\a628d3a4dc3c6c07a8f422dc4d982fe1\transformed\material-release\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.material:material-icons-core-android:1.6.6] C:\Users\rafal\.gradle\caches\transforms-4\2d5fde2598f814f4aee7c99ea289cdf8\transformed\material-icons-core-release\AndroidManifest.xml:2:1-7:12
@@ -59,8 +59,8 @@ MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\rafal\.gradle\cache
 	xmlns:android
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:5:5-71:19
-INJECTED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:5:5-71:19
+ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:5:5-76:19
+INJECTED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:5:5-76:19
 MERGED from [androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\rafal\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\rafal\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\rafal\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:22:5-26:19
@@ -99,17 +99,17 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\rafal\.gradle\cach
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:13:9-54
 	android:dataExtractionRules
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:7:9-65
-activity#com.example.mobileseniorcare.Cadastro6
+activity#com.example.mobileseniorcare.EdicaoPerfil
 ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:15:9-19:61
 	android:label
-		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:18:13-61
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:18:13-65
 	android:exported
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:17:13-37
 	android:theme
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:19:13-58
 	android:name
-		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:16:13-38
-activity#com.example.mobileseniorcare.Cadastro5
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:16:13-41
+activity#com.example.mobileseniorcare.Cadastro6
 ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:20:9-24:61
 	android:label
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:23:13-61
@@ -119,37 +119,37 @@ ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\sr
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:24:13-58
 	android:name
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:21:13-38
-activity#com.example.mobileseniorcare.Conversa
+activity#com.example.mobileseniorcare.Cadastro5
 ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:25:9-29:61
 	android:label
-		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:28:13-60
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:28:13-61
 	android:exported
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:27:13-37
 	android:theme
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:29:13-58
 	android:name
-		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:26:13-37
-activity#com.example.mobileseniorcare.ListagemDeConversa
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:26:13-38
+activity#com.example.mobileseniorcare.Conversa
 ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:30:9-34:61
 	android:label
-		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:33:13-72
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:33:13-60
 	android:exported
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:32:13-37
 	android:theme
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:34:13-58
 	android:name
-		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:31:13-47
-activity#com.example.mobileseniorcare.Cadastro4
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:31:13-37
+activity#com.example.mobileseniorcare.ListagemDeConversa
 ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:35:9-39:61
 	android:label
-		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:38:13-61
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:38:13-72
 	android:exported
-		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:37:13-36
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:37:13-37
 	android:theme
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:39:13-58
 	android:name
-		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:36:13-38
-activity#com.example.mobileseniorcare.Cadastro3
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:36:13-47
+activity#com.example.mobileseniorcare.Cadastro4
 ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:40:9-44:61
 	android:label
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:43:13-61
@@ -159,7 +159,7 @@ ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\sr
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:44:13-58
 	android:name
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:41:13-38
-activity#com.example.mobileseniorcare.Cadastro2
+activity#com.example.mobileseniorcare.Cadastro3
 ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:45:9-49:61
 	android:label
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:48:13-61
@@ -169,7 +169,7 @@ ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\sr
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:49:13-58
 	android:name
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:46:13-38
-activity#com.example.mobileseniorcare.Cadastro1
+activity#com.example.mobileseniorcare.Cadastro2
 ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:50:9-54:61
 	android:label
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:53:13-61
@@ -179,36 +179,46 @@ ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\sr
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:54:13-58
 	android:name
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:51:13-38
-activity#com.example.mobileseniorcare.Login
+activity#com.example.mobileseniorcare.Cadastro1
 ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:55:9-59:61
 	android:label
-		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:58:13-57
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:58:13-61
 	android:exported
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:57:13-36
 	android:theme
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:59:13-58
 	android:name
-		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:56:13-34
-activity#com.example.mobileseniorcare.MainActivity
-ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:60:9-70:20
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:56:13-38
+activity#com.example.mobileseniorcare.Login
+ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:60:9-64:61
 	android:label
-		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:63:13-45
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:63:13-57
 	android:exported
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:62:13-36
 	android:theme
 		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:64:13-58
 	android:name
-		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:61:13-41
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:61:13-34
+activity#com.example.mobileseniorcare.MainActivity
+ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:65:9-75:20
+	android:label
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:68:13-45
+	android:exported
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:67:13-36
+	android:theme
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:69:13-58
+	android:name
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:66:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:65:13-69:29
+ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:70:13-74:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:66:17-69
+ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:71:17-69
 	android:name
-		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:66:25-66
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:71:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:68:17-77
+ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:73:17-77
 	android:name
-		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:68:27-74
+		ADDED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:73:27-74
 uses-sdk
 INJECTED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\rafal\AndroidStudioProjects\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml

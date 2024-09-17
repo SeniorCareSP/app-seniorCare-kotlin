@@ -15,6 +15,7 @@ drawable icone_noite
 drawable icone_tarde
 drawable logo_mobile
 drawable senior_care
+drawable seta
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
@@ -28,6 +29,7 @@ string title_activity_cadastro4
 string title_activity_cadastro5
 string title_activity_cadastro6
 string title_activity_conversa
+string title_activity_edicao_perfil
 string title_activity_listagem_de_conversa
 string title_activity_login
 style Theme.MobileSeniorCare

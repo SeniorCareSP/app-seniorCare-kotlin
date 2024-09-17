@@ -9,6 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -172,6 +173,7 @@ fun Greeting5(name: String, modifier: Modifier = Modifier) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp)),
+                    shape = RoundedCornerShape(10.dp),
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                         containerColor = buttonBackgroundColor,
                         contentColor = buttonTextColor
@@ -185,6 +187,7 @@ fun Greeting5(name: String, modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                         .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
                         .border(1.dp, borderColor, shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)),
+                    shape = RoundedCornerShape(10.dp),
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                         containerColor = buttonWhiteBackgroundColor,
                         contentColor = labelColor

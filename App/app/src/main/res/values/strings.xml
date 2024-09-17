@@ -13,5 +13,6 @@
     <string name="title_activity_conversa">Conversa</string>
     <string name="title_activity_cadastro5">Cadastro5</string>
     <string name="title_activity_cadastro6">Cadastro6</string>
+    <string name="title_activity_edicao_perfil">EdicaoPerfil</string>
 
 </resources>

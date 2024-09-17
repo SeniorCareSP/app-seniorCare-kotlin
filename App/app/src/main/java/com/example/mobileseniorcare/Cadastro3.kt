@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -168,8 +169,8 @@ fun Greeting4(name: String, modifier: Modifier = Modifier) {
                 Button(
                     onClick = { /* Ação de próximo */ },
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp)),
+                        .fillMaxWidth(),
+                    shape = RoundedCornerShape(10.dp),
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                         containerColor = buttonBackgroundColor,
                         contentColor = buttonTextColor
@@ -183,6 +184,7 @@ fun Greeting4(name: String, modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                         .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
                         .border(1.dp, borderColor, shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)),
+                        shape = RoundedCornerShape(10.dp),
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                         containerColor = buttonWhiteBackgroundColor,
                         contentColor = buttonWhiteTextColor
