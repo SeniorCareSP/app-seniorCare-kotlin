@@ -1,0 +1,30 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable dsjak
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable logo_mobile
+drawable senior_care
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string header_text
+string slogan
+string slogan_inicial
+string title_activity_cadastro1
+string title_activity_cadastro2
+string title_activity_cadastro3
+string title_activity_cadastro4
+string title_activity_conversa
+string title_activity_listagem_de_conversa
+string title_activity_login
+style Theme.MobileSeniorCare
+xml backup_rules
+xml data_extraction_rules

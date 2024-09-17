@@ -1,0 +1,215 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.mobileseniorcare"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="27"
+9        android:targetSdkVersion="34" />
+10
+11    <permission
+11-->[androidx.core:core:1.13.1] C:\Users\Igor\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+12        android:name="com.example.mobileseniorcare.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+12-->[androidx.core:core:1.13.1] C:\Users\Igor\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+13        android:protectionLevel="signature" />
+13-->[androidx.core:core:1.13.1] C:\Users\Igor\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+14
+15    <uses-permission android:name="com.example.mobileseniorcare.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+15-->[androidx.core:core:1.13.1] C:\Users\Igor\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+15-->[androidx.core:core:1.13.1] C:\Users\Igor\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+16
+17    <application
+17-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:5:5-61:19
+18        android:allowBackup="true"
+18-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:6:9-35
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.13.1] C:\Users\Igor\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+20        android:dataExtractionRules="@xml/data_extraction_rules"
+20-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:7:9-65
+21        android:debuggable="true"
+22        android:extractNativeLibs="false"
+23        android:fullBackupContent="@xml/backup_rules"
+23-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:8:9-54
+24        android:icon="@mipmap/ic_launcher"
+24-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:9:9-43
+25        android:label="@string/app_name"
+25-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:10:9-41
+26        android:roundIcon="@mipmap/ic_launcher_round"
+26-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:11:9-54
+27        android:supportsRtl="true"
+27-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:12:9-35
+28        android:theme="@style/Theme.MobileSeniorCare" >
+28-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:13:9-54
+29        <activity
+29-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:15:9-19:61
+30            android:name="com.example.mobileseniorcare.Conversa"
+30-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:16:13-37
+31            android:exported="false"
+31-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:17:13-37
+32            android:label="@string/title_activity_conversa"
+32-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:18:13-60
+33            android:theme="@style/Theme.MobileSeniorCare" />
+33-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:19:13-58
+34        <activity
+34-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:20:9-24:61
+35            android:name="com.example.mobileseniorcare.ListagemDeConversa"
+35-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:21:13-47
+36            android:exported="false"
+36-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:22:13-37
+37            android:label="@string/title_activity_listagem_de_conversa"
+37-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:23:13-72
+38            android:theme="@style/Theme.MobileSeniorCare" />
+38-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:24:13-58
+39        <activity
+39-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:25:9-29:61
+40            android:name="com.example.mobileseniorcare.Cadastro4"
+40-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:26:13-38
+41            android:exported="true"
+41-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:27:13-36
+42            android:label="@string/title_activity_cadastro4"
+42-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:28:13-61
+43            android:theme="@style/Theme.MobileSeniorCare" />
+43-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:29:13-58
+44        <activity
+44-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:30:9-34:61
+45            android:name="com.example.mobileseniorcare.Cadastro3"
+45-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:31:13-38
+46            android:exported="true"
+46-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:32:13-36
+47            android:label="@string/title_activity_cadastro3"
+47-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:33:13-61
+48            android:theme="@style/Theme.MobileSeniorCare" />
+48-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:34:13-58
+49        <activity
+49-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:35:9-39:61
+50            android:name="com.example.mobileseniorcare.Cadastro2"
+50-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:36:13-38
+51            android:exported="true"
+51-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:37:13-36
+52            android:label="@string/title_activity_cadastro2"
+52-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:38:13-61
+53            android:theme="@style/Theme.MobileSeniorCare" />
+53-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:39:13-58
+54        <activity
+54-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:40:9-44:61
+55            android:name="com.example.mobileseniorcare.Cadastro1"
+55-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:41:13-38
+56            android:exported="true"
+56-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:42:13-36
+57            android:label="@string/title_activity_cadastro1"
+57-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:43:13-61
+58            android:theme="@style/Theme.MobileSeniorCare" />
+58-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:44:13-58
+59        <activity
+59-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:45:9-49:61
+60            android:name="com.example.mobileseniorcare.Login"
+60-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:46:13-34
+61            android:exported="true"
+61-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:47:13-36
+62            android:label="@string/title_activity_login"
+62-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:48:13-57
+63            android:theme="@style/Theme.MobileSeniorCare" />
+63-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:49:13-58
+64        <activity
+64-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:50:9-60:20
+65            android:name="com.example.mobileseniorcare.MainActivity"
+65-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:51:13-41
+66            android:exported="true"
+66-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:52:13-36
+67            android:label="@string/app_name"
+67-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:53:13-45
+68            android:theme="@style/Theme.MobileSeniorCare" >
+68-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:54:13-58
+69            <intent-filter>
+69-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:55:13-59:29
+70                <action android:name="android.intent.action.MAIN" />
+70-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:56:17-69
+70-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:56:25-66
+71
+72                <category android:name="android.intent.category.LAUNCHER" />
+72-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:58:17-77
+72-->C:\Users\Igor\Documents\Senior care\app-seniorCare-kotlin\App\app\src\main\AndroidManifest.xml:58:27-74
+73            </intent-filter>
+74        </activity>
+75        <activity
+75-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\Igor\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+76            android:name="androidx.compose.ui.tooling.PreviewActivity"
+76-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\Igor\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+77            android:exported="true" />
+77-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\Igor\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+78        <activity
+78-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\Igor\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:23:9-25:39
+79            android:name="androidx.activity.ComponentActivity"
+79-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\Igor\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:24:13-63
+80            android:exported="true" />
+80-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\Igor\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:25:13-36
+81
+82        <provider
+82-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Igor\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+83            android:name="androidx.startup.InitializationProvider"
+83-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Igor\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+84            android:authorities="com.example.mobileseniorcare.androidx-startup"
+84-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Igor\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+85            android:exported="false" >
+85-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Igor\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+86            <meta-data
+86-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Igor\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+87                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+87-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Igor\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+88                android:value="androidx.startup" />
+88-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Igor\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+89            <meta-data
+89-->[androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Igor\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:29:13-31:52
+90                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+90-->[androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Igor\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:30:17-78
+91                android:value="androidx.startup" />
+91-->[androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Igor\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:31:17-49
+92            <meta-data
+92-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+93                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+93-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+94                android:value="androidx.startup" />
+94-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+95        </provider>
+96
+97        <receiver
+97-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+98            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+98-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+99            android:directBootAware="false"
+99-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+100            android:enabled="true"
+100-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+101            android:exported="true"
+101-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+102            android:permission="android.permission.DUMP" >
+102-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+103            <intent-filter>
+103-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+104                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+104-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+104-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+105            </intent-filter>
+106            <intent-filter>
+106-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+107                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+107-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+107-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+108            </intent-filter>
+109            <intent-filter>
+109-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+110                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+110-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+110-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+111            </intent-filter>
+112            <intent-filter>
+112-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+113                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+113-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+113-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Igor\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+114            </intent-filter>
+115        </receiver>
+116    </application>
+117
+118</manifest>

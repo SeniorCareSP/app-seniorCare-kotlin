@@ -13,6 +13,16 @@
         android:theme="@style/Theme.MobileSeniorCare"
         tools:targetApi="31">
         <activity
+            android:name=".Conversa"
+            android:exported="false"
+            android:label="@string/title_activity_conversa"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
+            android:name=".ListagemDeConversa"
+            android:exported="false"
+            android:label="@string/title_activity_listagem_de_conversa"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
             android:name=".Cadastro4"
             android:exported="true"
             android:label="@string/title_activity_cadastro4"
