@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -18,16 +20,6 @@
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.MobileSeniorCare" />
         <activity
-            android:name=".LIstagemCuidador"
-            android:exported="false"
-            android:label="@string/title_activity_listagem_cuidador"
-            android:theme="@style/Theme.MobileSeniorCare" />
-        <activity
-            android:name=".ListagemResponsavel"
-            android:exported="false"
-            android:label="@string/title_activity_listagem_responsavel"
-            android:theme="@style/Theme.MobileSeniorCare" />
-        <activity
             android:name=".EdicaoPerfil"
             android:exported="false"
             android:label="@string/title_activity_edicao_perfil"
@@ -41,16 +33,6 @@
             android:name=".Cadastro5"
             android:exported="false"
             android:label="@string/title_activity_cadastro5"
-            android:theme="@style/Theme.MobileSeniorCare" />
-        <activity
-            android:name=".Conversa"
-            android:exported="false"
-            android:label="@string/title_activity_conversa"
-            android:theme="@style/Theme.MobileSeniorCare" />
-        <activity
-            android:name=".ListagemDeConversa"
-            android:exported="false"
-            android:label="@string/title_activity_listagem_de_conversa"
             android:theme="@style/Theme.MobileSeniorCare" />
         <activity
             android:name=".Cadastro4"

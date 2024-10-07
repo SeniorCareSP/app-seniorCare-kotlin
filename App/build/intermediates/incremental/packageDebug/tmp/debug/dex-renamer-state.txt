@@ -1,9 +1,9 @@
-#Mon Sep 16 18:30:51 BRT 2024
-base.0=C\:\\Users\\Igor\\Documents\\Senior care\\app-seniorCare-kotlin\\App\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\Igor\\Documents\\Senior care\\app-seniorCare-kotlin\\App\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\Igor\\Documents\\Senior care\\app-seniorCare-kotlin\\App\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
-base.3=C\:\\Users\\Igor\\Documents\\Senior care\\app-seniorCare-kotlin\\App\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\3\\classes.dex
-base.4=C\:\\Users\\Igor\\Documents\\Senior care\\app-seniorCare-kotlin\\App\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+#Tue Oct 01 21:38:03 BRT 2024
+base.0=C\:\\Users\\Mariana Nascimento\\OneDrive\\Documentos\\SPTech\\4Semestre\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\Users\\Mariana Nascimento\\OneDrive\\Documentos\\SPTech\\4Semestre\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=C\:\\Users\\Mariana Nascimento\\OneDrive\\Documentos\\SPTech\\4Semestre\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
+base.3=C\:\\Users\\Mariana Nascimento\\OneDrive\\Documentos\\SPTech\\4Semestre\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\3\\classes.dex
+base.4=C\:\\Users\\Mariana Nascimento\\OneDrive\\Documentos\\SPTech\\4Semestre\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=2/classes.dex
