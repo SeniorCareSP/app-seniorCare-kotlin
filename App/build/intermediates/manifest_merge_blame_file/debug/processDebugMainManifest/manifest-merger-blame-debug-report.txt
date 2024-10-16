@@ -24,7 +24,7 @@
 17-->[androidx.core:core:1.13.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
 18
 19    <application
-19-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:7:5-93:19
+19-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:7:5-73:19
 20        android:allowBackup="true"
 20-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:8:9-35
 21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -48,234 +48,194 @@
 31-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:15:9-54
 32        <activity
 32-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:17:9-21:61
-33            android:name="com.example.mobileseniorcare.MainActivity2"
-33-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:18:13-42
-34            android:exported="false"
-34-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:19:13-37
+33            android:name="com.example.mobileseniorcare.telas.MainActivity2"
+33-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:18:13-48
+34            android:exported="true"
+34-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:19:13-36
 35            android:label="@string/title_activity_main2"
 35-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:20:13-57
 36            android:theme="@style/Theme.MobileSeniorCare" />
 36-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:21:13-58
 37        <activity
 37-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:22:9-26:61
-38            android:name="com.example.mobileseniorcare.LIstagemCuidador"
-38-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:23:13-45
-39            android:exported="false"
-39-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:24:13-37
-40            android:label="@string/title_activity_listagem_cuidador"
-40-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:25:13-69
+38            android:name="com.example.mobileseniorcare.telas.EdicaoPerfil"
+38-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:23:13-47
+39            android:exported="true"
+39-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:24:13-36
+40            android:label="@string/title_activity_edicao_perfil"
+40-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:25:13-65
 41            android:theme="@style/Theme.MobileSeniorCare" />
 41-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:26:13-58
 42        <activity
 42-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:27:9-31:61
-43            android:name="com.example.mobileseniorcare.ListagemResponsavel"
-43-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:28:13-48
-44            android:exported="false"
-44-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:29:13-37
-45            android:label="@string/title_activity_listagem_responsavel"
-45-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:30:13-72
+43            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro6"
+43-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:28:13-53
+44            android:exported="true"
+44-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:29:13-36
+45            android:label="@string/title_activity_cadastro6"
+45-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:30:13-61
 46            android:theme="@style/Theme.MobileSeniorCare" />
 46-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:31:13-58
 47        <activity
 47-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:32:9-36:61
-48            android:name="com.example.mobileseniorcare.EdicaoPerfil"
-48-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:33:13-41
-49            android:exported="false"
-49-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:34:13-37
-50            android:label="@string/title_activity_edicao_perfil"
-50-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:35:13-65
+48            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro5"
+48-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:33:13-53
+49            android:exported="true"
+49-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:34:13-36
+50            android:label="@string/title_activity_cadastro5"
+50-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:35:13-61
 51            android:theme="@style/Theme.MobileSeniorCare" />
 51-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:36:13-58
 52        <activity
 52-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:37:9-41:61
-53            android:name="com.example.mobileseniorcare.Cadastro6"
-53-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:38:13-38
-54            android:exported="false"
-54-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:39:13-37
-55            android:label="@string/title_activity_cadastro6"
+53            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro4"
+53-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:38:13-53
+54            android:exported="true"
+54-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:39:13-36
+55            android:label="@string/title_activity_cadastro4"
 55-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:40:13-61
 56            android:theme="@style/Theme.MobileSeniorCare" />
 56-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:41:13-58
 57        <activity
 57-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:42:9-46:61
-58            android:name="com.example.mobileseniorcare.Cadastro5"
-58-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:43:13-38
-59            android:exported="false"
-59-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:44:13-37
-60            android:label="@string/title_activity_cadastro5"
+58            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro3"
+58-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:43:13-53
+59            android:exported="true"
+59-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:44:13-36
+60            android:label="@string/title_activity_cadastro3"
 60-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:45:13-61
 61            android:theme="@style/Theme.MobileSeniorCare" />
 61-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:46:13-58
 62        <activity
 62-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:47:9-51:61
-63            android:name="com.example.mobileseniorcare.Conversa"
-63-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:48:13-37
-64            android:exported="false"
-64-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:49:13-37
-65            android:label="@string/title_activity_conversa"
-65-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:50:13-60
+63            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro2"
+63-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:48:13-53
+64            android:exported="true"
+64-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:49:13-36
+65            android:label="@string/title_activity_cadastro2"
+65-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:50:13-61
 66            android:theme="@style/Theme.MobileSeniorCare" />
 66-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:51:13-58
 67        <activity
 67-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:52:9-56:61
-68            android:name="com.example.mobileseniorcare.ListagemDeConversa"
-68-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:53:13-47
-69            android:exported="false"
-69-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:54:13-37
-70            android:label="@string/title_activity_listagem_de_conversa"
-70-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:55:13-72
+68            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro1"
+68-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:53:13-53
+69            android:exported="true"
+69-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:54:13-36
+70            android:label="@string/title_activity_cadastro1"
+70-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:55:13-61
 71            android:theme="@style/Theme.MobileSeniorCare" />
 71-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:56:13-58
 72        <activity
 72-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:57:9-61:61
-73            android:name="com.example.mobileseniorcare.Cadastro4"
-73-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:58:13-38
+73            android:name="com.example.mobileseniorcare.telas.Login"
+73-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:58:13-40
 74            android:exported="true"
 74-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:59:13-36
-75            android:label="@string/title_activity_cadastro4"
-75-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:60:13-61
+75            android:label="@string/title_activity_login"
+75-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:60:13-57
 76            android:theme="@style/Theme.MobileSeniorCare" />
 76-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:61:13-58
 77        <activity
-77-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:62:9-66:61
-78            android:name="com.example.mobileseniorcare.Cadastro3"
-78-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:63:13-38
+77-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:62:9-72:20
+78            android:name="com.example.mobileseniorcare.telas.MainActivity"
+78-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:63:13-47
 79            android:exported="true"
 79-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:64:13-36
-80            android:label="@string/title_activity_cadastro3"
-80-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:65:13-61
-81            android:theme="@style/Theme.MobileSeniorCare" />
+80            android:label="@string/app_name"
+80-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:65:13-45
+81            android:theme="@style/Theme.MobileSeniorCare" >
 81-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:66:13-58
-82        <activity
-82-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:67:9-71:61
-83            android:name="com.example.mobileseniorcare.Cadastro2"
-83-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:68:13-38
-84            android:exported="true"
-84-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:69:13-36
-85            android:label="@string/title_activity_cadastro2"
-85-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:70:13-61
-86            android:theme="@style/Theme.MobileSeniorCare" />
-86-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:71:13-58
-87        <activity
-87-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:72:9-76:61
-88            android:name="com.example.mobileseniorcare.Cadastro1"
-88-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:73:13-38
-89            android:exported="true"
-89-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:74:13-36
-90            android:label="@string/title_activity_cadastro1"
-90-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:75:13-61
-91            android:theme="@style/Theme.MobileSeniorCare" />
-91-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:76:13-58
-92        <activity
-92-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:77:9-81:61
-93            android:name="com.example.mobileseniorcare.Login"
-93-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:78:13-34
-94            android:exported="true"
-94-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:79:13-36
-95            android:label="@string/title_activity_login"
-95-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:80:13-57
-96            android:theme="@style/Theme.MobileSeniorCare" />
-96-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:81:13-58
-97        <activity
-97-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:82:9-92:20
-98            android:name="com.example.mobileseniorcare.MainActivity"
-98-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:83:13-41
-99            android:exported="true"
-99-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:84:13-36
-100            android:label="@string/app_name"
-100-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:85:13-45
-101            android:theme="@style/Theme.MobileSeniorCare" >
-101-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:86:13-58
-102            <intent-filter>
-102-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:87:13-91:29
-103                <action android:name="android.intent.action.MAIN" />
-103-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:88:17-69
-103-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:88:25-66
-104
-105                <category android:name="android.intent.category.LAUNCHER" />
-105-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:90:17-77
-105-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:90:27-74
-106            </intent-filter>
-107        </activity>
-108
-109        <provider
-109-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
-110            android:name="androidx.startup.InitializationProvider"
-110-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
-111            android:authorities="com.example.mobileseniorcare.androidx-startup"
-111-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
-112            android:exported="false" >
-112-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
-113            <meta-data
-113-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
-114                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-114-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
-115                android:value="androidx.startup" />
-115-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
-116            <meta-data
-116-->[androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:29:13-31:52
-117                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-117-->[androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:30:17-78
-118                android:value="androidx.startup" />
-118-->[androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:31:17-49
-119            <meta-data
-119-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
-120                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-120-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
-121                android:value="androidx.startup" />
-121-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
-122        </provider>
-123
-124        <activity
-124-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:23:9-25:39
-125            android:name="androidx.activity.ComponentActivity"
-125-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:24:13-63
-126            android:exported="true" />
-126-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:25:13-36
-127        <activity
-127-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
-128            android:name="androidx.compose.ui.tooling.PreviewActivity"
-128-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
-129            android:exported="true" />
-129-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
-130
-131        <receiver
-131-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
-132            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-132-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
-133            android:directBootAware="false"
-133-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
-134            android:enabled="true"
-134-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
-135            android:exported="true"
-135-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
-136            android:permission="android.permission.DUMP" >
-136-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
-137            <intent-filter>
-137-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
-138                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-138-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
-138-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
-139            </intent-filter>
-140            <intent-filter>
-140-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
-141                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-141-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
-141-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
-142            </intent-filter>
-143            <intent-filter>
-143-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
-144                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-144-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
-144-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
-145            </intent-filter>
-146            <intent-filter>
-146-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
-147                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-147-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
-147-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
-148            </intent-filter>
-149        </receiver>
-150    </application>
-151
-152</manifest>
+82            <intent-filter>
+82-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:67:13-71:29
+83                <action android:name="android.intent.action.MAIN" />
+83-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:68:17-69
+83-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:68:25-66
+84
+85                <category android:name="android.intent.category.LAUNCHER" />
+85-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:70:17-77
+85-->C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:70:27-74
+86            </intent-filter>
+87        </activity>
+88
+89        <provider
+89-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+90            android:name="androidx.startup.InitializationProvider"
+90-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+91            android:authorities="com.example.mobileseniorcare.androidx-startup"
+91-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+92            android:exported="false" >
+92-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+93            <meta-data
+93-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+94                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+94-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+95                android:value="androidx.startup" />
+95-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+96            <meta-data
+96-->[androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:29:13-31:52
+97                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+97-->[androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:30:17-78
+98                android:value="androidx.startup" />
+98-->[androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:31:17-49
+99            <meta-data
+99-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+100                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+100-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+101                android:value="androidx.startup" />
+101-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+102        </provider>
+103
+104        <activity
+104-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:23:9-25:39
+105            android:name="androidx.activity.ComponentActivity"
+105-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:24:13-63
+106            android:exported="true" />
+106-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:25:13-36
+107        <activity
+107-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+108            android:name="androidx.compose.ui.tooling.PreviewActivity"
+108-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+109            android:exported="true" />
+109-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+110
+111        <receiver
+111-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+112            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+112-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+113            android:directBootAware="false"
+113-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+114            android:enabled="true"
+114-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+115            android:exported="true"
+115-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+116            android:permission="android.permission.DUMP" >
+116-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+117            <intent-filter>
+117-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+118                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+118-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+118-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+119            </intent-filter>
+120            <intent-filter>
+120-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+121                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+121-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+121-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+122            </intent-filter>
+123            <intent-filter>
+123-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+124                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+124-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+124-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+125            </intent-filter>
+126            <intent-filter>
+126-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+127                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+127-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+127-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+128            </intent-filter>
+129        </receiver>
+130    </application>
+131
+132</manifest>

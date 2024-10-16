@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:2:1-95:12
-INJECTED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:2:1-95:12
-INJECTED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:2:1-95:12
-INJECTED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:2:1-95:12
+ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:2:1-75:12
+INJECTED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:2:1-75:12
+INJECTED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:2:1-75:12
+INJECTED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:2:1-75:12
 MERGED from [androidx.navigation:navigation-common:2.7.7] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\dbf24b330b2134c4ce2134d4ce02f3e6\transformed\navigation-common-2.7.7\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-runtime:2.7.7] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\5d290812d8c736cf12a52964cf5bb09c\transformed\navigation-runtime-2.7.7\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\fb566d1a3a148c08efc10a328d45969a\transformed\navigation-common-ktx-2.7.7\AndroidManifest.xml:2:1-7:12
@@ -69,8 +69,8 @@ ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-
 	android:name
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:7:5-93:19
-INJECTED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:7:5-93:19
+ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:7:5-73:19
+INJECTED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:7:5-73:19
 MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Mariana Nascimento\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:23:5-33:19
@@ -109,156 +109,116 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Mariana Nascimento
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:15:9-54
 	android:dataExtractionRules
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:9:9-65
-activity#com.example.mobileseniorcare.MainActivity2
+activity#com.example.mobileseniorcare.telas.MainActivity2
 ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:17:9-21:61
 	android:label
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:20:13-57
 	android:exported
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:19:13-37
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:19:13-36
 	android:theme
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:21:13-58
 	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:18:13-42
-activity#com.example.mobileseniorcare.LIstagemCuidador
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:18:13-48
+activity#com.example.mobileseniorcare.telas.EdicaoPerfil
 ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:22:9-26:61
 	android:label
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:25:13-69
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:25:13-65
 	android:exported
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:24:13-37
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:24:13-36
 	android:theme
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:26:13-58
 	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:23:13-45
-activity#com.example.mobileseniorcare.ListagemResponsavel
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:23:13-47
+activity#com.example.mobileseniorcare.telas.cadastro.Cadastro6
 ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:27:9-31:61
 	android:label
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:30:13-72
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:30:13-61
 	android:exported
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:29:13-37
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:29:13-36
 	android:theme
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:31:13-58
 	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:28:13-48
-activity#com.example.mobileseniorcare.EdicaoPerfil
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:28:13-53
+activity#com.example.mobileseniorcare.telas.cadastro.Cadastro5
 ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:32:9-36:61
 	android:label
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:35:13-65
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:35:13-61
 	android:exported
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:34:13-37
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:34:13-36
 	android:theme
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:36:13-58
 	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:33:13-41
-activity#com.example.mobileseniorcare.Cadastro6
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:33:13-53
+activity#com.example.mobileseniorcare.telas.cadastro.Cadastro4
 ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:37:9-41:61
 	android:label
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:40:13-61
 	android:exported
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:39:13-37
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:39:13-36
 	android:theme
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:41:13-58
 	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:38:13-38
-activity#com.example.mobileseniorcare.Cadastro5
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:38:13-53
+activity#com.example.mobileseniorcare.telas.cadastro.Cadastro3
 ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:42:9-46:61
 	android:label
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:45:13-61
 	android:exported
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:44:13-37
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:44:13-36
 	android:theme
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:46:13-58
 	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:43:13-38
-activity#com.example.mobileseniorcare.Conversa
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:43:13-53
+activity#com.example.mobileseniorcare.telas.cadastro.Cadastro2
 ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:47:9-51:61
 	android:label
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:50:13-60
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:50:13-61
 	android:exported
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:49:13-37
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:49:13-36
 	android:theme
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:51:13-58
 	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:48:13-37
-activity#com.example.mobileseniorcare.ListagemDeConversa
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:48:13-53
+activity#com.example.mobileseniorcare.telas.cadastro.Cadastro1
 ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:52:9-56:61
 	android:label
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:55:13-72
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:55:13-61
 	android:exported
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:54:13-37
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:54:13-36
 	android:theme
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:56:13-58
 	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:53:13-47
-activity#com.example.mobileseniorcare.Cadastro4
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:53:13-53
+activity#com.example.mobileseniorcare.telas.Login
 ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:57:9-61:61
 	android:label
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:60:13-61
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:60:13-57
 	android:exported
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:59:13-36
 	android:theme
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:61:13-58
 	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:58:13-38
-activity#com.example.mobileseniorcare.Cadastro3
-ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:62:9-66:61
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:58:13-40
+activity#com.example.mobileseniorcare.telas.MainActivity
+ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:62:9-72:20
 	android:label
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:65:13-61
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:65:13-45
 	android:exported
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:64:13-36
 	android:theme
 		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:66:13-58
 	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:63:13-38
-activity#com.example.mobileseniorcare.Cadastro2
-ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:67:9-71:61
-	android:label
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:70:13-61
-	android:exported
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:69:13-36
-	android:theme
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:71:13-58
-	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:68:13-38
-activity#com.example.mobileseniorcare.Cadastro1
-ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:72:9-76:61
-	android:label
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:75:13-61
-	android:exported
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:74:13-36
-	android:theme
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:76:13-58
-	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:73:13-38
-activity#com.example.mobileseniorcare.Login
-ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:77:9-81:61
-	android:label
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:80:13-57
-	android:exported
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:79:13-36
-	android:theme
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:81:13-58
-	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:78:13-34
-activity#com.example.mobileseniorcare.MainActivity
-ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:82:9-92:20
-	android:label
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:85:13-45
-	android:exported
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:84:13-36
-	android:theme
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:86:13-58
-	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:83:13-41
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:63:13-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:87:13-91:29
+ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:67:13-71:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:88:17-69
+ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:68:17-69
 	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:88:25-66
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:68:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:90:17-77
+ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:70:17-77
 	android:name
-		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:90:27-74
+		ADDED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:70:27-74
 uses-sdk
 INJECTED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Mariana Nascimento\OneDrive\Documentos\SPTech\4Semestre\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml
