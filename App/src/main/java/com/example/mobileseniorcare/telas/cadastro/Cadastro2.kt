@@ -1,5 +1,6 @@
 package com.example.mobileseniorcare.telas.cadastro
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -47,7 +48,8 @@ class Cadastro2 : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting3(
                         name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
+                        activity = this
                     )
                 }
             }
@@ -55,7 +57,7 @@ class Cadastro2 : ComponentActivity() {
     }
 }
 @Composable
-fun Greeting3(name: String, modifier: Modifier = Modifier) {
+fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentActivity) {
     var logradouro by remember { mutableStateOf("") }
     var numero by remember { mutableStateOf("") }
     var complemento by remember { mutableStateOf("") }
@@ -192,7 +194,7 @@ fun Greeting3(name: String, modifier: Modifier = Modifier) {
                     Text("Próximo")
                 }
                 Button(
-                    onClick = { /* Ação de voltar */ },
+                    onClick = {  activity.startActivity(Intent(activity, Cadastro3::class.java)) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
@@ -214,6 +216,6 @@ fun Greeting3(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview3() {
     MobileSeniorCareTheme {
-        Greeting3("Android")
+        Greeting3("Android",  activity = ComponentActivity())
     }
 }

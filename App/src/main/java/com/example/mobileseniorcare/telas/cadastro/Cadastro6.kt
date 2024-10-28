@@ -1,5 +1,6 @@
 package com.example.mobileseniorcare.telas.cadastro
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -24,6 +25,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.mobileseniorcare.R
+import com.example.mobileseniorcare.telas.MainActivity
+import com.example.mobileseniorcare.telas.MainActivity2
+import com.example.mobileseniorcare.telas.Tela
+import com.example.mobileseniorcare.telas.TelaInicialPreview
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
 class Cadastro6 : ComponentActivity() {
@@ -35,7 +40,8 @@ class Cadastro6 : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting6(
                         name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
+                        activity = this
                     )
                 }
             }
@@ -44,7 +50,7 @@ class Cadastro6 : ComponentActivity() {
 }
 
 @Composable
-fun Greeting6(name: String, modifier: Modifier = Modifier) {
+fun Greeting6(name: String, modifier: Modifier = Modifier, activity: ComponentActivity) {
     val checkboxesState = remember { mutableStateListOf(
         false, false, false, false, false, false, false, false, false,
         false, false, false, false, false, false, false, false, false,
@@ -237,7 +243,7 @@ fun Greeting6(name: String, modifier: Modifier = Modifier) {
                         modifier = modifier.fillMaxWidth().padding(18.dp)
                     ) {
                         Button(
-                            onClick = { /*TODO*/ },
+                            onClick = {  activity.startActivity(Intent(activity, MainActivity2::class.java))  },
                             shape = RoundedCornerShape(17.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color(7, 125, 176),
@@ -268,6 +274,6 @@ fun Greeting6(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview7() {
     MobileSeniorCareTheme {
-        Greeting6("Android")
+        Greeting6("Android",  activity = ComponentActivity())
     }
 }

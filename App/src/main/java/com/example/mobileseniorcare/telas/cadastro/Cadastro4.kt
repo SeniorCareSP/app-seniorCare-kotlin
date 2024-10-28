@@ -1,5 +1,6 @@
 package com.example.mobileseniorcare.telas.cadastro
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -34,7 +35,8 @@ class Cadastro4 : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting5(
                         name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
+                        activity = this
                     )
                 }
             }
@@ -43,7 +45,7 @@ class Cadastro4 : ComponentActivity() {
 }
 
 @Composable
-fun Greeting5(name: String, modifier: Modifier = Modifier) {
+fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentActivity) {
     var qtdIdosos by remember { mutableStateOf("") }
     var precoHora by remember { mutableStateOf("") }
     var ajuda by remember { mutableStateOf(setOf<String>()) }
@@ -169,7 +171,7 @@ fun Greeting5(name: String, modifier: Modifier = Modifier) {
                 verticalArrangement = Arrangement.spacedBy(14.dp) // Espaço entre os botões
             ) {
                 Button(
-                    onClick = { /* Ação de próximo */ },
+                    onClick = {  activity.startActivity(Intent(activity, Cadastro5::class.java))  },
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp)),
@@ -182,7 +184,7 @@ fun Greeting5(name: String, modifier: Modifier = Modifier) {
                     Text("Próximo")
                 }
                 Button(
-                    onClick = { /* Ação de voltar */ },
+                    onClick = {  activity.startActivity(Intent(activity, Cadastro3::class.java))  },
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
@@ -204,6 +206,6 @@ fun Greeting5(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview5() {
     MobileSeniorCareTheme {
-        Greeting5("Android")
+        Greeting5("Android",  activity = ComponentActivity())
     }
 }

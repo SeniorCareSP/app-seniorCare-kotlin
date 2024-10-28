@@ -1,4 +1,5 @@
 package com.example.mobileseniorcare.telas.cadastro
+import android.content.Intent
 import com.example.mobileseniorcare.R
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -28,7 +29,8 @@ class Cadastro5 : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Cadastros(
                         name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
+                        activity = this
                     )
                 }
             }
@@ -37,7 +39,7 @@ class Cadastro5 : ComponentActivity() {
 }
 
 @Composable
-fun Cadastros(name: String, modifier: Modifier = Modifier) {
+fun Cadastros(name: String, modifier: Modifier = Modifier, activity: ComponentActivity) {
     var text by remember { mutableStateOf("Digite algo aqui...") }
     var selectedOption by remember { mutableStateOf("") } // Estado para controle de seleção
     val labelColor = Color(0xFF000000)
@@ -206,7 +208,7 @@ fun Cadastros(name: String, modifier: Modifier = Modifier) {
                         modifier = modifier.fillMaxWidth()
                     ) {
                         Button(
-                            onClick = { /*TODO*/ },
+                            onClick = {  activity.startActivity(Intent(activity, Cadastro6::class.java))  },
                             shape = RoundedCornerShape(7.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color(7,125,176),
@@ -223,7 +225,7 @@ fun Cadastros(name: String, modifier: Modifier = Modifier) {
                         Spacer(modifier = Modifier.height(10.dp)) // Espaço entre os botões
 
                         Button(
-                            onClick = { /*TODO*/ },
+                            onClick = { activity.startActivity(Intent(activity, Cadastro4::class.java))  },
                             shape = RoundedCornerShape(7.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color.White,
@@ -249,6 +251,6 @@ fun Cadastros(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview9() {
     MobileSeniorCareTheme {
-        Cadastros("Android")
+        Cadastros("Android",  activity = ComponentActivity())
     }
 }

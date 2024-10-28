@@ -95,7 +95,7 @@ fun Tela(navController: NavHostController, modifier: Modifier = Modifier) {
     ) { innerPadding ->
             NavHost(
                 modifier = modifier.padding(innerPadding),
-                navController = navController, // "gereente" de navegação
+                navController = navController, // "gerente" de navegação
                 startDestination = "listagem" // fragmento inicial
             ) {
                 composable("listagem") { // candidato possível para navegação ("fragmento1")

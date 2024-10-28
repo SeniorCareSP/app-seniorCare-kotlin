@@ -1,5 +1,6 @@
 package com.example.mobileseniorcare.telas.cadastro
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -42,6 +43,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mobileseniorcare.R
+import com.example.mobileseniorcare.telas.Login
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
 class Cadastro1 : ComponentActivity() {
@@ -53,7 +55,8 @@ class Cadastro1 : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting2(
                         name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
+                        activity = this
                     )
                 }
             }
@@ -61,7 +64,7 @@ class Cadastro1 : ComponentActivity() {
     }
 }
 @Composable
-fun Greeting2(name: String, modifier: Modifier = Modifier) {
+fun Greeting2(name: String, modifier: Modifier = Modifier, activity: ComponentActivity) {
     var email by remember { mutableStateOf("") } // Estado separado para o campo de e-mail
     var senha by remember { mutableStateOf("") } // Estado separado para o campo de senha
     var confirmarSenha by remember { mutableStateOf("") } // Estado separado para confirmar senha
@@ -217,7 +220,7 @@ fun Greeting2(name: String, modifier: Modifier = Modifier) {
             }
             Spacer(modifier = Modifier.height(40.dp)) // Espaço entre os botões de seleção e o botão "Próximo"
             Button(
-                onClick = { /* Ação de próximo */ },
+                onClick = { activity.startActivity(Intent(activity, Cadastro2::class.java)) },
                 modifier = Modifier
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(10.dp),
@@ -248,6 +251,6 @@ fun Greeting2(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview2() {
     MobileSeniorCareTheme {
-        Greeting2("Android")
+        Greeting2("Android",  activity = ComponentActivity())
     }
 }

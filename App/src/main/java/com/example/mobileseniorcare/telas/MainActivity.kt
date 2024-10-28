@@ -1,5 +1,6 @@
 package com.example.mobileseniorcare.telas
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -30,6 +31,8 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import com.example.mobileseniorcare.R
+import com.example.mobileseniorcare.telas.cadastro.Cadastro1
+import com.example.mobileseniorcare.telas.cadastro.Cadastros
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,7 +44,8 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     TelaInicial(
                         name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
+                        activity = this
                     )
                 }
             }
@@ -50,7 +54,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TelaInicial(name: String, modifier: Modifier = Modifier) {
+fun TelaInicial(name: String, modifier: Modifier = Modifier, activity: ComponentActivity) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -102,7 +106,7 @@ fun TelaInicial(name: String, modifier: Modifier = Modifier) {
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Button(
-                    onClick = { /* Ação para o botão Cadastre-se */ },
+                    onClick = {  activity.startActivity(Intent(activity, Cadastro1::class.java)) },
                     modifier = Modifier
                         .width(150.dp)
                         .height(40.dp),
@@ -120,7 +124,9 @@ fun TelaInicial(name: String, modifier: Modifier = Modifier) {
                 }
 
                 Button(
-                    onClick = { /* Ação para o botão Login */ },
+                    onClick = {
+                        activity.startActivity(Intent(activity, Login::class.java))
+                    },
                     modifier = Modifier
                         .width(150.dp)
                         .height(40.dp),
@@ -196,6 +202,6 @@ fun TelaInicial(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun TelaInicialPreview() {
     MobileSeniorCareTheme {
-        TelaInicial(name = "Preview")
+        TelaInicial(name = "Preview" , activity = ComponentActivity())
     }
 }
