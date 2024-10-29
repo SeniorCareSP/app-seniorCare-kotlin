@@ -34,8 +34,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
@@ -70,6 +72,11 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
     val buttonWhiteTextColor = Color(0xFF077DB0)
     val buttonWhiteBackgroundColor = Color.White
     val textColor = Color.Black
+
+    var logradouroError by remember { mutableStateOf(false) }
+    var numeroError by remember { mutableStateOf(false) }
+    var bairroError by remember { mutableStateOf(false) }
+    var cidadeError by remember { mutableStateOf(false) }
 
     Box(
         modifier = modifier
@@ -111,7 +118,7 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
             OutlinedTextField(
                 label = { Text("Logradouro", color = labelColor) },
                 value = logradouro,
-                onValueChange = { logradouro = it },
+                onValueChange = { logradouro = it; logradouroError = logradouro.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -120,11 +127,14 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     unfocusedTextColor = textColor
                 )
             )
+            if (logradouroError) {
+                Text("Preencha o campo do logradouro", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
                 label = { Text("Número", color = labelColor) },
                 value = numero,
-                onValueChange = { numero = it },
+                onValueChange = { numero = it ; numeroError = numero.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -133,6 +143,9 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     unfocusedTextColor = textColor
                 )
             )
+            if (numeroError) {
+                Text("Preencha o campo do número", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
                 label = { Text("Complemento", color = labelColor) },
@@ -150,7 +163,7 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
             OutlinedTextField(
                 label = { Text("Cidade - UF", color = labelColor) },
                 value = cidade,
-                onValueChange = { cidade = it },
+                onValueChange = { cidade = it ; cidadeError = cidade.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -159,11 +172,14 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     unfocusedTextColor = textColor
                 )
             )
+            if (cidadeError) {
+                Text("Preencha o campo de cidade", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
                 label = { Text("Bairro", color = labelColor) },
                 value = bairro,
-                onValueChange = { bairro = it },
+                onValueChange = { bairro = it ; bairroError = bairro.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -172,6 +188,9 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     unfocusedTextColor = textColor
                 )
             )
+            if (bairroError) {
+                Text("Preencha o campo de bairro", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
             Spacer(modifier = Modifier.height(40.dp)) // Espaço antes dos botões
 
             // Botões Próximo e Voltar
@@ -182,7 +201,15 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 verticalArrangement = Arrangement.spacedBy(16.dp) // Espaço entre os botões
             ) {
                 Button(
-                    onClick = { /* Ação de próximo */ },
+                    onClick = {
+                            logradouroError = logradouro.isEmpty()
+                            numeroError = numero.isEmpty()
+                            bairroError = bairro.isEmpty()
+                            cidadeError = cidade.isEmpty()
+
+                            if (!logradouroError && !numeroError && !bairroError && !cidadeError) {
+                                activity.startActivity(Intent(activity, Cadastro2::class.java))
+                            }},
                     modifier = Modifier
                         .fillMaxWidth(),
                     shape = RoundedCornerShape(10.dp),
@@ -194,7 +221,7 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     Text("Próximo")
                 }
                 Button(
-                    onClick = {  activity.startActivity(Intent(activity, Cadastro3::class.java)) },
+                    onClick = {  activity.startActivity(Intent(activity, Cadastro1::class.java)) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))

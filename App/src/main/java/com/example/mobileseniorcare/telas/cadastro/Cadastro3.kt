@@ -34,8 +34,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
@@ -70,6 +72,12 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
     val buttonWhiteTextColor = Color(0xFF077DB0)
     val buttonWhiteBackgroundColor = Color.White
     val textColor = Color.Black
+
+
+    var dtNascimentoError by remember { mutableStateOf(false) }
+    var idiomaError by remember { mutableStateOf(false) }
+    var tempoExperienciaError by remember { mutableStateOf(false) }
+    var faixaEtariaExpError by remember { mutableStateOf(false) }
 
 
     Box(
@@ -112,7 +120,7 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
             OutlinedTextField(
                 label = { Text("Data de Nascimento", color = labelColor) },
                 value = dtNascimento,
-                onValueChange = { dtNascimento = it },
+                onValueChange = { dtNascimento = it ; dtNascimentoError = dtNascimento.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -121,11 +129,14 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     unfocusedTextColor = textColor
                 )
             )
+            if (dtNascimentoError) {
+                Text("Preencha o campo de data de nascimento", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
                 label = { Text("Idioma", color = labelColor) },
                 value = idioma,
-                onValueChange = { idioma = it },
+                onValueChange = { idioma = it ; idiomaError = idioma.isEmpty()},
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -134,11 +145,14 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     unfocusedTextColor = textColor
                 )
             )
+            if (idiomaError) {
+                Text("Preencha o campo de idioma", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
-                label = { Text("Tempo de experiencia", color = labelColor) },
+                label = { Text("Tempo de experiência", color = labelColor) },
                 value = tempoExperiencia,
-                onValueChange = { tempoExperiencia = it },
+                onValueChange = { tempoExperiencia = it ; tempoExperienciaError = tempoExperiencia.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -147,11 +161,14 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     unfocusedTextColor = textColor
                 )
             )
+            if (tempoExperienciaError) {
+                Text("Preencha o campo de tempo de experiencia", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
                 label = { Text("Faixa etária de experiencia", color = labelColor) },
                 value = faixaEtariaExp,
-                onValueChange = { faixaEtariaExp = it },
+                onValueChange = { faixaEtariaExp = it ; faixaEtariaExpError = faixaEtariaExp.isEmpty()  },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -160,6 +177,9 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     unfocusedTextColor = textColor
                 )
             )
+            if (tempoExperienciaError) {
+                Text("Preencha o campo de tempo de experiencia", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
             Spacer(modifier = Modifier.height(72.dp)) // Espaço antes dos botões
 
             // Botões Próximo e Voltar
@@ -170,7 +190,7 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 verticalArrangement = Arrangement.spacedBy(16.dp) // Espaço entre os botões
             ) {
                 Button(
-                    onClick = { /* Ação de próximo */ },
+                    onClick = {activity.startActivity(Intent(activity, Cadastro4::class.java)) },
                     modifier = Modifier
                         .fillMaxWidth(),
                     shape = RoundedCornerShape(10.dp),
@@ -182,7 +202,7 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     Text("Próximo")
                 }
                 Button(
-                    onClick = {  activity.startActivity(Intent(activity, Cadastro4::class.java))  },
+                    onClick = {  activity.startActivity(Intent(activity, Cadastro2::class.java))  },
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))

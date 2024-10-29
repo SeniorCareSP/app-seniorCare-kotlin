@@ -42,6 +42,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.telas.Login
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
@@ -77,6 +78,15 @@ fun Greeting2(name: String, modifier: Modifier = Modifier, activity: ComponentAc
     val buttonWhiteTextColor = Color(0xFF077DB0)
     val buttonWhiteBackgroundColor = Color.White
     val textColor = Color.Black // Cor do texto dos campos de entrada
+
+    var emailError by remember { mutableStateOf(false) }
+    var senhaError by remember { mutableStateOf(false) }
+    var confirmarSenhaError by remember { mutableStateOf(false) }
+    var cepError by remember { mutableStateOf(false) }
+    var selectedOptionError by remember { mutableStateOf(false) }
+
+
+
 
     Box(
         modifier = modifier
@@ -121,7 +131,7 @@ fun Greeting2(name: String, modifier: Modifier = Modifier, activity: ComponentAc
             OutlinedTextField(
                 label = { Text("E-mail", color = labelColor) },  // Cor personalizada do label
                 value = email,
-                onValueChange = { email = it },
+                onValueChange = { email = it;  emailError = email.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -130,11 +140,14 @@ fun Greeting2(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     unfocusedTextColor = textColor  // Cor do texto quando o campo não está focado
                 )
             )
+            if (emailError) {
+                Text("Preencha o campo de e-mail", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
             Spacer(modifier = Modifier.height(16.dp)) // Espaço entre os inputs
             OutlinedTextField(
                 label = { Text("Senha", color = labelColor) },  // Cor personalizada do label
                 value = senha,
-                onValueChange = { senha = it },
+                onValueChange = { senha = it ; senhaError = senha.isEmpty() },
                 modifier = Modifier
                     .fillMaxWidth(),
                 visualTransformation = PasswordVisualTransformation(),  // Esconde a senha
@@ -145,11 +158,14 @@ fun Greeting2(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     unfocusedTextColor = textColor  // Cor do texto quando o campo não está focado
                 )
             )
+            if (senhaError) {
+                Text("Preencha o campo de senha", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
             Spacer(modifier = Modifier.height(16.dp)) // Espaço entre os inputs
             OutlinedTextField(
                 label = { Text("Confirmar senha", color = labelColor) },  // Cor personalizada do label
                 value = confirmarSenha,
-                onValueChange = { confirmarSenha = it },
+                onValueChange = { confirmarSenha = it;  confirmarSenhaError = confirmarSenha.isEmpty() },
                 modifier = Modifier
                     .fillMaxWidth(),
                 visualTransformation = PasswordVisualTransformation(),  // Esconde a senha
@@ -160,11 +176,16 @@ fun Greeting2(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     unfocusedTextColor = textColor  // Cor do texto quando o campo não está focado
                 )
             )
+            if (confirmarSenhaError) {
+                Text("Preencha o campo de confirmação de senha", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }else if( senha != confirmarSenha){
+                Text("As senhas precisam ser iguais!", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
             Spacer(modifier = Modifier.height(16.dp)) // Espaço entre os inputs
             OutlinedTextField(
                 label = { Text("CEP", color = labelColor) },  // Cor personalizada do label
                 value = cep,
-                onValueChange = { cep = it },
+                onValueChange = { cep = it ;  cepError = cep.isEmpty() },
                 modifier = Modifier
                     .fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
@@ -174,6 +195,9 @@ fun Greeting2(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     unfocusedTextColor = textColor  // Cor do texto quando o campo não está focado
                 )
             )
+            if (cepError) {
+                Text("Preencha o campo de CEP", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
             Spacer(modifier = Modifier.height(24.dp)) // Espaço entre o último input e os botões de seleção
 
             // Linha com botões "Cuidador" e "Responsável"
@@ -184,7 +208,7 @@ fun Greeting2(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(
-                    onClick = { selectedOption = "Cuidador" },
+                    onClick = { selectedOption = "Cuidador";  selectedOptionError = false },
                     modifier = Modifier
                         .weight(1f)
                         .border(
@@ -202,7 +226,7 @@ fun Greeting2(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 }
                 Spacer(modifier = Modifier.width(16.dp))
                 Button(
-                    onClick = { selectedOption = "Responsável" },
+                    onClick = { selectedOption = "Responsável" ; selectedOptionError = false},
                     modifier = Modifier
                         .weight(1f)
                         .border(
@@ -218,9 +242,22 @@ fun Greeting2(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     Text("Responsável")
                 }
             }
+            if (selectedOptionError) {
+                Text("Selecione uma opção", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
             Spacer(modifier = Modifier.height(40.dp)) // Espaço entre os botões de seleção e o botão "Próximo"
             Button(
-                onClick = { activity.startActivity(Intent(activity, Cadastro2::class.java)) },
+                onClick = {
+                    emailError = email.isEmpty()
+                    senhaError = senha.isEmpty()
+                    confirmarSenhaError = confirmarSenha.isEmpty()
+                    cepError = cep.isEmpty()
+                    selectedOptionError = selectedOption.isEmpty()
+
+                    if (!emailError && !senhaError && !confirmarSenhaError && !cepError && !selectedOptionError) {
+                        activity.startActivity(Intent(activity, Cadastro2::class.java))
+                    }
+                },
                 modifier = Modifier
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(10.dp),
