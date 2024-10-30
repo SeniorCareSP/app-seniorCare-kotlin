@@ -21,8 +21,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
@@ -50,6 +52,11 @@ fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentAc
     var precoHora by remember { mutableStateOf("") }
     var ajuda by remember { mutableStateOf(setOf<String>()) }
 
+    var qtdIdososError by remember { mutableStateOf(false) }
+    var precoHoraError by remember { mutableStateOf(false) }
+    var ajudaError by remember { mutableStateOf(false) }
+
+
     val labelColor = Color(0xFF000000)
     val borderColor = Color(0xFF077DB0)
     val buttonBackgroundColor = Color(0xFF077DB0)
@@ -57,6 +64,8 @@ fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentAc
     val buttonWhiteTextColor = Color(0xFF077DB0)
     val buttonWhiteBackgroundColor = Color.White
     val textColor = Color.Black
+
+
 
     // Lista de opções para o botão
     val options = listOf("Trabalho de casa", "Culinária", "Banho", "Curativos", "Outros")
@@ -101,7 +110,7 @@ fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentAc
             OutlinedTextField(
                 label = { Text("Quantos idosos pode cuidar ao mesmo tempo?", color = labelColor) },
                 value = qtdIdosos,
-                onValueChange = { qtdIdosos = it },
+                onValueChange = { qtdIdosos = it ; qtdIdososError = qtdIdosos.isEmpty()},
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -110,11 +119,15 @@ fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     unfocusedTextColor = textColor
                 )
             )
+
+            if (qtdIdososError) {
+                Text("Preencha a quantidade de idosos", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
                 label = { Text("Preço por hora", color = labelColor) },
                 value = precoHora,
-                onValueChange = { precoHora = it },
+                onValueChange = { precoHora = it ; precoHoraError = precoHora.isEmpty()},
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -123,6 +136,9 @@ fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     unfocusedTextColor = textColor
                 )
             )
+            if (precoHoraError) {
+                Text("Preencha o campo de tempo de experiencia", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
             Spacer(modifier = Modifier.height(16.dp))
 
             // Seção de seleção
@@ -159,6 +175,9 @@ fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                     }
                     Spacer(modifier = Modifier.height(8.dp))
                 }
+                if (ajudaError) {
+                    Text("Selecione pelo menos uma opção de ajuda", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                }
             }
 
             Spacer(modifier = Modifier.height(30.dp)) // Espaço antes dos botões
@@ -171,8 +190,14 @@ fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 verticalArrangement = Arrangement.spacedBy(14.dp) // Espaço entre os botões
             ) {
                 Button(
-                    onClick = {  activity.startActivity(Intent(activity, Cadastro5::class.java))  },
-                    modifier = Modifier
+                    onClick = {
+                        qtdIdososError = qtdIdosos.isEmpty()
+                        precoHoraError = precoHora.isEmpty()
+                        ajudaError = ajuda.isEmpty()
+
+                        if (!qtdIdososError && !precoHoraError && !ajudaError ) {
+                            activity.startActivity(Intent(activity, Cadastro5::class.java))
+                        }}, modifier = Modifier
                         .fillMaxWidth()
                         .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp)),
                     shape = RoundedCornerShape(10.dp),

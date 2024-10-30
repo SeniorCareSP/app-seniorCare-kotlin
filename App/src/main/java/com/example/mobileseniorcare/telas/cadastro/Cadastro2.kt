@@ -208,7 +208,7 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                             cidadeError = cidade.isEmpty()
 
                             if (!logradouroError && !numeroError && !bairroError && !cidadeError) {
-                                activity.startActivity(Intent(activity, Cadastro2::class.java))
+                                activity.startActivity(Intent(activity, Cadastro3::class.java))
                             }},
                     modifier = Modifier
                         .fillMaxWidth(),

@@ -64,7 +64,7 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
     var dtNascimento by remember { mutableStateOf("") }
     var idioma by remember { mutableStateOf("") }
     var tempoExperiencia by remember { mutableStateOf("") }
-    var faixaEtariaExp by remember { mutableStateOf("") }
+//    var faixaEtariaExp by remember { mutableStateOf("") }
     val labelColor = Color(0xFF000000)
     val borderColor = Color(0xFF077DB0)
     val buttonBackgroundColor = Color(0xFF077DB0)
@@ -77,7 +77,7 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
     var dtNascimentoError by remember { mutableStateOf(false) }
     var idiomaError by remember { mutableStateOf(false) }
     var tempoExperienciaError by remember { mutableStateOf(false) }
-    var faixaEtariaExpError by remember { mutableStateOf(false) }
+//    var faixaEtariaExpError by remember { mutableStateOf(false) }
 
 
     Box(
@@ -164,22 +164,22 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
             if (tempoExperienciaError) {
                 Text("Preencha o campo de tempo de experiencia", color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
-            Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextField(
-                label = { Text("Faixa etária de experiencia", color = labelColor) },
-                value = faixaEtariaExp,
-                onValueChange = { faixaEtariaExp = it ; faixaEtariaExpError = faixaEtariaExp.isEmpty()  },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = borderColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor,
-                    unfocusedTextColor = textColor
-                )
-            )
-            if (tempoExperienciaError) {
-                Text("Preencha o campo de tempo de experiencia", color = Color.Red, style = TextStyle(fontSize = 12.sp))
-            }
+//            Spacer(modifier = Modifier.height(16.dp))
+//            OutlinedTextField(
+//                label = { Text("Faixa etária de experiencia", color = labelColor) },
+//                value = faixaEtariaExp,
+//                onValueChange = { faixaEtariaExp = it ; faixaEtariaExpError = faixaEtariaExp.isEmpty()  },
+//                modifier = Modifier.fillMaxWidth(),
+//                colors = OutlinedTextFieldDefaults.colors(
+//                    focusedBorderColor = borderColor,
+//                    unfocusedBorderColor = borderColor,
+//                    focusedTextColor = textColor,
+//                    unfocusedTextColor = textColor
+//                )
+//            )
+//            if (faixaEtariaExpError) {
+//                Text("Preencha o campo de faixa etaria", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+//            }
             Spacer(modifier = Modifier.height(72.dp)) // Espaço antes dos botões
 
             // Botões Próximo e Voltar
@@ -190,7 +190,15 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 verticalArrangement = Arrangement.spacedBy(16.dp) // Espaço entre os botões
             ) {
                 Button(
-                    onClick = {activity.startActivity(Intent(activity, Cadastro4::class.java)) },
+                    onClick = {
+                        dtNascimentoError = dtNascimento.isEmpty()
+                        tempoExperienciaError = tempoExperiencia.isEmpty()
+                        idiomaError = idioma.isEmpty()
+//                        faixaEtariaExpError = faixaEtariaExp.isEmpty()
+
+                        if (!dtNascimentoError && !tempoExperienciaError && !idiomaError) {
+                            activity.startActivity(Intent(activity, Cadastro4::class.java))
+                        }},
                     modifier = Modifier
                         .fillMaxWidth(),
                     shape = RoundedCornerShape(10.dp),

@@ -50,6 +50,12 @@ fun Cadastros(name: String, modifier: Modifier = Modifier, activity: ComponentAc
     val buttonWhiteBackgroundColor = Color.White
     val textColor = Color.Black
 
+    var selected by remember { mutableStateOf(setOf<String>()) }
+    val options = listOf("Trabalho de casa", "Culinária", "Banho", "Curativos", "Outros")
+
+    val canProceed = text.isNotBlank() && selectedOption.isNotBlank()
+
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -107,14 +113,14 @@ fun Cadastros(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                                 .width(160.dp)
                                 .border(
                                     width = 1.dp,
-                                    color = if (selectedOption == "Cuidador") Color.White else borderColor,
+                                    color = if (selectedOption == "CNH") Color.White else borderColor,
                                     shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)
                                 ),
-                            onClick = { /*TODO*/ },
+                            onClick = {selectedOption = "CNH" },
                             shape = RoundedCornerShape(7.dp),
                             colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                                containerColor = if (selectedOption == "Cuidador") buttonBackgroundColor else buttonWhiteBackgroundColor,
-                                contentColor = if (selectedOption == "Cuidador") buttonTextColor else buttonWhiteTextColor
+                                containerColor = if (selectedOption == "CNH") buttonBackgroundColor else buttonWhiteBackgroundColor,
+                                contentColor = if (selectedOption == "CNH") buttonTextColor else buttonWhiteTextColor
                             )
                         ) {
                             Text(text = "CNH")
@@ -127,7 +133,7 @@ fun Cadastros(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                                     color = if (selectedOption == "Diploma de enfermagem") Color.White else borderColor,
                                     shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)
                                 ),
-                            onClick = { /*TODO*/ },
+                            onClick = { selectedOption = "Diploma de enfermagem" },
                             shape = RoundedCornerShape(7.dp),
                             colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                                 containerColor = if (selectedOption == "Diploma de enfermagem") buttonBackgroundColor else buttonWhiteBackgroundColor,
@@ -152,7 +158,7 @@ fun Cadastros(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                                     color = if (selectedOption == "Certificado de primeiros socorros") Color.White else borderColor,
                                     shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)
                                 ),
-                            onClick = { /*TODO*/ },
+                            onClick = { selectedOption = "Certificado de primeiros socorros" },
                             shape = RoundedCornerShape(7.dp),
                             colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                                 containerColor = if (selectedOption =="Certificado de primeiros socorros") buttonBackgroundColor else buttonWhiteBackgroundColor,
@@ -169,7 +175,7 @@ fun Cadastros(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                                     color = if (selectedOption == "Cuidador") Color.White else borderColor,
                                     shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)
                                 ),
-                            onClick = { /*TODO*/ },
+                            onClick = { selectedOption = "Cuidador" },
                             shape = RoundedCornerShape(7.dp),
                             colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                                 containerColor = if (selectedOption == "Cuidador") buttonBackgroundColor else buttonWhiteBackgroundColor,
@@ -208,7 +214,12 @@ fun Cadastros(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                         modifier = modifier.fillMaxWidth()
                     ) {
                         Button(
-                            onClick = {  activity.startActivity(Intent(activity, Cadastro6::class.java))  },
+                            onClick = {
+                                if (canProceed) {
+                                    activity.startActivity(Intent(activity, Cadastro6::class.java))
+                                }
+                            },
+                            enabled = canProceed,
                             shape = RoundedCornerShape(7.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color(7,125,176),

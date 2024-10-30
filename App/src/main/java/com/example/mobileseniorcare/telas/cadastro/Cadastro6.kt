@@ -64,10 +64,21 @@ fun Greeting6(name: String, modifier: Modifier = Modifier, activity: ComponentAc
     // Days of the week
     val daysOfWeek = listOf("Segunda-Feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado", "Domingo")
 
+    var errorMessage by remember { mutableStateOf("") }
+
     Column(
         modifier = modifier
             .fillMaxSize()
     ) {
+        if (errorMessage.isNotEmpty()) {
+            Text(
+                text = errorMessage,
+                color = Color.Red,
+                fontSize = 14.sp,
+                modifier = Modifier.padding(8.dp)
+            )
+        }
+
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -98,12 +109,12 @@ fun Greeting6(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                         )
                     )
                     .align(Alignment.BottomCenter)
-                    .padding(bottom = 20.dp)
+                    .padding(bottom = 30.dp)
             ) {
 
                 Column {
                     Column(
-                        modifier = Modifier.padding(start = 14.dp).padding(bottom = 4.dp).padding(top = 10.dp)
+                        modifier = Modifier.padding(start = 44.dp).padding(bottom = 4.dp).padding(top = 10.dp)
                     ) {// Text(text = "Estou disponivel")
                         Row(
                             modifier = Modifier
@@ -113,14 +124,7 @@ fun Greeting6(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                             horizontalArrangement = Arrangement.Start,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(
-                                text = "Dias disponíveis",
-                                fontSize = 18.sp,
-                                color = Color.Black,
-                                modifier = Modifier
-                                    .align(Alignment.CenterVertically)
-                                    .padding(end = 12.dp) // Add space between text and icons
-                            )
+
                         }
                         Row(
                             modifier = Modifier
@@ -129,28 +133,6 @@ fun Greeting6(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                             horizontalArrangement = Arrangement.Center
                         ) {
 
-                            Button(
-                                onClick = { /*TODO*/ },
-                                modifier = Modifier.padding(end = 6.dp),
-                                shape = RoundedCornerShape(7.dp),
-                                colors = ButtonDefaults.buttonColors(
-                                    containerColor = Color(7, 125, 176),
-                                    contentColor = Color.White
-                                ),
-                            ) {
-                                Text(text = "Regularmente")
-                            }
-                            Button(
-                                onClick = { /*TODO*/ },
-                                modifier = Modifier.padding(start = 2.dp),
-                                shape = RoundedCornerShape(7.dp),
-                                colors = ButtonDefaults.buttonColors(
-                                    containerColor = Color(7, 125, 176),
-                                    contentColor = Color.White
-                                ),
-                            ) {
-                                Text(text = "Ocasionalmente")
-                            }
                         }
                     }
 
@@ -243,8 +225,15 @@ fun Greeting6(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                         modifier = modifier.fillMaxWidth().padding(18.dp)
                     ) {
                         Button(
-                            onClick = {  activity.startActivity(Intent(activity, MainActivity2::class.java))  },
-                            shape = RoundedCornerShape(17.dp),
+                            onClick = {
+                                // Verifique se ao menos um checkbox está marcado
+                                if (checkboxesState.any { it }) {
+                                    errorMessage = ""
+                                    activity.startActivity(Intent(activity, MainActivity2::class.java))
+                                } else {
+                                    errorMessage = "Por favor, selecione ao menos um dia."
+                                }
+                            },   shape = RoundedCornerShape(17.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color(7, 125, 176),
                                 contentColor = Color.White
