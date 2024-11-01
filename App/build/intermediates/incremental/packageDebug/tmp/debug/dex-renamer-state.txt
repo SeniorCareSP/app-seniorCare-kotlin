@@ -1,12 +1,12 @@
-#Tue Oct 29 21:24:26 BRT 2024
-base.0=C\:\\Users\\Garrafa\\AndroidStudioProjects\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\Garrafa\\AndroidStudioProjects\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\Garrafa\\AndroidStudioProjects\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
-base.3=C\:\\Users\\Garrafa\\AndroidStudioProjects\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
-base.4=C\:\\Users\\Garrafa\\AndroidStudioProjects\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\3\\classes.dex
-base.5=C\:\\Users\\Garrafa\\AndroidStudioProjects\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
-base.6=C\:\\Users\\Garrafa\\AndroidStudioProjects\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
-base.7=C\:\\Users\\Garrafa\\AndroidStudioProjects\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+#Thu Oct 31 20:40:22 BRT 2024
+base.0=C\:\\Users\\Mariana Nascimento\\Downloads\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\Users\\Mariana Nascimento\\Downloads\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=C\:\\Users\\Mariana Nascimento\\Downloads\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
+base.3=C\:\\Users\\Mariana Nascimento\\Downloads\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
+base.4=C\:\\Users\\Mariana Nascimento\\Downloads\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\3\\classes.dex
+base.5=C\:\\Users\\Mariana Nascimento\\Downloads\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
+base.6=C\:\\Users\\Mariana Nascimento\\Downloads\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
+base.7=C\:\\Users\\Mariana Nascimento\\Downloads\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=15/classes.dex
