@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -56,7 +57,6 @@ fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentAc
     var precoHoraError by remember { mutableStateOf(false) }
     var ajudaError by remember { mutableStateOf(false) }
 
-
     val labelColor = Color(0xFF000000)
     val borderColor = Color(0xFF077DB0)
     val buttonBackgroundColor = Color(0xFF077DB0)
@@ -64,8 +64,6 @@ fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentAc
     val buttonWhiteTextColor = Color(0xFF077DB0)
     val buttonWhiteBackgroundColor = Color.White
     val textColor = Color.Black
-
-
 
     // Lista de opções para o botão
     val options = listOf("Trabalho de casa", "Culinária", "Banho", "Curativos", "Outros")
@@ -96,10 +94,7 @@ fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 .fillMaxHeight(0.75f)
                 .background(
                     color = Color.White,
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(
-                        topEnd = 30.dp,
-                        topStart = 30.dp
-                    )
+                    shape = RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp)
                 )
                 .align(Alignment.BottomCenter)
                 .padding(20.dp),
@@ -108,9 +103,9 @@ fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentAc
         ) {
             Spacer(modifier = Modifier.height(28.dp))
             OutlinedTextField(
-                label = { Text("Quantos idosos pode cuidar ao mesmo tempo?", color = labelColor) },
+                label = { Text(stringResource(R.string.label_qtd_idosos), color = labelColor) },
                 value = qtdIdosos,
-                onValueChange = { qtdIdosos = it ; qtdIdososError = qtdIdosos.isEmpty()},
+                onValueChange = { qtdIdosos = it; qtdIdososError = qtdIdosos.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -121,13 +116,13 @@ fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentAc
             )
 
             if (qtdIdososError) {
-                Text("Preencha a quantidade de idosos", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(stringResource(R.string.error_qtd_idosos), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
-                label = { Text("Preço por hora", color = labelColor) },
+                label = { Text(stringResource(R.string.label_preco_hora), color = labelColor) },
                 value = precoHora,
-                onValueChange = { precoHora = it ; precoHoraError = precoHora.isEmpty()},
+                onValueChange = { precoHora = it; precoHoraError = precoHora.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -137,13 +132,13 @@ fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 )
             )
             if (precoHoraError) {
-                Text("Preencha o campo de tempo de experiencia", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(stringResource(R.string.error_preco_hora), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
             Spacer(modifier = Modifier.height(16.dp))
 
             // Seção de seleção
             Text(
-                text = "Posso ajudar com:",
+                text = stringResource(R.string.label_ajuda),
                 color = labelColor,
                 modifier = Modifier.padding(top = 24.dp)
             )
@@ -195,32 +190,34 @@ fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                         precoHoraError = precoHora.isEmpty()
                         ajudaError = ajuda.isEmpty()
 
-                        if (!qtdIdososError && !precoHoraError && !ajudaError ) {
+                        if (!qtdIdososError && !precoHoraError && !ajudaError) {
                             activity.startActivity(Intent(activity, Cadastro5::class.java))
-                        }}, modifier = Modifier
+                        }
+                    },
+                    modifier = Modifier
                         .fillMaxWidth()
-                        .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp)),
+                        .clip(RoundedCornerShape(10.dp)),
                     shape = RoundedCornerShape(10.dp),
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                         containerColor = buttonBackgroundColor,
                         contentColor = buttonTextColor
                     )
                 ) {
-                    Text("Próximo")
+                    Text(stringResource(R.string.botao_proximo_cadastro4))
                 }
                 Button(
-                    onClick = {  activity.startActivity(Intent(activity, Cadastro3::class.java))  },
+                    onClick = { activity.startActivity(Intent(activity, Cadastro3::class.java)) },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
-                        .border(1.dp, borderColor, shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)),
+                        .clip(RoundedCornerShape(10.dp))
+                        .border(1.dp, borderColor, shape = RoundedCornerShape(10.dp)),
                     shape = RoundedCornerShape(10.dp),
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                         containerColor = buttonWhiteBackgroundColor,
                         contentColor = labelColor
                     )
                 ) {
-                    Text("Voltar")
+                    Text(stringResource(R.string.botao_voltar_cadastro4))
                 }
             }
         }
@@ -231,6 +228,6 @@ fun Greeting5(name: String, modifier: Modifier = Modifier, activity: ComponentAc
 @Composable
 fun GreetingPreview5() {
     MobileSeniorCareTheme {
-        Greeting5("Android",  activity = ComponentActivity())
+        Greeting5("Android", activity = ComponentActivity())
     }
 }

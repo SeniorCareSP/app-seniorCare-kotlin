@@ -34,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -58,6 +59,7 @@ class Cadastro2 : ComponentActivity() {
         }
     }
 }
+
 @Composable
 fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentActivity) {
     var logradouro by remember { mutableStateOf("") }
@@ -65,6 +67,7 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
     var complemento by remember { mutableStateOf("") }
     var cidade by remember { mutableStateOf("") }
     var bairro by remember { mutableStateOf("") }
+
     val labelColor = Color(0xFF000000)
     val borderColor = Color(0xFF077DB0)
     val buttonBackgroundColor = Color(0xFF077DB0)
@@ -104,10 +107,7 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 .fillMaxHeight(0.75f)
                 .background(
                     color = Color.White,
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(
-                        topEnd = 30.dp,
-                        topStart = 30.dp
-                    )
+                    shape = RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp)
                 )
                 .align(Alignment.BottomCenter)
                 .padding(20.dp),
@@ -116,7 +116,7 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
         ) {
             Spacer(modifier = Modifier.height(36.dp))
             OutlinedTextField(
-                label = { Text("Logradouro", color = labelColor) },
+                label = { Text(stringResource(R.string.label_logradouro), color = labelColor) },
                 value = logradouro,
                 onValueChange = { logradouro = it; logradouroError = logradouro.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
@@ -128,13 +128,13 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 )
             )
             if (logradouroError) {
-                Text("Preencha o campo do logradouro", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(stringResource(R.string.error_logradouro), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
-                label = { Text("Número", color = labelColor) },
+                label = { Text(stringResource(R.string.label_numero), color = labelColor) },
                 value = numero,
-                onValueChange = { numero = it ; numeroError = numero.isEmpty() },
+                onValueChange = { numero = it; numeroError = numero.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -144,11 +144,11 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 )
             )
             if (numeroError) {
-                Text("Preencha o campo do número", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(stringResource(R.string.error_numero), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
-                label = { Text("Complemento", color = labelColor) },
+                label = { Text(stringResource(R.string.label_complemento), color = labelColor) },
                 value = complemento,
                 onValueChange = { complemento = it },
                 modifier = Modifier.fillMaxWidth(),
@@ -161,9 +161,9 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
             )
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
-                label = { Text("Cidade - UF", color = labelColor) },
+                label = { Text(stringResource(R.string.label_cidade), color = labelColor) },
                 value = cidade,
-                onValueChange = { cidade = it ; cidadeError = cidade.isEmpty() },
+                onValueChange = { cidade = it; cidadeError = cidade.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -173,13 +173,13 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 )
             )
             if (cidadeError) {
-                Text("Preencha o campo de cidade", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(stringResource(R.string.error_cidade), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
-                label = { Text("Bairro", color = labelColor) },
+                label = { Text(stringResource(R.string.label_bairro), color = labelColor) },
                 value = bairro,
-                onValueChange = { bairro = it ; bairroError = bairro.isEmpty() },
+                onValueChange = { bairro = it; bairroError = bairro.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -189,7 +189,7 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 )
             )
             if (bairroError) {
-                Text("Preencha o campo de bairro", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(stringResource(R.string.error_bairro), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
             Spacer(modifier = Modifier.height(40.dp)) // Espaço antes dos botões
 
@@ -202,37 +202,37 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
             ) {
                 Button(
                     onClick = {
-                            logradouroError = logradouro.isEmpty()
-                            numeroError = numero.isEmpty()
-                            bairroError = bairro.isEmpty()
-                            cidadeError = cidade.isEmpty()
+                        logradouroError = logradouro.isEmpty()
+                        numeroError = numero.isEmpty()
+                        bairroError = bairro.isEmpty()
+                        cidadeError = cidade.isEmpty()
 
-                            if (!logradouroError && !numeroError && !bairroError && !cidadeError) {
-                                activity.startActivity(Intent(activity, Cadastro3::class.java))
-                            }},
-                    modifier = Modifier
-                        .fillMaxWidth(),
+                        if (!logradouroError && !numeroError && !bairroError && !cidadeError) {
+                            activity.startActivity(Intent(activity, Cadastro3::class.java))
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(10.dp),
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                         containerColor = buttonBackgroundColor,
                         contentColor = buttonTextColor
                     )
                 ) {
-                    Text("Próximo")
+                    Text(stringResource(R.string.botao_proximo_cadastro2))
                 }
                 Button(
-                    onClick = {  activity.startActivity(Intent(activity, Cadastro1::class.java)) },
+                    onClick = { activity.startActivity(Intent(activity, Cadastro1::class.java)) },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
-                        .border(1.dp, borderColor, shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)),
+                        .clip(RoundedCornerShape(8.dp))
+                        .border(1.dp, borderColor, shape = RoundedCornerShape(8.dp)),
                     shape = RoundedCornerShape(10.dp),
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                         containerColor = buttonWhiteBackgroundColor,
                         contentColor = buttonWhiteTextColor
                     )
                 ) {
-                    Text("Voltar")
+                    Text(stringResource(R.string.botao_voltar_cadastro2))
                 }
             }
         }
@@ -243,6 +243,6 @@ fun Greeting3(name: String, modifier: Modifier = Modifier, activity: ComponentAc
 @Composable
 fun GreetingPreview3() {
     MobileSeniorCareTheme {
-        Greeting3("Android",  activity = ComponentActivity())
+        Greeting3("Android", activity = ComponentActivity())
     }
 }

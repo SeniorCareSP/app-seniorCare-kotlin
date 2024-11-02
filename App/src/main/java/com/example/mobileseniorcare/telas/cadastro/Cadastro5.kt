@@ -1,6 +1,6 @@
 package com.example.mobileseniorcare.telas.cadastro
+
 import android.content.Intent
-import com.example.mobileseniorcare.R
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,11 +15,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
-
 
 class Cadastro5 : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,11 +28,7 @@ class Cadastro5 : ComponentActivity() {
         setContent {
             MobileSeniorCareTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Cadastros(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding),
-                        activity = this
-                    )
+                    Cadastros(modifier = Modifier.padding(innerPadding), activity = this)
                 }
             }
         }
@@ -39,27 +36,25 @@ class Cadastro5 : ComponentActivity() {
 }
 
 @Composable
-fun Cadastros(name: String, modifier: Modifier = Modifier, activity: ComponentActivity) {
-    var text by remember { mutableStateOf("Digite algo aqui...") }
-    var selectedOption by remember { mutableStateOf("") } // Estado para controle de seleção
-    val labelColor = Color(0xFF000000)
+fun Cadastros(modifier: Modifier = Modifier, activity: ComponentActivity) {
+    var text by remember { mutableStateOf("") }
+    var selectedOption by remember { mutableStateOf("") }
     val borderColor = Color(0xFF077DB0)
     val buttonBackgroundColor = Color(0xFF077DB0)
     val buttonTextColor = Color.White
     val buttonWhiteTextColor = Color(0xFF077DB0)
     val buttonWhiteBackgroundColor = Color.White
-    val textColor = Color.Black
 
-    var selected by remember { mutableStateOf(setOf<String>()) }
-    val options = listOf("Trabalho de casa", "Culinária", "Banho", "Curativos", "Outros")
+    val options = listOf(
+        stringResource(R.string.label_cnh),
+        stringResource(R.string.label_diploma_enfermagem),
+        stringResource(R.string.label_certificado_primeiros_socorros),
+        stringResource(R.string.label_cuidador)
+    )
 
     val canProceed = text.isNotBlank() && selectedOption.isNotBlank()
 
-
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-    ) {
+    Column(modifier = modifier.fillMaxSize()) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -76,113 +71,49 @@ fun Cadastros(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 Image(
                     painter = painterResource(id = R.drawable.logo_mobile),
                     contentDescription = "Logo do Mobile Senior Care",
-                    modifier = Modifier.size(150.dp),
+                    modifier = Modifier.size(150.dp)
                 )
             }
 
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(
-                        color = Color.White,
-                        shape = androidx.compose.foundation.shape.RoundedCornerShape(
-                            topEnd = 30.dp,
-                            topStart = 30.dp
-                        )
-                    )
+                    .background(Color.White, shape = RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp))
                     .align(Alignment.BottomCenter)
                     .padding(bottom = 20.dp)
                     .padding(top = 20.dp)
             ) {
-                Column(modifier = Modifier.padding(bottom = 30.dp).padding(start = 30.dp))
-                {
-                    Text(text = "Você possui:", fontSize = 20.sp)
+                Column(
+                    modifier = Modifier.padding(bottom = 30.dp).padding(start = 30.dp)
+                ) {
+                    Text(text = stringResource(R.string.label_voce_possui), fontSize = 20.sp)
                 }
+
                 Row(
                     modifier = modifier.padding(20.dp).padding(top = 15.dp),
-                    horizontalArrangement = Arrangement.Center,
-
-                    ) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(15.dp),
-                        modifier = modifier.weight(0.5f)
-                    ) {
-                        Button(
-                            modifier = Modifier.height(60.dp)
-                                .width(160.dp)
-                                .border(
-                                    width = 1.dp,
-                                    color = if (selectedOption == "CNH") Color.White else borderColor,
-                                    shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)
-                                ),
-                            onClick = {selectedOption = "CNH" },
-                            shape = RoundedCornerShape(7.dp),
-                            colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                                containerColor = if (selectedOption == "CNH") buttonBackgroundColor else buttonWhiteBackgroundColor,
-                                contentColor = if (selectedOption == "CNH") buttonTextColor else buttonWhiteTextColor
-                            )
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    options.chunked(2).forEach { columnOptions ->
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(15.dp),
+                            modifier = modifier.weight(0.5f)
                         ) {
-                            Text(text = "CNH")
-                        }
-                        Button(
-                            modifier = Modifier.height(60.dp)
-                                .width(160.dp)
-                                .border(
-                                    width = 1.dp,
-                                    color = if (selectedOption == "Diploma de enfermagem") Color.White else borderColor,
-                                    shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)
-                                ),
-                            onClick = { selectedOption = "Diploma de enfermagem" },
-                            shape = RoundedCornerShape(7.dp),
-                            colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                                containerColor = if (selectedOption == "Diploma de enfermagem") buttonBackgroundColor else buttonWhiteBackgroundColor,
-                                contentColor = if (selectedOption == "Diploma de enfermagem") buttonTextColor else buttonWhiteTextColor
-                            )
-                        ) {
-                            Text(text = "Diploma de enfermagem")
-                        }
-                    }
-
-
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(15.dp),
-                        modifier = modifier.weight(0.5f)
-                    ) {
-                        Button(
-                            modifier = Modifier.height(60.dp)
-                                .width(160.dp)
-                                .border(
-                                    width = 1.dp,
-                                    color = if (selectedOption == "Certificado de primeiros socorros") Color.White else borderColor,
-                                    shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)
-                                ),
-                            onClick = { selectedOption = "Certificado de primeiros socorros" },
-                            shape = RoundedCornerShape(7.dp),
-                            colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                                containerColor = if (selectedOption =="Certificado de primeiros socorros") buttonBackgroundColor else buttonWhiteBackgroundColor,
-                                contentColor = if (selectedOption == "Certificado de primeiros socorros") buttonTextColor else buttonWhiteTextColor
-                            )
-                        ) {
-                            Text(text = "Certificado de primeiros socorros")
-                        }
-                        Button(
-                            modifier = Modifier.height(60.dp)
-                                .width(160.dp)
-                                .border(
-                                    width = 1.dp,
-                                    color = if (selectedOption == "Cuidador") Color.White else borderColor,
-                                    shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)
-                                ),
-                            onClick = { selectedOption = "Cuidador" },
-                            shape = RoundedCornerShape(7.dp),
-                            colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                                containerColor = if (selectedOption == "Cuidador") buttonBackgroundColor else buttonWhiteBackgroundColor,
-                                contentColor = if (selectedOption == "Cuidador") buttonTextColor else buttonWhiteTextColor
-                            )
-                        ) {
-                            Text(text = "Certificado de cuidados geriatricos")
+                            columnOptions.forEach { option ->
+                                Button(
+                                    modifier = Modifier.height(60.dp)
+                                        .width(160.dp)
+                                        .border(1.dp, borderColor, shape = RoundedCornerShape(8.dp)),
+                                    onClick = { selectedOption = option },
+                                    shape = RoundedCornerShape(7.dp),
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = if (selectedOption == option) buttonBackgroundColor else buttonWhiteBackgroundColor,
+                                        contentColor = if (selectedOption == option) buttonTextColor else buttonWhiteTextColor
+                                    )
+                                ) {
+                                    Text(text = option)
+                                }
+                            }
                         }
                     }
                 }
@@ -194,20 +125,14 @@ fun Cadastros(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                         .padding(end = 25.dp)
                         .padding(bottom = 23.dp)
                 ) {
-                    Text(text = "Apresente-se", fontSize = 20.sp)
+                    Text(text = stringResource(R.string.label_apresente_se), fontSize = 20.sp)
                     OutlinedTextField(
                         value = text,
                         onValueChange = { newText -> text = newText },
-//                        label = { Text("Digite aqui") },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(200.dp),
+                        modifier = Modifier.fillMaxWidth().height(200.dp),
                         maxLines = 5,
                         singleLine = false
                     )
-                    //-------------------------------------------------------
-                    //    Text(text = "Apresente-se", modifier = Modifier.padding(top = 5.dp))
-                    //------------------------------------------------------
 
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
@@ -222,34 +147,26 @@ fun Cadastros(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                             enabled = canProceed,
                             shape = RoundedCornerShape(7.dp),
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = Color(7,125,176),
+                                containerColor = buttonBackgroundColor,
                                 contentColor = Color.White
                             ),
-//                            elevation = ButtonDefaults.buttonElevation(
-//                                defaultElevation = 8.dp,
-//                                pressedElevation = 12.dp
-//                            ),
-                            modifier = Modifier.fillMaxWidth().padding(top=25.dp)
+                            modifier = Modifier.fillMaxWidth().padding(top = 25.dp)
                         ) {
-                            Text(text = "Próximo")
+                            Text(text = stringResource(R.string.botao_proximo_cadastro5))
                         }
-                        Spacer(modifier = Modifier.height(10.dp)) // Espaço entre os botões
+                        Spacer(modifier = Modifier.height(10.dp))
 
                         Button(
-                            onClick = { activity.startActivity(Intent(activity, Cadastro4::class.java))  },
+                            onClick = { activity.startActivity(Intent(activity, Cadastro4::class.java)) },
                             shape = RoundedCornerShape(7.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color.White,
-                                contentColor = Color(7,125,176),
+                                contentColor = borderColor
                             ),
-//                            elevation = ButtonDefaults.buttonElevation(
-//                                defaultElevation = 8.dp,
-//                                pressedElevation = 12.dp
-//                            ),
                             modifier = Modifier.fillMaxWidth()
-                                .border(1.dp, borderColor, shape = RoundedCornerShape(10.dp)),
+                                .border(1.dp, borderColor, shape = RoundedCornerShape(10.dp))
                         ) {
-                            Text(text = "Volta")
+                            Text(text = stringResource(R.string.botao_voltar_cadastro5))
                         }
                     }
                 }
@@ -262,6 +179,6 @@ fun Cadastros(name: String, modifier: Modifier = Modifier, activity: ComponentAc
 @Composable
 fun GreetingPreview9() {
     MobileSeniorCareTheme {
-        Cadastros("Android",  activity = ComponentActivity())
+        Cadastros(activity = ComponentActivity())
     }
 }

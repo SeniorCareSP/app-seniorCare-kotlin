@@ -36,6 +36,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
@@ -64,143 +65,166 @@ class Cadastro1 : ComponentActivity() {
         }
     }
 }
+
 @Composable
 fun Greeting2(name: String, modifier: Modifier = Modifier, activity: ComponentActivity) {
-    var email by remember { mutableStateOf("") } // Estado separado para o campo de e-mail
-    var senha by remember { mutableStateOf("") } // Estado separado para o campo de senha
-    var confirmarSenha by remember { mutableStateOf("") } // Estado separado para confirmar senha
-    var cep by remember { mutableStateOf("") } // Estado separado para o campo de CEP
-    var selectedOption by remember { mutableStateOf("") } // Estado para controle de seleção
+    var email by remember { mutableStateOf("") }
+    var senha by remember { mutableStateOf("") }
+    var confirmarSenha by remember { mutableStateOf("") }
+    var cep by remember { mutableStateOf("") }
+    var nome by remember { mutableStateOf("") }
+    var celular by remember { mutableStateOf("") }
+    var selectedOption by remember { mutableStateOf("") }
+
     val labelColor = Color(0xFF000000)
     val borderColor = Color(0xFF077DB0)
     val buttonBackgroundColor = Color(0xFF077DB0)
     val buttonTextColor = Color.White
-    val buttonWhiteTextColor = Color(0xFF077DB0)
-    val buttonWhiteBackgroundColor = Color.White
-    val textColor = Color.Black // Cor do texto dos campos de entrada
+    val textColor = Color.Black
 
     var emailError by remember { mutableStateOf(false) }
     var senhaError by remember { mutableStateOf(false) }
     var confirmarSenhaError by remember { mutableStateOf(false) }
     var cepError by remember { mutableStateOf(false) }
+    var nomeError by remember { mutableStateOf(false) }
+    var celularError by remember { mutableStateOf(false) }
     var selectedOptionError by remember { mutableStateOf(false) }
-
-
-
 
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(color = Color(0xFF077DB0)) // Fundo azul
+            .background(color = Color(0xFF077DB0))
     ) {
-
-        // Parte superior azul com logo e texto
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.35f), // 35% para a área azul
+                .fillMaxHeight(0.35f),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top // Logo mais pra cima
+            verticalArrangement = Arrangement.Top
         ) {
-            Spacer(modifier = Modifier.height(32.dp)) // Espaço para mover a logo mais para cima
+            Spacer(modifier = Modifier.height(32.dp))
             Image(
-                painter = painterResource(id = R.drawable.logo_mobile), // Substitua pelo seu recurso de imagem
+                painter = painterResource(id = R.drawable.logo_mobile),
                 contentDescription = "Logo do Mobile Senior Care",
-                modifier = Modifier.size(150.dp), // Ajuste do tamanho da imagem
+                modifier = Modifier.size(150.dp),
             )
         }
 
-        // Parte inferior branca com campos de login e botões
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.75f) // A parte branca ocupará 75% da tela
+                .fillMaxHeight(0.75f)
                 .background(
                     color = Color.White,
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(
-                        topEnd = 30.dp,
-                        topStart = 30.dp
-                    )
+                    shape = RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp)
                 )
                 .align(Alignment.BottomCenter)
                 .padding(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top // Conteúdo mais para baixo
+            verticalArrangement = Arrangement.Top
         ) {
             Spacer(modifier = Modifier.height(36.dp))
             OutlinedTextField(
-                label = { Text("E-mail", color = labelColor) },  // Cor personalizada do label
-                value = email,
-                onValueChange = { email = it;  emailError = email.isEmpty() },
+                label = { Text(stringResource(R.string.label_nome), color = labelColor) },
+                value = nome,
+                onValueChange = { nome = it; nomeError = nome.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
                     unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor, // Cor do texto quando o campo está focado
-                    unfocusedTextColor = textColor  // Cor do texto quando o campo não está focado
+                    focusedTextColor = textColor,
+                    unfocusedTextColor = textColor
+                )
+            )
+            if (nomeError) {
+                Text(stringResource(R.string.error_nome), color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            OutlinedTextField(
+                label = { Text(stringResource(R.string.label_celular), color = labelColor) },
+                value = celular,
+                onValueChange = { celular = it; celularError = celular.isEmpty() },
+                modifier = Modifier.fillMaxWidth(),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = borderColor,
+                    unfocusedBorderColor = borderColor,
+                    focusedTextColor = textColor,
+                    unfocusedTextColor = textColor
+                )
+            )
+            if (celularError) {
+                Text(stringResource(R.string.error_celular), color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            OutlinedTextField(
+                label = { Text(stringResource(R.string.label_email), color = labelColor) },
+                value = email,
+                onValueChange = { email = it; emailError = email.isEmpty() },
+                modifier = Modifier.fillMaxWidth(),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = borderColor,
+                    unfocusedBorderColor = borderColor,
+                    focusedTextColor = textColor,
+                    unfocusedTextColor = textColor
                 )
             )
             if (emailError) {
-                Text("Preencha o campo de e-mail", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(stringResource(R.string.error_email), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
-            Spacer(modifier = Modifier.height(16.dp)) // Espaço entre os inputs
+            Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
-                label = { Text("Senha", color = labelColor) },  // Cor personalizada do label
+                label = { Text(stringResource(R.string.label_senha), color = labelColor) },
                 value = senha,
-                onValueChange = { senha = it ; senhaError = senha.isEmpty() },
-                modifier = Modifier
-                    .fillMaxWidth(),
-                visualTransformation = PasswordVisualTransformation(),  // Esconde a senha
+                onValueChange = { senha = it; senhaError = senha.isEmpty() },
+                modifier = Modifier.fillMaxWidth(),
+                visualTransformation = PasswordVisualTransformation(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
                     unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor, // Cor do texto quando o campo está focado
-                    unfocusedTextColor = textColor  // Cor do texto quando o campo não está focado
+                    focusedTextColor = textColor,
+                    unfocusedTextColor = textColor
                 )
             )
             if (senhaError) {
-                Text("Preencha o campo de senha", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(stringResource(R.string.error_senha), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
-            Spacer(modifier = Modifier.height(16.dp)) // Espaço entre os inputs
+            Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
-                label = { Text("Confirmar senha", color = labelColor) },  // Cor personalizada do label
+                label = { Text(stringResource(R.string.label_confirmar_senha), color = labelColor) },
                 value = confirmarSenha,
-                onValueChange = { confirmarSenha = it;  confirmarSenhaError = confirmarSenha.isEmpty() },
-                modifier = Modifier
-                    .fillMaxWidth(),
-                visualTransformation = PasswordVisualTransformation(),  // Esconde a senha
+                onValueChange = { confirmarSenha = it; confirmarSenhaError = confirmarSenha.isEmpty() },
+                modifier = Modifier.fillMaxWidth(),
+                visualTransformation = PasswordVisualTransformation(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
                     unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor, // Cor do texto quando o campo está focado
-                    unfocusedTextColor = textColor  // Cor do texto quando o campo não está focado
+                    focusedTextColor = textColor,
+                    unfocusedTextColor = textColor
                 )
             )
             if (confirmarSenhaError) {
-                Text("Preencha o campo de confirmação de senha", color = Color.Red, style = TextStyle(fontSize = 12.sp))
-            }else if( senha != confirmarSenha){
-                Text("As senhas precisam ser iguais!", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(stringResource(R.string.error_confirmar_senha), color = Color.Red, style = TextStyle(fontSize = 12.sp))
+            } else if (senha != confirmarSenha) {
+                Text(stringResource(R.string.error_senha_diferente), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
-            Spacer(modifier = Modifier.height(16.dp)) // Espaço entre os inputs
+            Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
-                label = { Text("CEP", color = labelColor) },  // Cor personalizada do label
+                label = { Text(stringResource(R.string.label_cep), color = labelColor) },
                 value = cep,
-                onValueChange = { cep = it ;  cepError = cep.isEmpty() },
-                modifier = Modifier
-                    .fillMaxWidth(),
+                onValueChange = { cep = it; cepError = cep.isEmpty() },
+                modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
                     unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor, // Cor do texto quando o campo está focado
-                    unfocusedTextColor = textColor  // Cor do texto quando o campo não está focado
+                    focusedTextColor = textColor,
+                    unfocusedTextColor = textColor
                 )
             )
             if (cepError) {
-                Text("Preencha o campo de CEP", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(stringResource(R.string.error_cep), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
-            Spacer(modifier = Modifier.height(24.dp)) // Espaço entre o último input e os botões de seleção
+            Spacer(modifier = Modifier.height(24.dp))
 
-            // Linha com botões "Cuidador" e "Responsável"
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -208,86 +232,85 @@ fun Greeting2(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(
-                    onClick = { selectedOption = "Cuidador";  selectedOptionError = false },
+                    onClick = { selectedOption = "Cuidador"; selectedOptionError = false },
                     modifier = Modifier
                         .weight(1f)
                         .border(
                             width = 1.dp,
                             color = if (selectedOption == "Cuidador") Color.White else borderColor,
-                            shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)
-
+                            shape = RoundedCornerShape(8.dp)
                         ),
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                        containerColor = if (selectedOption == "Cuidador") buttonBackgroundColor else buttonWhiteBackgroundColor,
-                        contentColor = if (selectedOption == "Cuidador") buttonTextColor else buttonWhiteTextColor
+                        containerColor = if (selectedOption == "Cuidador") buttonBackgroundColor else Color.White,
+                        contentColor = if (selectedOption == "Cuidador") buttonTextColor else buttonBackgroundColor
                     )
                 ) {
                     Text("Cuidador")
                 }
                 Spacer(modifier = Modifier.width(16.dp))
                 Button(
-                    onClick = { selectedOption = "Responsável" ; selectedOptionError = false},
+                    onClick = { selectedOption = "Responsável"; selectedOptionError = false },
                     modifier = Modifier
                         .weight(1f)
                         .border(
                             width = 1.dp,
                             color = if (selectedOption == "Responsável") Color.White else borderColor,
-                            shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)
+                            shape = RoundedCornerShape(8.dp)
                         ),
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                        containerColor = if (selectedOption == "Responsável") buttonBackgroundColor else buttonWhiteBackgroundColor,
-                        contentColor = if (selectedOption == "Responsável") buttonTextColor else buttonWhiteTextColor
+                        containerColor = if (selectedOption == "Responsável") buttonBackgroundColor else Color.White,
+                        contentColor = if (selectedOption == "Responsável") buttonTextColor else buttonBackgroundColor
                     )
                 ) {
                     Text("Responsável")
                 }
             }
             if (selectedOptionError) {
-                Text("Selecione uma opção", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(stringResource(R.string.error_opcao), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
-            Spacer(modifier = Modifier.height(40.dp)) // Espaço entre os botões de seleção e o botão "Próximo"
+            Spacer(modifier = Modifier.height(40.dp))
             Button(
                 onClick = {
                     emailError = email.isEmpty()
                     senhaError = senha.isEmpty()
                     confirmarSenhaError = confirmarSenha.isEmpty()
                     cepError = cep.isEmpty()
+                    nomeError = nome.isEmpty()
+                    celularError = celular.isEmpty()
                     selectedOptionError = selectedOption.isEmpty()
 
-                    if (!emailError && !senhaError && !confirmarSenhaError && !cepError && !selectedOptionError) {
+                    if (!emailError && !senhaError && !confirmarSenhaError && !cepError && !nomeError && !celularError && !selectedOptionError) {
                         activity.startActivity(Intent(activity, Cadastro2::class.java))
                     }
                 },
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(10.dp),
                 colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                     containerColor = buttonBackgroundColor,
                     contentColor = buttonTextColor
                 )
             ) {
-                Text("Próximo")
+                Text(stringResource(R.string.botao_proximo_cadastro1))
             }
-           // Texto "Já tenho uma conta" clicável e sublinhado
+
             Spacer(modifier = Modifier.height(36.dp))
             Text(
-                text = "Já tenho uma conta",
+                text = stringResource(R.string.texto_jah_tem_conta),
                 modifier = Modifier
                     .clickable { /* Ação para entrar na conta */ }
                     .padding(top = 16.dp),
                 color = labelColor,
                 textAlign = TextAlign.Center,
-                style = TextStyle(textDecoration = TextDecoration.Underline) // Texto sublinhado
+                style = TextStyle(textDecoration = TextDecoration.Underline)
             )
         }
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview2() {
     MobileSeniorCareTheme {
-        Greeting2("Android",  activity = ComponentActivity())
+        Greeting2("Android", activity = ComponentActivity())
     }
 }

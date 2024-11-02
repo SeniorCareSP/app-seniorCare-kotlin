@@ -34,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -64,7 +65,7 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
     var dtNascimento by remember { mutableStateOf("") }
     var idioma by remember { mutableStateOf("") }
     var tempoExperiencia by remember { mutableStateOf("") }
-//    var faixaEtariaExp by remember { mutableStateOf("") }
+
     val labelColor = Color(0xFF000000)
     val borderColor = Color(0xFF077DB0)
     val buttonBackgroundColor = Color(0xFF077DB0)
@@ -73,12 +74,9 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
     val buttonWhiteBackgroundColor = Color.White
     val textColor = Color.Black
 
-
     var dtNascimentoError by remember { mutableStateOf(false) }
     var idiomaError by remember { mutableStateOf(false) }
     var tempoExperienciaError by remember { mutableStateOf(false) }
-//    var faixaEtariaExpError by remember { mutableStateOf(false) }
-
 
     Box(
         modifier = modifier
@@ -106,10 +104,7 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 .fillMaxHeight(0.75f)
                 .background(
                     color = Color.White,
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(
-                        topEnd = 30.dp,
-                        topStart = 30.dp
-                    )
+                    shape = RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp)
                 )
                 .align(Alignment.BottomCenter)
                 .padding(20.dp),
@@ -118,9 +113,9 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
         ) {
             Spacer(modifier = Modifier.height(36.dp))
             OutlinedTextField(
-                label = { Text("Data de Nascimento", color = labelColor) },
+                label = { Text(stringResource(R.string.label_data_nascimento), color = labelColor) },
                 value = dtNascimento,
-                onValueChange = { dtNascimento = it ; dtNascimentoError = dtNascimento.isEmpty() },
+                onValueChange = { dtNascimento = it; dtNascimentoError = dtNascimento.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -130,13 +125,13 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 )
             )
             if (dtNascimentoError) {
-                Text("Preencha o campo de data de nascimento", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(stringResource(R.string.error_data_nascimento), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
-                label = { Text("Idioma", color = labelColor) },
+                label = { Text(stringResource(R.string.label_idioma), color = labelColor) },
                 value = idioma,
-                onValueChange = { idioma = it ; idiomaError = idioma.isEmpty()},
+                onValueChange = { idioma = it; idiomaError = idioma.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -146,13 +141,13 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 )
             )
             if (idiomaError) {
-                Text("Preencha o campo de idioma", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(stringResource(R.string.error_idioma), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
-                label = { Text("Tempo de experiência", color = labelColor) },
+                label = { Text(stringResource(R.string.label_tempo_experiencia), color = labelColor) },
                 value = tempoExperiencia,
-                onValueChange = { tempoExperiencia = it ; tempoExperienciaError = tempoExperiencia.isEmpty() },
+                onValueChange = { tempoExperiencia = it; tempoExperienciaError = tempoExperiencia.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -162,24 +157,8 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                 )
             )
             if (tempoExperienciaError) {
-                Text("Preencha o campo de tempo de experiencia", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(stringResource(R.string.error_tempo_experiencia), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
-//            Spacer(modifier = Modifier.height(16.dp))
-//            OutlinedTextField(
-//                label = { Text("Faixa etária de experiencia", color = labelColor) },
-//                value = faixaEtariaExp,
-//                onValueChange = { faixaEtariaExp = it ; faixaEtariaExpError = faixaEtariaExp.isEmpty()  },
-//                modifier = Modifier.fillMaxWidth(),
-//                colors = OutlinedTextFieldDefaults.colors(
-//                    focusedBorderColor = borderColor,
-//                    unfocusedBorderColor = borderColor,
-//                    focusedTextColor = textColor,
-//                    unfocusedTextColor = textColor
-//                )
-//            )
-//            if (faixaEtariaExpError) {
-//                Text("Preencha o campo de faixa etaria", color = Color.Red, style = TextStyle(fontSize = 12.sp))
-//            }
             Spacer(modifier = Modifier.height(72.dp)) // Espaço antes dos botões
 
             // Botões Próximo e Voltar
@@ -194,34 +173,33 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
                         dtNascimentoError = dtNascimento.isEmpty()
                         tempoExperienciaError = tempoExperiencia.isEmpty()
                         idiomaError = idioma.isEmpty()
-//                        faixaEtariaExpError = faixaEtariaExp.isEmpty()
 
                         if (!dtNascimentoError && !tempoExperienciaError && !idiomaError) {
                             activity.startActivity(Intent(activity, Cadastro4::class.java))
-                        }},
-                    modifier = Modifier
-                        .fillMaxWidth(),
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(10.dp),
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                         containerColor = buttonBackgroundColor,
                         contentColor = buttonTextColor
                     )
                 ) {
-                    Text("Próximo")
+                    Text(stringResource(R.string.botao_proximo_cadastro3))
                 }
                 Button(
-                    onClick = {  activity.startActivity(Intent(activity, Cadastro2::class.java))  },
+                    onClick = { activity.startActivity(Intent(activity, Cadastro2::class.java)) },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
-                        .border(1.dp, borderColor, shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp)),
-                        shape = RoundedCornerShape(10.dp),
+                        .clip(RoundedCornerShape(8.dp))
+                        .border(1.dp, borderColor, shape = RoundedCornerShape(8.dp)),
+                    shape = RoundedCornerShape(10.dp),
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                         containerColor = buttonWhiteBackgroundColor,
                         contentColor = buttonWhiteTextColor
                     )
                 ) {
-                    Text("Voltar")
+                    Text(stringResource(R.string.botao_voltar_cadastro3))
                 }
             }
         }
@@ -232,6 +210,6 @@ fun Greeting4(name: String, modifier: Modifier = Modifier, activity: ComponentAc
 @Composable
 fun GreetingPreview4() {
     MobileSeniorCareTheme {
-        Greeting4("Android",  activity = ComponentActivity())
+        Greeting4("Android", activity = ComponentActivity())
     }
 }

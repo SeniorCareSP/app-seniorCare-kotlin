@@ -5,17 +5,78 @@
     <string name="title_activity_cadastro2">Cadastro2</string>
     <string name="title_activity_cadastro3">Cadastro3</string>
     <string name="title_activity_cadastro4">Cadastro4</string>
-
     <string name="slogan">MobileSeniorCare</string>
     <string name="header_text">Sênior Care</string>
     <string name="slogan_inicial">Conectando corações, cuidando de quem você ama.</string>
     <string name="title_activity_listagem_de_conversa">ListagemDeConversa</string>
     <string name="title_activity_conversa">Conversa</string>
-    <string name="title_activity_cadastro5">Cadastro5</string>
+    <string name="title_activity_cadastro">Cadastro5</string>
     <string name="title_activity_cadastro6">Cadastro6</string>
     <string name="title_activity_edicao_perfil">EdicaoPerfil</string>
     <string name="title_activity_listagem_responsavel">ListagemResponsavel</string>
-    <string name="title_activity_listagem_cuidador">LIstagemCuidador</string>
+    <string name="title_activity_listagem_cuidador">ListagemCuidador</string>
     <string name="title_activity_main2">MainActivity2</string>
+
+    <!--Strings tela Cadastro 1-->
+    <string name="label_nome">Nome</string>
+    <string name="label_celular">Celular</string>
+    <string name="label_email">E-mail</string>
+    <string name="label_senha">Senha</string>
+    <string name="label_confirmar_senha">Confirmar senha</string>
+    <string name="label_cep">CEP</string>
+    <string name="error_nome">Preencha o campo de nome</string>
+    <string name="error_celular">Preencha o campo de celular</string>
+    <string name="error_email">Preencha o campo de e-mail</string>
+    <string name="error_senha">Preencha o campo de senha</string>
+    <string name="error_confirmar_senha">Preencha o campo de confirmação de senha</string>
+    <string name="error_senha_diferente">As senhas precisam ser iguais!</string>
+    <string name="error_cep">Preencha o campo de CEP</string>
+    <string name="error_opcao">Selecione uma opção</string>
+    <string name="botao_proximo_cadastro1">Próximo</string>
+    <string name="texto_jah_tem_conta">Já tenho uma conta</string>
+
+    <!--Strings tela Cadastro 2-->
+    <string name="label_logradouro">Logradouro</string>
+    <string name="error_logradouro">Preencha o campo do logradouro</string>
+    <string name="label_numero">Número</string>
+    <string name="error_numero">Preencha o campo do número</string>
+    <string name="label_complemento">Complemento</string>
+    <string name="label_cidade">Cidade - UF</string>
+    <string name="error_cidade">Preencha o campo de cidade</string>
+    <string name="label_bairro">Bairro</string>
+    <string name="error_bairro">Preencha o campo de bairro</string>
+    <string name="botao_proximo_cadastro2">Próximo</string>
+    <string name="botao_voltar_cadastro2">Voltar</string>
+
+    <!--Strings tela Cadastro 3-->
+    <string name="label_data_nascimento">Data de Nascimento</string>
+    <string name="error_data_nascimento">Preencha o campo de data de nascimento</string>
+    <string name="label_idioma">Idioma</string>
+    <string name="error_idioma">Preencha o campo de idioma</string>
+    <string name="label_tempo_experiencia">Tempo de experiência</string>
+    <string name="error_tempo_experiencia">Preencha o campo de tempo de experiência</string>
+    <string name="botao_proximo_cadastro3">Próximo</string>
+    <string name="botao_voltar_cadastro3">Voltar</string>
+
+    <!--Strings tela Cadastro 4-->
+    <string name="label_qtd_idosos">Quantos idosos pode cuidar ao mesmo tempo?</string>
+    <string name="error_qtd_idosos">Preencha a quantidade de idosos</string>
+    <string name="label_preco_hora">Preço por hora</string>
+    <string name="error_preco_hora">Preencha o campo de preço por hora</string>
+    <string name="label_ajuda">Posso ajudar com:</string>
+    <string name="botao_proximo_cadastro4">Próximo</string>
+    <string name="botao_voltar_cadastro4">Voltar</string>
+
+    <!--Strings tela Cadastro 5-->
+    <string name="title_activity_cadastro5">Cadastro 5 - Apresente-se</string>
+    <string name="botao_proximo_cadastro5">Próximo</string>
+    <string name="botao_voltar_cadastro5">Voltar</string>
+    <string name="label_apresente_se">Apresente-se</string>
+    <string name="label_voce_possui">Você possui:</string>
+    <string name="label_cnh">CNH</string>
+    <string name="label_diploma_enfermagem">Diploma de Enfermagem</string>
+    <string name="label_certificado_primeiros_socorros">Certificado de Primeiros Socorros</string>
+    <string name="label_cuidador">Certificado de Cuidador Geriátrico</string>
+
 
 </resources>
