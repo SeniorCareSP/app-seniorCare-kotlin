@@ -6,6 +6,7 @@ import com.example.mobileseniorcare.dataclass.Caracteristica
 import com.example.mobileseniorcare.dataclass.Endereco
 import com.example.mobileseniorcare.dataclass.Favorito
 import com.example.mobileseniorcare.dataclass.Idioma
+import com.example.mobileseniorcare.dataclass.Idoso
 import java.time.LocalDate
 
 data class UsuarioCuidador(
@@ -13,12 +14,13 @@ data class UsuarioCuidador(
     val email: String,
     val senha: String,
     val telefone: String? = null,
-    val cpf: String? = null,
     val sexoBiologico: String? = null,
     val tipoDeUsuario: String? = null,
     val dtNascimento: LocalDate? = null,
     val apresentacao: String? = null,
     val dtCadastro: LocalDate? = null,
+    val faixaEtaria: String? = null,
+    val idosos: List<Idoso> = emptyList(),
     val status: Boolean? = null,
     val agendas: Agenda? = null,
     val idiomas: List<Idioma>? = null,

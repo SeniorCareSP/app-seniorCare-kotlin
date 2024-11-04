@@ -16,6 +16,8 @@
     <string name="title_activity_listagem_responsavel">ListagemResponsavel</string>
     <string name="title_activity_listagem_cuidador">ListagemCuidador</string>
     <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_activity_fragmentos_cadastro">FragmentosCadastro</string>
+
 
     <!--Strings tela Cadastro 1-->
     <string name="label_nome">Nome</string>
@@ -77,7 +79,36 @@
     <string name="label_diploma_enfermagem">Diploma de Enfermagem</string>
     <string name="label_certificado_primeiros_socorros">Certificado de Primeiros Socorros</string>
     <string name="label_cuidador">Certificado de Cuidador Geriátrico</string>
-    <string name="title_activity_fragmentos_cadastro">FragmentosCadastro</string>
+
+    <!--Strings tela Cadastro 6-->
+    <string name="label_dias_disponiveis">Dias disponíveis</string>
+    <string name="error_selecao_dia">Por favor, selecione ao menos um dia.</string>
+    <string name="botao_concluir">Concluir</string>
+
+    <!--Strings tela de edição-->
+    <string name="edicao_perfil">Edição de Perfil</string>
+    <string name="nome">Nome</string>
+    <string name="sobre">Sobre</string>
+    <string name="imagem_perfil">Imagem do perfil</string>
+    <string name="button_voltar_perfil">Voltar</string>
+
+    <!--Strings tela de cadastrar idosos-->
+    <string name="label_idade">Idade</string>
+    <string name="label_doencas_cronicas">Doenças Crônicas</string>
+    <string name="label_precisa_ajuda_com">Preciso de ajuda com</string>
+    <string name="label_sobre">Sobre o idoso</string>
+    <string name="botao_salvar_alteracoes">Salvar Alterações</string>
+
+    <!--Strings tela main-->
+    <string name="menu_listagem">Listagem</string>
+    <string name="menu_conversa">Conversas</string>
+    <string name="menu_logout">Logout</string>
+    <string name="icon_chat">Chat</string>
+    <string name="icon_home">Home</string>
+    <string name="icon_logout">Logout</string>
+
+
+    <string name="title_activity_cadastro_idoso">Cadastro Idoso</string>
 
 
 </resources>

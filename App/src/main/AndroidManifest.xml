@@ -15,14 +15,19 @@
         android:theme="@style/Theme.MobileSeniorCare"
         tools:targetApi="31">
         <activity
-            android:name=".telas.FragmentosCadastro"
+            android:name=".telas.CadastroIdoso"
             android:exported="false"
-            android:label="@string/title_activity_fragmentos_cadastro"
+            android:label="@string/title_activity_cadastro_idoso"
             android:theme="@style/Theme.MobileSeniorCare" />
         <activity
             android:name=".telas.MainActivity2"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
+            android:name=".telas.FragmentosCadastro"
+            android:exported="false"
+            android:label="@string/title_activity_fragmentos_cadastro"
             android:theme="@style/Theme.MobileSeniorCare" />
         <activity
             android:name=".telas.EdicaoPerfil"

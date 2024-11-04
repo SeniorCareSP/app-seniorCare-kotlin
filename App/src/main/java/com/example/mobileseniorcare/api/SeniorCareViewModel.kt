@@ -6,7 +6,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
-import com.example.mobileseniorcare.dataclass.usuario.UsuarioResponsavel
 import kotlinx.coroutines.launch
 class SeniorCareViewModel : ViewModel() {
 

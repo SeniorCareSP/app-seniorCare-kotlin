@@ -30,14 +30,19 @@
         android:testOnly="true"
         android:theme="@style/Theme.MobileSeniorCare" >
         <activity
-            android:name="com.example.mobileseniorcare.telas.FragmentosCadastro"
+            android:name="com.example.mobileseniorcare.telas.CadastroIdoso"
             android:exported="false"
-            android:label="@string/title_activity_fragmentos_cadastro"
+            android:label="@string/title_activity_cadastro_idoso"
             android:theme="@style/Theme.MobileSeniorCare" />
         <activity
             android:name="com.example.mobileseniorcare.telas.MainActivity2"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
+            android:name="com.example.mobileseniorcare.telas.FragmentosCadastro"
+            android:exported="false"
+            android:label="@string/title_activity_fragmentos_cadastro"
             android:theme="@style/Theme.MobileSeniorCare" />
         <activity
             android:name="com.example.mobileseniorcare.telas.EdicaoPerfil"
