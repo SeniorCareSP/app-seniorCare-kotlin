@@ -70,6 +70,7 @@
     <string name="title_activity_cadastro6">Cadastro6</string>
     <string name="title_activity_conversa">Conversa</string>
     <string name="title_activity_edicao_perfil">EdicaoPerfil</string>
+    <string name="title_activity_fragmentos_cadastro">FragmentosCadastro</string>
     <string name="title_activity_listagem_cuidador">ListagemCuidador</string>
     <string name="title_activity_listagem_de_conversa">ListagemDeConversa</string>
     <string name="title_activity_listagem_responsavel">ListagemResponsavel</string>

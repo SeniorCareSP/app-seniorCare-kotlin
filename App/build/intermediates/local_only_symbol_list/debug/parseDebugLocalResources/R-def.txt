@@ -87,6 +87,7 @@ string title_activity_cadastro5
 string title_activity_cadastro6
 string title_activity_conversa
 string title_activity_edicao_perfil
+string title_activity_fragmentos_cadastro
 string title_activity_listagem_cuidador
 string title_activity_listagem_de_conversa
 string title_activity_listagem_responsavel

@@ -77,6 +77,7 @@
     <string name="label_diploma_enfermagem">Diploma de Enfermagem</string>
     <string name="label_certificado_primeiros_socorros">Certificado de Primeiros Socorros</string>
     <string name="label_cuidador">Certificado de Cuidador Geriátrico</string>
+    <string name="title_activity_fragmentos_cadastro">FragmentosCadastro</string>
 
 
 </resources>

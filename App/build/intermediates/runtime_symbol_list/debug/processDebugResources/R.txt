@@ -353,6 +353,7 @@ int string title_activity_cadastro5 0x7f09008d
 int string title_activity_cadastro6 0x7f09008e
 int string title_activity_conversa 0x7f09008f
 int string title_activity_edicao_perfil 0x7f090090
+int string title_activity_fragmentos_cadastro 0x7f090098
 int string title_activity_listagem_cuidador 0x7f090091
 int string title_activity_listagem_de_conversa 0x7f090092
 int string title_activity_listagem_responsavel 0x7f090093

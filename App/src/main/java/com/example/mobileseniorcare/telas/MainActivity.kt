@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,29 +23,65 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.R
-import com.example.mobileseniorcare.telas.cadastro.Cadastro1
-import com.example.mobileseniorcare.telas.cadastro.Cadastros
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             MobileSeniorCareTheme {
+                val navController = rememberNavController()
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    TelaInicial(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding),
-                        activity = this
-                    )
+                    NavHost(
+                        navController = navController,
+                        startDestination = "main",
+                        modifier = Modifier.padding(innerPadding)
+                    ) {
+                        composable("main") {
+                            TelaInicial(navController)
+                        }
+                        composable("cadastro1") {
+                            Cadastro1(navController)
+                        }
+                        composable("cadastro2") {
+                            Cadastro2(navController)
+                        }
+                        composable("cadastro3") {
+                            Cadastro3(navController)
+                        }
+                        composable("cadastro4") {
+                            Cadastro4(navController)
+                        }
+                        composable("cadastro5") {
+                            Cadastro5(navController)
+                        }
+                        composable("cadastro6") {
+                            Cadastro6(navController)
+                        }
+                        composable("login") {
+                            LoginScreen(navController = navController)
+
+                        }
+                        composable("telaMain") { // Rota que vai abrir a MainActivity2
+                            val context = LocalContext.current
+                            LaunchedEffect(Unit) {
+                                context.startActivity(Intent(context, MainActivity2::class.java))
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -54,7 +89,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TelaInicial(name: String, modifier: Modifier = Modifier, activity: ComponentActivity) {
+fun TelaInicial(navController: NavHostController, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -64,15 +99,15 @@ fun TelaInicial(name: String, modifier: Modifier = Modifier, activity: Component
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.35f), // 35% para a área azul
+                .fillMaxHeight(0.35f),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top // Logo mais pra cima
+            verticalArrangement = Arrangement.Top
         ) {
-            Spacer(modifier = Modifier.height(32.dp)) // Espaço para mover a logo mais para cima
+            Spacer(modifier = Modifier.height(32.dp))
             Image(
-                painter = painterResource(id = R.drawable.logo_mobile), // Substitua pelo seu recurso de imagem
+                painter = painterResource(id = R.drawable.logo_mobile),
                 contentDescription = "Logo do Mobile Senior Care",
-                modifier = Modifier.size(150.dp) // Ajuste do tamanho da imagem
+                modifier = Modifier.size(150.dp)
             )
         }
 
@@ -88,7 +123,7 @@ fun TelaInicial(name: String, modifier: Modifier = Modifier, activity: Component
                 .align(Alignment.BottomCenter)
                 .padding(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top // Conteúdo mais para baixo
+            verticalArrangement = Arrangement.Top
         ) {
             Spacer(modifier = Modifier.height(40.dp))
             Text(
@@ -106,7 +141,7 @@ fun TelaInicial(name: String, modifier: Modifier = Modifier, activity: Component
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Button(
-                    onClick = {  activity.startActivity(Intent(activity, Cadastro1::class.java)) },
+                    onClick = { navController.navigate(route = "cadastro1") },
                     modifier = Modifier
                         .width(150.dp)
                         .height(40.dp),
@@ -124,9 +159,7 @@ fun TelaInicial(name: String, modifier: Modifier = Modifier, activity: Component
                 }
 
                 Button(
-                    onClick = {
-                        activity.startActivity(Intent(activity, Login::class.java))
-                    },
+                    onClick = { navController.navigate(route = "login") },
                     modifier = Modifier
                         .width(150.dp)
                         .height(40.dp),
@@ -149,14 +182,12 @@ fun TelaInicial(name: String, modifier: Modifier = Modifier, activity: Component
                 val annotatedString = buildAnnotatedString {
                     append("Ao assinar, você aceita nossos ")
 
-                    // Adiciona "Termos de uso" em azul
                     withStyle(style = SpanStyle(color = Color(0xFF077DB0), fontWeight = FontWeight.Bold)) {
                         pushStringAnnotation(tag = "terms", annotation = "terms")
                         append("Termos de uso")
                         pop()
                     }
 
-                    // Adiciona "e política de privacidade" em azul
                     withStyle(style = SpanStyle(color = Color(0xFF077DB0), fontWeight = FontWeight.Bold)) {
                         pushStringAnnotation(tag = "privacy", annotation = "privacy")
                         append(" e política de privacidade")
@@ -189,7 +220,6 @@ fun TelaInicial(name: String, modifier: Modifier = Modifier, activity: Component
                     modifier = Modifier
                         .clickable { /* Ação */ }
                         .padding(top = 16.dp),
-
                     textAlign = TextAlign.Center,
                     color = Color(0xFF077DB0)
                 )
@@ -202,6 +232,6 @@ fun TelaInicial(name: String, modifier: Modifier = Modifier, activity: Component
 @Composable
 fun TelaInicialPreview() {
     MobileSeniorCareTheme {
-        TelaInicial(name = "Preview" , activity = ComponentActivity())
+        TelaInicial(rememberNavController())
     }
 }

@@ -26,10 +26,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.api.SeniorCareViewModel
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 import kotlinx.coroutines.CoroutineScope
@@ -43,24 +46,25 @@ class Login : ComponentActivity() {
         setContent {
             MobileSeniorCareTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    LoginScreen(modifier = Modifier.padding(innerPadding), activity = this)
+                    LoginScreen(  rememberNavController(),
+                        modifier = Modifier.padding(innerPadding) )
                 }
             }
         }
     }
-}
-@Composable
-fun LoginScreen(modifier: Modifier = Modifier, activity: ComponentActivity) {
+}@Composable
+fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier ) {
     var email by remember { mutableStateOf("") }
     var senha by remember { mutableStateOf("") }
     val seniorCareViewModel: SeniorCareViewModel = viewModel()
+    val context = LocalContext.current
 
     val labelColor = Color(0xFF000000)
     val borderColor = Color(0xFF077DB0)
     val buttonBackgroundColor = Color(0xFF077DB0)
 
     Column(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
         verticalArrangement = Arrangement.Center,
@@ -93,25 +97,16 @@ fun LoginScreen(modifier: Modifier = Modifier, activity: ComponentActivity) {
             onClick = {
                 CoroutineScope(Dispatchers.IO).launch {
                     seniorCareViewModel.login(email, senha)
-
-                    // Verificando o estado do login após a função login ser chamada
                     seniorCareViewModel.usuarioLogado.value?.let {
                         // Login bem-sucedido, prossiga para a próxima tela
-                        activity.runOnUiThread {
-                            Toast.makeText(activity, "Login bem-sucedido!", Toast.LENGTH_SHORT)
-                                .show()
-                            // Exemplo: atividade para ir para a tela principal
-                            activity.startActivity(Intent(activity, MainActivity2::class.java))
-                        }
+                        navController.navigate("telaMain")
                     } ?: run {
                         // Falha no login
-                        activity.runOnUiThread {
-                            Toast.makeText(
-                                activity,
-                                "Falha no login. Verifique suas credenciais.",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
+                        Toast.makeText(
+                            context,
+                            "Falha no login. Verifique suas credenciais.",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             },
@@ -123,13 +118,13 @@ fun LoginScreen(modifier: Modifier = Modifier, activity: ComponentActivity) {
             }
         )
     }
-    }
+}
 
 
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {
     MobileSeniorCareTheme {
-        LoginScreen(activity = ComponentActivity()) // Preenchendo com uma activity de exemplo
+        LoginScreen(rememberNavController()) // Preenchendo com uma activity de exemplo
     }
 }
