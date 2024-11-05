@@ -9,8 +9,8 @@ import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 import kotlinx.coroutines.launch
 class SeniorCareViewModel : ViewModel() {
 
-    private val apiSeniorCare: ApiSeniorCare = RetrofitService.getApiSeniorCare()
-
+//    private val apiSeniorCare: ApiSeniorCare = RetrofitService.getApiSeniorCare()
+    private val api: ApiSeniorCare = RetrofitService.getApiWithoutToken();
     var usuarioLogado = mutableStateOf<UsuarioCuidador?>(null)
         private set
 
@@ -26,7 +26,7 @@ class SeniorCareViewModel : ViewModel() {
             isLoading.value = true
             try {
                 val loginRequest = LoginRequest(email, senha)
-                val response = apiSeniorCare.login(loginRequest)
+                val response = api.login(loginRequest)
 
                 if (response.isSuccessful) {
                     usuarioLogado.value = response.body()
@@ -50,7 +50,7 @@ class SeniorCareViewModel : ViewModel() {
         viewModelScope.launch {
             isLoading.value = true
             try {
-                val response = apiSeniorCare.createUsuario(usuario)
+                val response = api.createUsuario(usuario)
 
                 if (response.isSuccessful) {
                     Log.i("SeniorCareViewModel", "Usuário criado: ${response.body()}")
@@ -71,7 +71,7 @@ class SeniorCareViewModel : ViewModel() {
         viewModelScope.launch {
             isLoading.value = true
             try {
-                val response = apiSeniorCare.getAllUsuarios()
+                val response = api.getAllUsuarios()
 
                 if (response.isSuccessful) {
                     Log.i("SeniorCareViewModel", "Usuários: ${response.body()}")
@@ -92,7 +92,7 @@ class SeniorCareViewModel : ViewModel() {
         viewModelScope.launch {
             isLoading.value = true
             try {
-                val response = apiSeniorCare.updateUsuario(id, usuario)
+                val response = api.updateUsuario(id, usuario)
 
                 if (response.isSuccessful) {
                     Log.i("SeniorCareViewModel", "Usuário atualizado: ${response.body()}")
@@ -113,7 +113,7 @@ class SeniorCareViewModel : ViewModel() {
         viewModelScope.launch {
             isLoading.value = true
             try {
-                val response = apiSeniorCare.deleteUsuario(id)
+                val response = api.deleteUsuario(id)
 
                 if (response.isSuccessful) {
                     Log.i("SeniorCareViewModel", "Usuário excluído com sucesso")

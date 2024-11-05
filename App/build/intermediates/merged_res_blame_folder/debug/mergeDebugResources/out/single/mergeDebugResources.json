@@ -1,118 +1,118 @@
 [
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/drawable_idoso.png.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/drawable/idoso.png"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/drawable_idoso.png.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/drawable/idoso.png"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/drawable_dsjak.png.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/drawable/dsjak.png"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/drawable_dsjak.png.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/drawable/dsjak.png"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/drawable_seta.png.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/drawable/seta.png"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/drawable_home.png.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/drawable/home.png"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/drawable_icone_tarde.png.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/drawable/icone_tarde.png"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/drawable_icone_tarde.png.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/drawable/icone_tarde.png"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/mipmap-anydpi_ic_launcher_round.xml.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/mipmap-anydpi/ic_launcher_round.xml"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/drawable_chuu.jpg.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/drawable/chuu.jpg"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/drawable_logout.png.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/drawable/logout.png"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/drawable_jovem.png.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/drawable/jovem.png"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/mipmap-anydpi_ic_launcher.xml.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/mipmap-anydpi/ic_launcher.xml"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/drawable_logo_mobile.png.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/drawable/logo_mobile.png"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/drawable_logo_mobile.png.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/drawable/logo_mobile.png"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/drawable_chat.png.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/drawable/chat.png"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/drawable_logout.png.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/drawable/logout.png"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/drawable_chat.png.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/drawable/chat.png"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/drawable_senior_care.png.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/drawable/senior_care.png"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/xml_backup_rules.xml.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/xml/backup_rules.xml"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/xml/data_extraction_rules.xml"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/drawable_chuu.jpg.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/drawable/chuu.jpg"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/drawable/ic_launcher_background.xml"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/mipmap-anydpi/ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/drawable/ic_launcher_foreground.xml"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/drawable_seta.png.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/drawable/seta.png"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/xml_backup_rules.xml.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/xml/backup_rules.xml"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/mipmap-anydpi/ic_launcher.xml"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/drawable_home.png.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/drawable/home.png"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/drawable_jovem.png.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/drawable/jovem.png"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/drawable_icone_manha.png.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/drawable/icone_manha.png"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/drawable_senior_care.png.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/drawable/senior_care.png"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/drawable_icone_noite.png.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/drawable/icone_noite.png"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/drawable_icone_manha.png.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/drawable/icone_manha.png"
     },
     {
-        "merged": "com.example.mobileseniorcare.app-debug-50:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.mobileseniorcare.app-main-52:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "com.example.mobileseniorcare.app-debug-58:/drawable_icone_noite.png.flat",
+        "source": "com.example.mobileseniorcare.app-main-60:/drawable/icone_noite.png"
     }
 ]
