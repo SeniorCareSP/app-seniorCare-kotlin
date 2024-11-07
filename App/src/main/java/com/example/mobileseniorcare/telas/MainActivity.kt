@@ -72,10 +72,8 @@ class MainActivity : ComponentActivity() {
                             Cadastro6(navController)
                         }
                         composable("login") {
-                            val context = LocalContext.current
-                            LaunchedEffect(Unit) {
-                                context.startActivity(Intent(context, Login::class.java))
-                            }
+                           LoginSenior(navController)
+
                         }
                         composable("telaMain") { // Rota que vai abrir a MainActivity2
                             val context = LocalContext.current
