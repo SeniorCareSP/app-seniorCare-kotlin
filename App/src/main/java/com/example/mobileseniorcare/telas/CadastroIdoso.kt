@@ -22,7 +22,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.mobileseniorcare.R
+
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
 class CadastroIdoso : ComponentActivity() {
@@ -88,6 +90,13 @@ fun CadastroIdosoScreen(modifier: Modifier = Modifier, activity: ComponentActivi
         ) {
             Spacer(modifier = Modifier.height(20.dp))
 
+            Text(
+                text = "Cadastro de Idoso",
+                color = Color(0xFF077DB0) ,
+                fontSize = 24.sp,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_nome), color = labelColor) },
                 value = nome,
@@ -105,7 +114,12 @@ fun CadastroIdosoScreen(modifier: Modifier = Modifier, activity: ComponentActivi
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_idade), color = labelColor) },
                 value = idade,
-                onValueChange = { idade = it },
+                onValueChange = { newValue ->
+                    // Permite apenas números (dígitos) no campo de idade
+                    if (newValue.all { it.isDigit() }) {
+                        idade = newValue
+                    }
+                },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -150,7 +164,7 @@ fun CadastroIdosoScreen(modifier: Modifier = Modifier, activity: ComponentActivi
                 onValueChange = { sobre = it },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(120.dp), // Aumenta a altura do campo "Sobre"
+                    .height(100.dp), // Aumenta a altura do campo "Sobre"
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
                     unfocusedBorderColor = borderColor,

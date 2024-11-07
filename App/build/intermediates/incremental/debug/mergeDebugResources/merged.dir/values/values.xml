@@ -178,7 +178,7 @@
     <string name="label_nome">Nome</string>
     <string name="label_numero">Número</string>
     <string name="label_precisa_ajuda_com">Preciso de ajuda com</string>
-    <string name="label_preco_hora">Preço por hora</string>
+    <string name="label_preco_hora">Preço por hora (R$)</string>
     <string name="label_qtd_idosos">Quantos idosos pode cuidar ao mesmo tempo?</string>
     <string name="label_senha">Senha</string>
     <string name="label_sobre">Sobre o idoso</string>

@@ -49,10 +49,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.R
+import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
 
 @Composable
@@ -99,7 +102,7 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(20.dp))
             Image(
                 painter = painterResource(id = R.drawable.logo_mobile),
                 contentDescription = "Logo do Mobile Senior Care",
@@ -120,7 +123,7 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
-            Spacer(modifier = Modifier.height(36.dp))
+            Spacer(modifier = Modifier.height(20.dp))
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_nome), color = labelColor) },
                 value = nome,
@@ -250,7 +253,7 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
             if (selectedOptionError) {
                 Text(stringResource(R.string.error_opcao), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.height(20.dp))
             Button(
                 onClick = {
                     emailError = email.isEmpty()
@@ -612,7 +615,7 @@ fun Cadastro3(navController: NavHostController, modifier: Modifier = Modifier) {
                     style = TextStyle(fontSize = 12.sp)
                 )
             }
-            Spacer(modifier = Modifier.height(72.dp)) // Espaço antes dos botões
+            Spacer(modifier = Modifier.height(50.dp)) // Espaço antes dos botões
 
             // Botões Próximo e Voltar
             Column(
@@ -1197,6 +1200,10 @@ fun Cadastro6(navController: NavHostController, modifier: Modifier = Modifier) {
         }
     }
 }
+
+
+
+
 
 
 

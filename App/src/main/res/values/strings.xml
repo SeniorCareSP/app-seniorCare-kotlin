@@ -63,7 +63,7 @@
     <!--Strings tela Cadastro 4-->
     <string name="label_qtd_idosos">Quantos idosos pode cuidar ao mesmo tempo?</string>
     <string name="error_qtd_idosos">Preencha a quantidade de idosos</string>
-    <string name="label_preco_hora">Preço por hora</string>
+    <string name="label_preco_hora">Preço por hora (R$)</string>
     <string name="error_preco_hora">Preencha o campo de preço por hora</string>
     <string name="label_ajuda">Posso ajudar com:</string>
     <string name="botao_proximo_cadastro4">Próximo</string>

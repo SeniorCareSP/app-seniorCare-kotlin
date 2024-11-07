@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 import kotlinx.coroutines.launch
+import retrofit2.Response
+
 class SeniorCareViewModel : ViewModel() {
 
     private val apiSeniorCare: ApiSeniorCare = RetrofitService.getApiSeniorCare()

@@ -1,6 +1,5 @@
 package com.example.mobileseniorcare.telas
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -13,6 +12,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
@@ -49,7 +49,7 @@ class Login : ComponentActivity() {
         setContent {
             MobileSeniorCareTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    LoginScreen(rememberNavController(), modifier = Modifier.padding(innerPadding), activity = this)
+                    LoginScreen(rememberNavController(), modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -57,7 +57,7 @@ class Login : ComponentActivity() {
 }
 
 @Composable
-fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier, activity: ComponentActivity) {
+fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier) {
     var email by remember { mutableStateOf("") }
     var senha by remember { mutableStateOf("") }
     val seniorCareViewModel: SeniorCareViewModel = viewModel()
@@ -97,8 +97,7 @@ fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier,
                 .padding(20.dp)
                 .padding(top = 80.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-
-            ) {
+        ) {
             // Frase de boas-vindas
             Text(
                 text = "Bem-vindo de Volta!",
@@ -134,52 +133,56 @@ fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier,
             )
             Spacer(modifier = Modifier.height(32.dp))
 
-            // Botão de Login
-            Button(
-                onClick = {
-                    CoroutineScope(Dispatchers.IO).launch {
+            // Exibir indicador de carregamento se necessário
+            if (seniorCareViewModel.isLoading.value) {
+                CircularProgressIndicator()
+            } else {
+                // Botão de Login
+                Button(
+                    onClick = {
+                        // Chama a função de login
                         seniorCareViewModel.login(email, senha)
                         seniorCareViewModel.usuarioLogado.value?.let {
-                            activity.runOnUiThread {
-                                Toast.makeText(activity, "Login bem-sucedido!", Toast.LENGTH_SHORT).show()
-                                activity.startActivity(Intent(activity, MainActivity2::class.java))
+                            navController.navigate("mainActivity2") { // Navegação para MainActivity2
+                                popUpTo("login") { inclusive = true }
                             }
                         } ?: run {
-                            activity.runOnUiThread {
-                                Toast.makeText(activity, "Falha no login. Verifique suas credenciais.", Toast.LENGTH_SHORT).show()
+                            seniorCareViewModel.errorMessage.value?.let { error ->
+                                Toast.makeText(navController.context, error, Toast.LENGTH_SHORT).show()
                             }
                         }
-                    }
-                },
-                modifier = Modifier
-                    .width(200.dp) // Largura do botão de login
-                    .height(40.dp),
-                content = {
-                    Text(text = "Entrar", color = Color.White)
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF077DB0))
-            )
-            Spacer(modifier = Modifier.height(16.dp))
+                    },
+                    modifier = Modifier
+                        .width(200.dp) // Largura do botão de login
+                        .height(40.dp),
+                    content = {
+                        Text(text = "Entrar", color = Color.White)
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF077DB0))
+                )
+                Spacer(modifier = Modifier.height(16.dp))
 
-            // Botão de Voltar com contorno azul
-            Button(
-                onClick = { /* Ação para voltar */ },
-                modifier = Modifier
-                    .width(200.dp) // Largura do botão de voltar
-                    .height(40.dp)
-                    .border(1.dp, Color(0xFF077DB0), RoundedCornerShape(8.dp)), // Contorno azul
-                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent) // Fundo transparente
-            ) {
-                Text(text = "Voltar", color = Color(0xFF077DB0) /* Cor do texto azul */)
+                // Botão de Voltar com contorno azul
+                Button(
+                    onClick = { navController.popBackStack() }, // Volta para a tela anterior
+                    modifier = Modifier
+                        .width(200.dp) // Largura do botão de voltar
+                        .height(40.dp)
+                        .border(1.dp, Color(0xFF077DB0), RoundedCornerShape(8.dp)), // Contorno azul
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent) // Fundo transparente
+                ) {
+                    Text(text = "Voltar", color = Color(0xFF077DB0) /* Cor do texto azul */)
+                }
             }
         }
     }
 }
 
+
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {
     MobileSeniorCareTheme {
-        LoginScreen(rememberNavController(),activity = ComponentActivity())
+        LoginScreen(rememberNavController())
     }
 }
