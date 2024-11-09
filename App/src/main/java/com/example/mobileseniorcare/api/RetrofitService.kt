@@ -1,5 +1,6 @@
 package com.example.mobileseniorcare.api
 
+import com.example.mobileseniorcare.dataclassx.ViaCep
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -25,6 +26,14 @@ object RetrofitService {
             .build()
             .create(ApiSeniorCare::class.java)
     }
+
+
+
+    val retrofit = Retrofit.Builder()
+        .baseUrl("https://viacep.com.br/ws/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+    val viaCepService = retrofit.create(ViaCep::class.java)
 
     // Instância de Retrofit com token, para requisições autenticadas
 //    fun getApiSeniorCare(token: String): ApiSeniorCare {

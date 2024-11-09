@@ -10,6 +10,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -60,6 +61,22 @@ import com.example.mobileseniorcare.api.SeniorCareViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.ViewModel
+import com.example.mobileseniorcare.api.RetrofitService
+import com.example.mobileseniorcare.dataclass.CepResponse
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
+import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
+import retrofit2.http.Path
+import com.google.gson.annotations.SerializedName
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import kotlin.text.Typography.dagger
 
 
 @Composable
@@ -70,10 +87,27 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
+fun buscarCep(cep: String, onResult: (CepResponse?) -> Unit) {
+    val call = RetrofitService.viaCepService.buscarCep(cep);
+    call.enqueue(object : Callback<CepResponse> {
+        override fun onResponse(call: Call<CepResponse>, response: Response<CepResponse>) {
+            if (response.isSuccessful) {
+                onResult(response.body())
+            } else {
+                onResult(null)
+            }
+        }
+
+        override fun onFailure(call: Call<CepResponse>, t: Throwable) {
+            onResult(null)
+        }
+    })
+}
+
 
 @Composable
 fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
-
+    var usuarioCuidador = UsuarioCuidador();
     var email by remember { mutableStateOf("") }
     var senha by remember { mutableStateOf("") }
     var confirmarSenha by remember { mutableStateOf("") }
@@ -131,7 +165,11 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_nome), color = labelColor) },
                 value = nome,
-                onValueChange = { nome = it; nomeError = nome.isEmpty() },
+                onValueChange = {
+                    email = it
+                    usuarioCuidador.nome = nome
+                    emailError = email.isEmpty()
+                },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -148,7 +186,11 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_email), color = labelColor) },
                 value = email,
-                onValueChange = { email = it; emailError = email.isEmpty() },
+                onValueChange = {
+                    email = it;
+                    usuarioCuidador.email = email
+                    emailError = email.isEmpty()
+                                },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -164,7 +206,7 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_senha), color = labelColor) },
                 value = senha,
-                onValueChange = { senha = it; senhaError = senha.isEmpty() },
+                onValueChange = { senha = it; usuarioCuidador.senha = it; senhaError = senha.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 visualTransformation = PasswordVisualTransformation(),
                 colors = OutlinedTextFieldDefaults.colors(
@@ -200,7 +242,7 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_cep), color = labelColor) },
                 value = cep,
-                onValueChange = { cep = it; cepError = cep.isEmpty() },
+                onValueChange = { cep = it; usuarioCuidador.endereco?.cep = it; cepError = cep.isEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -221,7 +263,7 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(
-                    onClick = { selectedOption = "Cuidador"; selectedOptionError = false },
+                    onClick = { selectedOption = "Cuidador"; usuarioCuidador.tipoDeUsuario = selectedOption; selectedOptionError = false },
                     modifier = Modifier
                         .weight(1f)
                         .border(
@@ -238,7 +280,7 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
                 }
                 Spacer(modifier = Modifier.width(16.dp))
                 Button(
-                    onClick = { selectedOption = "Responsável"; selectedOptionError = false },
+                    onClick = { selectedOption = "Responsável";  usuarioCuidador.tipoDeUsuario = selectedOption; selectedOptionError = false },
                     modifier = Modifier
                         .weight(1f)
                         .border(
@@ -266,7 +308,10 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
                     cepError = cep.isEmpty()
                     nomeError = nome.isEmpty()
                     selectedOptionError = selectedOption.isEmpty()
+                    if (senha != confirmarSenha){
 
+                        return@Button;
+                    }
                     if (!emailError && !senhaError && !confirmarSenhaError && !cepError && !nomeError  && !selectedOptionError) {
                         navController.navigate(route = "cadastro2")
                     }
@@ -294,8 +339,12 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
         }
     }
 }
+
+
+
+
 @Composable
-fun Cadastro2(navController: NavHostController, modifier: Modifier = Modifier) {
+fun Cadastro2(navController: NavHostController, modifier: Modifier = Modifier, usuarioCuidador: UsuarioCuidador) {
 
     var logradouro by remember { mutableStateOf("") }
     var numero by remember { mutableStateOf("") }
@@ -475,7 +524,7 @@ fun Cadastro2(navController: NavHostController, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun Cadastro3(navController: NavHostController, modifier: Modifier = Modifier) {
+fun Cadastro3(navController: NavHostController, modifier: Modifier = Modifier, usuarioCuidador: UsuarioCuidador) {
     var dtNascimento by remember { mutableStateOf("") }
     var celular by remember { mutableStateOf("") }
     var idioma by remember { mutableStateOf("") }
@@ -621,7 +670,6 @@ fun Cadastro3(navController: NavHostController, modifier: Modifier = Modifier) {
             }
             Spacer(modifier = Modifier.height(72.dp)) // Espaço antes dos botões
 
-            // Botões Próximo e Voltar
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -637,7 +685,11 @@ fun Cadastro3(navController: NavHostController, modifier: Modifier = Modifier) {
 
 
                         if (!dtNascimentoError && !tempoExperienciaError && !celularError && !idiomaError) {
-                            navController.navigate(route = "cadastro4")
+                            if (usuarioCuidador.tipoDeUsuario.equals("Cuidador")) {
+                                navController.navigate(route = "cadastro4")
+                            }else{
+                                navController.navigate(route = "cadastro6")
+                            }
                         }
                     },
                     modifier = Modifier.fillMaxWidth(),
