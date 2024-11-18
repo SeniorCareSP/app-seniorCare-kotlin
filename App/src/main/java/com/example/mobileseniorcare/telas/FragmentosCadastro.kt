@@ -697,15 +697,15 @@ fun Cadastro3(navController: NavHostController, viewModel: SeniorCareViewModel =
                 ) {
                     Box(
                         modifier = Modifier
-                            .fillMaxWidth() // Certifique-se de que a Box preenche toda a largura
-                            .offset(y = 64.dp)
-                            .shadow(elevation = 4.dp)
-                            .background(MaterialTheme.colorScheme.surface)
-                          //  .padding(16.dp)
+                            .width(420.dp) // Define a largura do popup
+                            .padding(16.dp)
+                            .shadow(elevation = 8.dp)
+                            .background(MaterialTheme.colorScheme.surface, shape = RoundedCornerShape(12.dp))
                     ) {
                         DatePicker(
                             state = datePickerState,
                             showModeToggle = false,
+                            modifier = Modifier.height(480.dp)
                         )
 
                         // Certifique-se de que o botão esteja dentro do Box
@@ -1643,71 +1643,84 @@ fun LoginSenior(navController: NavHostController, modifier: Modifier = Modifier)
 
 
 
-//        @Composable
-//fun IdiomasSelectss(viewModel: SeniorCareViewModel) {
-//    val idiomasDisponiveis = listOf("Português", "Inglês", "Espanhol", "Francês", "Alemão")
-//    var expanded by remember { mutableStateOf(false) }
-//    var selectedIdioma by remember { mutableStateOf("Selecione um idioma") }
-//
-//    Column {
-//        Text(
-//            text = "Selecione os Idiomas",
-//            style = MaterialTheme.typography.bodyMedium,
-//            color = Color.Black,
-//            modifier = Modifier.padding(bottom = 8.dp)
-//        )
-//
-//        // Botão que ao ser clicado abre o menu de seleção
-//        OutlinedButton(
-//            onClick = { expanded = !expanded },
-//            modifier = Modifier.fillMaxWidth()
-//        ) {
-//            // Passamos o texto diretamente aqui
-//            Text(text = selectedIdioma.ifEmpty { "Selecione um idioma" })
-//        }
-//
-//        // Dropdown menu
-//        DropdownMenu(
-//            expanded = expanded,
-//            onDismissRequest = { expanded = false },
-//            modifier = Modifier.fillMaxWidth()
-//        ) {
-//            idiomasDisponiveis.forEach { idioma ->
-//                DropdownMenuItem(  text = {
-//                    Text("${it.nome} - R$${it.preco}") } },
-//                    onClick = {
-//                    selectedIdioma = idioma
-//                    expanded = false
-//
-//                    // Atualiza a lista de idiomas no ViewModel
-//                    val currentIdiomas = viewModel.usuarioAtual.idiomas?.toMutableList() ?: mutableListOf()
-//                    if (!currentIdiomas.any { it.idioma == idioma }) {
-//                        currentIdiomas.add(Idioma(idioma))
-//                    }
-//
-//                    // Atualiza o estado do usuário com a nova lista de idiomas
-//                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(idiomas = currentIdiomas)
-//                }) {
-//                    Text(text = idioma)
-//                }
-//            }
-//        }
-//
-//        // Exibe os idiomas selecionados
-//        if (!viewModel.usuarioAtual.idiomas.isNullOrEmpty()) {
-//            Text(
-//                text = "Idiomas selecionados: ${viewModel.usuarioAtual.idiomas?.joinToString(", ") { it.idioma }}",
-//                style = MaterialTheme.typography.bodyMedium,
-//                color = Color.Black,
-//                modifier = Modifier.padding(top = 8.dp)
-//            )
-//        }
-//    }
-//}
-//
-//fun isIdiomaSelecionado(idioma: String, idiomasSelecionados: List<Idioma>): Boolean {
-//    return idiomasSelecionados.any { it.idioma == idioma }
-//}
+@Composable
+fun IdiomasSelect(viewModel: SeniorCareViewModel) {
+    // Lista de idiomas disponíveis para seleção
+    val idiomasDisponiveis = listOf("Português", "Inglês", "Espanhol", "Francês", "Alemão")
+
+    // Variáveis de estado para o dropdown
+    var expanded by remember { mutableStateOf(false) }
+
+    // Função para verificar se o idioma já está selecionado
+    fun isIdiomaSelecionado(idioma: String): Boolean {
+        return viewModel.usuarioAtual.idiomas?.any { it.idioma == idioma } == true
+    }
+
+    // Função para adicionar ou remover um idioma da lista no ViewModel
+    fun toggleIdiomaSelecionado(idioma: String) {
+        val currentIdiomas = viewModel.usuarioAtual.idiomas?.toMutableList() ?: mutableListOf()
+        if (isIdiomaSelecionado(idioma)) {
+            currentIdiomas.removeIf { it.idioma == idioma }
+        } else {
+            currentIdiomas.add(Idioma(idioma))
+        }
+        viewModel.usuarioAtual = viewModel.usuarioAtual.copy(idiomas = currentIdiomas)
+    }
+
+    Column(modifier = Modifier.padding(16.dp)) {
+        Text(
+            text = "Selecione os Idiomas",
+            style = MaterialTheme.typography.bodyMedium,
+            color = Color.Black,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+
+        // Botão que abre o menu de seleção de idiomas
+        OutlinedButton(
+            onClick = { expanded = !expanded },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(text = "Selecionar Idiomas")
+        }
+
+        // DropdownMenu para seleção de idiomas
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            idiomasDisponiveis.forEach { idioma ->
+                DropdownMenuItem(
+                    text = {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Checkbox(
+                                checked = isIdiomaSelecionado(idioma),
+                                onCheckedChange = {
+                                    toggleIdiomaSelecionado(idioma)
+                                }
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(text = idioma)
+                        }
+                    },
+                    onClick = {
+                        toggleIdiomaSelecionado(idioma)
+                    }
+                )
+            }
+        }
+
+        // Exibindo os idiomas selecionados
+        if (!viewModel.usuarioAtual.idiomas.isNullOrEmpty()) {
+            Text(
+                text = "Idiomas selecionados: ${viewModel.usuarioAtual.idiomas?.joinToString(", ") { it.idioma }}",
+                style = MaterialTheme.typography.bodyMedium,
+                color = Color.Black,
+                modifier = Modifier.padding(top = 8.dp)
+            )
+        }
+    }
+}
 
 
 
