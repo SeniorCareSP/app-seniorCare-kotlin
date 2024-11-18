@@ -1,10 +1,6 @@
 package com.example.mobileseniorcare.telas
 
-import android.content.Intent
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -32,7 +28,6 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
@@ -53,6 +48,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.mobileseniorcare.R
+import com.example.mobileseniorcare.api.HTTPService
+import com.example.mobileseniorcare.dataclass.Endereco
 
 
 @Composable
@@ -65,7 +62,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 
 @Composable
-fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
+fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier, preencherEndereco: (Endereco) -> Unit) {
 
     var email by remember { mutableStateOf("") }
     var senha by remember { mutableStateOf("") }
@@ -86,6 +83,19 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
     var cepError by remember { mutableStateOf(false) }
     var nomeError by remember { mutableStateOf(false) }
     var selectedOptionError by remember { mutableStateOf(false) }
+
+    // Função para buscar o endereço
+    fun buscarEndereco() {
+        val httpService = HTTPService()
+        val endereco = httpService.buscarEnderecoPorCep(cep)
+        if (endereco != null) {
+            preencherEndereco(endereco)
+            navController.navigate(route = "cadastro2")
+        } else {
+            cepError = true // Mostra erro caso o CEP seja inválido
+        }
+    }
+
 
     Box(
         modifier = modifier
@@ -253,13 +263,14 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(40.dp))
             Button(
                 onClick = {
+
                     emailError = email.isEmpty()
                     senhaError = senha.isEmpty()
                     confirmarSenhaError = confirmarSenha.isEmpty()
                     cepError = cep.isEmpty()
                     nomeError = nome.isEmpty()
                     selectedOptionError = selectedOption.isEmpty()
-
+                    buscarEndereco()
                     if (!emailError && !senhaError && !confirmarSenhaError && !cepError && !nomeError  && !selectedOptionError) {
                         navController.navigate(route = "cadastro2")
                     }

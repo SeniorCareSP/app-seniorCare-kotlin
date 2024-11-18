@@ -16,7 +16,7 @@ object RetrofitService {
 //            .addConverterFactory(GsonConverterFactory.create())
 //            .build()
 //            .create(ApiSeniorCare::class.java)
-//    }
+//    }],
 
     fun getApiWithoutToken(): ApiSeniorCare {
         return Retrofit.Builder()
