@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #Tue Nov 05 16:58:48 BRT 2024
 base.0=C\:\\Users\\Mariana Nascimento\\Downloads\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\Mariana Nascimento\\Downloads\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
@@ -11,6 +12,9 @@ base.7=C\:\\Users\\Mariana Nascimento\\Downloads\\app-seniorCare-kotlin\\app\\bu
 base.8=C\:\\Users\\Mariana Nascimento\\Downloads\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 =======
 #Sun Nov 17 16:32:06 BRT 2024
+=======
+#Mon Nov 18 19:01:11 BRT 2024
+>>>>>>> 9aadbb54b1c8d6bc4dd755f660aebcd5571b49e3
 base.0=C\:\\Users\\Garrafa\\AndroidStudioProjects\\Sla\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\Garrafa\\AndroidStudioProjects\\Sla\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.2=C\:\\Users\\Garrafa\\AndroidStudioProjects\\Sla\\app-seniorCare-kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex
