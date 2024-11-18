@@ -11,3 +11,4 @@ data class Endereco(
     val bairro: String? = null,
     val usuario: UsuarioCuidador? = null
 )
+

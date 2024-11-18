@@ -1,6 +1,5 @@
 package com.example.mobileseniorcare.telas
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -49,7 +48,7 @@ class Login : ComponentActivity() {
         setContent {
             MobileSeniorCareTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    LoginScreen(rememberNavController(), modifier = Modifier.padding(innerPadding), activity = this)
+                    LoginScreen(rememberNavController(), modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -57,7 +56,7 @@ class Login : ComponentActivity() {
 }
 
 @Composable
-fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier, activity: ComponentActivity) {
+fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier) {
     var email by remember { mutableStateOf("") }
     var senha by remember { mutableStateOf("") }
     val seniorCareViewModel: SeniorCareViewModel = viewModel()
@@ -97,8 +96,7 @@ fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier,
                 .padding(20.dp)
                 .padding(top = 80.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-
-            ) {
+        ) {
             // Frase de boas-vindas
             Text(
                 text = "Bem-vindo de Volta!",
@@ -140,13 +138,12 @@ fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier,
                     CoroutineScope(Dispatchers.IO).launch {
                         seniorCareViewModel.login(email, senha)
                         seniorCareViewModel.usuarioLogado.value?.let {
-                            activity.runOnUiThread {
-                                Toast.makeText(activity, "Login bem-sucedido!", Toast.LENGTH_SHORT).show()
-                                activity.startActivity(Intent(activity, MainActivity2::class.java))
+                            navController.navigate("mainActivity2") { // Navegação para MainActivity2
+                                popUpTo("login") { inclusive = true }
                             }
                         } ?: run {
-                            activity.runOnUiThread {
-                                Toast.makeText(activity, "Falha no login. Verifique suas credenciais.", Toast.LENGTH_SHORT).show()
+                            navController.context?.let { context ->
+                                Toast.makeText(context, "Falha no login. Verifique suas credenciais.", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
@@ -163,7 +160,7 @@ fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier,
 
             // Botão de Voltar com contorno azul
             Button(
-                onClick = { /* Ação para voltar */ },
+                onClick = { navController.popBackStack() }, // Volta para a tela anterior
                 modifier = Modifier
                     .width(200.dp) // Largura do botão de voltar
                     .height(40.dp)
@@ -180,6 +177,6 @@ fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier,
 @Composable
 fun LoginScreenPreview() {
     MobileSeniorCareTheme {
-        LoginScreen(rememberNavController(),activity = ComponentActivity())
+        LoginScreen(rememberNavController())
     }
 }
