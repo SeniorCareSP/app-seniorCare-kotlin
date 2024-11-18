@@ -11,251 +11,254 @@
 11    <uses-permission android:name="android.permission.INTERNET" />
 11-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:5:5-67
 11-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:5:22-64
-12
-13    <permission
-13-->[androidx.core:core:1.13.1] C:\Users\Garrafa\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
-14        android:name="com.example.mobileseniorcare.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-14-->[androidx.core:core:1.13.1] C:\Users\Garrafa\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
-15        android:protectionLevel="signature" />
-15-->[androidx.core:core:1.13.1] C:\Users\Garrafa\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
-16
-17    <uses-permission android:name="com.example.mobileseniorcare.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-17-->[androidx.core:core:1.13.1] C:\Users\Garrafa\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
-17-->[androidx.core:core:1.13.1] C:\Users\Garrafa\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
-18
-19    <application
-19-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:7:5-83:19
-20        android:allowBackup="true"
-20-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:8:9-35
-21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-21-->[androidx.core:core:1.13.1] C:\Users\Garrafa\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
-22        android:dataExtractionRules="@xml/data_extraction_rules"
-22-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:9:9-65
-23        android:debuggable="true"
-24        android:extractNativeLibs="false"
-25        android:fullBackupContent="@xml/backup_rules"
-25-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:10:9-54
-26        android:icon="@mipmap/ic_launcher"
-26-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:11:9-43
-27        android:label="@string/app_name"
-27-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:12:9-41
-28        android:roundIcon="@mipmap/ic_launcher_round"
-28-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:13:9-54
-29        android:supportsRtl="true"
-29-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:14:9-35
-30        android:testOnly="true"
-31        android:theme="@style/Theme.MobileSeniorCare" >
-31-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:15:9-54
-32        <activity
-32-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:17:9-21:61
-33            android:name="com.example.mobileseniorcare.telas.CadastroIdoso"
-33-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:18:13-48
-34            android:exported="false"
-34-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:19:13-37
-35            android:label="@string/title_activity_cadastro_idoso"
-35-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:20:13-66
-36            android:theme="@style/Theme.MobileSeniorCare" />
-36-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:21:13-58
-37        <activity
-37-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:22:9-26:61
-38            android:name="com.example.mobileseniorcare.telas.MainActivity2"
-38-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:23:13-48
-39            android:exported="false"
-39-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:24:13-37
-40            android:label="@string/title_activity_main2"
-40-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:25:13-57
-41            android:theme="@style/Theme.MobileSeniorCare" />
-41-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:26:13-58
-42        <activity
-42-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:27:9-31:61
-43            android:name="com.example.mobileseniorcare.telas.FragmentosCadastro"
-43-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:28:13-53
-44            android:exported="false"
-44-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:29:13-37
-45            android:label="@string/title_activity_fragmentos_cadastro"
-45-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:30:13-71
-46            android:theme="@style/Theme.MobileSeniorCare" />
-46-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:31:13-58
-47        <activity
-47-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:32:9-36:61
-48            android:name="com.example.mobileseniorcare.telas.EdicaoPerfil"
-48-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:33:13-47
-49            android:exported="true"
-49-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:34:13-36
-50            android:label="@string/title_activity_edicao_perfil"
-50-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:35:13-65
-51            android:theme="@style/Theme.MobileSeniorCare" />
-51-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:36:13-58
-52        <activity
-52-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:37:9-41:61
-53            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro6"
-53-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:38:13-53
-54            android:exported="true"
-54-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:39:13-36
-55            android:label="@string/title_activity_cadastro6"
-55-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:40:13-61
-56            android:theme="@style/Theme.MobileSeniorCare" />
-56-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:41:13-58
-57        <activity
-57-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:42:9-46:61
-58            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro5"
-58-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:43:13-53
-59            android:exported="true"
-59-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:44:13-36
-60            android:label="@string/title_activity_cadastro5"
-60-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:45:13-61
-61            android:theme="@style/Theme.MobileSeniorCare" />
-61-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:46:13-58
-62        <activity
-62-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:47:9-51:61
-63            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro4"
-63-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:48:13-53
-64            android:exported="true"
-64-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:49:13-36
-65            android:label="@string/title_activity_cadastro4"
-65-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:50:13-61
-66            android:theme="@style/Theme.MobileSeniorCare" />
-66-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:51:13-58
-67        <activity
-67-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:52:9-56:61
-68            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro3"
-68-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:53:13-53
-69            android:exported="true"
-69-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:54:13-36
-70            android:label="@string/title_activity_cadastro3"
-70-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:55:13-61
-71            android:theme="@style/Theme.MobileSeniorCare" />
-71-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:56:13-58
-72        <activity
-72-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:57:9-61:61
-73            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro2"
-73-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:58:13-53
-74            android:exported="true"
-74-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:59:13-36
-75            android:label="@string/title_activity_cadastro2"
-75-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:60:13-61
-76            android:theme="@style/Theme.MobileSeniorCare" />
-76-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:61:13-58
-77        <activity
-77-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:62:9-66:61
-78            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro1"
-78-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:63:13-53
-79            android:exported="true"
-79-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:64:13-36
-80            android:label="@string/title_activity_cadastro1"
-80-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:65:13-61
-81            android:theme="@style/Theme.MobileSeniorCare" />
-81-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:66:13-58
-82        <activity
-82-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:67:9-71:61
-83            android:name="com.example.mobileseniorcare.telas.Login"
-83-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:68:13-40
-84            android:exported="true"
-84-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:69:13-36
-85            android:label="@string/title_activity_login"
-85-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:70:13-57
-86            android:theme="@style/Theme.MobileSeniorCare" />
-86-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:71:13-58
-87        <activity
-87-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:72:9-82:20
-88            android:name="com.example.mobileseniorcare.telas.MainActivity"
-88-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:73:13-47
-89            android:exported="true"
-89-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:74:13-36
-90            android:label="@string/app_name"
-90-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:75:13-45
-91            android:theme="@style/Theme.MobileSeniorCare" >
-91-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:76:13-58
-92            <intent-filter>
-92-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:77:13-81:29
-93                <action android:name="android.intent.action.MAIN" />
-93-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:78:17-69
-93-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:78:25-66
-94
-95                <category android:name="android.intent.category.LAUNCHER" />
-95-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:80:17-77
-95-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:80:27-74
-96            </intent-filter>
-97        </activity>
-98        <activity
-98-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\Garrafa\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
-99            android:name="androidx.compose.ui.tooling.PreviewActivity"
-99-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\Garrafa\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
-100            android:exported="true" />
-100-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\Garrafa\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
-101
-102        <provider
-102-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Garrafa\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
-103            android:name="androidx.startup.InitializationProvider"
-103-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Garrafa\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
-104            android:authorities="com.example.mobileseniorcare.androidx-startup"
-104-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Garrafa\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
-105            android:exported="false" >
-105-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Garrafa\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
-106            <meta-data
-106-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Garrafa\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
-107                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-107-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Garrafa\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
-108                android:value="androidx.startup" />
-108-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Garrafa\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
-109            <meta-data
-109-->[androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Garrafa\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:29:13-31:52
-110                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-110-->[androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Garrafa\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:30:17-78
-111                android:value="androidx.startup" />
-111-->[androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Garrafa\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:31:17-49
-112            <meta-data
-112-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
-113                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-113-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
-114                android:value="androidx.startup" />
-114-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
-115        </provider>
-116
-117        <activity
-117-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\Garrafa\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:23:9-25:39
-118            android:name="androidx.activity.ComponentActivity"
-118-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\Garrafa\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:24:13-63
-119            android:exported="true" />
-119-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\Garrafa\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:25:13-36
-120
-121        <receiver
-121-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
-122            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-122-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
-123            android:directBootAware="false"
-123-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
-124            android:enabled="true"
-124-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
-125            android:exported="true"
-125-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
-126            android:permission="android.permission.DUMP" >
-126-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
-127            <intent-filter>
-127-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
-128                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-128-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
-128-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
-129            </intent-filter>
-130            <intent-filter>
-130-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
-131                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-131-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
-131-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
-132            </intent-filter>
-133            <intent-filter>
-133-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
-134                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-134-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
-134-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
-135            </intent-filter>
-136            <intent-filter>
-136-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
-137                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-137-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
-137-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
-138            </intent-filter>
-139        </receiver>
-140    </application>
-141
-142</manifest>
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:6:5-78
+12-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:6:22-76
+13
+14    <permission
+14-->[androidx.core:core:1.13.1] C:\Users\Garrafa\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+15        android:name="com.example.mobileseniorcare.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+15-->[androidx.core:core:1.13.1] C:\Users\Garrafa\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+16        android:protectionLevel="signature" />
+16-->[androidx.core:core:1.13.1] C:\Users\Garrafa\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+17
+18    <uses-permission android:name="com.example.mobileseniorcare.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+18-->[androidx.core:core:1.13.1] C:\Users\Garrafa\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+18-->[androidx.core:core:1.13.1] C:\Users\Garrafa\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+19
+20    <application
+20-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:9:5-85:19
+21        android:allowBackup="true"
+21-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:10:9-35
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.13.1] C:\Users\Garrafa\.gradle\caches\transforms-4\447bcc80ee2482e14a5509f64d66a54e\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+23        android:dataExtractionRules="@xml/data_extraction_rules"
+23-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:11:9-65
+24        android:debuggable="true"
+25        android:extractNativeLibs="false"
+26        android:fullBackupContent="@xml/backup_rules"
+26-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:12:9-54
+27        android:icon="@mipmap/ic_launcher"
+27-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:13:9-43
+28        android:label="@string/app_name"
+28-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:14:9-41
+29        android:roundIcon="@mipmap/ic_launcher_round"
+29-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:15:9-54
+30        android:supportsRtl="true"
+30-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:16:9-35
+31        android:testOnly="true"
+32        android:theme="@style/Theme.MobileSeniorCare" >
+32-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:17:9-54
+33        <activity
+33-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:19:9-23:61
+34            android:name="com.example.mobileseniorcare.telas.CadastroIdoso"
+34-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:20:13-48
+35            android:exported="false"
+35-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:21:13-37
+36            android:label="@string/title_activity_cadastro_idoso"
+36-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:22:13-66
+37            android:theme="@style/Theme.MobileSeniorCare" />
+37-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:23:13-58
+38        <activity
+38-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:24:9-28:61
+39            android:name="com.example.mobileseniorcare.telas.MainActivity2"
+39-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:25:13-48
+40            android:exported="false"
+40-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:26:13-37
+41            android:label="@string/title_activity_main2"
+41-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:27:13-57
+42            android:theme="@style/Theme.MobileSeniorCare" />
+42-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:28:13-58
+43        <activity
+43-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:29:9-33:61
+44            android:name="com.example.mobileseniorcare.telas.FragmentosCadastro"
+44-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:30:13-53
+45            android:exported="false"
+45-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:31:13-37
+46            android:label="@string/title_activity_fragmentos_cadastro"
+46-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:32:13-71
+47            android:theme="@style/Theme.MobileSeniorCare" />
+47-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:33:13-58
+48        <activity
+48-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:34:9-38:61
+49            android:name="com.example.mobileseniorcare.telas.EdicaoPerfil"
+49-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:35:13-47
+50            android:exported="true"
+50-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:36:13-36
+51            android:label="@string/title_activity_edicao_perfil"
+51-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:37:13-65
+52            android:theme="@style/Theme.MobileSeniorCare" />
+52-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:38:13-58
+53        <activity
+53-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:39:9-43:61
+54            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro6"
+54-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:40:13-53
+55            android:exported="true"
+55-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:41:13-36
+56            android:label="@string/title_activity_cadastro6"
+56-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:42:13-61
+57            android:theme="@style/Theme.MobileSeniorCare" />
+57-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:43:13-58
+58        <activity
+58-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:44:9-48:61
+59            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro5"
+59-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:45:13-53
+60            android:exported="true"
+60-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:46:13-36
+61            android:label="@string/title_activity_cadastro5"
+61-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:47:13-61
+62            android:theme="@style/Theme.MobileSeniorCare" />
+62-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:48:13-58
+63        <activity
+63-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:49:9-53:61
+64            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro4"
+64-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:50:13-53
+65            android:exported="true"
+65-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:51:13-36
+66            android:label="@string/title_activity_cadastro4"
+66-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:52:13-61
+67            android:theme="@style/Theme.MobileSeniorCare" />
+67-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:53:13-58
+68        <activity
+68-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:54:9-58:61
+69            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro3"
+69-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:55:13-53
+70            android:exported="true"
+70-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:56:13-36
+71            android:label="@string/title_activity_cadastro3"
+71-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:57:13-61
+72            android:theme="@style/Theme.MobileSeniorCare" />
+72-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:58:13-58
+73        <activity
+73-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:59:9-63:61
+74            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro2"
+74-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:60:13-53
+75            android:exported="true"
+75-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:61:13-36
+76            android:label="@string/title_activity_cadastro2"
+76-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:62:13-61
+77            android:theme="@style/Theme.MobileSeniorCare" />
+77-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:63:13-58
+78        <activity
+78-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:64:9-68:61
+79            android:name="com.example.mobileseniorcare.telas.cadastro.Cadastro1"
+79-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:65:13-53
+80            android:exported="true"
+80-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:66:13-36
+81            android:label="@string/title_activity_cadastro1"
+81-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:67:13-61
+82            android:theme="@style/Theme.MobileSeniorCare" />
+82-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:68:13-58
+83        <activity
+83-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:69:9-73:61
+84            android:name="com.example.mobileseniorcare.telas.Login"
+84-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:70:13-40
+85            android:exported="true"
+85-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:71:13-36
+86            android:label="@string/title_activity_login"
+86-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:72:13-57
+87            android:theme="@style/Theme.MobileSeniorCare" />
+87-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:73:13-58
+88        <activity
+88-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:74:9-84:20
+89            android:name="com.example.mobileseniorcare.telas.MainActivity"
+89-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:75:13-47
+90            android:exported="true"
+90-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:76:13-36
+91            android:label="@string/app_name"
+91-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:77:13-45
+92            android:theme="@style/Theme.MobileSeniorCare" >
+92-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:78:13-58
+93            <intent-filter>
+93-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:79:13-83:29
+94                <action android:name="android.intent.action.MAIN" />
+94-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:80:17-69
+94-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:80:25-66
+95
+96                <category android:name="android.intent.category.LAUNCHER" />
+96-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:82:17-77
+96-->C:\Users\Garrafa\AndroidStudioProjects\Sla\app-seniorCare-kotlin\app\src\main\AndroidManifest.xml:82:27-74
+97            </intent-filter>
+98        </activity>
+99        <activity
+99-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\Garrafa\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+100            android:name="androidx.compose.ui.tooling.PreviewActivity"
+100-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\Garrafa\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+101            android:exported="true" />
+101-->[androidx.compose.ui:ui-tooling-android:1.6.6] C:\Users\Garrafa\.gradle\caches\transforms-4\e772edf0ac0622073de03e8677607bdc\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+102
+103        <provider
+103-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Garrafa\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+104            android:name="androidx.startup.InitializationProvider"
+104-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Garrafa\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+105            android:authorities="com.example.mobileseniorcare.androidx-startup"
+105-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Garrafa\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+106            android:exported="false" >
+106-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Garrafa\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+107            <meta-data
+107-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Garrafa\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+108                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+108-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Garrafa\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+109                android:value="androidx.startup" />
+109-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Garrafa\.gradle\caches\transforms-4\3a6798c3f78a8df68acc7ba9d1a6b19b\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+110            <meta-data
+110-->[androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Garrafa\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:29:13-31:52
+111                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+111-->[androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Garrafa\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:30:17-78
+112                android:value="androidx.startup" />
+112-->[androidx.lifecycle:lifecycle-process:2.8.5] C:\Users\Garrafa\.gradle\caches\transforms-4\8be26a40817cba83a25e2d3b3ee4886e\transformed\lifecycle-process-2.8.5\AndroidManifest.xml:31:17-49
+113            <meta-data
+113-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+114                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+114-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+115                android:value="androidx.startup" />
+115-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+116        </provider>
+117
+118        <activity
+118-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\Garrafa\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:23:9-25:39
+119            android:name="androidx.activity.ComponentActivity"
+119-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\Garrafa\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:24:13-63
+120            android:exported="true" />
+120-->[androidx.compose.ui:ui-test-manifest:1.6.6] C:\Users\Garrafa\.gradle\caches\transforms-4\7f887b412b7f6a5b4c866a51958ff9df\transformed\ui-test-manifest-1.6.6\AndroidManifest.xml:25:13-36
+121
+122        <receiver
+122-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+123            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+123-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+124            android:directBootAware="false"
+124-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+125            android:enabled="true"
+125-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+126            android:exported="true"
+126-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+127            android:permission="android.permission.DUMP" >
+127-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+128            <intent-filter>
+128-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+129                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+129-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+129-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+130            </intent-filter>
+131            <intent-filter>
+131-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+132                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+132-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+132-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+133            </intent-filter>
+134            <intent-filter>
+134-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+135                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+135-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+135-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+136            </intent-filter>
+137            <intent-filter>
+137-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+138                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+138-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+138-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Garrafa\.gradle\caches\transforms-4\dcaab789bc1cd21d4d425c57a1e635f7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+139            </intent-filter>
+140        </receiver>
+141    </application>
+142
+143</manifest>

@@ -2,10 +2,15 @@ package com.example.mobileseniorcare.api
 
 
 import android.util.Log
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 class SeniorCareViewModel : ViewModel() {
 
@@ -19,6 +24,22 @@ class SeniorCareViewModel : ViewModel() {
 
     var isLoading = mutableStateOf(false)
         private set
+
+     var usuarioAtual by mutableStateOf(UsuarioCuidador())
+
+    var usuarioAtualizacao by mutableStateOf<UsuarioCuidador?>(null)
+
+
+    private val dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+    val dataNascimentoString: String
+        get() = usuarioAtual.dtNascimento?.format(dateFormatter) ?: ""
+
+    fun setDataNascimento(data: LocalDate) {
+        usuarioAtual = usuarioAtual.copy(dtNascimento = data)
+    }
+
+    var erroApi by mutableStateOf(false)
+
 
     // Função para realizar o login
     fun login(email: String, senha: String) {
@@ -45,26 +66,69 @@ class SeniorCareViewModel : ViewModel() {
         }
     }
 
-    // Função para criar um novo usuário (ex: responsável)
-    fun createUsuario(usuario: UsuarioCuidador) {
-        viewModelScope.launch {
-            isLoading.value = true
-            try {
-                val response = api.createUsuario(usuario)
 
-                if (response.isSuccessful) {
-                    Log.i("SeniorCareViewModel", "Usuário criado: ${response.body()}")
-                } else {
-                    errorMessage.value = "Erro ao criar usuário: ${response.errorBody()?.string()}"
-                }
-            } catch (e: Exception) {
-                errorMessage.value = "Erro ao criar usuário: ${e.message}"
-                Log.e("SeniorCareViewModel", "Erro ao criar usuário", e)
-            } finally {
-                isLoading.value = false
+    fun salvar() {
+        GlobalScope.launch {
+            try {
+                  var resposta = api.createUsuario(usuarioAtual)
+                    if (resposta.isSuccessful) {
+                       // usuarioAtual = filmes.last() // atualizando o filmeAtual para que ele tenha um id que veio da API
+                        Log.i("SeniorCareViewModel", "Usuário criado: ${resposta.body()}")
+                        erroApi = false
+                    } else {
+                        Log.e("api", "Erro ao cadastrar filme: ${resposta.errorBody()?.string()}")
+                        erroApi = true
+                    }
+            } catch (exception: Exception) {
+                Log.e("api", "Erro ao cadastrar/atualizar filme", exception)
+                erroApi = true
             }
+            // filmeEmAtualizacao = null
         }
     }
+fun atualizar(){
+    GlobalScope.launch {
+        try {
+            //filmeEmAtualizacao = filmeAtual
+                var resposta = api.updateUsuario(usuarioAtual.id!!, usuarioAtual)
+                if (resposta.isSuccessful) {
+               //     filmes[filmes.indexOfFirst { it.id == filmeAtual.id }] = resposta.body()!! // atualizando a lista com o corpo da resposta
+                    erroApi = false
+                } else {
+                    Log.e("api", "Erro ao atualizar o usuário: ${resposta.errorBody()?.string()}")
+                    erroApi = true
+                }
+
+        } catch (exception: Exception) {
+            Log.e("api", "Erro ao atualizar o usuário", exception)
+            erroApi = true
+        }
+
+    }
+}
+
+
+
+    // Função para criar um novo usuário (ex: responsável)
+//    fun createUsuario(usuario: UsuarioCuidador) {
+//        viewModelScope.launch {
+//            isLoading.value = true
+//            try {
+//                val response = api.createUsuario(usuario)
+//
+//                if (response.isSuccessful) {
+//                    Log.i("SeniorCareViewModel", "Usuário criado: ${response.body()}")
+//                } else {
+//                    errorMessage.value = "Erro ao criar usuário: ${response.errorBody()?.string()}"
+//                }
+//            } catch (e: Exception) {
+//                errorMessage.value = "Erro ao criar usuário: ${e.message}"
+//                Log.e("SeniorCareViewModel", "Erro ao criar usuário", e)
+//            } finally {
+//                isLoading.value = false
+//            }
+//        }
+//    }
 
     // Função para obter todos os usuários
     fun getAllUsuarios() {

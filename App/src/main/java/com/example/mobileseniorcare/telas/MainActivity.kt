@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
@@ -36,6 +37,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.R
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
 class MainActivity : ComponentActivity() {
@@ -57,19 +59,22 @@ class MainActivity : ComponentActivity() {
                             Cadastro1(navController)
                         }
                         composable("cadastro2") {
-                            Cadastro2(navController)
+                                Cadastro2(navController)
                         }
                         composable("cadastro3") {
-                            Cadastro3(navController)
+                                Cadastro3(navController)
                         }
                         composable("cadastro4") {
-                            Cadastro4(navController)
+                                Cadastro4(navController)
+
                         }
                         composable("cadastro5") {
-                            Cadastro5(navController)
+                                Cadastro5(navController)
+
                         }
                         composable("cadastro6") {
-                            Cadastro6(navController)
+                                Cadastro6(navController)
+
                         }
                         composable("login") {
                            LoginSenior(navController)
@@ -159,7 +164,7 @@ fun TelaInicial(navController: NavHostController, modifier: Modifier = Modifier)
                 }
 
                 Button(
-                    onClick = { navController.navigate(route = "login") },
+                    onClick = { navController.navigate(route = "Login") },
                     modifier = Modifier
                         .width(150.dp)
                         .height(40.dp),

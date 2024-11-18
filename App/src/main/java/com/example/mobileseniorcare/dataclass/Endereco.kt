@@ -3,7 +3,7 @@ package com.example.mobileseniorcare.dataclass
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 
 data class Endereco(
-    var cep: String? = null,
+    val cep: String? = null,
     val logradouro: String? = null,
     val complemento: String? = null,
     val numero: String? = null,

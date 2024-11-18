@@ -11,6 +11,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,21 +27,33 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
@@ -62,10 +81,20 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.window.Popup
 import androidx.lifecycle.ViewModel
 import com.example.mobileseniorcare.api.RetrofitService
+import com.example.mobileseniorcare.dataclass.Ajuda
 import com.example.mobileseniorcare.dataclass.CepResponse
+import com.example.mobileseniorcare.dataclass.Endereco
+import com.example.mobileseniorcare.dataclass.Idioma
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
@@ -76,6 +105,12 @@ import com.google.gson.annotations.SerializedName
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.util.Date
+import java.util.Locale
 import kotlin.text.Typography.dagger
 
 
@@ -106,14 +141,16 @@ fun buscarCep(cep: String, onResult: (CepResponse?) -> Unit) {
 
 
 @Composable
-fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
-    var usuarioCuidador = UsuarioCuidador();
+fun Cadastro1(navController: NavHostController, viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
+   // var usuarioCuidador = UsuarioCuidador();
     var email by remember { mutableStateOf("") }
     var senha by remember { mutableStateOf("") }
     var confirmarSenha by remember { mutableStateOf("") }
     var cep by remember { mutableStateOf("") }
     var nome by remember { mutableStateOf("") }
     var selectedOption by remember { mutableStateOf("") }
+   // val usuarioCuidador = rememberSaveable { UsuarioCuidador() }
+
 
     val labelColor = Color(0xFF000000)
     val borderColor = Color(0xFF077DB0)
@@ -127,6 +164,17 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
     var cepError by remember { mutableStateOf(false) }
     var nomeError by remember { mutableStateOf(false) }
     var selectedOptionError by remember { mutableStateOf(false) }
+
+//    fun validarCadastro(confirmarSenha: String): Boolean {
+//        emailError = viewModel.usuarioAtual.email.isNullOrEmpty()
+//        senhaError = viewModel.usuarioAtual.senha.isNullOrEmpty()
+//        confirmarSenhaError = confirmarSenha.isEmpty() || viewModel.usuarioAtual.senha != confirmarSenha
+//        cepError = viewModel.usuarioAtual.endereco?.cep.isNullOrEmpty()
+//        nomeError = viewModel.usuarioAtual.nome.isNullOrEmpty()
+//        selectedOptionError = viewModel.usuarioAtual.tipoDeUsuario.isNullOrEmpty()
+//
+//        return !(emailError || senhaError || confirmarSenhaError || cepError || nomeError || selectedOptionError)
+//    }
 
     Box(
         modifier = modifier
@@ -164,12 +212,10 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(36.dp))
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_nome), color = labelColor) },
-                value = nome,
+                value = viewModel.usuarioAtual.nome ?: "",
                 onValueChange = {
-                    email = it
-                    usuarioCuidador.nome = nome
-                    emailError = email.isEmpty()
-                },
+                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(nome = it)
+                    nomeError = viewModel.usuarioAtual.nome.isNullOrEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -185,12 +231,9 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_email), color = labelColor) },
-                value = email,
-                onValueChange = {
-                    email = it;
-                    usuarioCuidador.email = email
-                    emailError = email.isEmpty()
-                                },
+                value = viewModel.usuarioAtual.email ?: "",
+                onValueChange = { viewModel.usuarioAtual = viewModel.usuarioAtual.copy(email = it)
+                    emailError = viewModel.usuarioAtual.email.isNullOrEmpty() },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -205,8 +248,8 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_senha), color = labelColor) },
-                value = senha,
-                onValueChange = { senha = it; usuarioCuidador.senha = it; senhaError = senha.isEmpty() },
+                value = viewModel.usuarioAtual.senha ?: "",
+                onValueChange = { viewModel.usuarioAtual = viewModel.usuarioAtual.copy(senha = it) },
                 modifier = Modifier.fillMaxWidth(),
                 visualTransformation = PasswordVisualTransformation(),
                 colors = OutlinedTextFieldDefaults.colors(
@@ -223,8 +266,10 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_confirmar_senha), color = labelColor) },
                 value = confirmarSenha,
-                onValueChange = { confirmarSenha = it; confirmarSenhaError = confirmarSenha.isEmpty() },
-                modifier = Modifier.fillMaxWidth(),
+                onValueChange = {
+                    confirmarSenha = it
+                    confirmarSenhaError = confirmarSenha.isEmpty() || confirmarSenha != viewModel.usuarioAtual.senha
+                },  modifier = Modifier.fillMaxWidth(),
                 visualTransformation = PasswordVisualTransformation(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -234,15 +279,26 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
                 )
             )
             if (confirmarSenhaError) {
-                Text(stringResource(R.string.error_confirmar_senha), color = Color.Red, style = TextStyle(fontSize = 12.sp))
-            } else if (senha != confirmarSenha) {
-                Text(stringResource(R.string.error_senha_diferente), color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                if (confirmarSenha.isEmpty()) {
+                    Text(stringResource(R.string.error_confirmar_senha), color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                } else {
+                    Text(stringResource(R.string.error_senha_diferente), color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                }
             }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_cep), color = labelColor) },
-                value = cep,
-                onValueChange = { cep = it; usuarioCuidador.endereco?.cep = it; cepError = cep.isEmpty() },
+                value = viewModel.usuarioAtual.endereco?.cep ?: "",
+                onValueChange = { cepValue ->
+                    val enderecoAtualizado = viewModel.usuarioAtual.endereco?.copy(cep = cepValue)
+                        ?: Endereco(cep = cepValue) // Cria um novo Endereco com o CEP
+
+                    // Atualiza o UsuarioCuidador com o endereco atualizado
+                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(endereco = enderecoAtualizado)
+
+                    // Atualiza o erro de cep
+                    cepError = cepValue.isEmpty()
+                },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -263,7 +319,7 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(
-                    onClick = { selectedOption = "Cuidador"; usuarioCuidador.tipoDeUsuario = selectedOption; selectedOptionError = false },
+                    onClick = { selectedOption = "Cuidador"; viewModel.usuarioAtual.tipoDeUsuario = selectedOption; selectedOptionError = false },
                     modifier = Modifier
                         .weight(1f)
                         .border(
@@ -280,7 +336,7 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
                 }
                 Spacer(modifier = Modifier.width(16.dp))
                 Button(
-                    onClick = { selectedOption = "Responsável";  usuarioCuidador.tipoDeUsuario = selectedOption; selectedOptionError = false },
+                    onClick = { selectedOption = "Responsável";  viewModel.usuarioAtual.tipoDeUsuario = selectedOption; selectedOptionError = false },
                     modifier = Modifier
                         .weight(1f)
                         .border(
@@ -302,16 +358,19 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(40.dp))
             Button(
                 onClick = {
-                    emailError = email.isEmpty()
-                    senhaError = senha.isEmpty()
-                    confirmarSenhaError = confirmarSenha.isEmpty()
-                    cepError = cep.isEmpty()
-                    nomeError = nome.isEmpty()
-                    selectedOptionError = selectedOption.isEmpty()
-                    if (senha != confirmarSenha){
+                    emailError = viewModel.usuarioAtual.email.isNullOrEmpty()
+                    senhaError = viewModel.usuarioAtual.senha.isNullOrEmpty()
+                    confirmarSenhaError = confirmarSenha.isEmpty() || confirmarSenha != viewModel.usuarioAtual.senha
+                    cepError = viewModel.usuarioAtual.endereco?.cep.isNullOrEmpty()
+                    nomeError = viewModel.usuarioAtual.nome.isNullOrEmpty()
+                    selectedOptionError = viewModel.usuarioAtual.tipoDeUsuario.isNullOrEmpty()
 
+                    if (confirmarSenha != viewModel.usuarioAtual.senha) {
+                        confirmarSenhaError = true
                         return@Button;
                     }
+
+
                     if (!emailError && !senhaError && !confirmarSenhaError && !cepError && !nomeError  && !selectedOptionError) {
                         navController.navigate(route = "cadastro2")
                     }
@@ -344,7 +403,7 @@ fun Cadastro1(navController: NavHostController, modifier: Modifier = Modifier) {
 
 
 @Composable
-fun Cadastro2(navController: NavHostController, modifier: Modifier = Modifier, usuarioCuidador: UsuarioCuidador) {
+fun Cadastro2(navController: NavHostController, viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier, ) {
 
     var logradouro by remember { mutableStateOf("") }
     var numero by remember { mutableStateOf("") }
@@ -523,8 +582,15 @@ fun Cadastro2(navController: NavHostController, modifier: Modifier = Modifier, u
     }
 }
 
+fun convertMillisToLocalDate(millis: Long?): LocalDate? {
+    return millis?.let {
+        Instant.ofEpochMilli(it).atZone(ZoneId.systemDefault()).toLocalDate()
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Cadastro3(navController: NavHostController, modifier: Modifier = Modifier, usuarioCuidador: UsuarioCuidador) {
+fun Cadastro3(navController: NavHostController, viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
     var dtNascimento by remember { mutableStateOf("") }
     var celular by remember { mutableStateOf("") }
     var idioma by remember { mutableStateOf("") }
@@ -542,6 +608,15 @@ fun Cadastro3(navController: NavHostController, modifier: Modifier = Modifier, u
     var celularError by remember { mutableStateOf(false) }
     var idiomaError by remember { mutableStateOf(false) }
     var tempoExperienciaError by remember { mutableStateOf(false) }
+
+    var showDatePicker by remember { mutableStateOf(false) }
+    val datePickerState = rememberDatePickerState()
+    //val selectedDate = datePickerState.selectedDateMillis?.let { convertMillisToDate(it) } ?: ""
+
+    val dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+
+// Converter LocalDate para String usando o formatador
+    val selectedDateString = viewModel.usuarioAtual.dtNascimento?.format(dateFormatter) ?: ""
 
     Box(
         modifier = modifier
@@ -577,6 +652,14 @@ fun Cadastro3(navController: NavHostController, modifier: Modifier = Modifier, u
             verticalArrangement = Arrangement.Top
         ) {
             Spacer(modifier = Modifier.height(36.dp))
+
+            // Atualiza a data no ViewModel quando o usuário escolhe uma data
+//            LaunchedEffect(selectedDate) {
+//                if (selectedDate.isNotEmpty()) {
+//                    val newDate = LocalDate.parse(selectedDate, dateFormatter)
+//                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(dtNascimento = newDate)
+//                }
+
             OutlinedTextField(
                 label = {
                     Text(
@@ -584,16 +667,68 @@ fun Cadastro3(navController: NavHostController, modifier: Modifier = Modifier, u
                         color = labelColor
                     )
                 },
-                value = dtNascimento,
-                onValueChange = { dtNascimento = it; dtNascimentoError = dtNascimento.isEmpty() },
-                modifier = Modifier.fillMaxWidth(),
+                value = selectedDateString,
+                onValueChange = { },
+                readOnly = true,
+                isError = dtNascimentoError,
+                trailingIcon = {
+                    IconButton(onClick = { showDatePicker = !showDatePicker }) {
+                        Icon(
+                            imageVector = Icons.Default.DateRange,
+                            contentDescription = "Selecionar data"
+                        )
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(64.dp),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = borderColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor,
-                    unfocusedTextColor = textColor
+                    focusedBorderColor = Color.Gray,
+                    unfocusedBorderColor = Color.Gray,
+                    focusedTextColor = Color.Black,
+                    unfocusedTextColor = Color.Black
                 )
             )
+
+            if (showDatePicker) {
+                Popup(
+                    onDismissRequest = { showDatePicker = false },
+                    alignment = Alignment.TopStart
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth() // Certifique-se de que a Box preenche toda a largura
+                            .offset(y = 64.dp)
+                            .shadow(elevation = 4.dp)
+                            .background(MaterialTheme.colorScheme.surface)
+                          //  .padding(16.dp)
+                    ) {
+                        DatePicker(
+                            state = datePickerState,
+                            showModeToggle = false,
+                        )
+
+                        // Certifique-se de que o botão esteja dentro do Box
+                        Button(
+                            onClick = {
+                                val selectedDate =
+                                    convertMillisToLocalDate(datePickerState.selectedDateMillis)
+                                if (selectedDate != null) {
+                                    viewModel.usuarioAtual =
+                                        viewModel.usuarioAtual.copy(dtNascimento = selectedDate)
+                                }
+                                showDatePicker = false
+                            },
+                           modifier = Modifier.align(Alignment.BottomEnd)// Alinha o botão à direita dentro do Box
+                        ) {
+                            Text("Selecionar")
+                        }
+                    }
+                }
+            }
+
+
+
             if (dtNascimentoError) {
                 Text(
                     stringResource(R.string.error_data_nascimento),
@@ -604,8 +739,10 @@ fun Cadastro3(navController: NavHostController, modifier: Modifier = Modifier, u
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_celular), color = labelColor) },
-                value = celular,
-                onValueChange = { celular = it; celularError = celular.isEmpty() },
+                value = viewModel.usuarioAtual.telefone ?: "",
+                onValueChange = {
+                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(telefone = it)
+                },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
@@ -622,18 +759,7 @@ fun Cadastro3(navController: NavHostController, modifier: Modifier = Modifier, u
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextField(
-                label = { Text(stringResource(R.string.label_idioma), color = labelColor) },
-                value = idioma,
-                onValueChange = { idioma = it; idiomaError = idioma.isEmpty() },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = borderColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor,
-                    unfocusedTextColor = textColor
-                )
-            )
+                  IdiomasSelect(viewModel)
             if (idiomaError) {
                 Text(
                     stringResource(R.string.error_idioma),
@@ -649,9 +775,10 @@ fun Cadastro3(navController: NavHostController, modifier: Modifier = Modifier, u
                         color = labelColor
                     )
                 },
-                value = tempoExperiencia,
+                value = viewModel.usuarioAtual.experiencia ?: "",
                 onValueChange = {
-                    tempoExperiencia = it; tempoExperienciaError = tempoExperiencia.isEmpty()
+                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(experiencia = it)
+                    tempoExperienciaError = viewModel.usuarioAtual.experiencia.isNullOrEmpty()
                 },
                 modifier = Modifier.fillMaxWidth(),
                 colors = OutlinedTextFieldDefaults.colors(
@@ -678,16 +805,16 @@ fun Cadastro3(navController: NavHostController, modifier: Modifier = Modifier, u
             ) {
                 Button(
                     onClick = {
-                        dtNascimentoError = dtNascimento.isEmpty()
-                        tempoExperienciaError = tempoExperiencia.isEmpty()
-                        idiomaError = idioma.isEmpty()
-                        celularError = celular.isEmpty()
+                        dtNascimentoError = viewModel.usuarioAtual.dtNascimento == null
+                        tempoExperienciaError = viewModel.usuarioAtual.experiencia.isNullOrEmpty()
+                        idiomaError = viewModel.usuarioAtual.idiomas.isNullOrEmpty()
+                        celularError = viewModel.usuarioAtual.telefone.isNullOrEmpty()
 
 
                         if (!dtNascimentoError && !tempoExperienciaError && !celularError && !idiomaError) {
-                            if (usuarioCuidador.tipoDeUsuario.equals("Cuidador")) {
+                            if (viewModel.usuarioAtual.tipoDeUsuario.equals("Cuidador")) {
                                 navController.navigate(route = "cadastro4")
-                            }else{
+                            } else {
                                 navController.navigate(route = "cadastro6")
                             }
                         }
@@ -721,8 +848,12 @@ fun Cadastro3(navController: NavHostController, modifier: Modifier = Modifier, u
 }
 
 
+
+
+
+
 @Composable
-fun Cadastro4(navController: NavHostController, modifier: Modifier = Modifier) {
+fun Cadastro4(navController: NavHostController, viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
 
     var qtdIdosos by remember { mutableStateOf("") }
     var precoHora by remember { mutableStateOf("") }
@@ -779,9 +910,13 @@ fun Cadastro4(navController: NavHostController, modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(28.dp))
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_qtd_idosos), color = labelColor) },
-                value = qtdIdosos,
-                onValueChange = { qtdIdosos = it; qtdIdososError = qtdIdosos.isEmpty() },
-                modifier = Modifier.fillMaxWidth(),
+                value = viewModel.usuarioAtual.qtdIdoso?.toString() ?: "",
+                onValueChange = { newText -> val newQtdIdoso = newText.toIntOrNull()
+                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(qtdIdoso = newQtdIdoso)
+                }, modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Number
+                ),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
                     unfocusedBorderColor = borderColor,
@@ -796,9 +931,15 @@ fun Cadastro4(navController: NavHostController, modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_preco_hora), color = labelColor) },
-                value = precoHora,
-                onValueChange = { precoHora = it; precoHoraError = precoHora.isEmpty() },
-                modifier = Modifier.fillMaxWidth(),
+                value = viewModel.usuarioAtual.precoHora?.toString() ?: "", // Converte para String para exibição
+                onValueChange = { newText ->
+                    // Tente converter o texto inserido para Double
+                    val newPrecoHora = newText.toDoubleOrNull() ?: 0.0 // Usa 0.0 como valor padrão se for nulo
+                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(precoHora = newPrecoHora) // Atualiza o ViewModel
+                }, modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Decimal
+                ),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = borderColor,
                     unfocusedBorderColor = borderColor,
@@ -861,9 +1002,9 @@ fun Cadastro4(navController: NavHostController, modifier: Modifier = Modifier) {
             ) {
                 Button(
                     onClick = {
-                        qtdIdososError = qtdIdosos.isEmpty()
-                        precoHoraError = precoHora.isEmpty()
-                        ajudaError = ajuda.isEmpty()
+                        qtdIdososError = viewModel.usuarioAtual.qtdIdoso == null
+                        precoHoraError = viewModel.usuarioAtual.precoHora.isNaN() || viewModel.usuarioAtual.precoHora <= 0.0
+                        ajudaError = viewModel.usuarioAtual.ajuda.isNullOrEmpty()
 
                         if (!qtdIdososError && !precoHoraError && !ajudaError) {
                             navController.navigate(route = "cadastro5")
@@ -900,21 +1041,30 @@ fun Cadastro4(navController: NavHostController, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun Cadastro5(navController: NavHostController, modifier: Modifier = Modifier) {
-        var text by remember { mutableStateOf("") }
-        val selectedOptions = remember { mutableStateOf(mutableSetOf<String>()) }
+fun Cadastro5(navController: NavHostController , viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
+       // var text by remember { mutableStateOf("") }
+      //  val selectedOptions = remember { mutableStateOf(mutableSetOf<String>()) }
         val borderColor = Color(0xFF077DB0)
         val buttonBackgroundColor = Color(0xFF077DB0)
         val buttonTextColor = Color.White
         val buttonWhiteTextColor = Color(0xFF077DB0)
         val buttonWhiteBackgroundColor = Color.White
+        var text by remember { mutableStateOf(viewModel.usuarioAtual.apresentacao ?: "") }
+        val selectedOptions = remember { mutableStateOf(mutableSetOf<String>()) }
 
-        val options = listOf(
+
+    val options = listOf(
             stringResource(R.string.label_cnh),
             stringResource(R.string.label_diploma_enfermagem),
             stringResource(R.string.label_certificado_primeiros_socorros),
             stringResource(R.string.label_cuidador)
         )
+
+    fun updateAjuda() {
+        viewModel.usuarioAtual.ajuda = selectedOptions.value.map { option ->
+            Ajuda(nome  = option)
+        }
+    }
 
         val canProceed = text.isNotBlank() && selectedOptions.value.isNotEmpty()
 
@@ -975,6 +1125,7 @@ fun Cadastro5(navController: NavHostController, modifier: Modifier = Modifier) {
                                             } else {
                                                 selectedOptions.value.add(option)
                                             }
+                                            updateAjuda()
                                         },
                                         shape = RoundedCornerShape(7.dp),
                                         colors = ButtonDefaults.buttonColors(
@@ -999,7 +1150,7 @@ fun Cadastro5(navController: NavHostController, modifier: Modifier = Modifier) {
                         Text(text = stringResource(R.string.label_apresente_se), fontSize = 20.sp)
                         OutlinedTextField(
                             value = text,
-                            onValueChange = { newText -> text = newText },
+                            onValueChange = { newText -> text = newText ;  viewModel.usuarioAtual.apresentacao = newText },
                             modifier = Modifier.fillMaxWidth().height(200.dp),
                             maxLines = 5,
                             singleLine = false
@@ -1048,7 +1199,7 @@ fun Cadastro5(navController: NavHostController, modifier: Modifier = Modifier) {
 
 
     @Composable
-fun Cadastro6(navController: NavHostController, modifier: Modifier = Modifier) {
+fun Cadastro6(navController: NavHostController , viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
     val checkboxesState = remember {
         mutableStateListOf(
             false, false, false, false, false, false, false, false, false,
@@ -1383,6 +1534,180 @@ fun LoginSenior(navController: NavHostController, modifier: Modifier = Modifier)
     }
 }
 
+//@Composable
+//fun dropDownMenu() {
+//
+//    var expanded by remember { mutableStateOf(false) }
+//    val idiomasDisponiveis = listOf("Português", "Inglês", "Espanhol", "Francês", "Alemão")
+//    val suggestions = listOf("Kotlin", "Java", "Dart", "Python")
+//    var selectedText by remember { mutableStateOf("") }
+//
+//    var textfieldSize by remember { mutableStateOf(Size.Zero)}
+//
+//    val icon = if (expanded)
+//        Icons.Filled.KeyboardArrowUp
+//    else
+//        Icons.Filled.KeyboardArrowDown
+//
+//
+//    Column(Modifier.padding(20.dp)) {
+//        OutlinedTextField(
+//            value = selectedText,
+//            onValueChange = { selectedText = it },
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .onGloballyPositioned { coordinates ->
+//                    //This value is used to assign to the DropDown the same width
+//                    textfieldSize = coordinates.size.toSize()
+//                },
+//            label = {Text("Label")},
+//            trailingIcon = {
+//                Icon(icon,"contentDescription",
+//                    Modifier.clickable { expanded = !expanded })
+//            }
+//        )
+//        DropdownMenu(
+//            expanded = expanded,
+//            onDismissRequest = { expanded = false },
+//            modifier = Modifier
+//                .width(with(LocalDensity.current){textfieldSize.width.toDp()})
+//        ) {
+//            suggestions.forEach { label ->
+//                DropdownMenuItem(onClick = {
+//                    selectedText = label
+//                    expanded = false
+//                }) {
+//                    Text(text = label)
+//                }
+//            }
+//        }
+//    }
+
+
+    @Composable
+    fun IdiomasSelect( viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
+        var expandida by remember { mutableStateOf(false) }
+        var novaFruta by remember { mutableStateOf<Idioma?>(null) }
+        val idiomasDisponiveis = listOf("Português", "Inglês", "Espanhol", "Francês", "Alemão")
+        var expanded by remember { mutableStateOf(false) }
+        var selectedIdioma by remember { mutableStateOf("Selecione um idioma") }
+
+        val frutas = remember {
+            mutableStateListOf<Idioma>(
+                Idioma("Inglês"),
+                Idioma("Inglês"),
+                Idioma("Maçã")
+            )
+        }
+
+        Column(modifier = modifier) {
+            ClickableText(
+                text = AnnotatedString(
+                    if (novaFruta == null) "Selecione a fruta"
+                    else novaFruta!!.idioma
+                ),
+                onClick = { expandida = !expandida },
+                modifier = modifier.padding(5.dp)
+            )
+            Box { // O DropdownMenu precisa estar dentro de um Box para ficar 'por cima' dos outros elementos
+                DropdownMenu(
+                    expanded = expandida, // indica se está expandido
+                    onDismissRequest = { expandida = false } // ação ao clicar fora
+                ) {
+                    frutas.toList().forEach {
+                        DropdownMenuItem( // item da lista drop down
+                            text = { Text("${it.idioma} ") },
+                            onClick = {
+                                novaFruta = it
+                                expandida = false
+                            }
+                        )
+                    }
+                }
+//             //    Atualiza a lista de idiomas no ViewModel
+//                    val currentIdiomas = viewModel.usuarioAtual.idiomas?.toMutableList() ?: mutableListOf()
+//                    if (!currentIdiomas.any { it.idioma == idioma }) {
+//                        currentIdiomas.add(Idioma(idioma))
+//                    }
+//
+//                    // Atualiza o estado do usuário com a nova lista de idiomas
+//                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(idiomas = currentIdiomas)
+//            }
+                if (novaFruta != null) {
+                    Text("Escolhida: ${novaFruta?.idioma}")
+                }
+
+            }
+        }
+    }
+
+
+
+//        @Composable
+//fun IdiomasSelectss(viewModel: SeniorCareViewModel) {
+//    val idiomasDisponiveis = listOf("Português", "Inglês", "Espanhol", "Francês", "Alemão")
+//    var expanded by remember { mutableStateOf(false) }
+//    var selectedIdioma by remember { mutableStateOf("Selecione um idioma") }
+//
+//    Column {
+//        Text(
+//            text = "Selecione os Idiomas",
+//            style = MaterialTheme.typography.bodyMedium,
+//            color = Color.Black,
+//            modifier = Modifier.padding(bottom = 8.dp)
+//        )
+//
+//        // Botão que ao ser clicado abre o menu de seleção
+//        OutlinedButton(
+//            onClick = { expanded = !expanded },
+//            modifier = Modifier.fillMaxWidth()
+//        ) {
+//            // Passamos o texto diretamente aqui
+//            Text(text = selectedIdioma.ifEmpty { "Selecione um idioma" })
+//        }
+//
+//        // Dropdown menu
+//        DropdownMenu(
+//            expanded = expanded,
+//            onDismissRequest = { expanded = false },
+//            modifier = Modifier.fillMaxWidth()
+//        ) {
+//            idiomasDisponiveis.forEach { idioma ->
+//                DropdownMenuItem(  text = {
+//                    Text("${it.nome} - R$${it.preco}") } },
+//                    onClick = {
+//                    selectedIdioma = idioma
+//                    expanded = false
+//
+//                    // Atualiza a lista de idiomas no ViewModel
+//                    val currentIdiomas = viewModel.usuarioAtual.idiomas?.toMutableList() ?: mutableListOf()
+//                    if (!currentIdiomas.any { it.idioma == idioma }) {
+//                        currentIdiomas.add(Idioma(idioma))
+//                    }
+//
+//                    // Atualiza o estado do usuário com a nova lista de idiomas
+//                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(idiomas = currentIdiomas)
+//                }) {
+//                    Text(text = idioma)
+//                }
+//            }
+//        }
+//
+//        // Exibe os idiomas selecionados
+//        if (!viewModel.usuarioAtual.idiomas.isNullOrEmpty()) {
+//            Text(
+//                text = "Idiomas selecionados: ${viewModel.usuarioAtual.idiomas?.joinToString(", ") { it.idioma }}",
+//                style = MaterialTheme.typography.bodyMedium,
+//                color = Color.Black,
+//                modifier = Modifier.padding(top = 8.dp)
+//            )
+//        }
+//    }
+//}
+//
+//fun isIdiomaSelecionado(idioma: String, idiomasSelecionados: List<Idioma>): Boolean {
+//    return idiomasSelecionados.any { it.idioma == idioma }
+//}
 
 
 

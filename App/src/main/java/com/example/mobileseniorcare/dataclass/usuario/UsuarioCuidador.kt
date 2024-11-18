@@ -10,6 +10,7 @@ import com.example.mobileseniorcare.dataclass.Idoso
 import java.time.LocalDate
 
 data class UsuarioCuidador(
+    var id: Int? = null,
     var nome: String? = "",
     var email: String? = "",
     var senha: String? = "",
@@ -27,6 +28,7 @@ data class UsuarioCuidador(
     var favoritos: List<Favorito>? = null,
     var experiencia: String? = null,
     var endereco: Endereco? = null,
+    var qtdIdoso: Int? = null,
     var precoHora: Double = 0.0,
     var caracteristicas: List<Caracteristica> = emptyList(),
     var ajuda: List<Ajuda> = emptyList()
