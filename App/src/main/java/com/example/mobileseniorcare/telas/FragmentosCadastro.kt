@@ -1,18 +1,10 @@
 package com.example.mobileseniorcare.telas
 
-import android.content.Intent
-import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -38,9 +30,6 @@ import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
@@ -80,12 +69,7 @@ import com.example.mobileseniorcare.api.SeniorCareViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.window.Popup
@@ -95,13 +79,6 @@ import com.example.mobileseniorcare.dataclass.Ajuda
 import com.example.mobileseniorcare.dataclass.CepResponse
 import com.example.mobileseniorcare.dataclass.Endereco
 import com.example.mobileseniorcare.dataclass.Idioma
-import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
-import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Path
-import com.google.gson.annotations.SerializedName
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -109,9 +86,6 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import java.util.Date
-import java.util.Locale
-import kotlin.text.Typography.dagger
 
 
 @Composable
@@ -142,22 +116,9 @@ fun buscarCep(cep: String, onResult: (CepResponse?) -> Unit) {
 
 @Composable
 fun Cadastro1(navController: NavHostController, viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
-   // var usuarioCuidador = UsuarioCuidador();
-    var email by remember { mutableStateOf("") }
-    var senha by remember { mutableStateOf("") }
+
+    // Estados e variáveis de erro
     var confirmarSenha by remember { mutableStateOf("") }
-    var cep by remember { mutableStateOf("") }
-    var nome by remember { mutableStateOf("") }
-    var selectedOption by remember { mutableStateOf("") }
-   // val usuarioCuidador = rememberSaveable { UsuarioCuidador() }
-
-
-    val labelColor = Color(0xFF000000)
-    val borderColor = Color(0xFF077DB0)
-    val buttonBackgroundColor = Color(0xFF077DB0)
-    val buttonTextColor = Color.White
-    val textColor = Color.Black
-
     var emailError by remember { mutableStateOf(false) }
     var senhaError by remember { mutableStateOf(false) }
     var confirmarSenhaError by remember { mutableStateOf(false) }
@@ -165,16 +126,49 @@ fun Cadastro1(navController: NavHostController, viewModel: SeniorCareViewModel =
     var nomeError by remember { mutableStateOf(false) }
     var selectedOptionError by remember { mutableStateOf(false) }
 
-//    fun validarCadastro(confirmarSenha: String): Boolean {
-//        emailError = viewModel.usuarioAtual.email.isNullOrEmpty()
-//        senhaError = viewModel.usuarioAtual.senha.isNullOrEmpty()
-//        confirmarSenhaError = confirmarSenha.isEmpty() || viewModel.usuarioAtual.senha != confirmarSenha
-//        cepError = viewModel.usuarioAtual.endereco?.cep.isNullOrEmpty()
-//        nomeError = viewModel.usuarioAtual.nome.isNullOrEmpty()
-//        selectedOptionError = viewModel.usuarioAtual.tipoDeUsuario.isNullOrEmpty()
-//
-//        return !(emailError || senhaError || confirmarSenhaError || cepError || nomeError || selectedOptionError)
-//    }
+    // Estilos
+    val labelColor = Color(0xFF000000)
+    val borderColor = Color(0xFF077DB0)
+    val buttonBackgroundColor = Color(0xFF077DB0)
+    val buttonTextColor = Color.White
+    val textColor = Color.Black
+
+    // Função para reutilizar campos de texto
+    @Composable
+    fun CustomOutlinedTextField(
+        label: String,
+        value: String,
+        onValueChange: (String) -> Unit,
+        isError: Boolean
+    ) {
+        OutlinedTextField(
+            value = value,
+            onValueChange = onValueChange,
+            label = { Text(label, color = labelColor) },
+            modifier = Modifier.fillMaxWidth(),
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = borderColor,
+                unfocusedBorderColor = borderColor,
+                focusedTextColor = textColor,
+                unfocusedTextColor = textColor
+            ),
+            isError = isError
+        )
+        if (isError) {
+            Text("Erro no $label", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+        }
+    }
+
+    // Função de validação
+    fun validarCadastro(): Boolean {
+        emailError = viewModel.usuarioAtual.email.isNullOrEmpty()
+        senhaError = viewModel.usuarioAtual.senha.isNullOrEmpty()
+        confirmarSenhaError = confirmarSenha.isEmpty() || confirmarSenha != viewModel.usuarioAtual.senha
+        cepError = viewModel.usuarioAtual.endereco?.cep.isNullOrEmpty()
+        nomeError = viewModel.usuarioAtual.nome.isNullOrEmpty()
+        selectedOptionError = viewModel.usuarioAtual.tipoDeUsuario.isNullOrEmpty()
+        return !(emailError || senhaError || confirmarSenhaError || cepError || nomeError || selectedOptionError)
+    }
 
     Box(
         modifier = modifier
@@ -192,7 +186,7 @@ fun Cadastro1(navController: NavHostController, viewModel: SeniorCareViewModel =
             Image(
                 painter = painterResource(id = R.drawable.logo_mobile),
                 contentDescription = "Logo do Mobile Senior Care",
-                modifier = Modifier.size(150.dp),
+                modifier = Modifier.size(150.dp)
             )
         }
 
@@ -209,109 +203,44 @@ fun Cadastro1(navController: NavHostController, viewModel: SeniorCareViewModel =
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
-            Spacer(modifier = Modifier.height(36.dp))
-            OutlinedTextField(
-                label = { Text(stringResource(R.string.label_nome), color = labelColor) },
+            Spacer(modifier = Modifier.height(16.dp))
+            CustomOutlinedTextField(
+                label = "Nome",
                 value = viewModel.usuarioAtual.nome ?: "",
                 onValueChange = {
                     viewModel.usuarioAtual = viewModel.usuarioAtual.copy(nome = it)
-                    nomeError = viewModel.usuarioAtual.nome.isNullOrEmpty() },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = borderColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor,
-                    unfocusedTextColor = textColor
-                )
+                    nomeError = viewModel.usuarioAtual.nome.isNullOrEmpty()
+                },
+                isError = nomeError
             )
-            if (nomeError) {
-                Text(stringResource(R.string.error_nome), color = Color.Red, style = TextStyle(fontSize = 12.sp))
-            }
-
             Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextField(
-                label = { Text(stringResource(R.string.label_email), color = labelColor) },
+            CustomOutlinedTextField(
+                label = "Email",
                 value = viewModel.usuarioAtual.email ?: "",
-                onValueChange = { viewModel.usuarioAtual = viewModel.usuarioAtual.copy(email = it)
-                    emailError = viewModel.usuarioAtual.email.isNullOrEmpty() },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = borderColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor,
-                    unfocusedTextColor = textColor
-                )
+                onValueChange = {
+                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(email = it)
+                    emailError = viewModel.usuarioAtual.email.isNullOrEmpty()
+                },
+                isError = emailError
             )
-            if (emailError) {
-                Text(stringResource(R.string.error_email), color = Color.Red, style = TextStyle(fontSize = 12.sp))
-            }
             Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextField(
-                label = { Text(stringResource(R.string.label_senha), color = labelColor) },
+            CustomOutlinedTextField(
+                label = "Senha",
                 value = viewModel.usuarioAtual.senha ?: "",
                 onValueChange = { viewModel.usuarioAtual = viewModel.usuarioAtual.copy(senha = it) },
-                modifier = Modifier.fillMaxWidth(),
-                visualTransformation = PasswordVisualTransformation(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = borderColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor,
-                    unfocusedTextColor = textColor
-                )
+                isError = senhaError
             )
-            if (senhaError) {
-                Text(stringResource(R.string.error_senha), color = Color.Red, style = TextStyle(fontSize = 12.sp))
-            }
             Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextField(
-                label = { Text(stringResource(R.string.label_confirmar_senha), color = labelColor) },
+            CustomOutlinedTextField(
+                label = "Confirmar Senha",
                 value = confirmarSenha,
                 onValueChange = {
                     confirmarSenha = it
                     confirmarSenhaError = confirmarSenha.isEmpty() || confirmarSenha != viewModel.usuarioAtual.senha
-                },  modifier = Modifier.fillMaxWidth(),
-                visualTransformation = PasswordVisualTransformation(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = borderColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor,
-                    unfocusedTextColor = textColor
-                )
-            )
-            if (confirmarSenhaError) {
-                if (confirmarSenha.isEmpty()) {
-                    Text(stringResource(R.string.error_confirmar_senha), color = Color.Red, style = TextStyle(fontSize = 12.sp))
-                } else {
-                    Text(stringResource(R.string.error_senha_diferente), color = Color.Red, style = TextStyle(fontSize = 12.sp))
-                }
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextField(
-                label = { Text(stringResource(R.string.label_cep), color = labelColor) },
-                value = viewModel.usuarioAtual.endereco?.cep ?: "",
-                onValueChange = { cepValue ->
-                    val enderecoAtualizado = viewModel.usuarioAtual.endereco?.copy(cep = cepValue)
-                        ?: Endereco(cep = cepValue) // Cria um novo Endereco com o CEP
-
-                    // Atualiza o UsuarioCuidador com o endereco atualizado
-                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(endereco = enderecoAtualizado)
-
-                    // Atualiza o erro de cep
-                    cepError = cepValue.isEmpty()
                 },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = borderColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor,
-                    unfocusedTextColor = textColor
-                )
+                isError = confirmarSenhaError
             )
-            if (cepError) {
-                Text(stringResource(R.string.error_cep), color = Color.Red, style = TextStyle(fontSize = 12.sp))
-            }
-            Spacer(modifier = Modifier.height(24.dp))
-
+            Spacer(modifier = Modifier.height(16.dp))
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -319,110 +248,68 @@ fun Cadastro1(navController: NavHostController, viewModel: SeniorCareViewModel =
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(
-                    onClick = { selectedOption = "Cuidador"; viewModel.usuarioAtual.tipoDeUsuario = selectedOption; selectedOptionError = false },
-                    modifier = Modifier
-                        .weight(1f)
-                        .border(
-                            width = 1.dp,
-                            color = if (selectedOption == "Cuidador") Color.White else borderColor,
-                            shape = RoundedCornerShape(8.dp)
-                        ),
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                        containerColor = if (selectedOption == "Cuidador") buttonBackgroundColor else Color.White,
-                        contentColor = if (selectedOption == "Cuidador") buttonTextColor else buttonBackgroundColor
+                    onClick = { viewModel.usuarioAtual.tipoDeUsuario = "Cuidador"; selectedOptionError = false },
+                    modifier = Modifier.weight(1f),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = if (viewModel.usuarioAtual.tipoDeUsuario == "Cuidador") buttonBackgroundColor else Color.White
                     )
                 ) {
                     Text("Cuidador")
                 }
                 Spacer(modifier = Modifier.width(16.dp))
                 Button(
-                    onClick = { selectedOption = "Responsável";  viewModel.usuarioAtual.tipoDeUsuario = selectedOption; selectedOptionError = false },
-                    modifier = Modifier
-                        .weight(1f)
-                        .border(
-                            width = 1.dp,
-                            color = if (selectedOption == "Responsável") Color.White else borderColor,
-                            shape = RoundedCornerShape(8.dp)
-                        ),
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                        containerColor = if (selectedOption == "Responsável") buttonBackgroundColor else Color.White,
-                        contentColor = if (selectedOption == "Responsável") buttonTextColor else buttonBackgroundColor
+                    onClick = { viewModel.usuarioAtual.tipoDeUsuario = "Responsável"; selectedOptionError = false },
+                    modifier = Modifier.weight(1f),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = if (viewModel.usuarioAtual.tipoDeUsuario == "Responsável") buttonBackgroundColor else Color.White
                     )
                 ) {
                     Text("Responsável")
                 }
             }
             if (selectedOptionError) {
-                Text(stringResource(R.string.error_opcao), color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(text = "Selecione uma opção", color = Color.Red)
             }
             Spacer(modifier = Modifier.height(40.dp))
             Button(
                 onClick = {
-                    emailError = viewModel.usuarioAtual.email.isNullOrEmpty()
-                    senhaError = viewModel.usuarioAtual.senha.isNullOrEmpty()
-                    confirmarSenhaError = confirmarSenha.isEmpty() || confirmarSenha != viewModel.usuarioAtual.senha
-                    cepError = viewModel.usuarioAtual.endereco?.cep.isNullOrEmpty()
-                    nomeError = viewModel.usuarioAtual.nome.isNullOrEmpty()
-                    selectedOptionError = viewModel.usuarioAtual.tipoDeUsuario.isNullOrEmpty()
-
-                    if (confirmarSenha != viewModel.usuarioAtual.senha) {
-                        confirmarSenhaError = true
-                        return@Button;
-                    }
-
-
-                    if (!emailError && !senhaError && !confirmarSenhaError && !cepError && !nomeError  && !selectedOptionError) {
-                        navController.navigate(route = "cadastro2")
+                    if (validarCadastro()) {
+                        navController.navigate("cadastro2")
                     }
                 },
                 modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(10.dp),
-                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                colors = ButtonDefaults.buttonColors(
                     containerColor = buttonBackgroundColor,
                     contentColor = buttonTextColor
                 )
             ) {
-                Text(stringResource(R.string.botao_proximo_cadastro1))
+                Text("Próximo")
             }
-
-            Spacer(modifier = Modifier.height(36.dp))
-            Text(
-                text = stringResource(R.string.texto_jah_tem_conta),
-                modifier = Modifier
-                    .clickable { /* Ação para entrar na conta */ }
-                    .padding(top = 16.dp),
-                color = labelColor,
-                textAlign = TextAlign.Center,
-                style = TextStyle(textDecoration = TextDecoration.Underline)
-            )
         }
     }
 }
-
-
-
-
 @Composable
-fun Cadastro2(navController: NavHostController, viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier, ) {
-
+fun Cadastro2(
+    navController: NavHostController,
+    viewModel: SeniorCareViewModel = viewModel(),
+    modifier: Modifier = Modifier
+) {
     var logradouro by remember { mutableStateOf("") }
     var numero by remember { mutableStateOf("") }
     var complemento by remember { mutableStateOf("") }
     var cidade by remember { mutableStateOf("") }
     var bairro by remember { mutableStateOf("") }
 
+    var logradouroError by remember { mutableStateOf(false) }
+    var numeroError by remember { mutableStateOf(false) }
+    var cidadeError by remember { mutableStateOf(false) }
+    var bairroError by remember { mutableStateOf(false) }
+
     val labelColor = Color(0xFF000000)
     val borderColor = Color(0xFF077DB0)
     val buttonBackgroundColor = Color(0xFF077DB0)
     val buttonTextColor = Color.White
-    val buttonWhiteTextColor = Color(0xFF077DB0)
-    val buttonWhiteBackgroundColor = Color.White
     val textColor = Color.Black
-
-    var logradouroError by remember { mutableStateOf(false) }
-    var numeroError by remember { mutableStateOf(false) }
-    var bairroError by remember { mutableStateOf(false) }
-    var cidadeError by remember { mutableStateOf(false) }
 
     Box(
         modifier = modifier
@@ -458,126 +345,127 @@ fun Cadastro2(navController: NavHostController, viewModel: SeniorCareViewModel =
             verticalArrangement = Arrangement.Top
         ) {
             Spacer(modifier = Modifier.height(36.dp))
-            OutlinedTextField(
-                label = { Text(stringResource(R.string.label_logradouro), color = labelColor) },
+
+            InputField(
                 value = logradouro,
-                onValueChange = { logradouro = it; logradouroError = logradouro.isEmpty() },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = borderColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor,
-                    unfocusedTextColor = textColor
-                )
+                onValueChange = {
+                    logradouro = it
+                    logradouroError = logradouro.isEmpty()
+                },
+                label = stringResource(R.string.label_logradouro),
+                isError = logradouroError,
+                errorMessage = stringResource(R.string.error_logradouro)
             )
-            if (logradouroError) {
-                Text(stringResource(R.string.error_logradouro), color = Color.Red, style = TextStyle(fontSize = 12.sp))
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextField(
-                label = { Text(stringResource(R.string.label_numero), color = labelColor) },
+
+            InputField(
                 value = numero,
-                onValueChange = { numero = it; numeroError = numero.isEmpty() },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = borderColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor,
-                    unfocusedTextColor = textColor
-                )
+                onValueChange = {
+                    numero = it
+                    numeroError = numero.isEmpty()
+                },
+                label = stringResource(R.string.label_numero),
+                isError = numeroError,
+                errorMessage = stringResource(R.string.error_numero)
             )
-            if (numeroError) {
-                Text(stringResource(R.string.error_numero), color = Color.Red, style = TextStyle(fontSize = 12.sp))
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextField(
-                label = { Text(stringResource(R.string.label_complemento), color = labelColor) },
+
+            InputField(
                 value = complemento,
                 onValueChange = { complemento = it },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = borderColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor,
-                    unfocusedTextColor = textColor
-                )
+                label = stringResource(R.string.label_complemento)
             )
-            Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextField(
-                label = { Text(stringResource(R.string.label_cidade), color = labelColor) },
+
+            InputField(
                 value = cidade,
-                onValueChange = { cidade = it; cidadeError = cidade.isEmpty() },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = borderColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor,
-                    unfocusedTextColor = textColor
-                )
+                onValueChange = {
+                    cidade = it
+                    cidadeError = cidade.isEmpty()
+                },
+                label = stringResource(R.string.label_cidade),
+                isError = cidadeError,
+                errorMessage = stringResource(R.string.error_cidade)
             )
-            if (cidadeError) {
-                Text(stringResource(R.string.error_cidade), color = Color.Red, style = TextStyle(fontSize = 12.sp))
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextField(
-                label = { Text(stringResource(R.string.label_bairro), color = labelColor) },
+
+            InputField(
                 value = bairro,
-                onValueChange = { bairro = it; bairroError = bairro.isEmpty() },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = borderColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor,
-                    unfocusedTextColor = textColor
-                )
+                onValueChange = {
+                    bairro = it
+                    bairroError = bairro.isEmpty()
+                },
+                label = stringResource(R.string.label_bairro),
+                isError = bairroError,
+                errorMessage = stringResource(R.string.error_bairro)
             )
-            if (bairroError) {
-                Text(stringResource(R.string.error_bairro), color = Color.Red, style = TextStyle(fontSize = 12.sp))
-            }
+
             Spacer(modifier = Modifier.height(40.dp)) // Espaço antes dos botões
 
-            // Botões Próximo e Voltar
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp) // Espaço entre os botões
-            ) {
-                Button(
-                    onClick = {
-                        logradouroError = logradouro.isEmpty()
-                        numeroError = numero.isEmpty()
-                        bairroError = bairro.isEmpty()
-                        cidadeError = cidade.isEmpty()
+            // Botões
+            Button(
+                onClick = {
+                    logradouroError = logradouro.isEmpty()
+                    numeroError = numero.isEmpty()
+                    cidadeError = cidade.isEmpty()
+                    bairroError = bairro.isEmpty()
 
-                        if (!logradouroError && !numeroError && !bairroError && !cidadeError) {
-                            navController.navigate(route = "cadastro3")
-                        }
-                    },
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(10.dp),
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                        containerColor = buttonBackgroundColor,
-                        contentColor = buttonTextColor
-                    )
-                ) {
-                    Text(stringResource(R.string.botao_proximo_cadastro2))
-                }
-                Button(
-                    onClick = {navController.navigate(route = "cadastro1") },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(8.dp))
-                        .border(1.dp, borderColor, shape = RoundedCornerShape(8.dp)),
-                    shape = RoundedCornerShape(10.dp),
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                        containerColor = buttonWhiteBackgroundColor,
-                        contentColor = buttonWhiteTextColor
-                    )
-                ) {
-                    Text(stringResource(R.string.botao_voltar_cadastro2))
-                }
+                    if (!logradouroError && !numeroError && !cidadeError && !bairroError) {
+                        navController.navigate(route = "cadastro3")
+                    }
+                },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = buttonBackgroundColor,
+                    contentColor = buttonTextColor
+                )
+            ) {
+                Text(stringResource(R.string.botao_proximo_cadastro2))
             }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(
+                onClick = { navController.navigate(route = "cadastro1") },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.White,
+                    contentColor = buttonBackgroundColor
+                )
+            ) {
+                Text(stringResource(R.string.botao_voltar_cadastro2))
+            }
+        }
+    }
+}
+
+@Composable
+fun InputField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: String,
+    isError: Boolean = false,
+    errorMessage: String? = null
+) {
+    val borderColor = Color(0xFF077DB0)
+    val textColor = Color.Black
+
+    Column(modifier = Modifier.fillMaxWidth()) {
+        OutlinedTextField(
+            value = value,
+            onValueChange = onValueChange,
+            label = { Text(label, color = Color.Black) },
+            modifier = Modifier.fillMaxWidth(),
+            isError = isError,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = borderColor,
+                unfocusedBorderColor = borderColor,
+                focusedTextColor = textColor,
+                unfocusedTextColor = textColor
+            )
+        )
+        if (isError && errorMessage != null) {
+            Text(
+                text = errorMessage,
+                color = Color.Red,
+                style = TextStyle(fontSize = 12.sp)
+            )
         }
     }
 }

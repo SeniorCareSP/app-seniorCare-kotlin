@@ -9,10 +9,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mobileseniorcare.dataclass.CepResponse
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import retrofit2.awaitResponse
+
 class SeniorCareViewModel : ViewModel() {
+
+    var endereco = mutableStateOf<CepResponse?>(null)
 
 //    private val apiSeniorCare: ApiSeniorCare = RetrofitService.getApiSeniorCare()
     private val api: ApiSeniorCare = RetrofitService.getApiWithoutToken();
@@ -62,6 +69,24 @@ class SeniorCareViewModel : ViewModel() {
                 Log.e("SeniorCareViewModel", "Erro de conexão ou outro erro", e)
             } finally {
                 isLoading.value = false
+            }
+        }
+    }
+
+    fun buscarCep(cep: String) {
+        viewModelScope.launch {
+            try {
+                val response = withContext(Dispatchers.IO) {
+                    RetrofitClient.viaCepService.buscarCep(cep).awaitResponse()
+                }
+                if (response.isSuccessful) {
+                    endereco.value = response.body()
+                    errorMessage.value = null
+                } else {
+                    errorMessage.value = "Erro ao buscar o CEP. Verifique o CEP informado."
+                }
+            } catch (e: Exception) {
+                errorMessage.value = "Erro na conexão: ${e.message}"
             }
         }
     }
