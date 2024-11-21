@@ -1,5 +1,6 @@
 package com.example.mobileseniorcare.telas
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -70,6 +71,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.window.Popup
@@ -79,6 +81,7 @@ import com.example.mobileseniorcare.dataclass.Ajuda
 import com.example.mobileseniorcare.dataclass.CepResponse
 import com.example.mobileseniorcare.dataclass.Endereco
 import com.example.mobileseniorcare.dataclass.Idioma
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -115,7 +118,11 @@ fun buscarCep(cep: String, onResult: (CepResponse?) -> Unit) {
 
 
 @Composable
-fun Cadastro1(navController: NavHostController, viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
+fun Cadastro1(
+    navController: NavHostController,
+    viewModel: SeniorCareViewModel = viewModel(),
+    modifier: Modifier = Modifier
+) {
 
     // Estados e variáveis de erro
     var confirmarSenha by remember { mutableStateOf("") }
@@ -163,7 +170,8 @@ fun Cadastro1(navController: NavHostController, viewModel: SeniorCareViewModel =
     fun validarCadastro(): Boolean {
         emailError = viewModel.usuarioAtual.email.isNullOrEmpty()
         senhaError = viewModel.usuarioAtual.senha.isNullOrEmpty()
-        confirmarSenhaError = confirmarSenha.isEmpty() || confirmarSenha != viewModel.usuarioAtual.senha
+        confirmarSenhaError =
+            confirmarSenha.isEmpty() || confirmarSenha != viewModel.usuarioAtual.senha
         cepError = viewModel.usuarioAtual.endereco?.cep.isNullOrEmpty()
         nomeError = viewModel.usuarioAtual.nome.isNullOrEmpty()
         selectedOptionError = viewModel.usuarioAtual.tipoDeUsuario.isNullOrEmpty()
@@ -227,7 +235,9 @@ fun Cadastro1(navController: NavHostController, viewModel: SeniorCareViewModel =
             CustomOutlinedTextField(
                 label = "Senha",
                 value = viewModel.usuarioAtual.senha ?: "",
-                onValueChange = { viewModel.usuarioAtual = viewModel.usuarioAtual.copy(senha = it) },
+                onValueChange = {
+                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(senha = it)
+                },
                 isError = senhaError
             )
             Spacer(modifier = Modifier.height(16.dp))
@@ -236,7 +246,8 @@ fun Cadastro1(navController: NavHostController, viewModel: SeniorCareViewModel =
                 value = confirmarSenha,
                 onValueChange = {
                     confirmarSenha = it
-                    confirmarSenhaError = confirmarSenha.isEmpty() || confirmarSenha != viewModel.usuarioAtual.senha
+                    confirmarSenhaError =
+                        confirmarSenha.isEmpty() || confirmarSenha != viewModel.usuarioAtual.senha
                 },
                 isError = confirmarSenhaError
             )
@@ -248,7 +259,10 @@ fun Cadastro1(navController: NavHostController, viewModel: SeniorCareViewModel =
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(
-                    onClick = { viewModel.usuarioAtual.tipoDeUsuario = "Cuidador"; selectedOptionError = false },
+                    onClick = {
+                        viewModel.usuarioAtual.tipoDeUsuario = "Cuidador"; selectedOptionError =
+                        false
+                    },
                     modifier = Modifier.weight(1f),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = if (viewModel.usuarioAtual.tipoDeUsuario == "Cuidador") buttonBackgroundColor else Color.White
@@ -258,7 +272,10 @@ fun Cadastro1(navController: NavHostController, viewModel: SeniorCareViewModel =
                 }
                 Spacer(modifier = Modifier.width(16.dp))
                 Button(
-                    onClick = { viewModel.usuarioAtual.tipoDeUsuario = "Responsável"; selectedOptionError = false },
+                    onClick = {
+                        viewModel.usuarioAtual.tipoDeUsuario = "Responsável"; selectedOptionError =
+                        false
+                    },
                     modifier = Modifier.weight(1f),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = if (viewModel.usuarioAtual.tipoDeUsuario == "Responsável") buttonBackgroundColor else Color.White
@@ -288,6 +305,7 @@ fun Cadastro1(navController: NavHostController, viewModel: SeniorCareViewModel =
         }
     }
 }
+
 @Composable
 fun Cadastro2(
     navController: NavHostController,
@@ -478,7 +496,11 @@ fun convertMillisToLocalDate(millis: Long?): LocalDate? {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Cadastro3(navController: NavHostController, viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
+fun Cadastro3(
+    navController: NavHostController,
+    viewModel: SeniorCareViewModel = viewModel(),
+    modifier: Modifier = Modifier
+) {
     var dtNascimento by remember { mutableStateOf("") }
     var celular by remember { mutableStateOf("") }
     var idioma by remember { mutableStateOf("") }
@@ -588,7 +610,10 @@ fun Cadastro3(navController: NavHostController, viewModel: SeniorCareViewModel =
                             .width(420.dp) // Define a largura do popup
                             .padding(16.dp)
                             .shadow(elevation = 8.dp)
-                            .background(MaterialTheme.colorScheme.surface, shape = RoundedCornerShape(12.dp))
+                            .background(
+                                MaterialTheme.colorScheme.surface,
+                                shape = RoundedCornerShape(12.dp)
+                            )
                     ) {
                         DatePicker(
                             state = datePickerState,
@@ -607,7 +632,7 @@ fun Cadastro3(navController: NavHostController, viewModel: SeniorCareViewModel =
                                 }
                                 showDatePicker = false
                             },
-                           modifier = Modifier.align(Alignment.BottomEnd)// Alinha o botão à direita dentro do Box
+                            modifier = Modifier.align(Alignment.BottomEnd)// Alinha o botão à direita dentro do Box
                         ) {
                             Text("Selecionar")
                         }
@@ -647,7 +672,7 @@ fun Cadastro3(navController: NavHostController, viewModel: SeniorCareViewModel =
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))
-                  IdiomasSelect(viewModel)
+            IdiomasSelect(viewModel)
             if (idiomaError) {
                 Text(
                     stringResource(R.string.error_idioma),
@@ -736,12 +761,12 @@ fun Cadastro3(navController: NavHostController, viewModel: SeniorCareViewModel =
 }
 
 
-
-
-
-
 @Composable
-fun Cadastro4(navController: NavHostController, viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
+fun Cadastro4(
+    navController: NavHostController,
+    viewModel: SeniorCareViewModel = viewModel(),
+    modifier: Modifier = Modifier
+) {
 
     var qtdIdosos by remember { mutableStateOf("") }
     var precoHora by remember { mutableStateOf("") }
@@ -799,7 +824,8 @@ fun Cadastro4(navController: NavHostController, viewModel: SeniorCareViewModel =
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_qtd_idosos), color = labelColor) },
                 value = viewModel.usuarioAtual.qtdIdoso?.toString() ?: "",
-                onValueChange = { newText -> val newQtdIdoso = newText.toIntOrNull()
+                onValueChange = { newText ->
+                    val newQtdIdoso = newText.toIntOrNull()
                     viewModel.usuarioAtual = viewModel.usuarioAtual.copy(qtdIdoso = newQtdIdoso)
                 }, modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions.Default.copy(
@@ -814,16 +840,23 @@ fun Cadastro4(navController: NavHostController, viewModel: SeniorCareViewModel =
             )
 
             if (qtdIdososError) {
-                Text(stringResource(R.string.error_qtd_idosos), color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(
+                    stringResource(R.string.error_qtd_idosos),
+                    color = Color.Red,
+                    style = TextStyle(fontSize = 12.sp)
+                )
             }
             Spacer(modifier = Modifier.height(16.dp))
             OutlinedTextField(
                 label = { Text(stringResource(R.string.label_preco_hora), color = labelColor) },
-                value = viewModel.usuarioAtual.precoHora?.toString() ?: "", // Converte para String para exibição
+                value = viewModel.usuarioAtual.precoHora?.toString()
+                    ?: "", // Converte para String para exibição
                 onValueChange = { newText ->
                     // Tente converter o texto inserido para Double
-                    val newPrecoHora = newText.toDoubleOrNull() ?: 0.0 // Usa 0.0 como valor padrão se for nulo
-                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(precoHora = newPrecoHora) // Atualiza o ViewModel
+                    val newPrecoHora =
+                        newText.toDoubleOrNull() ?: 0.0 // Usa 0.0 como valor padrão se for nulo
+                    viewModel.usuarioAtual =
+                        viewModel.usuarioAtual.copy(precoHora = newPrecoHora) // Atualiza o ViewModel
                 }, modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions.Default.copy(
                     keyboardType = KeyboardType.Decimal
@@ -836,7 +869,11 @@ fun Cadastro4(navController: NavHostController, viewModel: SeniorCareViewModel =
                 )
             )
             if (precoHoraError) {
-                Text(stringResource(R.string.error_preco_hora), color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                Text(
+                    stringResource(R.string.error_preco_hora),
+                    color = Color.Red,
+                    style = TextStyle(fontSize = 12.sp)
+                )
             }
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -875,7 +912,11 @@ fun Cadastro4(navController: NavHostController, viewModel: SeniorCareViewModel =
                     Spacer(modifier = Modifier.height(8.dp))
                 }
                 if (ajudaError) {
-                    Text("Selecione pelo menos uma opção de ajuda", color = Color.Red, style = TextStyle(fontSize = 12.sp))
+                    Text(
+                        "Selecione pelo menos uma opção de ajuda",
+                        color = Color.Red,
+                        style = TextStyle(fontSize = 12.sp)
+                    )
                 }
             }
 
@@ -891,7 +932,8 @@ fun Cadastro4(navController: NavHostController, viewModel: SeniorCareViewModel =
                 Button(
                     onClick = {
                         qtdIdososError = viewModel.usuarioAtual.qtdIdoso == null
-                        precoHoraError = viewModel.usuarioAtual.precoHora.isNaN() || viewModel.usuarioAtual.precoHora <= 0.0
+                        precoHoraError =
+                            viewModel.usuarioAtual.precoHora.isNaN() || viewModel.usuarioAtual.precoHora <= 0.0
                         ajudaError = viewModel.usuarioAtual.ajuda.isNullOrEmpty()
 
                         if (!qtdIdososError && !precoHoraError && !ajudaError) {
@@ -929,165 +971,192 @@ fun Cadastro4(navController: NavHostController, viewModel: SeniorCareViewModel =
 }
 
 @Composable
-fun Cadastro5(navController: NavHostController , viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
-       // var text by remember { mutableStateOf("") }
-      //  val selectedOptions = remember { mutableStateOf(mutableSetOf<String>()) }
-        val borderColor = Color(0xFF077DB0)
-        val buttonBackgroundColor = Color(0xFF077DB0)
-        val buttonTextColor = Color.White
-        val buttonWhiteTextColor = Color(0xFF077DB0)
-        val buttonWhiteBackgroundColor = Color.White
-        var text by remember { mutableStateOf(viewModel.usuarioAtual.apresentacao ?: "") }
-        val selectedOptions = remember { mutableStateOf(mutableSetOf<String>()) }
+fun Cadastro5(
+    navController: NavHostController,
+    viewModel: SeniorCareViewModel = viewModel(),
+    modifier: Modifier = Modifier
+) {
+    // var text by remember { mutableStateOf("") }
+    //  val selectedOptions = remember { mutableStateOf(mutableSetOf<String>()) }
+    val borderColor = Color(0xFF077DB0)
+    val buttonBackgroundColor = Color(0xFF077DB0)
+    val buttonTextColor = Color.White
+    val buttonWhiteTextColor = Color(0xFF077DB0)
+    val buttonWhiteBackgroundColor = Color.White
+    var text by remember { mutableStateOf(viewModel.usuarioAtual.apresentacao ?: "") }
+    val selectedOptions = remember { mutableStateOf(mutableSetOf<String>()) }
 
 
     val options = listOf(
-            stringResource(R.string.label_cnh),
-            stringResource(R.string.label_diploma_enfermagem),
-            stringResource(R.string.label_certificado_primeiros_socorros),
-            stringResource(R.string.label_cuidador)
-        )
+        stringResource(R.string.label_cnh),
+        stringResource(R.string.label_diploma_enfermagem),
+        stringResource(R.string.label_certificado_primeiros_socorros),
+        stringResource(R.string.label_cuidador)
+    )
 
     fun updateAjuda() {
         viewModel.usuarioAtual.ajuda = selectedOptions.value.map { option ->
-            Ajuda(nome  = option)
+            Ajuda(nome = option)
         }
     }
 
-        val canProceed = text.isNotBlank() && selectedOptions.value.isNotEmpty()
+    val canProceed = text.isNotBlank() && selectedOptions.value.isNotEmpty()
 
-        Column(modifier = modifier.fillMaxSize()) {
+    Column(modifier = modifier.fillMaxSize()) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = Color(0xFF077DB0))
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(0.35f),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Top
+            ) {
+                Spacer(modifier = Modifier.height(32.dp))
+                Image(
+                    painter = painterResource(id = R.drawable.logo_mobile),
+                    contentDescription = "Logo do Mobile Senior Care",
+                    modifier = Modifier.size(150.dp)
+                )
+            }
+
             Box(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .background(color = Color(0xFF077DB0))
+                    .fillMaxWidth()
+                    .background(
+                        Color.White,
+                        shape = RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp)
+                    )
+                    .align(Alignment.BottomCenter)
+                    .padding(bottom = 20.dp)
+                    .padding(top = 20.dp)
             ) {
                 Column(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .fillMaxHeight(0.35f),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Top
+                        .padding(bottom = 30.dp)
+                        .padding(start = 30.dp)
                 ) {
-                    Spacer(modifier = Modifier.height(32.dp))
-                    Image(
-                        painter = painterResource(id = R.drawable.logo_mobile),
-                        contentDescription = "Logo do Mobile Senior Care",
-                        modifier = Modifier.size(150.dp)
-                    )
+                    Text(text = stringResource(R.string.label_voce_possui), fontSize = 20.sp)
                 }
 
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(Color.White, shape = RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp))
-                        .align(Alignment.BottomCenter)
-                        .padding(bottom = 20.dp)
-                        .padding(top = 20.dp)
+                Row(
+                    modifier = modifier
+                        .padding(20.dp)
+                        .padding(top = 15.dp),
+                    horizontalArrangement = Arrangement.Center
                 ) {
-                    Column(
-                        modifier = Modifier.padding(bottom = 30.dp).padding(start = 30.dp)
-                    ) {
-                        Text(text = stringResource(R.string.label_voce_possui), fontSize = 20.sp)
-                    }
-
-                    Row(
-                        modifier = modifier.padding(20.dp).padding(top = 15.dp),
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        options.chunked(2).forEach { columnOptions ->
-                            Column(
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                verticalArrangement = Arrangement.spacedBy(15.dp),
-                                modifier = modifier.weight(0.5f)
-                            ) {
-                                columnOptions.forEach { option ->
-                                    Button(
-                                        modifier = Modifier.height(60.dp)
-                                            .width(160.dp)
-                                            .border(1.dp, borderColor, shape = RoundedCornerShape(8.dp)),
-                                        onClick = {
-                                            // Adiciona ou remove a opção do conjunto de selecionados
-                                            if (selectedOptions.value.contains(option)) {
-                                                selectedOptions.value.remove(option)
-                                            } else {
-                                                selectedOptions.value.add(option)
-                                            }
-                                            updateAjuda()
-                                        },
-                                        shape = RoundedCornerShape(7.dp),
-                                        colors = ButtonDefaults.buttonColors(
-                                            containerColor = if (selectedOptions.value.contains(option)) buttonBackgroundColor else buttonWhiteBackgroundColor,
-                                            contentColor = if (selectedOptions.value.contains(option)) buttonTextColor else buttonWhiteTextColor
-                                        )
-                                    ) {
-                                        Text(text = option)
-                                    }
+                    options.chunked(2).forEach { columnOptions ->
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(15.dp),
+                            modifier = modifier.weight(0.5f)
+                        ) {
+                            columnOptions.forEach { option ->
+                                Button(
+                                    modifier = Modifier
+                                        .height(60.dp)
+                                        .width(160.dp)
+                                        .border(
+                                            1.dp,
+                                            borderColor,
+                                            shape = RoundedCornerShape(8.dp)
+                                        ),
+                                    onClick = {
+                                        // Adiciona ou remove a opção do conjunto de selecionados
+                                        if (selectedOptions.value.contains(option)) {
+                                            selectedOptions.value.remove(option)
+                                        } else {
+                                            selectedOptions.value.add(option)
+                                        }
+                                        updateAjuda()
+                                    },
+                                    shape = RoundedCornerShape(7.dp),
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = if (selectedOptions.value.contains(option)) buttonBackgroundColor else buttonWhiteBackgroundColor,
+                                        contentColor = if (selectedOptions.value.contains(option)) buttonTextColor else buttonWhiteTextColor
+                                    )
+                                ) {
+                                    Text(text = option)
                                 }
                             }
                         }
                     }
+                }
+
+                Column(
+                    modifier = modifier
+                        .padding(top = 185.dp)
+                        .padding(start = 25.dp)
+                        .padding(end = 25.dp)
+                        .padding(bottom = 23.dp)
+                ) {
+                    Text(text = stringResource(R.string.label_apresente_se), fontSize = 20.sp)
+                    OutlinedTextField(
+                        value = text,
+                        onValueChange = { newText ->
+                            text = newText; viewModel.usuarioAtual.apresentacao = newText
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(200.dp),
+                        maxLines = 5,
+                        singleLine = false
+                    )
 
                     Column(
-                        modifier = modifier
-                            .padding(top = 185.dp)
-                            .padding(start = 25.dp)
-                            .padding(end = 25.dp)
-                            .padding(bottom = 23.dp)
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = modifier.fillMaxWidth()
                     ) {
-                        Text(text = stringResource(R.string.label_apresente_se), fontSize = 20.sp)
-                        OutlinedTextField(
-                            value = text,
-                            onValueChange = { newText -> text = newText ;  viewModel.usuarioAtual.apresentacao = newText },
-                            modifier = Modifier.fillMaxWidth().height(200.dp),
-                            maxLines = 5,
-                            singleLine = false
-                        )
-
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = modifier.fillMaxWidth()
+                        Button(
+                            onClick = {
+                                if (canProceed) {
+                                    navController.navigate(route = "cadastro6")
+                                }
+                            },
+                            enabled = canProceed,
+                            shape = RoundedCornerShape(7.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = buttonBackgroundColor,
+                                contentColor = Color.White
+                            ),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 25.dp)
                         ) {
-                            Button(
-                                onClick = {
-                                    if (canProceed) {
-                                        navController.navigate(route = "cadastro6")
-                                    }
-                                },
-                                enabled = canProceed,
-                                shape = RoundedCornerShape(7.dp),
-                                colors = ButtonDefaults.buttonColors(
-                                    containerColor = buttonBackgroundColor,
-                                    contentColor = Color.White
-                                ),
-                                modifier = Modifier.fillMaxWidth().padding(top = 25.dp)
-                            ) {
-                                Text(text = stringResource(R.string.botao_proximo_cadastro5))
-                            }
-                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(text = stringResource(R.string.botao_proximo_cadastro5))
+                        }
+                        Spacer(modifier = Modifier.height(10.dp))
 
-                            Button(
-                                onClick = {  navController.navigate(route = "cadastro4") },
-                                shape = RoundedCornerShape(7.dp),
-                                colors = ButtonDefaults.buttonColors(
-                                    containerColor = Color.White,
-                                    contentColor = borderColor
-                                ),
-                                modifier = Modifier.fillMaxWidth()
-                                    .border(1.dp, borderColor, shape = RoundedCornerShape(10.dp))
-                            ) {
-                                Text(text = stringResource(R.string.botao_voltar_cadastro5))
-                            }
+                        Button(
+                            onClick = { navController.navigate(route = "cadastro4") },
+                            shape = RoundedCornerShape(7.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color.White,
+                                contentColor = borderColor
+                            ),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .border(1.dp, borderColor, shape = RoundedCornerShape(10.dp))
+                        ) {
+                            Text(text = stringResource(R.string.botao_voltar_cadastro5))
                         }
                     }
                 }
             }
         }
     }
+}
 
 
-    @Composable
-fun Cadastro6(navController: NavHostController , viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
+@Composable
+fun Cadastro6(
+    navController: NavHostController,
+    viewModel: SeniorCareViewModel = viewModel(),
+    modifier: Modifier = Modifier
+) {
     val checkboxesState = remember {
         mutableStateListOf(
             false, false, false, false, false, false, false, false, false,
@@ -1161,7 +1230,9 @@ fun Cadastro6(navController: NavHostController , viewModel: SeniorCareViewModel 
 
                 Column {
                     Column(
-                        modifier = Modifier.padding(start = 44.dp).padding(bottom = 4.dp)
+                        modifier = Modifier
+                            .padding(start = 44.dp)
+                            .padding(bottom = 4.dp)
                             .padding(top = 10.dp)
                     ) {// Text(text = "Estou disponivel")
                         Row(
@@ -1205,13 +1276,17 @@ fun Cadastro6(navController: NavHostController , viewModel: SeniorCareViewModel 
                             contentDescription = "Icon 1",
                             modifier = Modifier.size(34.dp)
                         )
-                        Spacer(modifier = Modifier.width(16.dp).padding(start = 15.dp))
+                        Spacer(modifier = Modifier
+                            .width(16.dp)
+                            .padding(start = 15.dp))
                         Image(
                             painter = painterResource(id = R.drawable.icone_tarde),
                             contentDescription = "Icon 2",
                             modifier = Modifier.size(34.dp)
                         )
-                        Spacer(modifier = Modifier.width(16.dp).padding(start = 15.dp))
+                        Spacer(modifier = Modifier
+                            .width(16.dp)
+                            .padding(start = 15.dp))
                         Image(
                             painter = painterResource(id = R.drawable.icone_noite),
                             contentDescription = "Icon 3",
@@ -1270,7 +1345,9 @@ fun Cadastro6(navController: NavHostController , viewModel: SeniorCareViewModel 
 
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = modifier.fillMaxWidth().padding(18.dp)
+                        modifier = modifier
+                            .fillMaxWidth()
+                            .padding(18.dp)
                     ) {
                         Button(
                             onClick = {
@@ -1290,7 +1367,9 @@ fun Cadastro6(navController: NavHostController , viewModel: SeniorCareViewModel 
                                 defaultElevation = 8.dp,
                                 pressedElevation = 12.dp
                             ),
-                            modifier = Modifier.fillMaxWidth().padding(top = 22.dp)
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 22.dp)
                         ) {
                             Text(text = "Concluir")
                         }
@@ -1309,7 +1388,7 @@ fun LoginSenior(navController: NavHostController, modifier: Modifier = Modifier)
     var email by remember { mutableStateOf("") }
     var senha by remember { mutableStateOf("") }
     val seniorCareViewModel: SeniorCareViewModel = viewModel()
-
+    val context = LocalContext.current
     // Layout principal
     Box(
         modifier = modifier
@@ -1386,13 +1465,22 @@ fun LoginSenior(navController: NavHostController, modifier: Modifier = Modifier)
                 onClick = {
                     CoroutineScope(Dispatchers.IO).launch {
                         seniorCareViewModel.login(email, senha)
-                        seniorCareViewModel.usuarioLogado.value?.let {
-                            navController.navigate("mainActivity2") { // Navegação para MainActivity2
-                                popUpTo("login") { inclusive = true }
-                            }
-                        } ?: run {
-                            navController.context?.let { context ->
-                                Toast.makeText(context, "Falha no login. Verifique suas credenciais.", Toast.LENGTH_SHORT).show()
+                        val usuarioLogado = seniorCareViewModel.usuarioLogado.value
+                        val errorMessage = seniorCareViewModel.errorMessage.value
+                        withContext(Dispatchers.Main) {
+                            if (usuarioLogado != null) {
+                                Toast.makeText(
+                                    context,
+                                    "Login bem-sucedido! Bem-vindo(a) ${usuarioLogado.nome}",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                                context.startActivity(Intent(context, MainActivity2::class.java))
+                            } else {
+                                Toast.makeText(
+                                    context,
+                                    errorMessage ?: "Erro ao realizar login. Tente novamente.",
+                                    Toast.LENGTH_LONG
+                                ).show()
                             }
                         }
                     }
@@ -1472,46 +1560,46 @@ fun LoginSenior(navController: NavHostController, modifier: Modifier = Modifier)
 //    }
 
 
-    @Composable
-    fun IdiomasSelect( viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
-        var expandida by remember { mutableStateOf(false) }
-        var novaFruta by remember { mutableStateOf<Idioma?>(null) }
-        val idiomasDisponiveis = listOf("Português", "Inglês", "Espanhol", "Francês", "Alemão")
-        var expanded by remember { mutableStateOf(false) }
-        var selectedIdioma by remember { mutableStateOf("Selecione um idioma") }
+@Composable
+fun IdiomasSelect(viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
+    var expandida by remember { mutableStateOf(false) }
+    var novaFruta by remember { mutableStateOf<Idioma?>(null) }
+    val idiomasDisponiveis = listOf("Português", "Inglês", "Espanhol", "Francês", "Alemão")
+    var expanded by remember { mutableStateOf(false) }
+    var selectedIdioma by remember { mutableStateOf("Selecione um idioma") }
 
-        val frutas = remember {
-            mutableStateListOf<Idioma>(
-                Idioma("Inglês"),
-                Idioma("Inglês"),
-                Idioma("Maçã")
-            )
-        }
+    val frutas = remember {
+        mutableStateListOf<Idioma>(
+            Idioma("Inglês"),
+            Idioma("Inglês"),
+            Idioma("Maçã")
+        )
+    }
 
-        Column(modifier = modifier) {
-            ClickableText(
-                text = AnnotatedString(
-                    if (novaFruta == null) "Selecione a fruta"
-                    else novaFruta!!.idioma
-                ),
-                onClick = { expandida = !expandida },
-                modifier = modifier.padding(5.dp)
-            )
-            Box { // O DropdownMenu precisa estar dentro de um Box para ficar 'por cima' dos outros elementos
-                DropdownMenu(
-                    expanded = expandida, // indica se está expandido
-                    onDismissRequest = { expandida = false } // ação ao clicar fora
-                ) {
-                    frutas.toList().forEach {
-                        DropdownMenuItem( // item da lista drop down
-                            text = { Text("${it.idioma} ") },
-                            onClick = {
-                                novaFruta = it
-                                expandida = false
-                            }
-                        )
-                    }
+    Column(modifier = modifier) {
+        ClickableText(
+            text = AnnotatedString(
+                if (novaFruta == null) "Selecione a fruta"
+                else novaFruta!!.idioma
+            ),
+            onClick = { expandida = !expandida },
+            modifier = modifier.padding(5.dp)
+        )
+        Box { // O DropdownMenu precisa estar dentro de um Box para ficar 'por cima' dos outros elementos
+            DropdownMenu(
+                expanded = expandida, // indica se está expandido
+                onDismissRequest = { expandida = false } // ação ao clicar fora
+            ) {
+                frutas.toList().forEach {
+                    DropdownMenuItem( // item da lista drop down
+                        text = { Text("${it.idioma} ") },
+                        onClick = {
+                            novaFruta = it
+                            expandida = false
+                        }
+                    )
                 }
+            }
 //             //    Atualiza a lista de idiomas no ViewModel
 //                    val currentIdiomas = viewModel.usuarioAtual.idiomas?.toMutableList() ?: mutableListOf()
 //                    if (!currentIdiomas.any { it.idioma == idioma }) {
@@ -1521,14 +1609,13 @@ fun LoginSenior(navController: NavHostController, modifier: Modifier = Modifier)
 //                    // Atualiza o estado do usuário com a nova lista de idiomas
 //                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(idiomas = currentIdiomas)
 //            }
-                if (novaFruta != null) {
-                    Text("Escolhida: ${novaFruta?.idioma}")
-                }
-
+            if (novaFruta != null) {
+                Text("Escolhida: ${novaFruta?.idioma}")
             }
+
         }
     }
-
+}
 
 
 @Composable

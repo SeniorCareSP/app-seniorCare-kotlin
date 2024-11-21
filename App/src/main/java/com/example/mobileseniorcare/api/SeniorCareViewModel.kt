@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobileseniorcare.dataclass.CepResponse
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -23,7 +24,7 @@ class SeniorCareViewModel : ViewModel() {
 
 //    private val apiSeniorCare: ApiSeniorCare = RetrofitService.getApiSeniorCare()
     private val api: ApiSeniorCare = RetrofitService.getApiWithoutToken();
-    var usuarioLogado = mutableStateOf<UsuarioCuidador?>(null)
+    var usuarioLogado = mutableStateOf<UsuarioTokenDto?>(null)
         private set
 
     var errorMessage = mutableStateOf<String?>(null)
@@ -49,27 +50,27 @@ class SeniorCareViewModel : ViewModel() {
 
 
     // Função para realizar o login
-    fun login(email: String, senha: String) {
-        viewModelScope.launch {
-            isLoading.value = true
-            try {
-                val loginRequest = LoginRequest(email, senha)
-                val response = api.login(loginRequest)
+    suspend fun login(email: String, senha: String) {
+        isLoading.value = true
+        try {
+            val loginRequest = LoginRequest(email, senha)
+            val response = api.login(loginRequest)
 
-                if (response.isSuccessful) {
-                    usuarioLogado.value = response.body()
-                    errorMessage.value = null
-                    Log.i("SeniorCareViewModel", "Login bem-sucedido: ${usuarioLogado.value}")
-                } else {
-                    errorMessage.value = "Erro ao realizar login: ${response.errorBody()?.string()}"
-                    Log.e("SeniorCareViewModel", errorMessage.value!!)
-                }
-            } catch (e: Exception) {
-                errorMessage.value = "Erro de conexão ou outro erro: ${e.message}"
-                Log.e("SeniorCareViewModel", "Erro de conexão ou outro erro", e)
-            } finally {
-                isLoading.value = false
+            if (response.isSuccessful) {
+                usuarioLogado.value = response.body()
+                errorMessage.value = null
+                Log.i("SeniorCareViewModel", "Login bem-sucedido: ${usuarioLogado.value}")
+            } else {
+                usuarioLogado.value = null
+                errorMessage.value = "Erro ao realizar login: ${response.errorBody()?.string()}"
+                Log.e("SeniorCareViewModel", errorMessage.value!!)
             }
+        } catch (e: Exception) {
+            usuarioLogado.value = null
+            errorMessage.value = "Erro de conexão ou outro erro: ${e.message}"
+            Log.e("SeniorCareViewModel", "Erro de conexão ou outro erro", e)
+        } finally {
+            isLoading.value = false
         }
     }
 

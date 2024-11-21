@@ -1,6 +1,7 @@
 package com.example.mobileseniorcare.api
 
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -20,8 +21,8 @@ interface ApiSeniorCare {
 
 
         // Exemplo de login
-        @POST("login")
-        suspend fun login(@Body loginRequest: LoginRequest): Response<UsuarioCuidador>
+        @POST("usuarios/login")
+        suspend fun login(@Body loginRequest: LoginRequest): Response<UsuarioTokenDto>
 
         // Endpoint para obter todos os usuários
         @GET("/usuarios")
