@@ -9,6 +9,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
+import retrofit2.http.Url
 
 data class Usuario(
     val id: Long,
@@ -32,9 +33,12 @@ interface ApiSeniorCare {
         @GET("/usuarios/{id}")
         suspend fun getUsuarioById(@Path("id") id: Int): Response<UsuarioCuidador>
 
-        // Endpoint para criar um novo usuário
-        @POST("/usuarios")
-        suspend fun createUsuario(@Body usuario: UsuarioCuidador): Response<UsuarioCuidador>
+        @POST
+        suspend fun createUsuario(@Url endpoint: String, @Body usuario: UsuarioCuidador): Response<UsuarioCuidador>
+
+    // Endpoint para criar um novo usuário
+//        @POST("/usuarios")
+//        suspend fun createUsuario(@Body usuario: UsuarioCuidador): Response<UsuarioCuidador>
 
         // Endpoint para atualizar um usuário existente
         @PUT("/usuarios/{id}")

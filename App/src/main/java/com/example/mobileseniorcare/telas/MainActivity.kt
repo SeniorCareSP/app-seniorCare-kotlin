@@ -37,12 +37,16 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.R
+import com.example.mobileseniorcare.api.SeniorCareViewModel
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val viewModel: SeniorCareViewModel = SeniorCareViewModel()
+
         setContent {
             MobileSeniorCareTheme {
                 val navController = rememberNavController()
@@ -56,24 +60,24 @@ class MainActivity : ComponentActivity() {
                             TelaInicial(navController)
                         }
                         composable("cadastro1") {
-                            Cadastro1(navController)
+                            Cadastro1(navController, viewModel)
                         }
                         composable("cadastro2") {
-                                Cadastro2(navController)
+                                Cadastro2(navController, viewModel)
                         }
                         composable("cadastro3") {
-                                Cadastro3(navController)
+                                Cadastro3(navController, viewModel)
                         }
                         composable("cadastro4") {
-                                Cadastro4(navController)
+                                Cadastro4(navController, viewModel)
 
                         }
                         composable("cadastro5") {
-                                Cadastro5(navController)
+                                Cadastro5(navController, viewModel)
 
                         }
                         composable("cadastro6") {
-                                Cadastro6(navController)
+                                Cadastro6(navController,viewModel)
 
                         }
                         composable("login") {

@@ -81,6 +81,7 @@ import com.example.mobileseniorcare.dataclass.Ajuda
 import com.example.mobileseniorcare.dataclass.CepResponse
 import com.example.mobileseniorcare.dataclass.Endereco
 import com.example.mobileseniorcare.dataclass.Idioma
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
@@ -132,6 +133,8 @@ fun Cadastro1(
     var cepError by remember { mutableStateOf(false) }
     var nomeError by remember { mutableStateOf(false) }
     var selectedOptionError by remember { mutableStateOf(false) }
+    var selectedOption by remember { mutableStateOf("") }
+
 
     // Estilos
     val labelColor = Color(0xFF000000)
@@ -172,10 +175,10 @@ fun Cadastro1(
         senhaError = viewModel.usuarioAtual.senha.isNullOrEmpty()
         confirmarSenhaError =
             confirmarSenha.isEmpty() || confirmarSenha != viewModel.usuarioAtual.senha
-        cepError = viewModel.usuarioAtual.endereco?.cep.isNullOrEmpty()
+     //   cepError = viewModel.usuarioAtual.endereco?.cep.isNullOrEmpty()
         nomeError = viewModel.usuarioAtual.nome.isNullOrEmpty()
         selectedOptionError = viewModel.usuarioAtual.tipoDeUsuario.isNullOrEmpty()
-        return !(emailError || senhaError || confirmarSenhaError || cepError || nomeError || selectedOptionError)
+        return !(emailError || senhaError || confirmarSenhaError ||  nomeError || selectedOptionError)
     }
 
     Box(
@@ -259,33 +262,41 @@ fun Cadastro1(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(
-                    onClick = {
-                        viewModel.usuarioAtual.tipoDeUsuario = "Cuidador"; selectedOptionError =
-                        false
-                    },
-                    modifier = Modifier.weight(1f),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = if (viewModel.usuarioAtual.tipoDeUsuario == "Cuidador") buttonBackgroundColor else Color.White
+                    onClick = { selectedOption = "Cuidador"; viewModel.usuarioAtual.tipoDeUsuario = selectedOption; selectedOptionError = false },
+                    modifier = Modifier
+                        .weight(1f)
+                        .border(
+                            width = 1.dp,
+                            color = if (selectedOption == "Cuidador") Color.White else borderColor,
+                            shape = RoundedCornerShape(8.dp)
+                        ),
+                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                        containerColor = if (selectedOption == "Cuidador") buttonBackgroundColor else Color.White,
+                        contentColor = if (selectedOption == "Cuidador") buttonTextColor else buttonBackgroundColor
                     )
                 ) {
                     Text("Cuidador")
                 }
                 Spacer(modifier = Modifier.width(16.dp))
                 Button(
-                    onClick = {
-                        viewModel.usuarioAtual.tipoDeUsuario = "Responsável"; selectedOptionError =
-                        false
-                    },
-                    modifier = Modifier.weight(1f),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = if (viewModel.usuarioAtual.tipoDeUsuario == "Responsável") buttonBackgroundColor else Color.White
+                    onClick = { selectedOption = "Responsavel";  viewModel.usuarioAtual.tipoDeUsuario = selectedOption; selectedOptionError = false },
+                    modifier = Modifier
+                        .weight(1f)
+                        .border(
+                            width = 1.dp,
+                            color = if (selectedOption == "Responsavel") Color.White else borderColor,
+                            shape = RoundedCornerShape(8.dp)
+                        ),
+                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                        containerColor = if (selectedOption == "Responsavel") buttonBackgroundColor else Color.White,
+                        contentColor = if (selectedOption == "Responsavel") buttonTextColor else buttonBackgroundColor
                     )
                 ) {
                     Text("Responsável")
                 }
             }
             if (selectedOptionError) {
-                Text(text = "Selecione uma opção", color = Color.Red)
+                Text(stringResource(R.string.error_opcao), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
             Spacer(modifier = Modifier.height(40.dp))
             Button(
@@ -898,6 +909,9 @@ fun Cadastro4(
                             Button(
                                 onClick = {
                                     ajuda = if (isSelected) ajuda - option else ajuda + option
+                                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(
+                                        ajuda = ajuda.map { Ajuda(nome = it) }
+                                    )
                                 },
                                 modifier = Modifier.weight(1f),
                                 colors = androidx.compose.material3.ButtonDefaults.buttonColors(
@@ -1182,6 +1196,12 @@ fun Cadastro6(
 
     var errorMessage by remember { mutableStateOf("") }
 
+    val disponibilidade: Array<Array<Boolean>> = Array(7) { row ->
+        Array(3) { col ->
+            checkboxesState[row * 3 + col]
+        }
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -1351,14 +1371,29 @@ fun Cadastro6(
                     ) {
                         Button(
                             onClick = {
-                                // Verifique se ao menos um checkbox está marcado
                                 if (checkboxesState.any { it }) {
-                                    errorMessage = ""
-                                    navController.navigate(route = "telaMain")
+                                    val disponibilidade: Array<Array<Boolean>> = Array(7) { row ->
+                                        Array(3) { col ->
+                                            checkboxesState[row * 3 + col]
+                                        }
+                                    }
+
+                                    // Use usuarioAtual ou um novo usuário específico para agenda
+                                   viewModel.usuarioAtual?.let { usuario: UsuarioCuidador  ->
+                                        viewModel.criarAgenda(disponibilidade, usuario)
+                                        viewModel.salvar()
+                                        errorMessage = ""
+                                        navController.navigate(route = "telaMain")
+                                        navController.navigate(route = "telaMain")
+
+                                    } ?: run {
+                                        errorMessage = "Usuário não está definido. Por favor, tente novamente."
+                                    }
                                 } else {
                                     errorMessage = "Por favor, selecione ao menos um dia."
                                 }
-                            }, shape = RoundedCornerShape(17.dp),
+                            },
+                            shape = RoundedCornerShape(17.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color(7, 125, 176),
                                 contentColor = Color.White
