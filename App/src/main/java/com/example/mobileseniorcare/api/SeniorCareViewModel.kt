@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobileseniorcare.dataclass.Agenda
 import com.example.mobileseniorcare.dataclass.CepResponse
+import com.example.mobileseniorcare.dataclass.Endereco
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
 import kotlinx.coroutines.Dispatchers
@@ -36,7 +37,7 @@ class SeniorCareViewModel : ViewModel() {
     var isLoading = mutableStateOf(false)
         private set
 
-    var usuarioAtual by mutableStateOf(UsuarioCuidador())
+    var usuarioAtual by mutableStateOf(UsuarioCuidador(endereco = Endereco()))
 
     var usuarioAtualizacao by mutableStateOf<UsuarioCuidador?>(null)
 
@@ -47,11 +48,19 @@ class SeniorCareViewModel : ViewModel() {
     private val _agenda = MutableLiveData<Agenda?>()
     val agenda: LiveData<Agenda?> get() = _agenda
 
-
     fun criarAgenda(disponibilidade: Array<Array<Boolean>>, usuario: UsuarioCuidador) {
-        usuarioAgenda = usuario // Associe o usuário à agenda
-        _agenda.value = Agenda(disponibilidade = disponibilidade, usuario = usuario)
+        val novaAgenda = Agenda(disponibilidade = disponibilidade, usuario = usuario)
+
+        usuarioAtual = usuarioAtual.copy(agendas = novaAgenda)
+
+        // Adicione logs para verificar se a agenda foi atualizada corretamente
+        Log.d("SeniorCareViewModel", "Nova agenda criada: $novaAgenda")
+        Log.d("SeniorCareViewModel", "Usuário Atual após atualizar agendas: $usuarioAtual")
+
+        // Atualize o LiveData para refletir as mudanças
+        _agenda.value = novaAgenda
     }
+
 
     private val dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
     val dataNascimentoString: String
@@ -89,23 +98,6 @@ class SeniorCareViewModel : ViewModel() {
         }
     }
 
-    fun buscarCep(cep: String) {
-        viewModelScope.launch {
-            try {
-                val response = withContext(Dispatchers.IO) {
-                    RetrofitClient.viaCepService.buscarCep(cep).awaitResponse()
-                }
-                if (response.isSuccessful) {
-                    endereco.value = response.body()
-                    errorMessage.value = null
-                } else {
-                    errorMessage.value = "Erro ao buscar o CEP. Verifique o CEP informado."
-                }
-            } catch (e: Exception) {
-                errorMessage.value = "Erro na conexão: ${e.message}"
-            }
-        }
-    }
 
 
     fun salvar() {
@@ -113,6 +105,7 @@ class SeniorCareViewModel : ViewModel() {
            try {
                // Define o endpoint com base no tipo de usuário
                val endpoint: String
+               Log.d("SeniorCareViewModel", "Usuário Atual antes de salvar: $usuarioAtual")
 
                if (usuarioAtual.tipoDeUsuario.equals("CUIDADOR", ignoreCase = true)) {
                    endpoint = "cuidadores"
@@ -124,23 +117,15 @@ class SeniorCareViewModel : ViewModel() {
                    return@launch // Interrompe o bloco de execução atual
                }
 
-//                    // Verifica o tipo de usuário e escolhe o endpoint adequado
-//                    val endpoint = when (usuarioAtual.tipoDeUsuario) {
-//                        "Cuidador" -> "cuidadores"
-//                        "Responsavel" -> "responsaveis"
-//                        else -> {
-//                            // Se o tipo for inválido, lance uma exceção ou retorne
-//                            errorMessage.value = "Tipo de usuário inválido"
-//                            return@launch
-//                        }
-//                    }
                 var resposta = api.createUsuario(endpoint,usuarioAtual)
                 if (resposta.isSuccessful) {
                     // usuarioAtual = filmes.last() // atualizando o filmeAtual para que ele tenha um id que veio da API
                     Log.i("SeniorCareViewModel", "Usuário criado: ${resposta.body()}")
                     erroApi = false
                 } else {
-                    Log.e("api", "Erro ao cadastrar filme: ${resposta.errorBody()?.string()}")
+                    Log.e("api", "Erro ao cadastrar usuário: ${resposta.errorBody()?.string()}")
+                    Log.e("User", "Usuário: ${usuarioAtual.toString()}")
+
                     erroApi = true
                 }
             } catch (exception: Exception) {

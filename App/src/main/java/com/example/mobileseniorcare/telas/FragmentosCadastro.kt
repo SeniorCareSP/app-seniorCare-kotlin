@@ -77,15 +77,19 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.window.Popup
 import androidx.lifecycle.ViewModel
 import com.example.mobileseniorcare.api.RetrofitService
+import com.example.mobileseniorcare.api.ViaCep
 import com.example.mobileseniorcare.dataclass.Ajuda
 import com.example.mobileseniorcare.dataclass.CepResponse
 import com.example.mobileseniorcare.dataclass.Endereco
+import com.example.mobileseniorcare.dataclass.EnderecoViaCep
 import com.example.mobileseniorcare.dataclass.Idioma
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -100,22 +104,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
-fun buscarCep(cep: String, onResult: (CepResponse?) -> Unit) {
-    val call = RetrofitService.viaCepService.buscarCep(cep);
-    call.enqueue(object : Callback<CepResponse> {
-        override fun onResponse(call: Call<CepResponse>, response: Response<CepResponse>) {
-            if (response.isSuccessful) {
-                onResult(response.body())
-            } else {
-                onResult(null)
-            }
-        }
-
-        override fun onFailure(call: Call<CepResponse>, t: Throwable) {
-            onResult(null)
-        }
-    })
-}
 
 
 @Composable
@@ -207,7 +195,7 @@ fun Cadastro1(
                 .fillMaxHeight(0.75f)
                 .background(
                     color = Color.White,
-                    shape = RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp)
+                    shape = RoundedCornerShape(topEnd = 20.dp, topStart = 20.dp)
                 )
                 .align(Alignment.BottomCenter)
                 .padding(20.dp),
@@ -328,11 +316,14 @@ fun Cadastro2(
     var complemento by remember { mutableStateOf("") }
     var cidade by remember { mutableStateOf("") }
     var bairro by remember { mutableStateOf("") }
+    var cep by remember { mutableStateOf("") }
+    val scope = rememberCoroutineScope();
 
     var logradouroError by remember { mutableStateOf(false) }
     var numeroError by remember { mutableStateOf(false) }
     var cidadeError by remember { mutableStateOf(false) }
     var bairroError by remember { mutableStateOf(false) }
+    var cepError by remember { mutableStateOf(false) }
 
     val labelColor = Color(0xFF000000)
     val borderColor = Color(0xFF077DB0)
@@ -340,6 +331,17 @@ fun Cadastro2(
     val buttonTextColor = Color.White
     val textColor = Color.Black
 
+    val retrofit = remember {
+        Retrofit.Builder()
+            .baseUrl("https://viacep.com.br/ws/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    val viaCepApi = remember {   retrofit.create(ViaCep::class.java) }
+    var endereco by remember { mutableStateOf<EnderecoViaCep?>(null) }
+
+    val context = LocalContext.current;
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -374,12 +376,55 @@ fun Cadastro2(
             verticalArrangement = Arrangement.Top
         ) {
             Spacer(modifier = Modifier.height(36.dp))
+            InputField(
+                value = cep, // Use o estado local diretamente aqui
+                onValueChange = { newCep ->
+                    cep = newCep
+                    cepError = cep.length != 8
+
+                    if (cep.length == 8) {
+                        scope.launch {
+                            try {
+                                val result = viaCepApi.buscarCep(cep)
+                                endereco = result
+                                viewModel.usuarioAtual = viewModel.usuarioAtual.copy(
+                                    endereco = Endereco(
+                                        logradouro = result.logradouro ?: "",
+                                        complemento = result.complemento ?: "",
+                                        bairro = result.bairro ?: "",
+                                        cidade = result.localidade ?: "",
+                                        numero = "",
+                                        cep = cep
+                                    )
+                                )
+                            } catch (e: Exception) {
+                                Toast.makeText(context, "Erro ao buscar o CEP!", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                },
+                label = stringResource(R.string.label_cep),
+                isError = cepError,
+                errorMessage = stringResource(R.string.error_cep)
+            )
+
+            if (cepError) {
+                Text(
+                    text = "Digite um CEP válido com 8 números.",
+                    color = Color.Red,
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
+
 
             InputField(
-                value = logradouro,
+                value = viewModel.usuarioAtual.endereco?.logradouro ?: "",
                 onValueChange = {
-                    logradouro = it
-                    logradouroError = logradouro.isEmpty()
+                    val enderecoAtual = viewModel.usuarioAtual.endereco ?: Endereco()
+                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(
+                        endereco = enderecoAtual.copy(logradouro = it)
+                    )
+                    logradouroError = it.isEmpty()
                 },
                 label = stringResource(R.string.label_logradouro),
                 isError = logradouroError,
@@ -387,10 +432,13 @@ fun Cadastro2(
             )
 
             InputField(
-                value = numero,
+                value = viewModel.usuarioAtual.endereco?.numero ?: "",
                 onValueChange = {
-                    numero = it
-                    numeroError = numero.isEmpty()
+                    val enderecoAtual = viewModel.usuarioAtual.endereco ?: Endereco()
+                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(
+                        endereco = enderecoAtual.copy(numero = it)
+                    )
+                    numeroError = it.isEmpty()
                 },
                 label = stringResource(R.string.label_numero),
                 isError = numeroError,
@@ -398,16 +446,24 @@ fun Cadastro2(
             )
 
             InputField(
-                value = complemento,
-                onValueChange = { complemento = it },
+                value = viewModel.usuarioAtual.endereco?.complemento ?: "",
+                onValueChange = {
+                    val enderecoAtual = viewModel.usuarioAtual.endereco ?: Endereco()
+                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(
+                        endereco = enderecoAtual.copy(complemento = it)
+                    )
+                },
                 label = stringResource(R.string.label_complemento)
             )
 
             InputField(
-                value = cidade,
+                value = viewModel.usuarioAtual.endereco?.cidade ?: "",
                 onValueChange = {
-                    cidade = it
-                    cidadeError = cidade.isEmpty()
+                    val enderecoAtual = viewModel.usuarioAtual.endereco ?: Endereco()
+                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(
+                        endereco = enderecoAtual.copy(cidade = it)
+                    )
+                    cidadeError = it.isEmpty()
                 },
                 label = stringResource(R.string.label_cidade),
                 isError = cidadeError,
@@ -415,10 +471,13 @@ fun Cadastro2(
             )
 
             InputField(
-                value = bairro,
+                value = viewModel.usuarioAtual.endereco?.bairro ?: "",
                 onValueChange = {
-                    bairro = it
-                    bairroError = bairro.isEmpty()
+                    val enderecoAtual = viewModel.usuarioAtual.endereco ?: Endereco()
+                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(
+                        endereco = enderecoAtual.copy(bairro = it)
+                    )
+                    bairroError = it.isEmpty()
                 },
                 label = stringResource(R.string.label_bairro),
                 isError = bairroError,
@@ -430,10 +489,11 @@ fun Cadastro2(
             // Botões
             Button(
                 onClick = {
-                    logradouroError = logradouro.isEmpty()
-                    numeroError = numero.isEmpty()
-                    cidadeError = cidade.isEmpty()
-                    bairroError = bairro.isEmpty()
+                    val enderecoAtual = viewModel.usuarioAtual.endereco ?: Endereco()
+                    logradouroError = enderecoAtual.logradouro.isNullOrEmpty()
+                    numeroError = enderecoAtual.numero.isNullOrEmpty()
+                    cidadeError = enderecoAtual.cidade.isNullOrEmpty()
+                    bairroError = enderecoAtual.bairro.isNullOrEmpty()
 
                     if (!logradouroError && !numeroError && !cidadeError && !bairroError) {
                         navController.navigate(route = "cadastro3")
@@ -1173,13 +1233,14 @@ fun Cadastro6(
 ) {
     val checkboxesState = remember {
         mutableStateListOf(
-            false, false, false, false, false, false, false, false, false,
-            false, false, false, false, false, false, false, false, false,
-            false, false, false, false, false, false, false, false, false,
-            false, false, false, false, false, false, false, false, false,
-            false, false, false, false, false, false, false, false, false,
-            false, false, false, false, false, false, false, false, false,
-            false, false, false, false, false, false, false, false, false
+            false, false, false,
+            false, false, false,
+            false, false, false,
+            false, false, false,
+            false, false, false,
+            false, false, false,
+            false, false, false,
+            false, false, false,
         )
     }
 
@@ -1196,11 +1257,6 @@ fun Cadastro6(
 
     var errorMessage by remember { mutableStateOf("") }
 
-    val disponibilidade: Array<Array<Boolean>> = Array(7) { row ->
-        Array(3) { col ->
-            checkboxesState[row * 3 + col]
-        }
-    }
 
     Column(
         modifier = modifier

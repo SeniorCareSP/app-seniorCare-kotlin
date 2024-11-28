@@ -1,4 +1,4 @@
-import com.example.mobileseniorcare.dataclassx.ViaCep
+import com.example.mobileseniorcare.api.ViaCep
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

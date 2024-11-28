@@ -1,7 +1,5 @@
 package com.example.mobileseniorcare.api
 
-import com.example.mobileseniorcare.dataclassx.ViaCep
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
