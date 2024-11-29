@@ -27,7 +27,6 @@ class SeniorCareViewModel : ViewModel() {
 
     var endereco = mutableStateOf<CepResponse?>(null)
 
-    //    private val apiSeniorCare: ApiSeniorCare = RetrofitService.getApiSeniorCare()
     private val api: ApiSeniorCare = RetrofitService.getApiWithoutToken();
     var usuarioLogado = mutableStateOf<UsuarioTokenDto?>(null)
         private set
@@ -54,14 +53,11 @@ class SeniorCareViewModel : ViewModel() {
 
         usuarioAtual = usuarioAtual.copy(agendas = novaAgenda)
 
-        // Adicione logs para verificar se a agenda foi atualizada corretamente
         Log.d("SeniorCareViewModel", "Nova agenda criada: $novaAgenda")
         Log.d("SeniorCareViewModel", "Usuário Atual após atualizar agendas: $usuarioAtual")
 
-        // Atualize o LiveData para refletir as mudanças
         _agenda.value = novaAgenda
     }
-
 
     private val dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
     val dataNascimentoString: String
@@ -73,8 +69,6 @@ class SeniorCareViewModel : ViewModel() {
 
     var erroApi by mutableStateOf(false)
 
-
-    // Função para realizar o login
     suspend fun login(email: String, senha: String) {
         isLoading.value = true
         try {
@@ -98,8 +92,6 @@ class SeniorCareViewModel : ViewModel() {
             isLoading.value = false
         }
     }
-
-
 
     fun salvar() {
         GlobalScope.launch {
@@ -137,110 +129,4 @@ class SeniorCareViewModel : ViewModel() {
         }
     }
 }
-//fun atualizar(){
-//    GlobalScope.launch {
-//        try {
-//            //filmeEmAtualizacao = filmeAtual
-//                var resposta = api.updateUsuario(usuarioAtual.id!!, usuarioAtual)
-//                if (resposta.isSuccessful) {
-//               //     filmes[filmes.indexOfFirst { it.id == filmeAtual.id }] = resposta.body()!! // atualizando a lista com o corpo da resposta
-//                    erroApi = false
-//                } else {
-//                    Log.e("api", "Erro ao atualizar o usuário: ${resposta.errorBody()?.string()}")
-//                    erroApi = true
-//                }
-//
-//        } catch (exception: Exception) {
-//            Log.e("api", "Erro ao atualizar o usuário", exception)
-//            erroApi = true
-//        }
-//
-//    }
-//}
 
-
-
-    // Função para criar um novo usuário (ex: responsável)
-//    fun createUsuario(usuario: UsuarioCuidador) {
-//        viewModelScope.launch {
-//            isLoading.value = true
-//            try {
-//                val response = api.createUsuario(usuario)
-//
-//                if (response.isSuccessful) {
-//                    Log.i("SeniorCareViewModel", "Usuário criado: ${response.body()}")
-//                } else {
-//                    errorMessage.value = "Erro ao criar usuário: ${response.errorBody()?.string()}"
-//                }
-//            } catch (e: Exception) {
-//                errorMessage.value = "Erro ao criar usuário: ${e.message}"
-//                Log.e("SeniorCareViewModel", "Erro ao criar usuário", e)
-//            } finally {
-//                isLoading.value = false
-//            }
-//        }
-//    }
-
-//    // Função para obter todos os usuários
-//    fun getAllUsuarios() {
-//        viewModelScope.launch {
-//            isLoading.value = true
-//            try {
-//                val response = api.getAllUsuarios()
-//
-//                if (response.isSuccessful) {
-//                    Log.i("SeniorCareViewModel", "Usuários: ${response.body()}")
-//                } else {
-//                    errorMessage.value = "Erro ao obter usuários: ${response.errorBody()?.string()}"
-//                }
-//            } catch (e: Exception) {
-//                errorMessage.value = "Erro ao obter usuários: ${e.message}"
-//                Log.e("SeniorCareViewModel", "Erro ao obter usuários", e)
-//            } finally {
-//                isLoading.value = false
-//            }
-//        }
-//    }
-//
-//    // Função para atualizar um usuário
-//    fun updateUsuario(id: Int, usuario: UsuarioCuidador) {
-//        viewModelScope.launch {
-//            isLoading.value = true
-//            try {
-//                val response = api.updateUsuario(id, usuario)
-//
-//                if (response.isSuccessful) {
-//                    Log.i("SeniorCareViewModel", "Usuário atualizado: ${response.body()}")
-//                } else {
-//                    errorMessage.value = "Erro ao atualizar usuário: ${response.errorBody()?.string()}"
-//                }
-//            } catch (e: Exception) {
-//                errorMessage.value = "Erro ao atualizar usuário: ${e.message}"
-//                Log.e("SeniorCareViewModel", "Erro ao atualizar usuário", e)
-//            } finally {
-//                isLoading.value = false
-//            }
-//        }
-//    }
-
-    // Função para excluir um usuário
-//    fun deleteUsuario(id: Int) {
-//        viewModelScope.launch {
-//            isLoading.value = true
-//            try {
-//                val response = api.deleteUsuario(id)
-//
-//                if (response.isSuccessful) {
-//                    Log.i("SeniorCareViewModel", "Usuário excluído com sucesso")
-//                } else {
-//                    errorMessage.value = "Erro ao excluir usuário: ${response.errorBody()?.string()}"
-//                }
-//            } catch (e: Exception) {
-//                errorMessage.value = "Erro ao excluir usuário: ${e.message}"
-//                Log.e("SeniorCareViewModel", "Erro ao excluir usuário", e)
-//            } finally {
-//                isLoading.value = false
-//            }
-//        }
-//    }
-//}

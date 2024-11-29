@@ -36,15 +36,9 @@ interface ApiSeniorCare {
         @POST
         suspend fun createUsuario(@Url endpoint: String, @Body usuario: UsuarioCuidador): Response<UsuarioCuidador>
 
-    // Endpoint para criar um novo usuário
-//        @POST("/usuarios")
-//        suspend fun createUsuario(@Body usuario: UsuarioCuidador): Response<UsuarioCuidador>
-
-        // Endpoint para atualizar um usuário existente
         @PUT("/usuarios/{id}")
         suspend fun updateUsuario(@Path("id") id: Int, @Body usuario: UsuarioCuidador): Response<UsuarioCuidador>
 
-        // Endpoint para excluir um usuário
         @DELETE("/usuarios/{id}")
         suspend fun deleteUsuario(@Path("id") id: Int): Response<Void>
     }

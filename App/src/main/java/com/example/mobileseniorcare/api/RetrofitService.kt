@@ -18,17 +18,7 @@ import java.time.format.DateTimeFormatter
 
 object RetrofitService {
 
-    private const val BASE_URL_SENIOR_CARE = "http://44.221.246.250:8080/api/"
-    private const val BASE_URL = "http://44.221.246.250:8080/api/" // Emulador acessando localhost
-
-    // Instância de Retrofit sem token, para requisições como o login
-//    fun getApiSeniorCareWithoutToken(): ApiSeniorCare {
-//        return Retrofit.Builder()
-//            .baseUrl(BASE_URL_SENIOR_CARE)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//            .create(ApiSeniorCare::class.java)
-//    }],
+    private const val BASE_URL = "http://44.221.246.250:8080/api/"
 
     fun getApiWithoutToken(): ApiSeniorCare {
         val logging = HttpLoggingInterceptor()
@@ -43,7 +33,7 @@ object RetrofitService {
 
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(gson)) // Converter resposta JSON para objetos Kotlin
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(httpClient.build())
             .build()
             .create(ApiSeniorCare::class.java)
@@ -58,20 +48,6 @@ object RetrofitService {
     val viaCepService = retrofit.create(ViaCep::class.java)
 
 
-
-    // Instância de Retrofit com token, para requisições autenticadas
-//    fun getApiSeniorCare(token: String): ApiSeniorCare {
-//        val okHttpClient = OkHttpClient.Builder()
-//            .addInterceptor(InterceptorTokenJWT(token))
-//            .build()
-//
-//        return Retrofit.Builder()
-//            .client(okHttpClient)
-//            .baseUrl(BASE_URL_SENIOR_CARE)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//            .create(ApiSeniorCare::class.java)
-//    }
 }
 
 
