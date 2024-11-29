@@ -7,32 +7,33 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/senior_care"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@drawable/senior_care"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileSeniorCare"
-        android:networkSecurityConfig="@xml/network_security_config"
         android:usesCleartextTraffic="true"
-
         tools:targetApi="31">
+        <activity
+            android:name=".telas.MainActivity2"
+            android:exported="false"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.MobileSeniorCare" />
         <activity
             android:name=".telas.cadastro.CadastroIdoso"
             android:exported="false"
             android:label="@string/title_activity_cadastro_idoso"
             android:theme="@style/Theme.MobileSeniorCare" />
         <activity
-            android:name=".telas.MainActivity2"
+            android:name=".telas.FragmentosCadastro"
             android:exported="false"
-            android:label="@string/title_activity_main2"
+            android:label="@string/title_activity_fragmentos_cadastro"
             android:theme="@style/Theme.MobileSeniorCare" />
-
         <activity
             android:name=".telas.EdicaoPerfil"
             android:exported="true"
@@ -42,6 +43,31 @@
             android:name=".telas.Login"
             android:exported="true"
             android:label="@string/title_activity_login"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
+            android:name=".telas.cadastro.Cadastro6"
+            android:exported="true"
+            android:label="@string/title_activity_cadastro6"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
+            android:name=".telas.cadastro.Cadastro5"
+            android:exported="true"
+            android:label="@string/title_activity_cadastro5"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
+            android:name=".telas.cadastro.Cadastro4"
+            android:exported="true"
+            android:label="@string/title_activity_cadastro4"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
+            android:name=".telas.cadastro.Cadastro3"
+            android:exported="true"
+            android:label="@string/title_activity_cadastro3"
+            android:theme="@style/Theme.MobileSeniorCare" />
+        <activity
+            android:name=".telas.cadastro.Cadastro2"
+            android:exported="true"
+            android:label="@string/title_activity_cadastro2"
             android:theme="@style/Theme.MobileSeniorCare" />
         <activity
             android:name=".telas.MainActivity"

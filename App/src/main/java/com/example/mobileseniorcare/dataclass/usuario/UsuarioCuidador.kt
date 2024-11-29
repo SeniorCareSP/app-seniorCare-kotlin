@@ -7,6 +7,7 @@ import com.example.mobileseniorcare.dataclass.Endereco
 import com.example.mobileseniorcare.dataclass.Favorito
 import com.example.mobileseniorcare.dataclass.Idioma
 import com.example.mobileseniorcare.dataclass.Idoso
+import com.example.mobileseniorcare.dataclass.TipoUsuario
 import java.time.LocalDate
 
 data class UsuarioCuidador(
@@ -16,7 +17,7 @@ data class UsuarioCuidador(
     var senha: String? = "",
     var telefone: String? = null,
     var sexoBiologico: String? = null,
-    var tipoDeUsuario: String? = null,
+    var tipoDeUsuario: TipoUsuario? = null,
     var dtNascimento: LocalDate? = null,
     var apresentacao: String? = null,
     var dtCadastro: LocalDate? = null,

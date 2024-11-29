@@ -14,6 +14,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.mobileseniorcare.dataclass.Agenda
 import com.example.mobileseniorcare.dataclass.CepResponse
 import com.example.mobileseniorcare.dataclass.Endereco
+import com.example.mobileseniorcare.dataclass.TipoUsuario
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
 import kotlinx.coroutines.Dispatchers
@@ -107,9 +108,9 @@ class SeniorCareViewModel : ViewModel() {
                val endpoint: String
                Log.d("SeniorCareViewModel", "Usuário Atual antes de salvar: $usuarioAtual")
 
-               if (usuarioAtual.tipoDeUsuario.equals("CUIDADOR", ignoreCase = true)) {
+               if (usuarioAtual.tipoDeUsuario == TipoUsuario.CUIDADOR) {
                    endpoint = "cuidadores"
-               } else if (usuarioAtual.tipoDeUsuario.equals("RESPONSAVEL", ignoreCase = true)) {
+               } else if (usuarioAtual.tipoDeUsuario == TipoUsuario.RESPONSAVEL) {
                    endpoint = "responsaveis"
                } else {
                    // Caso o tipo de usuário seja inválido, exibe uma mensagem de erro e para a execução

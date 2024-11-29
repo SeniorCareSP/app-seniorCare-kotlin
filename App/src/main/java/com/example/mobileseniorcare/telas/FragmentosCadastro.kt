@@ -83,6 +83,7 @@ import com.example.mobileseniorcare.dataclass.CepResponse
 import com.example.mobileseniorcare.dataclass.Endereco
 import com.example.mobileseniorcare.dataclass.EnderecoViaCep
 import com.example.mobileseniorcare.dataclass.Idioma
+import com.example.mobileseniorcare.dataclass.TipoUsuario
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 import kotlinx.coroutines.withContext
 import retrofit2.Call
@@ -121,7 +122,7 @@ fun Cadastro1(
     var cepError by remember { mutableStateOf(false) }
     var nomeError by remember { mutableStateOf(false) }
     var selectedOptionError by remember { mutableStateOf(false) }
-    var selectedOption by remember { mutableStateOf("") }
+    var selectedOption by remember { mutableStateOf<TipoUsuario?>(null) }
 
 
     // Estilos
@@ -165,7 +166,7 @@ fun Cadastro1(
             confirmarSenha.isEmpty() || confirmarSenha != viewModel.usuarioAtual.senha
      //   cepError = viewModel.usuarioAtual.endereco?.cep.isNullOrEmpty()
         nomeError = viewModel.usuarioAtual.nome.isNullOrEmpty()
-        selectedOptionError = viewModel.usuarioAtual.tipoDeUsuario.isNullOrEmpty()
+        selectedOptionError = viewModel.usuarioAtual.tipoDeUsuario == null
         return !(emailError || senhaError || confirmarSenhaError ||  nomeError || selectedOptionError)
     }
 
@@ -250,39 +251,49 @@ fun Cadastro1(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(
-                    onClick = { selectedOption = "Cuidador"; viewModel.usuarioAtual.tipoDeUsuario = selectedOption; selectedOptionError = false },
+                    onClick = {
+                        selectedOption = TipoUsuario.CUIDADOR // Agora estamos atribuindo o enum corretamente
+                        viewModel.usuarioAtual.tipoDeUsuario = selectedOption
+                        selectedOptionError = false
+                    },
                     modifier = Modifier
                         .weight(1f)
                         .border(
                             width = 1.dp,
-                            color = if (selectedOption == "Cuidador") Color.White else borderColor,
+                            color = if (selectedOption == TipoUsuario.CUIDADOR) Color.White else borderColor,
                             shape = RoundedCornerShape(8.dp)
                         ),
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                        containerColor = if (selectedOption == "Cuidador") buttonBackgroundColor else Color.White,
-                        contentColor = if (selectedOption == "Cuidador") buttonTextColor else buttonBackgroundColor
+                        containerColor = if (selectedOption == TipoUsuario.CUIDADOR) buttonBackgroundColor else Color.White,
+                        contentColor = if (selectedOption == TipoUsuario.CUIDADOR) buttonTextColor else buttonBackgroundColor
                     )
                 ) {
                     Text("Cuidador")
                 }
                 Spacer(modifier = Modifier.width(16.dp))
                 Button(
-                    onClick = { selectedOption = "Responsavel";  viewModel.usuarioAtual.tipoDeUsuario = selectedOption; selectedOptionError = false },
+                    onClick = {
+                        selectedOption = TipoUsuario.RESPONSAVEL
+                        viewModel.usuarioAtual.tipoDeUsuario = selectedOption
+                        selectedOptionError = false
+                    },
                     modifier = Modifier
                         .weight(1f)
                         .border(
                             width = 1.dp,
-                            color = if (selectedOption == "Responsavel") Color.White else borderColor,
+                            color = if (selectedOption == TipoUsuario.RESPONSAVEL) Color.White else borderColor,
                             shape = RoundedCornerShape(8.dp)
                         ),
                     colors = androidx.compose.material3.ButtonDefaults.buttonColors(
-                        containerColor = if (selectedOption == "Responsavel") buttonBackgroundColor else Color.White,
-                        contentColor = if (selectedOption == "Responsavel") buttonTextColor else buttonBackgroundColor
+                        containerColor = if (selectedOption == TipoUsuario.RESPONSAVEL) buttonBackgroundColor else Color.White,
+                        contentColor = if (selectedOption == TipoUsuario.RESPONSAVEL) buttonTextColor else buttonBackgroundColor
                     )
                 ) {
                     Text("Responsável")
                 }
             }
+
+
             if (selectedOptionError) {
                 Text(stringResource(R.string.error_opcao), color = Color.Red, style = TextStyle(fontSize = 12.sp))
             }
@@ -796,7 +807,7 @@ fun Cadastro3(
 
 
                         if (!dtNascimentoError && !tempoExperienciaError && !celularError && !idiomaError) {
-                            if (viewModel.usuarioAtual.tipoDeUsuario.equals("Cuidador")) {
+                            if (viewModel.usuarioAtual.tipoDeUsuario == TipoUsuario.CUIDADOR) {
                                 navController.navigate(route = "cadastro4")
                             } else {
                                 navController.navigate(route = "cadastro6")
@@ -1434,12 +1445,11 @@ fun Cadastro6(
                                         }
                                     }
 
-                                    // Use usuarioAtual ou um novo usuário específico para agenda
+
                                    viewModel.usuarioAtual?.let { usuario: UsuarioCuidador  ->
-                                        viewModel.criarAgenda(disponibilidade, usuario)
+//                                        viewModel.criarAgenda(disponibilidade, usuario)
                                         viewModel.salvar()
                                         errorMessage = ""
-                                        navController.navigate(route = "telaMain")
                                         navController.navigate(route = "telaMain")
 
                                     } ?: run {
