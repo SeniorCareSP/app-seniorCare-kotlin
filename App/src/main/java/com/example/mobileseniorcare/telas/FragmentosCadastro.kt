@@ -1,7 +1,10 @@
 package com.example.mobileseniorcare.telas
+import coil.compose.rememberImagePainter
 
 import android.content.Intent
 import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -263,7 +266,7 @@ fun Cadastro1(
                             color = if (selectedOption == TipoUsuario.CUIDADOR) Color.White else borderColor,
                             shape = RoundedCornerShape(8.dp)
                         ),
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    colors = ButtonDefaults.buttonColors(
                         containerColor = if (selectedOption == TipoUsuario.CUIDADOR) buttonBackgroundColor else Color.White,
                         contentColor = if (selectedOption == TipoUsuario.CUIDADOR) buttonTextColor else buttonBackgroundColor
                     )
@@ -284,7 +287,7 @@ fun Cadastro1(
                             color = if (selectedOption == TipoUsuario.RESPONSAVEL) Color.White else borderColor,
                             shape = RoundedCornerShape(8.dp)
                         ),
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    colors = ButtonDefaults.buttonColors(
                         containerColor = if (selectedOption == TipoUsuario.RESPONSAVEL) buttonBackgroundColor else Color.White,
                         contentColor = if (selectedOption == TipoUsuario.RESPONSAVEL) buttonTextColor else buttonBackgroundColor
                     )
@@ -816,7 +819,7 @@ fun Cadastro3(
                     },
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(10.dp),
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    colors = ButtonDefaults.buttonColors(
                         containerColor = buttonBackgroundColor,
                         contentColor = buttonTextColor
                     )
@@ -830,7 +833,7 @@ fun Cadastro3(
                         .clip(RoundedCornerShape(8.dp))
                         .border(1.dp, borderColor, shape = RoundedCornerShape(8.dp)),
                     shape = RoundedCornerShape(10.dp),
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    colors = ButtonDefaults.buttonColors(
                         containerColor = buttonWhiteBackgroundColor,
                         contentColor = buttonWhiteTextColor
                     )
@@ -985,7 +988,7 @@ fun Cadastro4(
                                     )
                                 },
                                 modifier = Modifier.weight(1f),
-                                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                                colors = ButtonDefaults.buttonColors(
                                     containerColor = if (isSelected) buttonBackgroundColor else buttonWhiteBackgroundColor,
                                     contentColor = if (isSelected) buttonTextColor else buttonWhiteTextColor
                                 )
@@ -1029,7 +1032,7 @@ fun Cadastro4(
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(10.dp)),
                     shape = RoundedCornerShape(10.dp),
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    colors = ButtonDefaults.buttonColors(
                         containerColor = buttonBackgroundColor,
                         contentColor = buttonTextColor
                     )
@@ -1043,7 +1046,7 @@ fun Cadastro4(
                         .clip(RoundedCornerShape(10.dp))
                         .border(1.dp, borderColor, shape = RoundedCornerShape(10.dp)),
                     shape = RoundedCornerShape(10.dp),
-                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    colors = ButtonDefaults.buttonColors(
                         containerColor = buttonWhiteBackgroundColor,
                         contentColor = labelColor
                     )
@@ -1242,6 +1245,15 @@ fun Cadastro6(
     viewModel: SeniorCareViewModel = viewModel(),
     modifier: Modifier = Modifier
 ) {
+    var imageUri by remember { mutableStateOf<String?>(null) }
+    var isImageDialogOpen by remember { mutableStateOf(false) }
+    val pickImage = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent(),
+        onResult = { uri ->
+            imageUri = uri?.toString()
+        }
+    )
+
     val checkboxesState = remember {
         mutableStateListOf(
             false, false, false,
@@ -1306,7 +1318,7 @@ fun Cadastro6(
                     .fillMaxWidth()
                     .background(
                         color = Color.White,
-                        shape = androidx.compose.foundation.shape.RoundedCornerShape(
+                        shape = RoundedCornerShape(
                             topEnd = 30.dp,
                             topStart = 30.dp
                         )
@@ -1341,7 +1353,31 @@ fun Cadastro6(
 
                         }
                     }
+                    Column {
 
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        Row {
+                            Button(onClick = { pickImage.launch("image/*") }) {
+                                Text(text = "Selecionar Imagem")
+                            }
+
+                            // Exibir um botão ou texto para visualizar a imagem selecionada
+                            imageUri?.let {
+                                Button(
+                                    onClick = { isImageDialogOpen = true },
+                                    modifier = Modifier.padding(start = 16.dp)
+                                ) {
+                                    Text(text = "Ver Imagem")
+                                }
+                            }
+                        }
+
+                        if (isImageDialogOpen && imageUri != null) {
+                            ImageDialog(imageUri = imageUri, onDismiss = { isImageDialogOpen = false })
+                        }
+                    }
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -1611,54 +1647,6 @@ fun LoginSenior(navController: NavHostController, modifier: Modifier = Modifier)
     }
 }
 
-//@Composable
-//fun dropDownMenu() {
-//
-//    var expanded by remember { mutableStateOf(false) }
-//    val idiomasDisponiveis = listOf("Português", "Inglês", "Espanhol", "Francês", "Alemão")
-//    val suggestions = listOf("Kotlin", "Java", "Dart", "Python")
-//    var selectedText by remember { mutableStateOf("") }
-//
-//    var textfieldSize by remember { mutableStateOf(Size.Zero)}
-//
-//    val icon = if (expanded)
-//        Icons.Filled.KeyboardArrowUp
-//    else
-//        Icons.Filled.KeyboardArrowDown
-//
-//
-//    Column(Modifier.padding(20.dp)) {
-//        OutlinedTextField(
-//            value = selectedText,
-//            onValueChange = { selectedText = it },
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .onGloballyPositioned { coordinates ->
-//                    //This value is used to assign to the DropDown the same width
-//                    textfieldSize = coordinates.size.toSize()
-//                },
-//            label = {Text("Label")},
-//            trailingIcon = {
-//                Icon(icon,"contentDescription",
-//                    Modifier.clickable { expanded = !expanded })
-//            }
-//        )
-//        DropdownMenu(
-//            expanded = expanded,
-//            onDismissRequest = { expanded = false },
-//            modifier = Modifier
-//                .width(with(LocalDensity.current){textfieldSize.width.toDp()})
-//        ) {
-//            suggestions.forEach { label ->
-//                DropdownMenuItem(onClick = {
-//                    selectedText = label
-//                    expanded = false
-//                }) {
-//                    Text(text = label)
-//                }
-//            }
-//        }
-//    }
 
 
 @Composable
@@ -1718,7 +1706,29 @@ fun IdiomasSelect(viewModel: SeniorCareViewModel = viewModel(), modifier: Modifi
     }
 }
 
-
+@Composable
+fun ImageDialog(imageUri: String?, onDismiss: () -> Unit) {
+    if (imageUri != null) {
+        AlertDialog(
+            onDismissRequest = onDismiss,
+            title = {
+                Text(text = "Visualizar Imagem")
+            },
+            text = {
+                Image(
+                    painter = rememberImagePainter(imageUri),
+                    contentDescription = "Imagem Ampliada",
+                    modifier = Modifier.fillMaxWidth()
+                )
+            },
+            confirmButton = {
+                Button(onClick = onDismiss) {
+                    Text("Fechar")
+                }
+            }
+        )
+    }
+}
 @Composable
 fun IdiomasSelect(viewModel: SeniorCareViewModel) {
     // Lista de idiomas disponíveis para seleção
