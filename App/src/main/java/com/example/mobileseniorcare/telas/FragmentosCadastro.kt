@@ -765,34 +765,7 @@ fun Cadastro3(
                     style = TextStyle(fontSize = 12.sp)
                 )
             }
-            Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextField(
-                label = {
-                    Text(
-                        stringResource(R.string.label_tempo_experiencia),
-                        color = labelColor
-                    )
-                },
-                value = viewModel.usuarioAtual.experiencia ?: "",
-                onValueChange = {
-                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(experiencia = it)
-                    tempoExperienciaError = viewModel.usuarioAtual.experiencia.isNullOrEmpty()
-                },
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = borderColor,
-                    unfocusedBorderColor = borderColor,
-                    focusedTextColor = textColor,
-                    unfocusedTextColor = textColor
-                )
-            )
-            if (tempoExperienciaError) {
-                Text(
-                    stringResource(R.string.error_tempo_experiencia),
-                    color = Color.Red,
-                    style = TextStyle(fontSize = 12.sp)
-                )
-            }
+
             Spacer(modifier = Modifier.height(72.dp)) // Espaço antes dos botões
 
             Column(
@@ -804,12 +777,12 @@ fun Cadastro3(
                 Button(
                     onClick = {
                         dtNascimentoError = viewModel.usuarioAtual.dtNascimento == null
-                        tempoExperienciaError = viewModel.usuarioAtual.experiencia.isNullOrEmpty()
+                      //  tempoExperienciaError = viewModel.usuarioAtual.experiencia.isNullOrEmpty()
                         idiomaError = viewModel.usuarioAtual.idiomas.isNullOrEmpty()
                         celularError = viewModel.usuarioAtual.telefone.isNullOrEmpty()
 
 
-                        if (!dtNascimentoError && !tempoExperienciaError && !celularError && !idiomaError) {
+                        if (!dtNascimentoError  && !celularError && !idiomaError) {
                             if (viewModel.usuarioAtual.tipoDeUsuario == TipoUsuario.CUIDADOR) {
                                 navController.navigate(route = "cadastro4")
                             } else {
@@ -1066,13 +1039,20 @@ fun Cadastro5(
 ) {
     // var text by remember { mutableStateOf("") }
     //  val selectedOptions = remember { mutableStateOf(mutableSetOf<String>()) }
+    val labelColor = Color(0xFF000000)
     val borderColor = Color(0xFF077DB0)
     val buttonBackgroundColor = Color(0xFF077DB0)
     val buttonTextColor = Color.White
     val buttonWhiteTextColor = Color(0xFF077DB0)
     val buttonWhiteBackgroundColor = Color.White
+    val textColor = Color.Black
     var text by remember { mutableStateOf(viewModel.usuarioAtual.apresentacao ?: "") }
     val selectedOptions = remember { mutableStateOf(mutableSetOf<String>()) }
+
+    var tempoExperiencia by remember { mutableStateOf("") }
+    var tempoExperienciaError by remember { mutableStateOf(false) }
+
+
 
 
     val options = listOf(
@@ -1083,12 +1063,12 @@ fun Cadastro5(
     )
 
     fun updateAjuda() {
-        viewModel.usuarioAtual.ajuda = selectedOptions.value.map { option ->
-            Ajuda(nome = option)
-        }
+        viewModel.usuarioAtual = viewModel.usuarioAtual.copy(
+            ajuda = selectedOptions.value.map { option -> Ajuda(nome = option) }
+        )
     }
 
-    val canProceed = text.isNotBlank() && selectedOptions.value.isNotEmpty()
+    val canProceed = text.isNotBlank() && selectedOptions.value.isNotEmpty() && !tempoExperienciaError
 
     Column(modifier = modifier.fillMaxSize()) {
         Box(
@@ -1154,11 +1134,13 @@ fun Cadastro5(
                                         ),
                                     onClick = {
                                         // Adiciona ou remove a opção do conjunto de selecionados
+                                        val updatedOptions = selectedOptions.value.toMutableSet()
                                         if (selectedOptions.value.contains(option)) {
-                                            selectedOptions.value.remove(option)
+                                            updatedOptions.remove(option)
                                         } else {
-                                            selectedOptions.value.add(option)
+                                            updatedOptions.add(option)
                                         }
+                                        selectedOptions.value = updatedOptions // Atualiza o estado
                                         updateAjuda()
                                     },
                                     shape = RoundedCornerShape(7.dp),
@@ -1181,6 +1163,7 @@ fun Cadastro5(
                         .padding(end = 25.dp)
                         .padding(bottom = 23.dp)
                 ) {
+
                     Text(text = stringResource(R.string.label_apresente_se), fontSize = 20.sp)
                     OutlinedTextField(
                         value = text,
@@ -1189,10 +1172,39 @@ fun Cadastro5(
                         },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(200.dp),
+                            .height(140.dp),
                         maxLines = 5,
                         singleLine = false
                     )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    OutlinedTextField(
+                        label = {
+                            Text(
+                                stringResource(R.string.label_tempo_experiencia),
+                                color = labelColor
+                            )
+                        },
+                        value = viewModel.usuarioAtual.experiencia ?: "",
+                        onValueChange = {
+                            viewModel.usuarioAtual = viewModel.usuarioAtual.copy(experiencia = it)
+                            tempoExperienciaError = viewModel.usuarioAtual.experiencia.isNullOrEmpty()
+                        },
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = borderColor,
+                            unfocusedBorderColor = borderColor,
+                            focusedTextColor = textColor,
+                            unfocusedTextColor = textColor
+                        )
+                    )
+                    if (tempoExperienciaError) {
+                        Text(
+                            stringResource(R.string.error_tempo_experiencia),
+                            color = Color.Red,
+                            style = TextStyle(fontSize = 12.sp)
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(10.dp))
 
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
@@ -1358,7 +1370,7 @@ fun Cadastro6(
 
                         Spacer(modifier = Modifier.height(16.dp))
 
-                        Row {
+                        Row (  modifier = Modifier.padding(start = 30.dp, bottom = 8.dp)){
                             Button(onClick = { pickImage.launch("image/*") }) {
                                 Text(text = "Selecionar Imagem")
                             }
@@ -1647,64 +1659,6 @@ fun LoginSenior(navController: NavHostController, modifier: Modifier = Modifier)
     }
 }
 
-
-
-@Composable
-fun IdiomasSelect(viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
-    var expandida by remember { mutableStateOf(false) }
-    var novaFruta by remember { mutableStateOf<Idioma?>(null) }
-    val idiomasDisponiveis = listOf("Português", "Inglês", "Espanhol", "Francês", "Alemão")
-    var expanded by remember { mutableStateOf(false) }
-    var selectedIdioma by remember { mutableStateOf("Selecione um idioma") }
-
-    val frutas = remember {
-        mutableStateListOf<Idioma>(
-            Idioma("Inglês"),
-            Idioma("Inglês"),
-            Idioma("Maçã")
-        )
-    }
-
-    Column(modifier = modifier) {
-        ClickableText(
-            text = AnnotatedString(
-                if (novaFruta == null) "Selecione a fruta"
-                else novaFruta!!.idioma
-            ),
-            onClick = { expandida = !expandida },
-            modifier = modifier.padding(5.dp)
-        )
-        Box { // O DropdownMenu precisa estar dentro de um Box para ficar 'por cima' dos outros elementos
-            DropdownMenu(
-                expanded = expandida, // indica se está expandido
-                onDismissRequest = { expandida = false } // ação ao clicar fora
-            ) {
-                frutas.toList().forEach {
-                    DropdownMenuItem( // item da lista drop down
-                        text = { Text("${it.idioma} ") },
-                        onClick = {
-                            novaFruta = it
-                            expandida = false
-                        }
-                    )
-                }
-            }
-//             //    Atualiza a lista de idiomas no ViewModel
-//                    val currentIdiomas = viewModel.usuarioAtual.idiomas?.toMutableList() ?: mutableListOf()
-//                    if (!currentIdiomas.any { it.idioma == idioma }) {
-//                        currentIdiomas.add(Idioma(idioma))
-//                    }
-//
-//                    // Atualiza o estado do usuário com a nova lista de idiomas
-//                    viewModel.usuarioAtual = viewModel.usuarioAtual.copy(idiomas = currentIdiomas)
-//            }
-            if (novaFruta != null) {
-                Text("Escolhida: ${novaFruta?.idioma}")
-            }
-
-        }
-    }
-}
 
 @Composable
 fun ImageDialog(imageUri: String?, onDismiss: () -> Unit) {
