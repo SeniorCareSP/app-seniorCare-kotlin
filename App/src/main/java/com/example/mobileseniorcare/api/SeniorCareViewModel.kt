@@ -45,18 +45,22 @@ class SeniorCareViewModel : ViewModel() {
     var usuarioAgenda by mutableStateOf<UsuarioCuidador?>(null)
         private set
 
+
+
     private val _agenda = MutableLiveData<Agenda?>()
     val agenda: LiveData<Agenda?> get() = _agenda
 
-    fun criarAgenda(disponibilidade: Array<Array<Boolean>>, usuario: UsuarioCuidador) {
-        val novaAgenda = Agenda(disponibilidade = disponibilidade, usuario = usuario)
-
-        usuarioAtual = usuarioAtual.copy(agendas = novaAgenda)
+    fun criarAgenda(disponibilidade: Array<Array<Boolean>>) {
+        val novaAgenda = Agenda(disponibilidade = disponibilidade)
 
         Log.d("SeniorCareViewModel", "Nova agenda criada: $novaAgenda")
+
+        usuarioAtual = usuarioAtual.copy(agendas = novaAgenda)
         Log.d("SeniorCareViewModel", "Usuário Atual após atualizar agendas: $usuarioAtual")
+        Log.d("CriarAgenda", "Disponibilidade recebida: ${disponibilidade.contentDeepToString()}")
 
         _agenda.value = novaAgenda
+
     }
 
     private val dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")

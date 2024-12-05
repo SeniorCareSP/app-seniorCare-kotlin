@@ -1,5 +1,6 @@
 package com.example.mobileseniorcare.telas
 
+import ListagemViewModel
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -25,10 +26,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mobileseniorcare.R
+import com.example.mobileseniorcare.api.SeniorCareViewModel
+import com.example.mobileseniorcare.dataclass.TipoUsuario
 
 @Composable
-fun ListagemUsuarios(modifier: Modifier = Modifier) {
+fun ListagemUsuarios(modifier: Modifier = Modifier, viewModel: ListagemViewModel = viewModel()) {
+
+    val usuarios = viewModel.getListaCuidador(TipoUsuario.CUIDADOR)
 
     Column (
         modifier = Modifier
@@ -64,13 +70,11 @@ fun ListagemUsuarios(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top // Conteúdo mais para baixo
         ) {
-            CardUsuario()
-            CardUsuario()
-            CardUsuario()
-            CardUsuario()
-            CardUsuario()
-            CardUsuario()
+
+        usuarios.forEach { usuario ->
+            CardUsuario(usuario)
         }
+    }
     }
 }
 

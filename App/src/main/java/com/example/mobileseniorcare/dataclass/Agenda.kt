@@ -4,6 +4,6 @@ import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 
 data class Agenda(
     // val diaDaSemana: String? = null
-    val disponibilidade: Array<Array<Boolean>>,
-    val usuario: UsuarioCuidador? = null
+    var disponibilidade: Array<Array<Boolean>>,
+//    val usuario: UsuarioCuidador? = null
 )

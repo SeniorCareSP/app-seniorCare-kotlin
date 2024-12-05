@@ -27,9 +27,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.mobileseniorcare.R
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 
 @Composable
-fun CardUsuario(modifier: Modifier = Modifier){
+fun CardUsuario(usuario: UsuarioCuidador, modifier: Modifier = Modifier){
     Column (
 
     ){

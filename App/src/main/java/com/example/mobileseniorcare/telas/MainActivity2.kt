@@ -1,5 +1,6 @@
 package com.example.mobileseniorcare.telas
 
+import ListagemViewModel
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -26,7 +27,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mobileseniorcare.R
+import com.example.mobileseniorcare.dataclass.TipoUsuario
 import com.example.mobileseniorcare.telas.ui.theme.MobileSeniorCareTheme
 
 class Favoritos : ComponentActivity() {
@@ -47,8 +50,11 @@ class Favoritos : ComponentActivity() {
 }
 
 @Composable
-fun Greeting2(name: String, modifier: Modifier = Modifier) {
-    Column (
+fun Greeting2(name: String, modifier: Modifier = Modifier,  viewModel: ListagemViewModel = viewModel()) {
+
+    val usuarios = viewModel.getListaCuidador(TipoUsuario.CUIDADOR)
+
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(color = Color(0xFF077DB0)) // Fundo azul
@@ -82,12 +88,9 @@ fun Greeting2(name: String, modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top // Conteúdo mais para baixo
         ) {
-            CardUsuario()
-            CardUsuario()
-            CardUsuario()
-            CardUsuario()
-            CardUsuario()
-            CardUsuario()
+            usuarios.forEach { usuario ->
+                CardUsuario(usuario)
+            }
         }
     }
 }
