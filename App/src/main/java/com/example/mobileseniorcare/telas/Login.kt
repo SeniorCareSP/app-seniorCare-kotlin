@@ -36,19 +36,24 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.api.SeniorCareViewModel
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class Login : ComponentActivity() {
+
+    private val sessaoUsuario: UsuarioTokenDto by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             MobileSeniorCareTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    LoginScreen(rememberNavController(), modifier = Modifier.padding(innerPadding))
+                    LoginScreen(rememberNavController(),  sessaoUsuario, modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -56,7 +61,7 @@ class Login : ComponentActivity() {
 }
 
 @Composable
-fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier) {
+fun LoginScreen(navController: NavHostController,  sessaoUsuario: UsuarioTokenDto, modifier: Modifier = Modifier) {
     var email by remember { mutableStateOf("") }
     var senha by remember { mutableStateOf("") }
     val seniorCareViewModel: SeniorCareViewModel = viewModel()
@@ -177,6 +182,6 @@ fun LoginScreen(navController: NavHostController, modifier: Modifier = Modifier)
 @Composable
 fun LoginScreenPreview() {
     MobileSeniorCareTheme {
-        LoginScreen(rememberNavController())
+        LoginScreen(rememberNavController(), sessaoUsuario = UsuarioTokenDto())
     }
 }

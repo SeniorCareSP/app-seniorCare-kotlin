@@ -6,7 +6,9 @@ import com.google.gson.JsonNull
 import com.google.gson.JsonPrimitive
 import com.google.gson.JsonSerializationContext
 import com.google.gson.JsonSerializer
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
 import retrofit2.Retrofit
@@ -39,6 +41,27 @@ object RetrofitService {
             .create(ApiSeniorCare::class.java)
     }
 
+    fun getApiSeniorCareToken(token:String): ApiSeniorCare {
+
+        /*
+        cliente OkHttp que tem um interceptor, o InterceptorTokenJWT
+         */
+        val okHttpClient = OkHttpClient.Builder()
+            .addInterceptor(InterceptorTokenJWT(token))
+            .build()
+
+        val cliente =
+            Retrofit.Builder()
+                .client(okHttpClient) // aqui estamos dizendo que o cliente Retrofit usará o cliente OkHttp que criamos
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(ApiSeniorCare::class.java)
+        return cliente
+    }
+
+
+
 
 
     val retrofit = Retrofit.Builder()
@@ -64,4 +87,16 @@ internal class LocalDateAdapter : JsonSerializer<LocalDate?> {
         }
     }
 
+}
+
+class InterceptorTokenJWT(val token:String): Interceptor {
+
+    override fun intercept(chain: Interceptor.Chain): Response {
+        val currentRequest = chain.request().newBuilder()
+
+        currentRequest.addHeader("Authorization", "Bearer $token")
+
+        val newRequest = currentRequest.build()
+        return chain.proceed(newRequest)
+    }
 }

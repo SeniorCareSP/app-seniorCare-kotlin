@@ -2,6 +2,7 @@ package com.example.mobileseniorcare.di
 
 import com.example.mobileseniorcare.api.ApiSeniorCare
 import com.example.mobileseniorcare.api.RetrofitService
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
 import org.koin.dsl.module
 
 
@@ -14,16 +15,16 @@ val moduloUsuario = module {
               Ou seja, todos os lugares que pedirem um objeto do tipo SessaoUsuario
               receberão a MESMA instância
      */
-    single<SessaoUsuario> {
+    single<UsuarioTokenDto> {
         // estamos dizendo para o Koin como criar um objeto do tipo SessaoUsuario para o primeiro que pedir
         // da 2a vez em diante, usará a instância criada anteriormente
-        SessaoUsuario()
+        UsuarioTokenDto()
     }
 
     single<ApiSeniorCare> {
         // estamos dizendo p
         // ara o Koin como criar um objeto do tipo ApiFilmes para o primeiro que pedir
         // o get<SessaoUsuario>() é uma forma de pedir ao Koin para entregar um objeto do tipo SessaoUsuario
-        RetrofitService.getApiWithoutToken()
+        RetrofitService.getApiSeniorCareToken(get<UsuarioTokenDto>().token ?: "<SEM TOKEN>")
     }
 }

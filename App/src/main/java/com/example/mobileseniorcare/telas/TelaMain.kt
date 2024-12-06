@@ -15,6 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,9 +28,17 @@ import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.mobileseniorcare.R
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
+import org.koin.android.ext.android.inject
+
+import org.koin.core.component.KoinComponent
+
+import org.koin.java.KoinJavaComponent
 
 
-class MainActivity2 : ComponentActivity() {
+class MainActivity2 : ComponentActivity(), KoinComponent{
+    private val sessaoUsuario: UsuarioTokenDto by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -38,7 +47,8 @@ class MainActivity2 : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Tela(
                         rememberNavController(),
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
+                        sessaoUsuario
                     )
                 }
             }
@@ -46,8 +56,12 @@ class MainActivity2 : ComponentActivity() {
     }
 }
 
+
 @Composable
-fun Tela(navController: NavHostController, modifier: Modifier = Modifier) {
+fun Tela(navController: NavHostController, modifier: Modifier = Modifier, sessaoUsuario: UsuarioTokenDto ) {
+
+
+
     Scaffold(
         modifier = Modifier
             .background(
@@ -112,7 +126,7 @@ fun Tela(navController: NavHostController, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview10() {
     MobileSeniorCareTheme {
-        Tela(rememberNavController())
+        Tela(rememberNavController(), sessaoUsuario = UsuarioTokenDto())
 
     }
 }
