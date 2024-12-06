@@ -113,7 +113,7 @@ class SeniorCareViewModel : ViewModel() {
                    errorMessage.value = "Tipo de usuário inválido"
                    return@launch // Interrompe o bloco de execução atual
                }
-
+                Log.d("SeniorCareViewModel", "Usuário agenda ${usuarioAtual.agendas}")
                 var resposta = api.createUsuario(endpoint,usuarioAtual)
                 if (resposta.isSuccessful) {
                     // usuarioAtual = filmes.last() // atualizando o filmeAtual para que ele tenha um id que veio da API

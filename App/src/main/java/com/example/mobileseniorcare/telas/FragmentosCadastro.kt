@@ -1265,6 +1265,7 @@ fun Cadastro6(
             imageUri = uri?.toString()
         }
     )
+    var disponibilidade by remember { mutableStateOf(Array(7) { Array(3) { false } }) }
 
     val checkboxesState = remember {
         mutableStateListOf(
@@ -1278,7 +1279,7 @@ fun Cadastro6(
             false, false, false,
         )
     }
-
+    var alertDialogVisible by remember { mutableStateOf(false) }
     // Days of the week
     val daysOfWeek = listOf(
         "Segunda-Feira",
@@ -1487,18 +1488,24 @@ fun Cadastro6(
                         Button(
                             onClick = {
                                 if (checkboxesState.any { it }) {
-                                    val disponibilidade: Array<Array<Boolean>> = Array(7) { row ->
+                                    disponibilidade = Array(7) { row ->
                                         Array(3) { col ->
                                             checkboxesState[row * 3 + col]
                                         }
                                     }
 
 
-                                   viewModel.usuarioAtual?.let { usuario: UsuarioCuidador  ->
-//                                        viewModel.criarAgenda(disponibilidade, usuario)
+                                    alertDialogVisible = true
+
+
+
+                                    viewModel.usuarioAtual.let { usuario: UsuarioCuidador  ->
+                                        viewModel.criarAgenda(disponibilidade)
+
+//                                        usuario.agenda?.disponibilidade = disponibilidade;
+//                                        viewModel.usuarioAtual.agenda?.disponibilidade = disponibilidade;
                                         viewModel.salvar()
-                                        errorMessage = ""
-                                        navController.navigate(route = "telaMain")
+                                //                                        navController.navigate(route = "telaMain")
 
                                     } ?: run {
                                         errorMessage = "Usuário não está definido. Por favor, tente novamente."
