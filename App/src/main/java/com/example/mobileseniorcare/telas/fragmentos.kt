@@ -21,6 +21,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,11 +31,44 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.api.SeniorCareViewModel
 import com.example.mobileseniorcare.dataclass.TipoUsuario
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
+
+
+fun String?.toTipoUsuario(): TipoUsuario? {
+    return try {
+        // Converte a string para o valor correspondente de TipoUsuario, se for válido
+        TipoUsuario.valueOf(this ?: "")
+    } catch (e: IllegalArgumentException) {
+        // Retorna null caso a string não seja um valor válido de TipoUsuario
+        null
+    }
+}
+
+
+fun UsuarioTokenDto.obterUserId(): Int? {
+    return this.userId
+}
+
 
 @Composable
-fun ListagemUsuarios(modifier: Modifier = Modifier, viewModel: ListagemViewModel = viewModel()) {
+fun ListagemUsuarios(sessaoUsuario: UsuarioTokenDto ,modifier: Modifier = Modifier, viewModel: ListagemViewModel = viewModel()) {
 
-    val usuarios = viewModel.getListaCuidador(TipoUsuario.CUIDADOR)
+
+    // Converte a string 'tipoUsuario' para o tipo TipoUsuario usando a função de extensão
+    val tipoUsuario = sessaoUsuario.tipoUsuario.toTipoUsuario()
+    val userId = sessaoUsuario.obterUserId()
+
+
+
+    if (tipoUsuario != null && userId != null) {
+        viewModel.carregarUsuarios(tipoUsuario)
+    }
+
+
+
+    val usuariosExibidos = viewModel.usuariosExibidos
+
 
     Column (
         modifier = Modifier
@@ -71,10 +105,14 @@ fun ListagemUsuarios(modifier: Modifier = Modifier, viewModel: ListagemViewModel
             verticalArrangement = Arrangement.Top // Conteúdo mais para baixo
         ) {
 
-        usuarios.forEach { usuario ->
-            CardUsuario(usuario)
+            usuariosExibidos.forEach { usuario ->
+                CardUsuario(usuario)
+                Spacer(modifier = Modifier.height(10.dp))
+            }
+            if (usuariosExibidos.isEmpty()) {
+                Text("Nenhum usuário encontrado", modifier = Modifier.padding(16.dp))
+            }
         }
-    }
     }
 }
 

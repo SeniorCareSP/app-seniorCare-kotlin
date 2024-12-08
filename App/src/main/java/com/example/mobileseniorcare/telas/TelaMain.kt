@@ -59,9 +59,6 @@ class MainActivity2 : ComponentActivity(), KoinComponent{
 
 @Composable
 fun Tela(navController: NavHostController, modifier: Modifier = Modifier, sessaoUsuario: UsuarioTokenDto ) {
-
-
-
     Scaffold(
         modifier = Modifier
             .background(
@@ -107,18 +104,18 @@ fun Tela(navController: NavHostController, modifier: Modifier = Modifier, sessao
             )
         },
     ) { innerPadding ->
-            NavHost(
-                modifier = modifier.padding(innerPadding),
-                navController = navController, // "gerente" de navegação
-                startDestination = "listagem" // fragmento inicial
-            ) {
-                composable("listagem") { // candidato possível para navegação ("fragmento1")
-                    ListagemUsuarios()
-                }
-                composable("conversa") { // candidato possível para navegação ("fragmento2")
-                    ListagemConversa()
-                }
+        NavHost(
+            modifier = modifier.padding(innerPadding),
+            navController = navController, // "gerente" de navegação
+            startDestination = "listagem" // fragmento inicial
+        ) {
+            composable("listagem") { // candidato possível para navegação ("fragmento1")
+                ListagemUsuarios(sessaoUsuario)
             }
+            composable("conversa") { // candidato possível para navegação ("fragmento2")
+                ListagemConversa()
+            }
+        }
     }
 }
 

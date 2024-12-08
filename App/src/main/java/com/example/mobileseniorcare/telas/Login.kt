@@ -1,5 +1,6 @@
 package com.example.mobileseniorcare.telas
 
+import ListagemViewModel
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -17,6 +18,7 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -36,6 +38,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.api.SeniorCareViewModel
+import com.example.mobileseniorcare.dataclass.TipoUsuario
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 import kotlinx.coroutines.CoroutineScope
@@ -60,11 +63,17 @@ class Login : ComponentActivity() {
     }
 }
 
+
+
 @Composable
 fun LoginScreen(navController: NavHostController,  sessaoUsuario: UsuarioTokenDto, modifier: Modifier = Modifier) {
     var email by remember { mutableStateOf("") }
     var senha by remember { mutableStateOf("") }
     val seniorCareViewModel: SeniorCareViewModel = viewModel()
+    val carregar: ListagemViewModel = viewModel()
+
+
+
 
     // Layout principal
     Box(
@@ -140,10 +149,12 @@ fun LoginScreen(navController: NavHostController,  sessaoUsuario: UsuarioTokenDt
             // Botão de Login
             Button(
                 onClick = {
+
                     CoroutineScope(Dispatchers.IO).launch {
                         seniorCareViewModel.login(email, senha)
                         seniorCareViewModel.usuarioLogado.value?.let {
-                            navController.navigate("mainActivity2") { // Navegação para MainActivity2
+                            navController.navigate("mainActivity2")
+                            { // Navegação para MainActivity2
                                 popUpTo("login") { inclusive = true }
                             }
                         } ?: run {

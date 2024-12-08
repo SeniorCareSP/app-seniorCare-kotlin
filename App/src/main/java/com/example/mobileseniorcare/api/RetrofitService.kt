@@ -42,10 +42,6 @@ object RetrofitService {
     }
 
     fun getApiSeniorCareToken(token:String): ApiSeniorCare {
-
-        /*
-        cliente OkHttp que tem um interceptor, o InterceptorTokenJWT
-         */
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(InterceptorTokenJWT(token))
             .build()

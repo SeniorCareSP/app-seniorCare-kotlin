@@ -21,9 +21,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import retrofit2.awaitResponse
 
-class SeniorCareViewModel : ViewModel() {
+class SeniorCareViewModel : ViewModel(), KoinComponent {
 
     var endereco = mutableStateOf<CepResponse?>(null)
 
@@ -45,6 +47,7 @@ class SeniorCareViewModel : ViewModel() {
     var usuarioAgenda by mutableStateOf<UsuarioCuidador?>(null)
         private set
 
+    private val sessaoUsuario: UsuarioTokenDto by inject()
 
 
     private val _agenda = MutableLiveData<Agenda?>()
@@ -80,7 +83,15 @@ class SeniorCareViewModel : ViewModel() {
             val response = api.login(loginRequest)
 
             if (response.isSuccessful) {
-                usuarioLogado.value = response.body()
+                val body = response.body()!!
+                usuarioLogado.value = body
+                sessaoUsuario.tipoUsuario = body.tipoUsuario;
+                sessaoUsuario.nome = body.nome;
+                sessaoUsuario.email = body.email;
+                sessaoUsuario.status = body.status;
+                sessaoUsuario.userId = body.userId;
+                sessaoUsuario.token = body.token;
+                sessaoUsuario.imagemUrl = body.imagemUrl;
                 errorMessage.value = null
                 Log.i("SeniorCareViewModel", "Login bem-sucedido: ${usuarioLogado.value}")
             } else {
@@ -97,22 +108,23 @@ class SeniorCareViewModel : ViewModel() {
         }
     }
 
+
     fun salvar() {
         GlobalScope.launch {
-           try {
-               // Define o endpoint com base no tipo de usuário
-               val endpoint: String
-               Log.d("SeniorCareViewModel", "Usuário Atual antes de salvar: $usuarioAtual")
+            try {
+                // Define o endpoint com base no tipo de usuário
+                val endpoint: String
+                Log.d("SeniorCareViewModel", "Usuário Atual antes de salvar: $usuarioAtual")
 
-               if (usuarioAtual.tipoDeUsuario == TipoUsuario.CUIDADOR) {
-                   endpoint = "cuidadores"
-               } else if (usuarioAtual.tipoDeUsuario == TipoUsuario.RESPONSAVEL) {
-                   endpoint = "responsaveis"
-               } else {
-                   // Caso o tipo de usuário seja inválido, exibe uma mensagem de erro e para a execução
-                   errorMessage.value = "Tipo de usuário inválido"
-                   return@launch // Interrompe o bloco de execução atual
-               }
+                if (usuarioAtual.tipoDeUsuario == TipoUsuario.CUIDADOR) {
+                    endpoint = "cuidadores"
+                } else if (usuarioAtual.tipoDeUsuario == TipoUsuario.RESPONSAVEL) {
+                    endpoint = "responsaveis"
+                } else {
+                    // Caso o tipo de usuário seja inválido, exibe uma mensagem de erro e para a execução
+                    errorMessage.value = "Tipo de usuário inválido"
+                    return@launch // Interrompe o bloco de execução atual
+                }
                 Log.d("SeniorCareViewModel", "Usuário agenda ${usuarioAtual.agendas}")
                 var resposta = api.createUsuario(endpoint,usuarioAtual)
                 if (resposta.isSuccessful) {

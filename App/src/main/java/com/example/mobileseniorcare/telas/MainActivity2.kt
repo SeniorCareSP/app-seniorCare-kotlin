@@ -20,6 +20,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.dataclass.TipoUsuario
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
 import com.example.mobileseniorcare.telas.ui.theme.MobileSeniorCareTheme
 
 class Favoritos : ComponentActivity() {
@@ -50,9 +52,18 @@ class Favoritos : ComponentActivity() {
 }
 
 @Composable
-fun Greeting2(name: String, modifier: Modifier = Modifier,  viewModel: ListagemViewModel = viewModel()) {
+fun Greeting2( name: String, modifier: Modifier = Modifier, viewModel: ListagemViewModel = viewModel()) {
 
-    val usuarios = viewModel.getListaCuidador(TipoUsuario.CUIDADOR)
+//    val tipoUsuario = sessaoUsuario.tipoUsuario.toTipoUsuario()
+//    val userId = sessaoUsuario.obterUserId()
+//
+//
+//
+//    if (tipoUsuario != null && userId != null) {
+//        viewModel.carregarUsuarios(tipoUsuario, userId)
+//    }
+//
+//    val usuariosExibidos = viewModel.usuariosExibidos
 
     Column(
         modifier = Modifier
@@ -88,9 +99,14 @@ fun Greeting2(name: String, modifier: Modifier = Modifier,  viewModel: ListagemV
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top // Conteúdo mais para baixo
         ) {
-            usuarios.forEach { usuario ->
-                CardUsuario(usuario)
-            }
+
+//            usuariosExibidos.forEach { usuario ->
+//                CardUsuario(usuario)
+//                Spacer(modifier = Modifier.height(10.dp))
+//            }
+//            if (usuariosExibidos.isEmpty()) {
+//                Text("Nenhum usuário encontrado", modifier = Modifier.padding(16.dp))
+//            }
         }
     }
 }

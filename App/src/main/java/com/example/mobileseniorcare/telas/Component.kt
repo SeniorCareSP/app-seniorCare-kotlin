@@ -1,5 +1,6 @@
 package com.example.mobileseniorcare.telas
 
+import ListagemViewModel
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -18,6 +19,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -28,9 +30,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioResponse
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
+import org.koin.android.ext.android.inject
+import org.koin.java.KoinJavaComponent.inject
+
 
 @Composable
-fun CardUsuario(usuario: UsuarioCuidador, modifier: Modifier = Modifier){
+fun CardUsuario( usuarioCuidador: UsuarioResponse ,  modifier: Modifier = Modifier,){
     Column (
 
     ){
@@ -55,7 +62,7 @@ fun CardUsuario(usuario: UsuarioCuidador, modifier: Modifier = Modifier){
             )
             Spacer(modifier = Modifier. width(20.dp))
             Text(
-                "Senhor Elias precisa de ajuda com as tarefas do dia a dia",
+                usuarioCuidador.apresentacao ?: "Nome não informado",
                 modifier = Modifier.width(220.dp),
 
                 )
@@ -68,10 +75,9 @@ fun CardUsuario(usuario: UsuarioCuidador, modifier: Modifier = Modifier){
             Column() {
                 val infoUsu = Modifier.width(70.dp)
                 Text(
-                    "Elias", textAlign =  TextAlign.Center, modifier = infoUsu
+                    usuarioCuidador.nome ?: "Nome não informado", textAlign =  TextAlign.Center, modifier = infoUsu
                 )
-                Text(
-                    "75 anos", textAlign =  TextAlign.Center, modifier = infoUsu
+                Text("Idade: ${usuarioCuidador.faixaEtaria ?: "Desconhecida"}", textAlign =  TextAlign.Center, modifier = infoUsu
                 )
             }
             Spacer(modifier = Modifier.width(150.dp))

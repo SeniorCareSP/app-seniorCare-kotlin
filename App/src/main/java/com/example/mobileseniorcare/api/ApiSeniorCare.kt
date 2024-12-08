@@ -1,6 +1,7 @@
 package com.example.mobileseniorcare.api
 
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioResponse
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
 import retrofit2.Response
 import retrofit2.http.Body
@@ -21,34 +22,34 @@ data class Usuario(
 interface ApiSeniorCare {
 
 
-        // Exemplo de login
-        @POST("usuarios/login")
-        suspend fun login(@Body loginRequest: LoginRequest): Response<UsuarioTokenDto>
+    // Exemplo de login
+    @POST("usuarios/login")
+    suspend fun login(@Body loginRequest: LoginRequest): Response<UsuarioTokenDto>
 
-        // Endpoint para obter todos os usuários
-        @GET("/usuarios")
-        suspend fun getAllUsuarios(): Response<List<UsuarioCuidador>>
+    // Endpoint para obter todos os usuários
+    @GET("/usuarios")
+    suspend fun getAllUsuarios(): Response<List<UsuarioCuidador>>
 
-        @GET("/cuidadores")
-        suspend fun getCuidadores(): Response<List<UsuarioCuidador>>
+    @GET("usuarios/listarDistanciaDoCuidador/{id}")
+    suspend fun getCuidadores(@Path("id") id: Int): Response<List<UsuarioResponse>>
 
-         @GET("/responsavel")
-         suspend fun getResponsavel(): Response<List<UsuarioCuidador>>
+    @GET("usuarios/listarDistanciaDoResponsavel/{id}")
+    suspend fun getResponsavel(@Path("id") id: Int): Response<List<UsuarioResponse>>
 
 
     // Endpoint para obter um usuário específico por ID
-        @GET("/usuarios/{id}")
-        suspend fun getUsuarioById(@Path("id") id: Int): Response<UsuarioCuidador>
+    @GET("/usuarios/{id}")
+    suspend fun getUsuarioById(@Path("id") id: Int): Response<UsuarioCuidador>
 
-        @POST
-        suspend fun createUsuario(@Url endpoint: String, @Body usuario: UsuarioCuidador): Response<UsuarioCuidador>
+    @POST
+    suspend fun createUsuario(@Url endpoint: String, @Body usuario: UsuarioCuidador): Response<UsuarioCuidador>
 
-        @PUT("/usuarios/{id}")
-        suspend fun updateUsuario(@Path("id") id: Int, @Body usuario: UsuarioCuidador): Response<UsuarioCuidador>
+    @PUT("/usuarios/{id}")
+    suspend fun updateUsuario(@Path("id") id: Int, @Body usuario: UsuarioCuidador): Response<UsuarioCuidador>
 
-        @DELETE("/usuarios/{id}")
-        suspend fun deleteUsuario(@Path("id") id: Int): Response<Void>
-    }
+    @DELETE("/usuarios/{id}")
+    suspend fun deleteUsuario(@Path("id") id: Int): Response<Void>
+}
 
 
 
