@@ -28,6 +28,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import coil.compose.rememberImagePainter
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioResponse
@@ -38,6 +40,9 @@ import org.koin.java.KoinJavaComponent.inject
 
 @Composable
 fun CardUsuario( usuarioCuidador: UsuarioResponse ,  modifier: Modifier = Modifier,){
+
+  // val imagem = usuarioCuidador.imagemUrl
+
     Column (
 
     ){
@@ -54,15 +59,16 @@ fun CardUsuario( usuarioCuidador: UsuarioResponse ,  modifier: Modifier = Modifi
                 .size(100.dp)
                 .clip(RoundedCornerShape(16.dp))
                 .background(Color.White, shape = RoundedCornerShape(16))
-            Image(
-                painter = painterResource(id = R.drawable.idoso),
-                contentDescription = "chuu do loona",
-                contentScale = ContentScale.Crop,
-                modifier = imagemMod
+
+            AsyncImage(
+                modifier = imagemMod,
+                model = "${usuarioCuidador.imagemUrl}",
+                contentDescription = "Translated description of what the image contains"
             )
+
             Spacer(modifier = Modifier. width(20.dp))
             Text(
-                usuarioCuidador.apresentacao ?: "Nome não informado",
+                usuarioCuidador.apresentacao ?: "Apresentação",
                 modifier = Modifier.width(220.dp),
 
                 )
@@ -77,7 +83,7 @@ fun CardUsuario( usuarioCuidador: UsuarioResponse ,  modifier: Modifier = Modifi
                 Text(
                     usuarioCuidador.nome ?: "Nome não informado", textAlign =  TextAlign.Center, modifier = infoUsu
                 )
-                Text("Idade: ${usuarioCuidador.faixaEtaria ?: "Desconhecida"}", textAlign =  TextAlign.Center, modifier = infoUsu
+                Text("Idade: ${usuarioCuidador.dtNascimento ?: "Desconhecida"}", textAlign =  TextAlign.Center, modifier = infoUsu
                 )
             }
             Spacer(modifier = Modifier.width(150.dp))
