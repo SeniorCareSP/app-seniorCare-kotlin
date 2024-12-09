@@ -72,6 +72,7 @@ class EdicaoPerfil : ComponentActivity() {
 
 @Composable
 fun EdicaoPerfilScreen( navController: NavHostController, modifier: Modifier = Modifier) {
+    var nome by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var textoSobre by remember { mutableStateOf("") }
     var logradouro by remember { mutableStateOf("") }
@@ -97,7 +98,6 @@ fun EdicaoPerfilScreen( navController: NavHostController, modifier: Modifier = M
             .verticalScroll(scrollState)) {
             TopSection()
 
-            // Box com fundo branco e bordas arredondadas para o conteúdo
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -119,6 +119,8 @@ fun EdicaoPerfilScreen( navController: NavHostController, modifier: Modifier = M
                     Spacer(modifier = Modifier.height(16.dp))
 
                     InputFields(
+                        nome = nome,
+                        onNomeChange = { nome = it },
                         email = email,
                         onEmailChange = { email = it },
                         textoSobre = textoSobre,
@@ -224,7 +226,6 @@ fun EdicaoPerfilScreen( navController: NavHostController, modifier: Modifier = M
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            // Centralizar as opções e organizá-las em duas linhas
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -375,7 +376,7 @@ fun HeaderText(text: String) {
 @Composable
 fun UserProfileImage() {
     Image(
-        painter = painterResource(id = R.drawable.senior_care),
+        painter = painterResource(id = R.drawable.img_perfil_cuidador),
         contentDescription = stringResource(id = R.string.imagem_perfil),
         modifier = Modifier
             .size(60.dp)
@@ -386,6 +387,7 @@ fun UserProfileImage() {
 
 @Composable
 fun InputFields(
+    nome: String, onNomeChange: (String) -> Unit,
     email: String, onEmailChange: (String) -> Unit,
     textoSobre: String, onTextoSobreChange: (String) -> Unit,
     logradouro: String, onLogradouroChange: (String) -> Unit,
@@ -394,6 +396,15 @@ fun InputFields(
     numero: String, onNumeroChange: (String) -> Unit,
     cidade: String, onCidadeChange: (String) -> Unit
 ) {
+
+    TextField(
+        value = nome,
+        onValueChange = onNomeChange,
+        label = { Text("Nome") },
+        modifier = Modifier.fillMaxWidth()
+    )
+    Spacer(modifier = Modifier.height(8.dp))
+
     TextField(
         value = email,
         onValueChange = onEmailChange,
