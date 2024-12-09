@@ -162,7 +162,7 @@ fun EdicaoPerfilTela( navController: NavHostController,sessao: UsuarioTokenDto, 
     var numero by remember { mutableStateOf("") }
     var cidade by remember { mutableStateOf("") }
 
-    val (selectedOptions, setSelectedOptions) = remember { mutableStateOf(viewModel.usuarioAtual.ajuda ?: setOf()) }
+    val (selectedOptions, setSelectedOptions) = remember { mutableStateOf(setOf<String>()) }
 
     val scrollState = rememberScrollState()
     val borderColor = Color(0xFF077DB0)
