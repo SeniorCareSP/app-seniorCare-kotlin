@@ -39,6 +39,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.api.SeniorCareViewModel
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
+import com.example.mobileseniorcare.telas.cadastro.CadastroIdoso
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
 class MainActivity : ComponentActivity() {
@@ -89,6 +90,9 @@ class MainActivity : ComponentActivity() {
                             LaunchedEffect(Unit) {
                                 context.startActivity(Intent(context, MainActivity2::class.java))
                             }
+                        }
+                        composable("novoidoso") {
+                            CadastroIdoso()
                         }
                     }
                 }

@@ -1,5 +1,6 @@
 package com.example.mobileseniorcare.telas
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -23,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
@@ -30,17 +32,38 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.R
+import com.example.mobileseniorcare.api.SeniorCareViewModel
+import com.example.mobileseniorcare.telas.cadastro.CadastroIdoso
+import com.example.mobileseniorcare.telas.cadastro.CadastroIdosoScreen
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
 class EdicaoPerfil : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContent {
+            val viewModel: SeniorCareViewModel = viewModel()
+
             MobileSeniorCareTheme {
+                val navController = rememberNavController()
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    EdicaoPerfilScreen(modifier = Modifier.padding(innerPadding))
+                    EdicaoPerfilScreen(rememberNavController(), modifier = Modifier.padding(innerPadding))
+//                    NavHost(
+//                        navController = navController,
+//                        startDestination = "main",
+//                        modifier = Modifier.padding(innerPadding)
+//                    ) {
+//                        composable("novoIdoso") {
+//                            CadastroIdosoScreen(navController, viewModel)
+//                        }
+//                    }
                 }
             }
         }
@@ -48,7 +71,7 @@ class EdicaoPerfil : ComponentActivity() {
 }
 
 @Composable
-fun EdicaoPerfilScreen(modifier: Modifier = Modifier) {
+fun EdicaoPerfilScreen( navController: NavHostController, modifier: Modifier = Modifier) {
     var email by remember { mutableStateOf("") }
     var textoSobre by remember { mutableStateOf("") }
     var logradouro by remember { mutableStateOf("") }
@@ -62,6 +85,7 @@ fun EdicaoPerfilScreen(modifier: Modifier = Modifier) {
     val scrollState = rememberScrollState()
     val borderColor = Color(0xFF077DB0)
     val buttonBackgroundColor = Color(0xFF077DB0)
+
 
     Box(
         modifier = modifier
@@ -174,6 +198,18 @@ fun EdicaoPerfilScreen(modifier: Modifier = Modifier) {
             }
 
             Spacer(modifier = Modifier.height(8.dp))
+            Button(
+                onClick = {  navController.navigate("novoIdoso") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(10.dp))
+                    .border(1.dp, borderColor, shape = RoundedCornerShape(10.dp)),
+                colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = buttonBackgroundColor)
+            ) {
+                Text(stringResource(R.string.botao_novo_idoso))
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
 
             Text(
                 text = "Preciso de ajuda com:",
@@ -261,7 +297,7 @@ fun EdicaoPerfilScreen(modifier: Modifier = Modifier) {
                     .border(1.dp, borderColor, shape = RoundedCornerShape(10.dp)),
                 colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = buttonBackgroundColor)
             ) {
-                Text("Salvar Alterações")
+                Text(stringResource(R.string.botao_salvar_alteracoes))
             }
         }
     }
@@ -426,6 +462,6 @@ fun InputFields(
 @Composable
 fun EdicaoPerfilPreview() {
     MobileSeniorCareTheme {
-        EdicaoPerfilScreen()
+        EdicaoPerfilScreen(rememberNavController())
     }
 }

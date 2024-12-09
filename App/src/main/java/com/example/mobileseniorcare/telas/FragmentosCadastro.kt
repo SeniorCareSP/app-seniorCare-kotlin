@@ -101,16 +101,6 @@ import java.time.format.DateTimeFormatter
 
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-
-
-@Composable
 fun Cadastro1(
     navController: NavHostController,
     viewModel: SeniorCareViewModel = viewModel(),

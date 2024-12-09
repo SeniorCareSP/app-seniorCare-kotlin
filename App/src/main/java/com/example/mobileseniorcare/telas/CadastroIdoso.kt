@@ -22,17 +22,24 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.R
+import com.example.mobileseniorcare.api.SeniorCareViewModel
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
 class CadastroIdoso : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContent {
             MobileSeniorCareTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    CadastroIdosoScreen(modifier = Modifier.padding(innerPadding), activity = this)
+                    CadastroIdosoScreen(rememberNavController(), modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -40,7 +47,9 @@ class CadastroIdoso : ComponentActivity() {
 }
 
 @Composable
-fun CadastroIdosoScreen(modifier: Modifier = Modifier, activity: ComponentActivity) {
+fun CadastroIdosoScreen(navController: NavHostController,
+                        viewModel: SeniorCareViewModel = viewModel(),
+                        modifier: Modifier = Modifier) {
     var nome by remember { mutableStateOf("") }
     var idade by remember { mutableStateOf("") }
     var doencasCronicas by remember { mutableStateOf("") }
@@ -160,6 +169,7 @@ fun CadastroIdosoScreen(modifier: Modifier = Modifier, activity: ComponentActivi
             )
             Spacer(modifier = Modifier.height(20.dp))
 
+
             Button(
                 onClick = {
                     // Adicione a lógica para salvar os dados ou prosseguir
@@ -201,6 +211,6 @@ fun CadastroIdosoScreen(modifier: Modifier = Modifier, activity: ComponentActivi
 @Composable
 fun CadastroIdosoPreview() {
     MobileSeniorCareTheme {
-        CadastroIdosoScreen(modifier = Modifier.fillMaxSize(), activity = ComponentActivity())
+        CadastroIdosoScreen(rememberNavController())
     }
 }
