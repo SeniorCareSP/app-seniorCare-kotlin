@@ -99,12 +99,12 @@ fun EdicaoPerfilCuidadorScreen(navController: NavHostController, modifier: Modif
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.Start
                 ) {
-                    BackButton()
+                    BackButtons()
                     Spacer(modifier = Modifier.height(20.dp))
-                    HeaderText(stringResource(id = R.string.edicao_perfil))
+                    HeaderTexts(stringResource(id = R.string.edicao_perfil))
 
                     Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-                        UserProfileImage()
+                        UserProfileImages()
                     }
 
                     Spacer(modifier = Modifier.height(16.dp))

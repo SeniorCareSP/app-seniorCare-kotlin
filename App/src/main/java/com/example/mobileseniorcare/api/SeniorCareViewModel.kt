@@ -16,6 +16,7 @@ import com.example.mobileseniorcare.dataclass.CepResponse
 import com.example.mobileseniorcare.dataclass.Endereco
 import com.example.mobileseniorcare.dataclass.TipoUsuario
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioResponse
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -48,6 +49,9 @@ class SeniorCareViewModel : ViewModel(), KoinComponent {
         private set
 
     private val sessaoUsuario: UsuarioTokenDto by inject()
+
+    private val dadosUsuario: UsuarioResponse by inject()
+
 
 
     private val _agenda = MutableLiveData<Agenda?>()
@@ -126,7 +130,7 @@ class SeniorCareViewModel : ViewModel(), KoinComponent {
                     return@launch // Interrompe o bloco de execução atual
                 }
                 Log.d("SeniorCareViewModel", "Usuário agenda ${usuarioAtual.agendas}")
-                var resposta = api.createUsuario(endpoint,usuarioAtual)
+                var resposta = api.createUsuario(endpoint, usuarioAtual)
                 if (resposta.isSuccessful) {
                     // usuarioAtual = filmes.last() // atualizando o filmeAtual para que ele tenha um id que veio da API
                     Log.i("SeniorCareViewModel", "Usuário criado: ${resposta.body()}")
@@ -145,7 +149,55 @@ class SeniorCareViewModel : ViewModel(), KoinComponent {
         }
     }
 
+      fun getUsuario(): UsuarioResponse? {
+        return try {
+            val userId = sessaoUsuario.userId ?: throw Exception("User ID is null")
 
+            val tipoUsuario = try {
+                TipoUsuario.valueOf(sessaoUsuario.tipoUsuario ?: "")
+            } catch (e: IllegalArgumentException) {
+                null
+            }
 
+            // Chamada à API com base no tipo de usuário
+            val resposta = if (tipoUsuario == TipoUsuario.RESPONSAVEL) {
+                api.getResponsavelById(userId)
+            } else {
+                api.getCuidadorById(userId)
+            }
+            Log.e("getUsuario", "Erro na resposta da API: $resposta")
+
+            if (resposta.isSuccessful) {
+                resposta.body() // Retorna o corpo da resposta (UsuarioResponse)
+            } else {
+                // Log e mensagem de erro para resposta não bem-sucedida
+                val errorBody = resposta.errorBody()?.string()
+                Log.e("getUsuario", "Erro na resposta da API: $errorBody")
+                errorMessage.value = "Erro ao buscar usuário: $errorBody"
+                null
+            }
+        } catch (e: Exception) {
+            // Log e mensagem de erro para exceções
+            Log.e("getUsuario", "Erro ao buscar usuário", e)
+            errorMessage.value = "Erro ao buscar usuário: ${e.message}"
+            null
+        }
+    }
+//
+//    fun updateUsuario(usuario: UsuarioResponse) {
+//        viewModelScope.launch {
+//            try {
+//                val response = api.updateUsuario(usuario.id, usuario) // Implementar no serviço
+//                if (response.isSuccessful) {
+//                    usuarioLogado.value = response.body() // Atualiza com os dados salvos
+//                    Log.i("updateUsuario", "Usuário atualizado com sucesso")
+//                } else {
+//                    Log.e("updateUsuario", "Erro ao atualizar usuário: ${response.errorBody()?.string()}")
+//                }
+//            } catch (e: Exception) {
+//                Log.e("updateUsuario", "Erro ao atualizar usuário", e)
+//            }
+//        }
+//    }
 }
 
