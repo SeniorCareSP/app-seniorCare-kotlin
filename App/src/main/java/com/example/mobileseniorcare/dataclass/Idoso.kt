@@ -10,5 +10,7 @@ data class Idoso(
     var doencasCronicas: String?,
     var cuidadosMin: Boolean?,
     var dtNascimento: LocalDate?,
-    var genero: String?
+    var genero: String?,
+    var idade: Int?,
+    var sobre: String?
 )
