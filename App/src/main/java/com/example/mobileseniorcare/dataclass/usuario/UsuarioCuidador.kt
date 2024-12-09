@@ -33,6 +33,7 @@ data class UsuarioCuidador(
     var qtdIdoso: Int? = null,
     var precoHora: Double = 0.0,
     var caracteristicas: List<Caracteristica> = emptyList(),
-    var ajuda: List<Ajuda> = emptyList()
+    var ajuda: List<Ajuda> = emptyList(),
+    var imagemUrl: String? = null,
 )
 
