@@ -162,16 +162,27 @@ fun EdicaoPerfilTela( navController: NavHostController,sessao: UsuarioTokenDto, 
     var numero by remember { mutableStateOf("") }
     var cidade by remember { mutableStateOf("") }
 
-    val (selectedOptions, setSelectedOptions) = remember { mutableStateOf(setOf<String>()) }
+    val (selectedOptions, setSelectedOptions) = remember { mutableStateOf(viewModel.usuarioAtual.ajuda ?: setOf()) }
 
     val scrollState = rememberScrollState()
     val borderColor = Color(0xFF077DB0)
     val buttonBackgroundColor = Color(0xFF077DB0)
 
 
-    val usuario = viewModel.getUsuario();
+    LaunchedEffect(Unit) {
+        val usuario = viewModel.getUsuario()
 
-    nome = usuario?.nome.toString();
+        if (usuario != null) {
+            nome = usuario.nome ?: ""
+            email = usuario.email ?: ""
+            textoSobre = usuario.apresentacao ?: ""
+            logradouro = usuario.endereco?.logradouro ?: ""
+            cep = usuario.endereco?.cep ?: ""
+            bairro = usuario.endereco?.bairro ?: ""
+            numero = usuario.endereco?.numero ?: ""
+            cidade = usuario.endereco?.cidade ?: ""
+        }
+    }
 
 
 

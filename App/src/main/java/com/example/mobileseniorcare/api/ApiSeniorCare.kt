@@ -40,13 +40,11 @@ interface ApiSeniorCare {
 
 
     // Endpoint para obter um usuário específico por ID
-    @GET("/cuidadores/{id}")
-    fun getCuidadorById(@Path("id") id: Int): Response<UsuarioResponse>
+    @GET("cuidadores/{id}")
+    suspend fun getCuidadorById(@Path("id") id: Int): Response<UsuarioResponse>
 
-    @GET("/responsavel/{id}")
-     fun getResponsavelById(@Path("id") id: Int): Response<UsuarioResponse>
-
-
+    @GET("responsaveis/{id}")
+    suspend fun getResponsavelById(@Path("id") id: Int): Response<UsuarioResponse>
 
     @POST
     suspend fun createUsuario(@Url endpoint: String, @Body usuario: UsuarioCuidador): Response<UsuarioCuidador>

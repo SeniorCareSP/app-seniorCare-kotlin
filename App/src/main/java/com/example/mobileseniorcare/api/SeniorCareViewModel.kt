@@ -149,7 +149,7 @@ class SeniorCareViewModel : ViewModel(), KoinComponent {
         }
     }
 
-      fun getUsuario(): UsuarioResponse? {
+    suspend fun getUsuario(): UsuarioResponse? {
         return try {
             val userId = sessaoUsuario.userId ?: throw Exception("User ID is null")
 
@@ -165,7 +165,7 @@ class SeniorCareViewModel : ViewModel(), KoinComponent {
             } else {
                 api.getCuidadorById(userId)
             }
-            Log.e("getUsuario", "Erro na resposta da API: $resposta")
+                Log.e("getUsuario", "Erro na resposta da API: $resposta")
 
             if (resposta.isSuccessful) {
                 resposta.body() // Retorna o corpo da resposta (UsuarioResponse)
