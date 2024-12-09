@@ -1,5 +1,7 @@
 package com.example.mobileseniorcare.api
 
+import android.telecom.Call
+import com.example.mobileseniorcare.dataclass.Idoso
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioResponse
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
@@ -49,6 +51,11 @@ interface ApiSeniorCare {
 
     @DELETE("/usuarios/{id}")
     suspend fun deleteUsuario(@Path("id") id: Int): Response<Void>
+
+    //idoso
+
+    @POST("/idosos")
+    fun cadastrarIdoso(@Body idoso: Idoso): Response<Idoso>
 }
 
 

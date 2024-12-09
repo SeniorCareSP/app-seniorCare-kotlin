@@ -98,6 +98,7 @@
     <string name="label_precisa_ajuda_com">Preciso de ajuda com</string>
     <string name="label_sobre">Sobre o idoso</string>
     <string name="botao_salvar_alteracoes">Salvar Alterações</string>
+    <string name="botao_novo_idoso">Novo Idoso</string>
 
     <!--Strings tela main-->
     <string name="menu_listagem">Listagem</string>
