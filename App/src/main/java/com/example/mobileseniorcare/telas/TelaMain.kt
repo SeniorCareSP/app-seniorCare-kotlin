@@ -79,13 +79,18 @@ fun Tela(navController: NavHostController, modifier: Modifier = Modifier, sessao
                         modifier = Modifier.width(500.dp)
                     ) {
                         val iconMod = Modifier.size(40.dp)
-                        IconButton(onClick = {navController.navigate("edicaoPerfil")}) {
-                            Icon(
-                                painter = painterResource(R.drawable.edit),
-                                contentDescription = "Localized description",
-                                modifier = iconMod,
-                                Color.White
-                            )
+                        IconButton(onClick = {
+                            if (sessaoToken.tipoUsuario == "CUIDADOR") {
+                                navController.navigate("edicaoPerfilCuidador")
+                            } else {
+                               navController.navigate("edicaoPerfil")
+                            }
+                        }) {     Icon(
+                            painter = painterResource(R.drawable.edit),
+                            contentDescription = "Localized description",
+                            modifier = iconMod,
+                            Color.White
+                        )
                         }
                         IconButton(onClick = {navController.navigate("listagem")}) {
                             Icon(
@@ -128,9 +133,9 @@ fun Tela(navController: NavHostController, modifier: Modifier = Modifier, sessao
                     context.startActivity(Intent(context, EdicaoPerfilCuidador::class.java))
                 }
             }
-            composable("cadastroveio"){
-                CadastroIdo(navController)
-            }
+//            composable("cadastroveio"){
+//                CadastroIdo(navController)
+//            }
         }
     }
 }
