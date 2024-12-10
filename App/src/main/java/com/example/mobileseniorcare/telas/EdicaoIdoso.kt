@@ -30,6 +30,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.api.IdosoViewModel
@@ -72,8 +74,6 @@ fun EdicaoIdosoScreen(
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var id by remember { mutableStateOf(null) }
     var responsavel by remember { mutableStateOf(null) } // ID do responsável
-
-
 
     val labelColor = Color(0xFF000000)
     val borderColor = Color(0xFF077DB0)
