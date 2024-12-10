@@ -1,6 +1,8 @@
 package com.example.mobileseniorcare.telas
 
 import ListagemViewModel
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -25,10 +27,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import androidx.core.content.ContextCompat
+//import coil.compose.AsyncImage
 import coil.compose.rememberImagePainter
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
@@ -41,7 +45,9 @@ import org.koin.java.KoinJavaComponent.inject
 @Composable
 fun CardUsuario( usuarioCuidador: UsuarioResponse ,  modifier: Modifier = Modifier,){
 
-  // val imagem = usuarioCuidador.imagemUrl
+   val imagem = usuarioCuidador.imagemUrl;
+    val telefone = usuarioCuidador.telefone
+    val context = LocalContext.current
 
     Column (
 
@@ -59,11 +65,28 @@ fun CardUsuario( usuarioCuidador: UsuarioResponse ,  modifier: Modifier = Modifi
                 .size(100.dp)
                 .clip(RoundedCornerShape(16.dp))
                 .background(Color.White, shape = RoundedCornerShape(16))
+//
+//            AsyncImage(
+//                modifier = imagemMod,
+//                model = "${usuarioCuidador.imagemUrl}",
+//                contentDescription = "Translated description of what the image contains"
+//            )
 
-            AsyncImage(
-                modifier = imagemMod,
-                model = "${usuarioCuidador.imagemUrl}",
-                contentDescription = "Translated description of what the image contains"
+//            Image(
+//                painter = rememberImagePainter(
+//                    data = usuarioCuidador.imagemUrl,
+//                builder = {placeholder(R.drawable.idoso)
+//                error(R.drawable.chuu)}
+//                )
+//            )
+
+            Image(
+                painter = rememberImagePainter(
+                    data = "http://res.cloudinary.com/dzmebshlz/image/upload/v1733688343/xwgw17gwrk9trg7gzzhe.jpg",
+
+                ),
+                contentDescription = "Imagem do usuário",
+                modifier = Modifier.size(100.dp) // exemplo de tamanho do image
             )
 
             Spacer(modifier = Modifier. width(20.dp))
@@ -88,18 +111,23 @@ fun CardUsuario( usuarioCuidador: UsuarioResponse ,  modifier: Modifier = Modifi
             }
             Spacer(modifier = Modifier.width(150.dp))
             Button(
-                onClick = { /* Ação de próximo */ },
+                onClick = {
+                    val formattedPhone = telefone?.replace("[^\\d]".toRegex(), "") ?: ""
+                    if (formattedPhone.isNotBlank()) {
+                        val whatsappUrl = "https://api.whatsapp.com/send?phone=55$formattedPhone"
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(whatsappUrl))
+                        context.startActivity(intent)
+                    }
+                },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF2C7595)
                 ),
-                modifier = Modifier
-                    .height(35.dp)
+                modifier = Modifier.height(40.dp)
             ) {
-                Text(
-                    "Ver detalhes"
-                )
+                Text("Whatsapp")
             }
         }
+
     }
 }
 

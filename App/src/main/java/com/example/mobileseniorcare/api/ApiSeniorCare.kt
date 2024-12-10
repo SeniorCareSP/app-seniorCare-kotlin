@@ -48,8 +48,12 @@ interface ApiSeniorCare {
     @POST
     suspend fun createUsuario(@Url endpoint: String, @Body usuario: UsuarioCuidador): Response<UsuarioCuidador>
 
-    @PUT("/usuarios/{id}")
-    suspend fun updateUsuario(@Path("id") id: Int, @Body usuario: UsuarioCuidador): Response<UsuarioCuidador>
+    @PUT("cuidadores/{id}")
+    suspend fun updateCuidador(@Path("id") id: Int, @Body usuario: UsuarioResponse): Response<UsuarioCuidador>
+
+    @PUT("responsaveis/{id}")
+    suspend fun updateResponsavel(@Path("id") id: Int, @Body usuario: UsuarioResponse): Response<UsuarioCuidador>
+
 
     @DELETE("/usuarios/{id}")
     suspend fun deleteUsuario(@Path("id") id: Int): Response<Void>

@@ -215,22 +215,36 @@ class SeniorCareViewModel : ViewModel(), KoinComponent {
     }
 
 
+fun updateUsuario(usuario: UsuarioResponse) {
+    viewModelScope.launch {
+        try {
+            val tipoUsuario = try {
+                TipoUsuario.valueOf(sessaoUsuario.tipoUsuario ?: "")
+            } catch (e: IllegalArgumentException) {
+                null
+            }
 
-//
-//    fun updateUsuario(usuario: UsuarioResponse) {
-//        viewModelScope.launch {
-//            try {
-//                val response = api.updateUsuario(usuario.id, usuario) // Implementar no serviço
-//                if (response.isSuccessful) {
-//                    usuarioLogado.value = response.body() // Atualiza com os dados salvos
-//                    Log.i("updateUsuario", "Usuário atualizado com sucesso")
-//                } else {
-//                    Log.e("updateUsuario", "Erro ao atualizar usuário: ${response.errorBody()?.string()}")
-//                }
-//            } catch (e: Exception) {
-//                Log.e("updateUsuario", "Erro ao atualizar usuário", e)
-//            }
-//        }
-//    }
+            val usuarioId = usuario.id!!
+            val resposta = if (tipoUsuario == TipoUsuario.RESPONSAVEL) {
+                api.updateResponsavel(usuarioId, usuario);
+            } else {
+                api.updateCuidador(usuarioId, usuario)
+            }
+
+
+
+            if (resposta.isSuccessful) {
+
+                usuarioLogado.value?.nome = resposta.body()?.nome.toString();
+                usuarioLogado.value?.email = resposta.body()?.email.toString();
+                usuarioLogado.value?.imagemUrl = resposta.body()?.imagemUrl.toString();
+            } else {
+                Log.e("updateUsuario", "Erro ao atualizar usuário: ${resposta.errorBody()?.string()}")
+            }
+        } catch (e: Exception) {
+            Log.e("updateUsuario", "Erro ao atualizar usuário", e)
+        }
+    }
+}
 }
 

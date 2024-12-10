@@ -60,7 +60,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import coil.compose.AsyncImage
+//import coil.compose.AsyncImage
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.api.IdosoViewModel
 import com.example.mobileseniorcare.api.SeniorCareViewModel
@@ -655,11 +655,11 @@ fun VisuPerfil(name: String, modifier: Modifier = Modifier) {
                 .size(200.dp)
                 .clip(RoundedCornerShape(16.dp))
                 .background(Color.White, shape = RoundedCornerShape(100))
-            AsyncImage(
-                model = "https://i.mydramalist.com/d8jkd_5f.jpg",
-                contentDescription = "chuu",
-                modifier = imagemMod
-            )
+//            AsyncImage(
+//                model = "https://i.mydramalist.com/d8jkd_5f.jpg",
+//                contentDescription = "chuu",
+//                modifier = imagemMod
+//            )
 
             Text("Nome usu", fontSize = 25.sp, fontWeight = FontWeight.Black)
 
