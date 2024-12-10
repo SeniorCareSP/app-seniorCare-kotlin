@@ -122,7 +122,7 @@ fun ListagemConversa(modifier: Modifier = Modifier) {
 
     Box(
         modifier = modifier
-git             .fillMaxSize()
+           .fillMaxSize()
             .background(color = Color(0xFF077DB0))
     ) {
         Column(
