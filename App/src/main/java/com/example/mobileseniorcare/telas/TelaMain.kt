@@ -133,9 +133,9 @@ fun Tela(navController: NavHostController, modifier: Modifier = Modifier, sessao
                     context.startActivity(Intent(context, EdicaoPerfilCuidador::class.java))
                 }
             }
-//            composable("cadastroveio"){
-//                CadastroIdo(navController)
-//            }
+            composable("cadastroveio"){
+                CadastroIdosoScreen(navController)
+            }
         }
     }
 }
