@@ -1,5 +1,6 @@
 package com.example.mobileseniorcare.telas
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,8 +18,10 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -28,6 +31,7 @@ import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.mobileseniorcare.R
+import com.example.mobileseniorcare.dataclass.usuario.UsuarioResponse
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
 import org.koin.android.ext.android.inject
 
@@ -37,7 +41,7 @@ import org.koin.java.KoinJavaComponent
 
 
 class MainActivity2 : ComponentActivity(), KoinComponent{
-    private val sessaoUsuario: UsuarioTokenDto by inject()
+    private val sessaoToken: UsuarioTokenDto by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +52,7 @@ class MainActivity2 : ComponentActivity(), KoinComponent{
                     Tela(
                         rememberNavController(),
                         modifier = Modifier.padding(innerPadding),
-                        sessaoUsuario
+                        sessaoToken
                     )
                 }
             }
@@ -58,7 +62,7 @@ class MainActivity2 : ComponentActivity(), KoinComponent{
 
 
 @Composable
-fun Tela(navController: NavHostController, modifier: Modifier = Modifier, sessaoUsuario: UsuarioTokenDto ) {
+fun Tela(navController: NavHostController, modifier: Modifier = Modifier, sessaoToken: UsuarioTokenDto) {
     Scaffold(
         modifier = Modifier
             .background(
@@ -75,9 +79,9 @@ fun Tela(navController: NavHostController, modifier: Modifier = Modifier, sessao
                         modifier = Modifier.width(500.dp)
                     ) {
                         val iconMod = Modifier.size(40.dp)
-                        IconButton(onClick = {navController.navigate("conversa")}) {
+                        IconButton(onClick = {navController.navigate("edicaoPerfil")}) {
                             Icon(
-                                painter = painterResource(R.drawable.chat),
+                                painter = painterResource(R.drawable.edit),
                                 contentDescription = "Localized description",
                                 modifier = iconMod,
                                 Color.White
@@ -110,10 +114,19 @@ fun Tela(navController: NavHostController, modifier: Modifier = Modifier, sessao
             startDestination = "listagem" // fragmento inicial
         ) {
             composable("listagem") { // candidato possível para navegação ("fragmento1")
-                ListagemUsuarios(sessaoUsuario)
+                ListagemUsuarios(sessaoToken)
             }
-            composable("conversa") { // candidato possível para navegação ("fragmento2")
-                ListagemConversa()
+            composable("edicao") { // candidato possível para navegação ("fragmento2")
+               // EdicaoPerfilTela()
+            }
+            composable("edicaoPerfil") { // Rota que vai abrir a MainActivity2
+                EdicaoPerfilTela(navController, sessaoToken)
+            }
+            composable("edicaoPerfilCuidador") { // Rota que vai abrir a MainActivity2
+                val context = LocalContext.current
+                LaunchedEffect(Unit) {
+                    context.startActivity(Intent(context, EdicaoPerfilCuidador::class.java))
+                }
             }
             composable("cadastroveio"){
                 CadastroIdo(navController)
@@ -126,7 +139,7 @@ fun Tela(navController: NavHostController, modifier: Modifier = Modifier, sessao
 @Composable
 fun GreetingPreview10() {
     MobileSeniorCareTheme {
-        Tela(rememberNavController(), sessaoUsuario = UsuarioTokenDto())
+        Tela(rememberNavController(), sessaoToken = UsuarioTokenDto())
 
     }
 }

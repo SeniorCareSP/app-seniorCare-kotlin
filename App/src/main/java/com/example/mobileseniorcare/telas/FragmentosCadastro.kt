@@ -1535,7 +1535,9 @@ fun LoginSenior(navController: NavHostController, modifier: Modifier = Modifier)
     var senha by remember { mutableStateOf("") }
     val seniorCareViewModel: SeniorCareViewModel = viewModel()
     val context = LocalContext.current
-    // Layout principal
+
+    email = "erronoemail";
+    senha = "12345678";
     Box(
         modifier = modifier
             .fillMaxSize()
