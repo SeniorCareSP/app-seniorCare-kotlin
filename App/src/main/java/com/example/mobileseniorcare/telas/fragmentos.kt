@@ -58,6 +58,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import coil.compose.AsyncImage
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.api.SeniorCareViewModel
@@ -149,6 +151,18 @@ fun ListagemUsuarios(sessaoUsuario: UsuarioTokenDto ,modifier: Modifier = Modifi
 
 @Composable
 fun EdicaoPerfilTela( navController: NavHostController,sessao: UsuarioTokenDto, viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
+    NavHost(navController = navController, startDestination = "edicaoPerfil") {
+        composable("edicaoPerfil") {
+            EdicaoPerfilTela(
+                navController = navController,
+                sessao = UsuarioTokenDto(/* Inicializar valores */)
+            )
+        }
+        composable("novoIdoso") {
+            CadastroIdosoScreen(navController)
+        }
+    }
+
     var nome by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var textoSobre by remember { mutableStateOf("") }
@@ -163,7 +177,6 @@ fun EdicaoPerfilTela( navController: NavHostController,sessao: UsuarioTokenDto, 
     val scrollState = rememberScrollState()
     val borderColor = Color(0xFF077DB0)
     val buttonBackgroundColor = Color(0xFF077DB0)
-
 
     LaunchedEffect(Unit) {
         val usuario = viewModel.getUsuario()

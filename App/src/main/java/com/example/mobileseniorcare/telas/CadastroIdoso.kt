@@ -30,15 +30,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.api.IdosoViewModel
 import com.example.mobileseniorcare.dataclass.Idoso
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
-class EdicaoIdoso : ComponentActivity() {
+class CadastroIdoso : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -46,7 +44,7 @@ class EdicaoIdoso : ComponentActivity() {
         setContent {
             MobileSeniorCareTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    EdicaoIdosoScreen(rememberNavController(), modifier = Modifier.padding(innerPadding))
+                    CadastroIdosoScreen(rememberNavController(), modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -54,7 +52,7 @@ class EdicaoIdoso : ComponentActivity() {
 }
 
 @Composable
-fun EdicaoIdosoScreen(
+fun CadastroIdosoScreen(
     navController: NavHostController,
     viewModel: IdosoViewModel = viewModel(),
     modifier: Modifier = Modifier
@@ -74,6 +72,8 @@ fun EdicaoIdosoScreen(
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var id by remember { mutableStateOf(null) }
     var responsavel by remember { mutableStateOf(null) } // ID do responsável
+
+
 
     val labelColor = Color(0xFF000000)
     val borderColor = Color(0xFF077DB0)
@@ -351,8 +351,8 @@ fun EdicaoIdosoScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun EdicaoIdosoPreview() {
+fun CadastroIdosoPreview() {
     MobileSeniorCareTheme {
-        EdicaoIdosoScreen(rememberNavController())
+        CadastroIdosoScreen(rememberNavController())
     }
 }
