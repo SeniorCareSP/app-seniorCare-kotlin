@@ -14,6 +14,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.mobileseniorcare.dataclass.Agenda
 import com.example.mobileseniorcare.dataclass.CepResponse
 import com.example.mobileseniorcare.dataclass.Endereco
+import com.example.mobileseniorcare.dataclass.Idoso
 import com.example.mobileseniorcare.dataclass.TipoUsuario
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioResponse
@@ -24,6 +25,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import retrofit2.Response
 import retrofit2.awaitResponse
 
 class SeniorCareViewModel : ViewModel(), KoinComponent {
@@ -44,6 +46,8 @@ class SeniorCareViewModel : ViewModel(), KoinComponent {
 
     var usuarioAtualizacao by mutableStateOf<UsuarioCuidador?>(null)
 
+    var listarIdosos by mutableStateOf<List<Idoso>?>(null)
+        private set
 
     var usuarioAgenda by mutableStateOf<UsuarioCuidador?>(null)
         private set
@@ -183,6 +187,35 @@ class SeniorCareViewModel : ViewModel(), KoinComponent {
             null
         }
     }
+
+    suspend fun listarIdosos(): List<Idoso>? {
+        return try {
+            val response = api.listarIdosos()
+            response.body()
+        } catch (e: Exception) {
+            Log.e("Erro", "Erro ao buscar idosos: ${e.message}")
+            null
+        }
+    }
+
+    fun deletarIdoso(id: Int?, onSuccess: () -> Unit, onError: (String) -> Unit) {
+        viewModelScope.launch {
+            try {
+                // Chama a API para deletar o idoso pelo ID
+                val response = api.deletarIdoso(id)
+                if (response.isSuccessful) {
+                    onSuccess() // Chama o callback de sucesso
+                } else {
+                    onError("Erro ao deletar idoso: ${response.message()}")
+                }
+            } catch (e: Exception) {
+                onError("Falha na comunicação: ${e.localizedMessage}")
+            }
+        }
+    }
+
+
+
 //
 //    fun updateUsuario(usuario: UsuarioResponse) {
 //        viewModelScope.launch {

@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobileseniorcare.dataclass.Idoso
 import kotlinx.coroutines.launch
-import retrofit2.Response
+import org.koin.java.KoinJavaComponent.inject
 
 class IdosoViewModel(private val token: String? = null) : ViewModel() {
 
@@ -28,7 +28,7 @@ class IdosoViewModel(private val token: String? = null) : ViewModel() {
                         onSuccess(it)
                     }
                 } else {
-                    onError("Erro ao cadastrar idoso: ${response.message()}")
+                    onError("xErro ao cadastrar idoso: ${response.message()}")
                 }
             } catch (e: Exception) {
                 onError("Falha na comunicação: ${e.localizedMessage}")
@@ -36,7 +36,7 @@ class IdosoViewModel(private val token: String? = null) : ViewModel() {
         }
     }
 
-    fun listarIdosos(onError: (String) -> Unit) {
+    fun listarIdosos(onSuccess: (List<Idoso>) -> Unit, onError: (String) -> Unit) {
         viewModelScope.launch {
             try {
                 val response = api.listarIdosos()
@@ -89,7 +89,7 @@ class IdosoViewModel(private val token: String? = null) : ViewModel() {
             try {
                 val response = api.deletarIdoso(id)
                 if (response.isSuccessful) {
-                    idosos.removeIf { it.id == id }
+                    idosos.removeIf { it.idIdoso == id }
                     onSuccess()
                 } else {
                     onError("Erro ao deletar idoso: ${response.message()}")

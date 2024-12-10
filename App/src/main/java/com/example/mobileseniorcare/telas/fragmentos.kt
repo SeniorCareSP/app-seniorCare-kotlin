@@ -1,6 +1,7 @@
 package com.example.mobileseniorcare.telas
 
 import ListagemViewModel
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -59,19 +60,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import coil.compose.AsyncImage
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.api.IdosoViewModel
 import com.example.mobileseniorcare.api.SeniorCareViewModel
 import com.example.mobileseniorcare.dataclass.Idoso
 import com.example.mobileseniorcare.dataclass.TipoUsuario
-import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioTokenDto
 import java.time.LocalDate
+import java.time.Period
 import java.time.format.DateTimeFormatter
-
 
 fun String?.toTipoUsuario(): TipoUsuario? {
     return try {
@@ -83,11 +81,9 @@ fun String?.toTipoUsuario(): TipoUsuario? {
     }
 }
 
-
 fun UsuarioTokenDto.obterUserId(): Int? {
     return this.userId
 }
-
 
 @Composable
 fun ListagemUsuarios(sessaoUsuario: UsuarioTokenDto ,modifier: Modifier = Modifier, viewModel: ListagemViewModel = viewModel()) {
@@ -156,17 +152,6 @@ fun ListagemUsuarios(sessaoUsuario: UsuarioTokenDto ,modifier: Modifier = Modifi
 
 @Composable
 fun EdicaoPerfilTela( navController: NavHostController,sessao: UsuarioTokenDto, viewModel: SeniorCareViewModel = viewModel(), modifier: Modifier = Modifier) {
-//    NavHost(navController = navController, startDestination = "edicaoPerfil") {
-//        composable("edicaoPerfil") {
-//            EdicaoPerfilTela(
-//                navController = navController,
-//                sessao = UsuarioTokenDto(/* Inicializar valores */)
-//            )
-//        }
-//        composable("novoIdoso") {
-//            CadastroIdosoScreen(navController)
-//        }
-//    }
 
     var nome by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -182,9 +167,17 @@ fun EdicaoPerfilTela( navController: NavHostController,sessao: UsuarioTokenDto, 
     val scrollState = rememberScrollState()
     val borderColor = Color(0xFF077DB0)
     val buttonBackgroundColor = Color(0xFF077DB0)
+    var idosos by remember { mutableStateOf<List<Idoso>>(emptyList()) }
+
+
 
     LaunchedEffect(Unit) {
         val usuario = viewModel.getUsuario()
+        val listaIdosos  = viewModel.listarIdosos()
+
+        if (listaIdosos != null) {
+            idosos = listaIdosos
+        }
 
         if (usuario != null) {
             nome = usuario.nome ?: ""
@@ -197,8 +190,6 @@ fun EdicaoPerfilTela( navController: NavHostController,sessao: UsuarioTokenDto, 
             cidade = usuario.endereco?.cidade ?: ""
         }
     }
-
-
 
     Box(
         modifier = modifier
@@ -270,7 +261,6 @@ fun EdicaoPerfilTela( navController: NavHostController,sessao: UsuarioTokenDto, 
                             .background(Color.White, RoundedCornerShape(10.dp))
                     ) {
                         data class Idoso(val nome: String, val idade: Int)
-                        var idosos by remember { mutableStateOf(listOf<Idoso>()) }
 
                         Box(
                             modifier = Modifier
@@ -282,12 +272,17 @@ fun EdicaoPerfilTela( navController: NavHostController,sessao: UsuarioTokenDto, 
                         ) {
                             Column {
                                 idosos.forEach { idoso ->
+                                    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd") // Ajuste ao formato correto da sua data
+                                    val dtNascimento = LocalDate.parse(idoso.dtNasc, formatter)
+
+                                    // Calcula a idade
+                                    val idade = Period.between(dtNascimento, LocalDate.now()).years
                                     Row(
                                         modifier = Modifier.fillMaxWidth(),
                                         horizontalArrangement = Arrangement.SpaceBetween,
                                         verticalAlignment = Alignment.CenterVertically
                                     ) {
-                                        Text(text = "${idoso.nome}, ${idoso.idade} anos", modifier = Modifier.weight(1f))
+                                        Text(text = "${idoso.nome}, $idade anos", modifier = Modifier.weight(1f))
 
                                         IconButton(onClick = { /* Ação para editar */ }) {
                                             Icon(
@@ -296,7 +291,20 @@ fun EdicaoPerfilTela( navController: NavHostController,sessao: UsuarioTokenDto, 
                                             )
                                         }
 
-                                        IconButton(onClick = { /* Ação para excluir */ }) {
+                                        IconButton(onClick = {
+                                            viewModel.deletarIdoso(
+                                                id = idoso.idIdoso,
+                                                onSuccess = {
+                                                    // Exibir mensagem de sucesso ou redirecionar
+                                                    Log.d("Deleção", "Idoso deletado com sucesso!")
+                                                },
+                                                onError = { errorMessage ->
+                                                    // Exibir mensagem de erro
+                                                    Log.e("Deleção", errorMessage)
+                                                }
+                                            )
+
+                                        }) {
                                             Icon(
                                                 imageVector = Icons.Filled.Delete, // Ícone de lixeira
                                                 contentDescription = "Excluir"
@@ -415,12 +423,6 @@ fun EdicaoPerfilTela( navController: NavHostController,sessao: UsuarioTokenDto, 
         }
     }
 }
-
-
-
-
-
-
 
 
 @Composable
@@ -1179,7 +1181,7 @@ fun CadastroIdosoScreen(
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var id by remember { mutableStateOf(null) }
-    var responsavel by remember { mutableStateOf(null) } // ID do responsável
+    var responsavel by remember { mutableStateOf(1) } // ID do responsável
 
 
 
@@ -1373,7 +1375,7 @@ fun CadastroIdosoScreen(
 
             Button(
                 onClick = {
-                    if (nome.isNotEmpty() && idade.isNotEmpty()) {
+                    if (nome.isNotEmpty() && dtNascimento.isNotEmpty()) {
                         isLoading = true
 
                         // Convertendo a string dtNascimento para LocalDate
@@ -1384,7 +1386,7 @@ fun CadastroIdosoScreen(
                         }
 
                         val idoso = Idoso(
-                            id = id,
+                            idIdoso = id,
                             nome = nome,
                             idade = idade.toInt(),
                             doencasCronicas = doencasCronicas,
@@ -1403,7 +1405,7 @@ fun CadastroIdosoScreen(
                             idoso,
                             onSuccess = {
                                 isLoading = false
-                                navController.navigate("idoso")
+                                navController.navigate("edicaoPerfil")
                             },
                             onError = { message ->
                                 isLoading = false

@@ -282,7 +282,7 @@ fun Greeting2( name: String, modifier: Modifier = Modifier, viewModel: ListagemV
                     }
 
                     val idoso = Idoso(
-                        id = id,
+                        idIdoso = id,
                         nome = nome,
                         idade = idade.toInt(),
                         doencasCronicas = doencasCronicas,

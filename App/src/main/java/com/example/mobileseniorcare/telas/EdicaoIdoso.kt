@@ -30,8 +30,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.api.IdosoViewModel
@@ -276,7 +274,7 @@ fun EdicaoIdosoScreen(
                         }
 
                         val idoso = Idoso(
-                            id = id,
+                            idIdoso = id,
                             nome = nome,
                             idade = idade.toInt(),
                             doencasCronicas = doencasCronicas,

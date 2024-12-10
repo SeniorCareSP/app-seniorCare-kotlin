@@ -3,7 +3,7 @@ package com.example.mobileseniorcare.dataclass
 import java.time.LocalDate
 
 data class Idoso(
-    var id: Int?,
+    var idIdoso: Int?,
     var idade: Int?,
     var nome: String,
     var descricao: String,

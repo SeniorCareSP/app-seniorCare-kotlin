@@ -68,7 +68,7 @@ interface ApiSeniorCare {
     suspend fun atualizarIdoso(@Path("id") id: Int, @Body idoso: Idoso): Response<Idoso>
 
     @DELETE("idosos/{id}")
-    suspend fun deletarIdoso(@Path("id") id: Int): Response<Void>
+    suspend fun deletarIdoso(@Path("id") id: Int?): Response<Void>
 
 }
 
