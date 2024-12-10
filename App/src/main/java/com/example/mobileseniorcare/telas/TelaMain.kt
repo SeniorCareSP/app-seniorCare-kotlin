@@ -115,6 +115,9 @@ fun Tela(navController: NavHostController, modifier: Modifier = Modifier, sessao
             composable("conversa") { // candidato possível para navegação ("fragmento2")
                 ListagemConversa()
             }
+            composable("cadastroveio"){
+                CadastroIdo(navController)
+            }
         }
     }
 }

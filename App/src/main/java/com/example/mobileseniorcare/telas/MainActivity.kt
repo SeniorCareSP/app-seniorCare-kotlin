@@ -37,9 +37,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.R
+import com.example.mobileseniorcare.api.IdosoViewModel
 import com.example.mobileseniorcare.api.SeniorCareViewModel
 import com.example.mobileseniorcare.dataclass.usuario.UsuarioCuidador
-import com.example.mobileseniorcare.telas.cadastro.CadastroIdoso
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
 class MainActivity : ComponentActivity() {
@@ -47,6 +47,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         val viewModel: SeniorCareViewModel = SeniorCareViewModel()
+        val viewModelIdoso: IdosoViewModel = IdosoViewModel()
+
 
         setContent {
             MobileSeniorCareTheme {
@@ -85,17 +87,15 @@ class MainActivity : ComponentActivity() {
                            LoginSenior(navController)
 
                         }
+
                         composable("telaMain") { // Rota que vai abrir a MainActivity2
                             val context = LocalContext.current
                             LaunchedEffect(Unit) {
                                 context.startActivity(Intent(context, MainActivity2::class.java))
                             }
                         }
-                        composable("novoidoso") {
-                            CadastroIdoso()
-                        }
-                    }
-                }
+
+                }}
             }
         }
     }

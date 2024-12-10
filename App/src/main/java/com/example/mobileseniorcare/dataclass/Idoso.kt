@@ -3,6 +3,8 @@ package com.example.mobileseniorcare.dataclass
 import java.time.LocalDate
 
 data class Idoso(
+    var id: Int?,
+    var idade: Int?,
     var nome: String,
     var descricao: String,
     var mobilidade: Boolean,
@@ -11,6 +13,7 @@ data class Idoso(
     var cuidadosMin: Boolean?,
     var dtNascimento: LocalDate?,
     var genero: String?,
-    var idade: Int?,
-    var sobre: String?
+    var sobre: String?,
+    val responsavel: Int?,  // ID do responsável
+    val dtNasc: String  // Data de nascimento no formato "yyyy-MM-dd"
 )

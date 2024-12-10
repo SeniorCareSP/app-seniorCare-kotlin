@@ -1,4 +1,4 @@
-package com.example.mobileseniorcare.telas.cadastro
+package com.example.mobileseniorcare.telas
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,7 +8,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
@@ -28,16 +30,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.api.IdosoViewModel
-import com.example.mobileseniorcare.api.SeniorCareViewModel
 import com.example.mobileseniorcare.dataclass.Idoso
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
-class CadastroIdoso : ComponentActivity() {
+class EdicaoIdoso : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -45,14 +44,15 @@ class CadastroIdoso : ComponentActivity() {
         setContent {
             MobileSeniorCareTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    CadastroIdosoScreen(rememberNavController(), modifier = Modifier.padding(innerPadding))
+                    EdicaoIdosoScreen(rememberNavController(), modifier = Modifier.padding(innerPadding))
                 }
             }
         }
     }
 }
+
 @Composable
-fun CadastroIdosoScreen(
+fun EdicaoIdosoScreen(
     navController: NavHostController,
     viewModel: IdosoViewModel = viewModel(),
     modifier: Modifier = Modifier
@@ -65,11 +65,15 @@ fun CadastroIdosoScreen(
     var mobilidade by remember { mutableStateOf(false) }
     var lucido by remember { mutableStateOf(false) }
     var cuidadosMin by remember { mutableStateOf(false) }
-    var dtNascimento by remember { mutableStateOf("") } // Continua como String
+    var dtNascimento by remember { mutableStateOf("") }
     var genero by remember { mutableStateOf("") }
     var sobre by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
+    var id by remember { mutableStateOf(null) }
+    var responsavel by remember { mutableStateOf(null) } // ID do responsável
+
+
 
     val labelColor = Color(0xFF000000)
     val borderColor = Color(0xFF077DB0)
@@ -77,7 +81,7 @@ fun CadastroIdosoScreen(
     val buttonTextColor = Color.White
     val textColor = Color.Black
 
-    val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd") // Definindo o formato de data
+    val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
     Box(
         modifier = modifier
@@ -99,6 +103,8 @@ fun CadastroIdosoScreen(
             )
         }
 
+        // Scrollable Column
+        val scrollState = rememberScrollState()
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -108,7 +114,8 @@ fun CadastroIdosoScreen(
                     shape = RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp)
                 )
                 .align(Alignment.BottomCenter)
-                .padding(20.dp),
+                .padding(20.dp)
+                .verticalScroll(scrollState), // Scrollable Modifier
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
@@ -269,6 +276,7 @@ fun CadastroIdosoScreen(
                         }
 
                         val idoso = Idoso(
+                            id = id,
                             nome = nome,
                             idade = idade.toInt(),
                             doencasCronicas = doencasCronicas,
@@ -276,15 +284,18 @@ fun CadastroIdosoScreen(
                             mobilidade = mobilidade,
                             lucido = lucido,
                             cuidadosMin = cuidadosMin,
-                            dtNascimento = parsedDate, // Aqui passamos o LocalDate
+                            dtNascimento = parsedDate,
                             genero = genero,
-                            sobre = sobre
+                            sobre = sobre,
+                            responsavel = responsavel,
+                            dtNasc = dtNascimento
                         )
+
                         viewModel.cadastrarIdoso(
                             idoso,
                             onSuccess = {
                                 isLoading = false
-                                navController.navigate("next_screen") // Navega para a próxima tela
+                                navController.navigate("idoso")
                             },
                             onError = { message ->
                                 isLoading = false
@@ -319,7 +330,7 @@ fun CadastroIdosoScreen(
 
             Button(
                 onClick = {
-                    navController.popBackStack() // Volta para a tela anterior
+                    navController.popBackStack()
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -340,8 +351,8 @@ fun CadastroIdosoScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun CadastroIdosoPreview() {
+fun EdicaoIdosoPreview() {
     MobileSeniorCareTheme {
-        CadastroIdosoScreen(rememberNavController())
+        EdicaoIdosoScreen(rememberNavController())
     }
 }

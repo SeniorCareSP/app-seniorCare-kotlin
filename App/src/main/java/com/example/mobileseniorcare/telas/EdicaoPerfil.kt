@@ -2,6 +2,7 @@ package com.example.mobileseniorcare.telas
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -39,8 +40,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.mobileseniorcare.R
 import com.example.mobileseniorcare.api.SeniorCareViewModel
-import com.example.mobileseniorcare.telas.cadastro.CadastroIdoso
-import com.example.mobileseniorcare.telas.cadastro.CadastroIdosoScreen
 import com.example.mobileseniorcare.ui.theme.MobileSeniorCareTheme
 
 class EdicaoPerfil : ComponentActivity() {
@@ -198,9 +197,13 @@ fun EdicaoPerfilScreen( navController: NavHostController, modifier: Modifier = M
             }
 
             Spacer(modifier = Modifier.height(8.dp))
-            Button(
-                onClick = {  navController.navigate("novoIdoso") },
-                modifier = Modifier
+                Button(
+                    onClick = {
+                        Log.d("Navigation", "Navigating to cadastroveio")
+                        navController.navigate("cadastroveio")
+                    },
+
+                        modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(10.dp))
                     .border(1.dp, borderColor, shape = RoundedCornerShape(10.dp)),

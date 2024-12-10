@@ -23,7 +23,6 @@ data class Usuario(
 
 interface ApiSeniorCare {
 
-
     // Exemplo de login
     @POST("usuarios/login")
     suspend fun login(@Body loginRequest: LoginRequest): Response<UsuarioTokenDto>
@@ -52,10 +51,22 @@ interface ApiSeniorCare {
     @DELETE("/usuarios/{id}")
     suspend fun deleteUsuario(@Path("id") id: Int): Response<Void>
 
-    //idoso
+    // Idoso
+    @POST("idosos")
+    suspend fun cadastrarIdoso(@Body idoso: Idoso): Response<Idoso>
 
-    @POST("/idosos")
-    fun cadastrarIdoso(@Body idoso: Idoso): Response<Idoso>
+    @GET("idosos")
+    suspend fun listarIdosos(): Response<List<Idoso>>
+
+    @GET("idosos/{id}")
+    suspend fun obterIdosoPorId(@Path("id") id: Int): Response<Idoso>
+
+    @PUT("idosos/{id}")
+    suspend fun atualizarIdoso(@Path("id") id: Int, @Body idoso: Idoso): Response<Idoso>
+
+    @DELETE("idosos/{id}")
+    suspend fun deletarIdoso(@Path("id") id: Int): Response<Void>
+
 }
 
 
